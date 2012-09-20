@@ -1,0 +1,3425 @@
+/* 
+Главные стили. Внешний вид шаблона.
+*/
+
+body {
+	padding: 0;
+	margin: 0;
+	background: #000 url(http://data2.rumedia.ws/templates/rum/images/fon2.jpg) center top no-repeat;
+	text-align: center;
+	font: 12px Arial;
+	color: #373737;
+}
+h1, h2, h3, h4 {
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+}
+a {
+	text-decoration: none;
+}
+img {
+	border: none;
+}
+.login-panel {
+	display: none;
+	background: url(http://data2.rumedia.ws/templates/rum/images/login-panel.png) 0 0 no-repeat;
+	position: fixed;
+	width: 230px;
+	height: 203px;
+	top: 50%;
+	left: 50%;
+	margin: -101px 0 0 -115px;
+	z-index: 100;
+}
+.login-block {
+	position: relative;
+	width: 230px;
+	height: 203px;
+}
+.close {
+	background: url(http://data2.rumedia.ws/templates/rum/images/close.jpg) 0 0 no-repeat;
+	width: 19px;
+	height: 19px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+}
+.shadow-fon {
+	background: url(http://data2.rumedia.ws/templates/rum/images/shadow-fon.png) 0 0 repeat;
+	display: none;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+.main {
+	margin: 0 auto;
+	width: 1000px;
+	text-align: left;
+}
+.header {
+}
+.head-block {
+	position: relative;
+	background: url(http://data2.rumedia.ws/templates/rum/images/top-menu-fon.png) 0 0 repeat-x;
+	height: 87px;
+	margin: 48px 0 0 0;
+}
+/*
+		.logo{
+			display: block;
+			background: url(http://data2.rumedia.ws/templates/rum/images/logo.png) 0 0 no-repeat;
+			height: 60px;
+			width: 191px;
+			position: absolute;
+			top: 15px;
+			left: 14px;
+		}
+		.logo{
+			display: block;
+			background: url(http://data2.rumedia.ws/templates/rum/images/logo2.png) 0 0 no-repeat;
+			height: 112px;
+			width: 256px;
+			position: absolute;
+			top: -15px;
+			left: 14px;
+		}
+		.logo{
+			display: block;
+			background: url(http://data2.rumedia.ws/templates/rum/images/logo4.png) 0 0 no-repeat; 
+			height: 109px;
+			width: 261px;
+			position: absolute;
+			top: -15px;
+			left: 14px;
+		}
+		*/
+		.logo {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/logo5.png) 0 0 no-repeat;
+	height: 75px;
+	width: 217px;
+	position: absolute;
+	top: 6px;
+	left: 7px;
+}
+.banner {
+	width: 467px;
+	height: 60px;
+	position: absolute;
+	top: 10px;
+	left: 207px;
+	border: 5px solid #5d5d5d;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+}
+.header_icons {
+	width: 467px;
+	height: 50px;
+	position: absolute;
+	top: 20px;
+	left: 400px;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+}
+.header_icons a {
+	display: inline-block;
+	position: relative;/*
+				padding: 0px 2px;
+				border: 2px solid #fff;
+				text-decoration: none;
+				color: #999;
+				font: bold 14px 'Lucida sans', Arial, Helvetica;
+				background-color: #eaeaea;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#eaeaea), to(#fff));
+				background-image: -webkit-linear-gradient(top, #eaeaea, #fff);
+				background-image: -moz-linear-gradient(top, #eaeaea, #fff); 
+				background-image: -ms-linear-gradient(top, #eaeaea, #fff); 
+				background-image: -o-linear-gradient(top, #eaeaea, #fff);
+				background-image: linear-gradient(top, #eaeaea, #fff);
+				-moz-border-radius: 3px;
+				-webkit-border-radius: 3px;
+				border-radius: 3px;
+				-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0 rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .3), 0 10px 10px -5px rgba(0, 0, 0, .2);
+				-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0 rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .3), 0 10px 10px -5px rgba(0, 0, 0, .2);
+				/*
+				box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0 rgba(0, 0, 0, .2), 0 2px 2px rgba(0, 0, 0, .3), 0 10px 10px -5px rgba(0, 0, 0, .2);
+				*/
+			}
+/*
+			.header_icons a:hover{
+				background-color: #eee;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#fff));
+				background-image: -webkit-linear-gradient(top, #eee, #fff);
+				background-image: -moz-linear-gradient(top, #eee, #fff); 
+				background-image: -ms-linear-gradient(top, #eee, #fff); 
+				background-image: -o-linear-gradient(top, #eee, #fff);
+				background-image: linear-gradient(top, #eee, #fff);		
+			}	
+			*/
+			.header_icons a:hover {
+	top: 2px;  /* Имитация эффекта нажатия кнопки *//*background: #f5f5f5;
+				-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
+				-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
+				box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);*/
+			}
+.header_icons a::before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	top: -10px;
+	right: -10px;
+	bottom: -10px;
+	left: -10px;/*
+				background-color: #e3e3e3;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#e3e3e3), to(#f7f7f7));
+				background-image: -webkit-linear-gradient(top, #e3e3e3, #f7f7f7);
+				background-image: -moz-linear-gradient(top, #e3e3e3, #f7f7f7); 
+				background-image: -ms-linear-gradient(top, #e3e3e3, #f7f7f7); 
+				background-image: -o-linear-gradient(top, #e3e3e3, #f7f7f7);
+				background-image: linear-gradient(top, #e3e3e3, #f7f7f7);
+				
+				-moz-border-radius: 2px;
+				-webkit-border-radius: 2px;
+				border-radius: 2px;
+				-moz-box-shadow: 0 1px 1px rgba(0,0,0,.05) inset;
+				-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05) inset;
+				box-shadow: 0 1px 1px rgba(0,0,0,.05) inset;		*/
+			}
+.header_icons a:active::before {
+	top: -11px; /* Не двигаться! */
+}
+.login-enter {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/enter-fon.png) 0 0 repeat-x;
+	height: 25px;
+	width: 112px;
+	position: absolute;
+	top: 30px;
+	left: 703px;
+	font: bold 12px Arial;
+	color: #000;
+	line-height: 25px;
+	text-align: center;
+	cursor: pointer;
+}
+.login-enter:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/enter-fon.png) 0 bottom repeat-x;
+	color: #fff;
+}
+.top-menu-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/top-menu-fon1.png) 0 0 repeat-x;
+	height: 46px;
+	padding: 0 0 0 14px;
+	line-height: 46px;
+	z-index: 1;
+}
+.top-menu-link {
+	display: block;
+	float: left;
+	margin: 9px 9px 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-orange.png) 0 0 repeat-x;
+	height: 28px;
+	padding: 0 12px 0 14px;
+	border-radius: 2px;
+	web-kit-border-radius: 2px;
+	moz-border-radius: 2px;
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+.top-menu-link:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-orange.png) 0 bottom repeat-x;
+}
+.green.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-green.png) 0 0 repeat-x;
+}
+.green:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-green.png) 0 bottom repeat-x;
+}
+.akva.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-akva.png) 0 0 repeat-x;
+}
+.akva:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-akva.png) 0 bottom repeat-x;
+}
+.fiolet.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-fiolet.png) 0 0 repeat-x;
+}
+.fiolet:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-fiolet.png) 0 bottom repeat-x;
+}
+.oran.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-oran.png) 0 0 repeat-x;
+}
+.oran:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-oran.png) 0 bottom repeat-x;
+}
+.blue.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-blue.png) 0 0 repeat-x;
+}
+.blue:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-blue.png) 0 bottom repeat-x;
+}
+.pink.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-pink.png) 0 0 repeat-x;
+}
+.pink:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-pink.png) 0 bottom repeat-x;
+}
+.salat.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-salat.png) 0 0 repeat-x;
+}
+.salat:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-salat.png) 0 bottom repeat-x;
+}
+.ser.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-ser.png) 0 0 repeat-x;
+}
+.ser:hover.top-menu-link {
+	background: url(http://data2.rumedia.ws/templates/rum/images/link-ser.png) 0 bottom repeat-x;
+}
+/*НАЧАЛО скрыть слайдер */
+.hideWrap {
+	background-color: #141414;
+	text-align:left;
+	clear:both;
+	} 
+.hideBtn {
+	z-index: 1;
+	position: absolute;
+	width: 150px;
+	height: 15px;
+	overflow: hidden;
+	margin-left: 842px;
+	background:transparent url('http://data2.rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
+	font: 11px/15px Arial;
+	cursor:pointer;
+	outline:none;
+	padding:1px 14px 2px;
+	color:#FFFFFF;
+	} 
+.hideBtn.close {
+	z-index: 1;
+	display:inline-block;
+	position: relative;
+	width: 150px;
+	height: 15px;
+	overflow: hidden;
+	margin-left: 847px;
+	margin-top: -5px;
+	background:transparent url('http://data2.rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
+	font: 11px/15px Arial;
+	cursor:pointer;
+	outline:none;
+	padding:1px 14px 2px;
+	color:#FFFFFF;
+	} 
+/*КОНЕЦ скрыть слайдер */
+
+.slider {
+	width: 1000px;
+	height: 468px;
+	position: relative;
+	z-index: 0;
+}
+.slider-item {
+}
+.slider-item-big {
+	display: none;
+	position: absolute;
+	width: 1000px;
+	height: 468px;
+	overflow: hidden;
+	left: 0;
+	top: 0;
+}
+.slider-item-big img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: 0;
+	width: 1000px;
+	min-height: 468px;
+}
+.dark2 {
+	background: url(http://data2.rumedia.ws/templates/rum/images/dark2.png);
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border: 0;
+	width: 1000px;
+	height: 144px;
+}
+.slider-title {
+	position: absolute;
+	right: 15px;
+	bottom: 168px;
+	width: 466px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/dark2.png);
+	padding: 10px;
+}
+.slider-title h2 {
+	font-size: 28px;
+	text-transform: uppercase;
+	font-weight: normal;
+	color: #fff;
+	text-align: right;
+	padding: 0 0 10px 0;
+}
+.slider-title-content {
+	text-align: right;
+	font-size: 11px;
+	color: #fff;
+	line-height: 16px;
+	padding: 0 0 10px 0;
+}
+.slider-title-more {
+	padding: 0 0 10px 0;
+}
+.slider-title-more a {
+	float: right;
+	background: url(http://data2.rumedia.ws/templates/rum/images/slider-title-more.png) left top no-repeat;
+	width: 118px;
+	height: 25px;
+}
+.slider-title-more a:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/slider-title-more.png) left bottom no-repeat;
+}
+.slider-item-small {
+	float: left;
+	width: 180px;
+	height: 119px;
+	position: relative;
+	float: left;
+	background: url(http://data2.rumedia.ws/templates/rum/images/slider-item-small.png) left bottom no-repeat;
+	margin: 335px 0 0 17px;
+	z-index: 99999;
+}
+.active-slider .slider-item-small, .slider-item-hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/slider-item-small.png) left top no-repeat !important;
+}
+.slider-item-small-image {
+	width: 168px;
+	height: 88px;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.slider-item-small-image img {
+	border: 0;
+	width: 168px;
+	min-height: 88px;
+}
+.activsl {
+	display: block;
+}
+.content-block {
+	background: #141414;
+	padding: 7px 6px 10px 8px;
+}
+.center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/repeat-center-block.jpg) 0 0 repeat-y;
+	float: left;
+	width: 339px;
+	margin: 0 0 0 4px;
+}
+.center-block:first-child {
+	margin: 0;
+}
+.top-center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/top-center-block.jpg) 0 top no-repeat;
+	padding: 9px 0 0 0;
+}
+.bottom-center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/bottom-center-block.jpg) 0 bottom no-repeat;
+	padding: 0 0 9px 0;
+}
+.new-reviews {
+	margin: 0px 9px 8px 10px;
+}
+.new-reviews-title-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title-blue.png) 0 0 repeat-x;
+	width: 296px;
+	height: 35px;
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 35px;
+	text-transform: uppercase;
+	padding: 0 12px 0 14px;
+	border-radius: 3px;
+	web-kit-border-radius: 3px;
+	moz-border-radius: 3px;
+}
+.all-reviews {
+	display: block;
+	font: 11px Arial;
+	color: #16262d;
+	text-decoration: underline;
+	text-transform: none;
+	float: right;
+	line-height: 35px;
+}
+.all-reviews:hover {
+	text-decoration: none;
+}
+.fiolet.new-reviews-title-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title-fiolet.png) 0 0 repeat-x;
+}
+.salat.new-reviews-title-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title-salat.png) 0 0 repeat-x;
+}
+.new-reviews-content-block {
+}
+.new-reviews-news {
+	background: url(http://data2.rumedia.ws/templates/rum/images/fon-new-reviews.png) 0 0 no-repeat;
+	width: 319px;
+	height: 64px;
+	margin: 7px 0 0 0;
+}
+.new-reviews-news-image {
+	background: url(http://data2.rumedia.ws/templates/rum/images/fon-new-reviews-img.jpg) 0 0 no-repeat;
+	width: 68px;
+	height: 47px;
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin: 8px 12px 0 8px;
+}
+.new-reviews-image-fon {
+	display: block;
+	width: 56px;
+	height: 40px;
+	position: relative;
+	top: 4px;
+	left: 5px;
+	overflow: hidden;
+}
+.new-reviews-image-fon img {
+	width: 56px;
+	min-height: 40px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.new-reviews-news h2 a {
+	float: left;
+	display: block;
+	font: bold 12px Arial;
+	color: #ccc;
+	height: 45px;
+	width: 225px;
+	overflow: hidden;
+	margin: 10px 0 0 0;
+}
+.new-reviews-news h2 a:hover {
+	color: #6fc6ec;
+}
+.new-edition-news {
+	margin: 16px 0 0px 0;
+	padding: 0 0 2px 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+}
+.new-edition-news:first-child {
+	margin: 22px 0 0 0;
+}
+.new-edition-news h2 a {
+	display: block;
+	font: bold 12px Arial;
+	color: #fff;
+	height: 15px;
+	overflow: hidden;
+	margin: 0 0 10px 0;
+}
+.new-edition-news h2 a:hover {
+	text-decoration: underline;
+}
+.new-edition-news-image {
+	float: left;
+	border: 4px solid #373737;
+	width: 134px;
+	height: 71px;
+	margin: 0 12px 11px 0;
+}
+.new-edition-image-fon {
+	display: block;
+	border: 1px solid #7d7d7d;
+	width: 132px;
+	height: 69px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+}
+.new-edition-image-fon img {
+	width: 132px;
+	min-height: 69px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.new-edition-content {
+	float: left;
+	font: 11px Arial;
+	color: #8e8e8e;
+	height: 79px;
+	line-height: 16px;
+	width: 160px;
+	overflow: hidden;
+}
+.right-center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/right-repeat-center-block.jpg) 0 0 repeat-y;
+	float: left;
+	width: 300px;
+	margin: 0 0 0 4px;
+}
+.right-top-center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/right-top-center-block.jpg) 0 top no-repeat;
+	padding: 9px 0 0 0;
+}
+.right-bottom-center-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/right-bottom-center-block.jpg) 0 bottom no-repeat;
+	padding: 0 0 9px 0;
+}
+.video {
+	margin: 0 0 8px 10px
+}
+.video-title-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
+	width: 253px;
+	height: 35px;
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 35px;
+	text-transform: uppercase;
+	padding: 0 12px 0 14px;
+	margin: 0 10px 0 0;
+	border-radius: 3px;
+	web-kit-border-radius: 3px;
+	moz-border-radius: 3px;
+}
+.video-content-block {
+	margin: 12px 0 11px 0;
+}
+.video-news {
+	background: url(http://data2.rumedia.ws/templates/rum/images/fon-video.png) 0 0 no-repeat;
+	width: 135px;
+	height: 126px;
+	margin: 0 8px 8px 0;
+	float: left;
+}
+.video-news:first-child {
+	margin: 0 8px 0 0;
+}
+.video-news-image {
+	width: 121px;
+	height: 76px;
+	overflow: hidden;
+	position: relative;
+	top: 6px;
+	left: 7px;
+}
+.video-news-image img {
+	width: 121px;
+	min-height: 76px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.video-news h2 a {
+	display: block;
+	height: 30px;
+	width: 121px;
+	margin: 13px 0 0 7px;
+	overflow: hidden;
+	font: 11px Arial;
+	color: #737373;
+	text-decoration: underline;
+}
+.video-news h2 a:hover {
+	color: #fff;
+}
+.tizer {
+	margin: 0 0 8px 10px
+}
+.tizer-title-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
+	width: 253px;
+	height: 35px;
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 35px;
+	text-transform: uppercase;
+	padding: 0 12px 0 14px;
+	margin: 0 10px 0 0;
+	border-radius: 3px;
+	web-kit-border-radius: 3px;
+	moz-border-radius: 3px;
+}
+.tizer-content-block {
+	margin: 12px 0 11px 0;
+}
+.tizer-news {
+	background: url(http://data2.rumedia.ws/templates/rum/images/fon-tizer.png) 0 0 no-repeat;
+	width: 135px;
+	height: 260px;
+	margin: 0 8px 8px 0;
+	float: left;
+}
+.tizer-news:first-child {
+	margin: 0 8px 0 0;
+}
+.tizer-news-image {
+	width: 121px;
+	height: 190px;
+	overflow: hidden;
+	position: relative;
+	top: 6px;
+	left: 7px;
+}
+.tizer-news-image img {
+	width: 121px;
+	max-height: 180px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.tizer-news h2 a {
+	display: block;
+	height: 30px;
+	width: 121px;
+	margin: 0px 0 0 7px;
+	overflow: hidden;
+	font: 11px Arial;
+	color: #737373;
+	text-decoration: underline;
+}
+.tizer-news h2 a:hover {
+	color: #fff;
+}
+.tizer-news strong a {
+	color: #FFFFFF;
+	display: block;
+	font: 700 12px "Arial";
+	height: 15px;
+	margin: 5px 5px 0px;
+	overflow: hidden;
+}
+.tizer-news strong a:hover {
+	text-decoration: underline;
+}
+.left-col {
+	width: 680px;
+	float: left;
+	margin: 8px 0 0 0;
+}
+.shortstory-block {
+	background: url(http://data2.rumedia.ws/templates/rum/images/short-repeat.jpg) 0 0 repeat-y;
+}
+.shortstory-block-top {
+	background: url(http://data2.rumedia.ws/templates/rum/images/short-top.jpg) 0 top no-repeat;
+	padding: 6px 0 5px 0;
+}
+.main-news {
+	background: url(http://data2.rumedia.ws/templates/rum/images/short-story.png) 0 0 repeat-y;
+	width: 672px;
+	height: 275px;
+	margin: 5px 0 0 5px;
+	position: relative;
+}
+.main-speedbar {
+	width: 656px;
+	min-height: 20px;
+	/* IE10 Consumer Preview */ 
+						background: #363636;
+	/* IE10 Consumer Preview */ 
+						background: -ms-linear-gradient(top, #363636 0%, #202020 100%);
+	/* Mozilla Firefox */ 
+						background: -moz-linear-gradient(top, #363636 0%, #202020 100%);
+	/* Opera */ 
+						background: -o-linear-gradient(top, #363636 0%, #202020 100%);
+	/* Webkit (Safari/Chrome 10) */ 
+						background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #363636), color-stop(1, #202020));
+	/* Webkit (Chrome 11+) */ 
+						background: -webkit-linear-gradient(top, #363636 0%, #202020 100%);
+	/* W3C Markup, IE10 Release Preview */ 
+						background: linear-gradient(to bottom, #363636 0%, #202020 100%);
+	color: #fff;
+	border: 2px solid;
+	border-color: #999;
+	border-radius: 5px 5px 5px 5px;
+	margin: 0 0 2px 9px;
+	padding: 5px 0 0 5px;
+	overflow: hidden;
+}
+.main-speedbar a {
+	color: #fff;
+}
+.main-speedbar a:hover {
+	color: #F26E00;
+}
+.main-sort {
+	width: 672px;
+	height: 20px;
+	margin: 5px 0 0 5px;
+	padding: 12px 0 0 10px;
+}
+.main-news-all {
+	padding: 12px 0 0 10px;
+}
+.main-news-image {
+	background: #fff;
+	border: 1px solid #dbdbdb;
+	width: 158px;
+	height: 208px;
+	position: relative;
+	float: left;
+	margin: 0 0 0 5px;
+}
+.main-news-img-fon {
+	display: block;
+	width: 150px;
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+	top: 4px;
+	left: 4px;
+}
+.main-news-img-fon img {
+	width: 150px;
+	/*min-height: 200px;*/
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.right-col-main-news {
+	float: left;
+	width: 465px;
+	height: 125px;
+	margin: 0 0 0 11px;
+}
+.right-col-main-news img {
+}
+.right-col-main-news h1 a {
+	display: block;
+	font: bold 15px Arial;
+	color: #000;
+	overflow: auto;
+	/* height: 38px; */
+								margin: 4px 0 0 0;
+}
+.right-col-main-news h1 a:hover {
+	text-decoration: underline;
+}
+.right-col-main-news h2 a {
+	display: block;
+	font: bold 13px Arial;
+	color: #000;
+	overflow: auto;
+	/* height: 38px; */
+								margin: 4px 0 4px 0;
+}
+.right-col-main-news h2 a:hover {
+	text-decoration: underline;
+}
+.size-foto img {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 214px;
+	height: 120px;
+}
+.main-news-content {
+	font: 12px Arial;
+	color: #2b2b2b;
+	line-height: 16px;
+	height: 167px;
+	overflow: hidden;
+}
+.main-news-content-forum img {
+	padding-right: 5px;
+	}
+
+.main-news-content-forum {
+	font: 12px Arial;
+	color: #2b2b2b;
+	line-height: 16px;
+	height: 190px;
+	overflow: hidden;
+	width: 640px;
+}
+.main-news-content br {
+	display: none;
+}
+.main-news-info {
+	position: relative;
+	width: 655px;
+	height: 47px;
+	top: 212px;
+}
+.main-news-more2 a {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/more.png) 0 top no-repeat;
+	position: absolute;
+	top: 9px;
+	left: 5px;
+	width: 160px;
+	height: 30px;
+	font: bold 11px Arial;
+	color: #fff;
+	line-height: 30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.main-news-more2 a:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/more.png) 0 bottom no-repeat;
+}
+.views-com {
+	font: 11px Arial;
+	color: #323232;
+	position: absolute;
+	top: 18px;
+	left: 198px;
+}
+.views-com span a {
+	text-decoration: underline;
+	color: #323232;
+}
+.date {
+	background: url(http://data2.rumedia.ws/templates/rum/images/date-fon.jpg) 0 0 no-repeat;
+	width: 100px;
+	height: 27px;
+	position: absolute;
+	top: 10px;
+	left: 437px;
+	font: 11px Arial;
+	color: #656565;
+	line-height: 27px;
+	padding: 0 0 0 30px;
+}
+.reit {
+	background: url(http://data2.rumedia.ws/templates/rum/images/reit-fon.jpg) 0 0 no-repeat;
+	width: 100px;
+	height: 27px;
+	position: absolute;
+	top: 11px;
+	left: 547px;
+	font: 11px Arial;
+	color: #656565;
+	padding: 7px 0 0 10px;
+}
+.categs {
+	background: url(http://data2.rumedia.ws/templates/rum/images/categs-fon.jpg) 0 0 no-repeat;
+	width: 365px;
+	height: 26px;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	left: 175px;
+	color: #676767;
+	font-size: 12px;
+	line-height: 20px;
+	overflow: hidden;
+}
+.categs a {
+	color: #000;
+}
+.categs a:hover {
+	text-decoration:underline;
+}
+.categs-search {
+	background: url(http://rumedia.ws/templates/rum/images/categs-fon-search.jpg) 0 0 no-repeat;
+	width: 633px;
+	height: 26px;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	left: 10px;
+	color: #676767;
+	font-size: 12px;
+	line-height: 20px;
+	overflow: hidden;
+}
+.categs-search a {
+	color: #000;
+}
+.categs-search a:hover {
+	text-decoration:underline;
+}
+.categs-full {
+	width: 425px;
+	height: 36px;
+	overflow: hidden;
+	position: absolute;
+	top: 9px;
+	left: 10px;
+	color: #676767;
+	font-size: 12px;
+	line-height: 20px;
+	overflow: hidden;
+}
+.categs-full a {
+	font-weight: normal !important;
+	color: #000 !important;
+	text-decoration: none !important;
+}
+.categs-full a:hover {
+	text-decoration:underline !important;
+}
+.block-news-bottom {
+	background: #21262c;
+	width: 679px;
+	border-left: 1px solid #08090a;
+	border-right: 1px solid #08090a;
+	border-bottom: 1px solid #08090a;
+	border-radius: 0 0 5px 5px;
+	web-kit-border-radius: 0 0 5px 5px;
+	moz-border-radius: 0 0 5px 5px;
+}
+.news-block-item {
+	width: 214px;
+	padding: 20px 7px 0 20px;
+	float: left;
+}
+.news-block-item-title {
+	font: bold 12px Arial;
+	color: #fff;
+	height: 24px;
+	line-height: 24px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+	padding: 0 0 12px 0;
+	margin: 0 0 14px 0;
+}
+.news-block-item-content {
+	margin: 5px 0 25px 0;
+}
+.news-bottom-link a {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/point.jpg) 0 -49px no-repeat;
+	font: 11px Arial;
+	color: #5d7087;
+	padding: 0 0 0 15px;
+	margin:  9px 0 0 5px;
+}
+.news-bottom-link a:hover {
+	color: #adb7c3;
+	background: url(http://data2.rumedia.ws/templates/rum/images/point.jpg) 0 4px no-repeat;
+}
+.archiv-block-item {
+	width: 162px;
+	padding: 20px 7px 0 20px;
+	float: left;
+}
+.archiv-block-item-title {
+	font: bold 12px Arial;
+	color: #fff;
+	height: 24px;
+	line-height: 24px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+	padding: 0 0 12px 0;
+	margin: 0 0 14px 0;
+}
+.archiv-block-item-content {
+	margin: 5px 0 25px 0;
+}
+.archives {
+	font: 11px Arial;
+	color: #a7afb8;
+	margin:  5px 0 0 0;
+	line-height: 18px;
+}
+.archives:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+.right-col {
+	width: 299px;
+	float: left;
+	margin: 8px 0 0 7px;
+}
+.topnews-repeat {
+	background: url(http://data2.rumedia.ws/templates/rum/images/pop-repeat.jpg) 0 0 repeat-y;
+	margin: 0 0 9px 0;
+	color: #ccc;
+}
+.topnews-top {
+	background: url(http://data2.rumedia.ws/templates/rum/images/pop-top.jpg) 0 top no-repeat;
+	padding: 5px 0 0 0;
+}
+.topnews-bottom {
+	background: url(http://data2.rumedia.ws/templates/rum/images/pop-bottom.jpg) 0 bottom no-repeat;
+	padding: 0 0 5px 0;
+}
+.topnews-block {
+	margin: 0 0 0 9px;
+}
+.topnews-block-title {
+	width: 282px;
+	height: 27px;
+	margin: 7px 0 0 0px;
+	padding: 8px 0 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/topnews-title.png) 0 0 repeat-x;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+	font: bold 11px Arial;
+	color: #fff;
+	text-transform: uppercase;
+}
+.reklama.topnews-block-title {
+	background: url(http://data2.rumedia.ws/templates/rum/images/reklama-title.png) 0 0 repeat-x;
+	line-height: 35px;
+	height: 35px;
+	padding: 0 0 0 16px;
+	width: 266px;
+	margin: 7px 0 9px 0;
+}
+.pop-title {
+	background: url(http://data2.rumedia.ws/templates/rum/images/pop-title.png) 0 0 repeat-x;
+	display: inline;
+	height: 22px;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+	line-height: 22px;
+	margin: 0 0 0 6px;
+	padding: 4px 16px 4px 16px;
+}
+.topnews-block-content {
+	padding: 2px 0 5px 0;
+}
+.top-news-block {
+	display: block;
+	width: 272px;
+	height: 34px;
+	border: 1px solid #373e40;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+	background: #46585d;
+	margin: 3px 0 0 0;
+	padding: 5px 0 5px 6px;
+}
+.top-news-block:hover {
+	background: #21262c;
+}
+.activ.top-news-block {
+	border: 1px solid #404040;
+	background: #5c5c5c;
+}
+.activ:hover.top-news-block {
+	background: #21262c;
+}
+.images-top-fon {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/topnews-img-fon.jpg) 0 0 no-repeat;
+	width: 33px;
+	height: 34px;
+	float: left;
+	margin: 0 9px 0 0;
+}
+.top-news-image {
+	display: block;
+	width: 29px;
+	height: 30px;
+	position: relative;
+	top: 2px;
+	left: 2px;
+	overflow: hidden;
+}
+.top-news-image img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 29px;
+	min-height: 30px;
+}
+.top-news-title {
+	display: block;
+	float: left;
+	font: bold 12px Arial;
+	color: #fff;
+	width: 219px;
+	height: 30px;
+}
+.top-news-title-forum {
+	overflow: hidden;
+	display: block;
+	float: left;
+	font: bold 12px Arial;
+	color: #fff;
+	width: 270px;
+	height: 15px;
+}
+.top-news-title-forum-info {
+	overflow: hidden;
+	display: block;
+	float: left;
+	font: bold 12px Arial;
+	color: #fff;
+	width: 270px;
+	height: 15px;
+}
+.counters img {
+	margin: 0 0 0 9px;
+	float: left;
+}
+.fon-block {
+	background: #141414;
+	padding: 0px 6px 10px 8px;
+}
+/*
+.footer {
+	background: url(http://data2.rumedia.ws/templates/rum/images/footer-fon.png) 0 0 repeat-x;
+	margin: 10px 0 20px 0;
+	height: 40px;
+	font: 11px Arial;
+	color: #484a51;
+	line-height: 2px;
+	padding: 0 0 0 20px;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+}
+.footer a {
+	color: #b3b3b3;
+}
+.footer a:hover {
+	text-decoration: underline;
+}
+*/
+.footer {
+	background: #141414;
+	padding: 7px 6px 10px 8px;
+	border-radius: 3px;
+	web-kit-border-radius: 3px;
+	moz-border-radius: 3px;
+	o-border-radius: 3px;
+}
+
+/* Юзер-панель */
+
+.left-block {
+	padding: 25px 0 0 37px;
+}
+.left-block2.left-block-title {
+	margin: 0 0 11px 0;
+}
+.left-block-title {
+	font: bold 15px Arial;
+	color: #000;
+	text-align: left;
+	margin: 0 0 10px 0;
+}
+.left-block-title-hello {
+	font: 12px Arial;
+	color: #000;
+	text-align: left;
+	margin: 0 0 10px 0;
+}
+.login-line {
+	position: relative;
+	background: url(http://data2.rumedia.ws/templates/rum/images/login-line.png) left top no-repeat;
+	width: 161px;
+	height: 28px;
+	margin: 0 4px 13px 0;
+	float: left;
+}
+.login-link {
+	padding: 10px 0 10px 15px;
+}
+.login-link a {
+	color: #6a6a6a;
+}
+.login-input-text {
+	border: 0;
+	margin: 0;
+	position: absolute;
+	left: 7px;
+	top: 6px;
+	background: none;
+	padding: 0;
+	width: 148px;
+	font-size: 11px;
+	color: #6c6c6c;
+}
+.l-link {
+}
+.l-link a {
+	display: block;
+	background: url(http://data2.rumedia.ws/templates/rum/images/login-link-fon.png) 0 0 no-repeat;
+	width: 123px;
+	height: 20px;
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 20px;
+	padding: 0 0 0 8px;
+	text-align: left;
+	margin: 0 0 5px 0;
+}
+.l-link a:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/login-link-fon.png) 0 bottom no-repeat;
+}
+.enter {
+	position: absolute;
+	left: 0px;
+	bottom: 30px;
+}
+.lost-input-text {
+	border: 1px #9e9e9e dotted;
+	width: 200px;
+	padding: 5px;
+	color: #644217;
+}
+.reg-link {
+	font: 11px Arial;
+	color: #949494;
+	margin: 40px 0 0 0;
+	text-align: left;
+}
+.reg-link a {
+	color: #949494;
+}
+.reg-link a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+.s-block-content input {
+	background: #fff url(http://data2.rumedia.ws/templates/rum/images/form-text.gif) left top repeat-x;
+	margin: 5px 20px 0 0;
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+/* ==================== Календарь */
+.calend {
+}
+.weekday-active-v {
+	color: #535353;
+}
+.day-active-v {
+	color: #535353;
+	font-weight: bold;
+}
+.calendar {
+	text-align: center;
+}
+.calendar a {
+	text-decoration: underline;
+}
+.calendar td, th {
+	text-decoration: none;
+	padding: 3px;
+}
+.weekday {
+	font-weight: bold !important;
+}
+.weekday-active {
+	color: #000;
+	font-weight: bold;
+}
+.day-active {
+	color: #535353;
+}
+.monthlink {
+	color: #535353;
+	text-decoration: none;
+}
+.day-current {
+	background:#ffd8b5;
+	border:1px dotted #000;
+	color: #000;
+}
+.day-current a {
+	color: #000;
+}
+/* ==================== Облако тегов */
+.tags-block {
+	padding: 5px;
+	color: #424242;
+}
+.clouds_xsmall {
+	font-size: 12px;
+	color: #424242 !important;
+	text-decoration: none;
+}
+.clouds_small {
+	font-size: 15px;
+	color: #424242 !important;
+	text-decoration: none;
+}
+.clouds_medium {
+	font-size: 20px;
+	color: #424242 !important;
+	text-decoration: none;
+}
+.clouds_large {
+	font-size: 25px;
+	color: #ff8b02 !important;
+	text-decoration: none;
+}
+.clouds_xlarge {
+	font-size: 30px;
+	color: #ff8b02!important;
+	text-decoration: none;
+}
+/* Опрос */
+.vote-buttom {
+	width: 87px;
+	padding: 5px;
+	color: #000;
+	border: 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
+	margin: 3px;
+	font-size: 11px;
+	font-weight: bold;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	cursor: pointer;
+}
+/* ==================== Рейтинг статьи */
+
+.rating {
+	color: #757575;
+	font-size: 11px;		/* ! */
+	font-family: tahoma;	/* ! */
+	width: 85px;
+	height: 16px;
+}
+.unit-rating {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	width: 85px;
+	height: 16px;
+	position: relative;
+	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-position: top left;
+	background-repeat: repeat-x;
+}
+.unit-rating li {
+	text-indent: -90000px;
+	padding: 0px;
+	margin: 0px;
+	float: left;
+}
+.unit-rating li a {
+	display: block;
+	width: 17px;
+	height: 16px;
+	text-decoration: none;
+	text-indent: -9000px;
+	z-index: 17;
+	position: absolute;
+	padding: 0px;
+}
+.unit-rating li a:hover {
+	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-position: left center;
+	z-index: 2;
+	left: 0px;
+}
+.unit-rating a.r1-unit {
+	left: 0px;
+}
+.unit-rating a.r1-unit:hover {
+	width: 17px;
+}
+.unit-rating a.r2-unit {
+	left: 17px;
+}
+.unit-rating a.r2-unit:hover {
+	width: 34px;
+}
+.unit-rating a.r3-unit {
+	left: 34px;
+}
+.unit-rating a.r3-unit:hover {
+	width: 51px;
+}
+.unit-rating a.r4-unit {
+	left: 51px;
+}
+.unit-rating a.r4-unit:hover {
+	width: 68px;
+}
+.unit-rating a.r5-unit {
+	left: 68px;
+}
+.unit-rating a.r5-unit:hover {
+	width: 85px;
+}
+.unit-rating li.current-rating {
+	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-position: left bottom;
+	position: absolute;
+	height: 16px;
+	display: block;
+	text-indent: -9000px;
+	z-index: 1;
+}
+/* ==================== BB коды */
+ 
+.bbcodes {
+	background-color: #ffffff;
+	border: 1px solid #e0e0e0;
+	color: #ffffff;
+	font-size: 11px;		/* ! */
+	font-family: tahoma;	/* ! */
+	/*  width: 120px;  */
+	height: 20px;
+	background-image: url(http://data2.rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
+	background-repeat: repeat-x;
+	font-weight: bold;
+}
+/* класс bbcodes_poll используем в poll.tpl, vote.tpl, addnews.tpl */
+
+.bbcodes_poll {
+	background-color: #ffffff;
+	border: 1px solid #e0e0e0;
+	color: #ffffff;
+	font-size: 11px;		/* ! */
+	font-family: tahoma;	/* ! */
+	width: 120px;
+	height: 20px;
+	background-image: url(http://data2.rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
+	background-repeat: repeat-x;
+	font-weight: bold;
+}
+.editor_button {
+	float: left;
+	cursor: pointer;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.editor_buttoncl {
+	float: left;
+	cursor: pointer;
+	padding-left: 1px;
+	padding-right: 1px;
+	border-left: 1px solid #bbbbbb;
+	border-right: 1px solid #bbbbbb;
+}
+.editbclose {
+	float: right;
+	cursor: pointer;
+}
+.editor_button select {
+	font-family: tahoma;
+	font-size: 11px;
+}
+.editor_button img {
+	margin: 0;
+	padding: 0;
+}
+.editbclose img {
+	margin: 0;
+	padding: 0;
+}
+.editor_button_brk img {
+	margin: 0;
+	padding: 0;
+}
+/* ==================== Выпадающее меню */
+
+#dropmenudiv {
+	border: 1px solid #ffffff;
+	border-bottom-width: 0;
+	font: normal 10px Verdana;
+	background-color: #6497ca;
+	line-height: 20px;
+	margin: 2px;
+	opacity: 0.92;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95) progid:DXImageTransform.Microsoft.Shadow(color=#cacaca, direction=135, strength=3)";
+ filter: alpha(opacity=95, enabled=1) progid:DXImageTransform.Microsoft.Shadow(color=#cacaca, direction=135, strength=3);
+}
+#dropmenudiv a {
+	display: block;
+	text-indent: 3px;
+	text-decoration:none;
+	color: #ffffff;
+	background:#6497ca;
+	border: 1px solid #ffffff;
+	padding: 1px 0;
+	margin: 1px;
+	font-weight: bold;
+}
+#dropmenudiv a:hover {
+	background-color:#fdd08b;
+	color:#000000;
+}
+/* ==================== Уведомление о получении новых PM */
+
+#newpm {
+	position: absolute;
+	width: 400px;
+	padding: 4px;
+	background-color: #fdfdfd;
+	border: 1px solid #bbbbbb;
+	font-family: verdana;
+	line-height: 135%;
+}
+#newpmheader {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 2px;
+	height: 20px;
+	color: #636363;
+	font-weight: bold;
+	background-color: #b2c7f1;
+	font-family: verdana;
+	cursor: move;
+}
+#newpm a {
+	background: transparent;
+	color: #4b73d4;
+	text-decoration: none;
+}
+#newpm a:hover {
+	background: transparent;
+	color: #4b73d4;
+	text-decoration: underline;
+}
+/* ==================== Ссылка на скачивание прикрепленного файла */
+
+.attachment {
+	color: #f37c64;
+}
+/* ==================== показ оригинальной картинки загруженной на сайт из уменьшенной копии (jpg) */
+.highslide-wrapper, .highslide-outline {
+	background: #FFFFFF;
+	z-index: 100000;
+}
+.highslide-image {
+	border: 2px solid #FFFFFF;
+	z-index: 100000;
+}
+.highslide-active-anchor {
+	visibility: hidden;
+	z-index: 100000;
+}
+.highslide-active-anchor img {
+	visibility: hidden;
+	z-index: 100000;
+}
+.highslide-dimming {
+	background: black;
+	z-index: 100000;
+}
+.highslide-html {
+	background-color: white;
+	z-index: 100000;
+}
+.highslide-html-content {
+	display: none;
+	z-index: 100000;
+}
+.highslide-loading {
+	display: block;
+	color: white;
+	font-size: 9px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px;
+	border: 1px solid white;
+	background-color: black;
+	z-index: 100000;
+}
+a.highslide-full-expand {
+	background: url(http://data2.rumedia.ws/templates/rum/dleimages/fullexpand.gif) no-repeat;
+	display: block;
+	margin: 0 10px 10px 0;
+	width: 34px;
+	height: 34px;
+	z-index: 100000;
+}
+.highslide-footer {
+	height: 11px;
+	z-index: 100000;
+}
+.highslide-footer .highslide-resize {
+	float: right;
+	height: 12px;
+	width: 11px;
+	background: url(http://data2.rumedia.ws/templates/rum/dleimages/resize.gif);
+	z-index: 100000;
+}
+.highslide-resize {
+	cursor: nw-resize;
+}
+.highslide-display-block {
+	display: block;
+}
+.highslide-display-none {
+	display: none;
+}
+.highslide-caption {
+	display: none;
+	padding: 5px;
+	background: white;
+}
+.highslide-controls {
+	width: 195px;
+	height: 40px;
+	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) 0 -90px no-repeat;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.highslide-controls ul {
+	position: relative;
+	left: 15px;
+	height: 40px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) right -90px no-repeat;
+}
+.highslide-controls li {
+	float: left;
+	padding: 5px 0;
+}
+.highslide-controls a {
+	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif);
+	display: block;
+	float: left;
+	height: 30px;
+	width: 30px;
+	outline: none;
+}
+.highslide-controls a.disabled {
+	cursor: default;
+}
+.highslide-controls a span {
+	/* hide the text for these graphic buttons */
+    display: none;
+}
+/* The CSS sprites for the controlbar */
+.highslide-controls .highslide-previous a {
+	background-position: 0 0;
+}
+.highslide-controls .highslide-previous a:hover {
+	background-position: 0 -30px;
+}
+.highslide-controls .highslide-previous a.disabled {
+	background-position: 0 -60px !important;
+}
+.highslide-controls .highslide-play a {
+	background-position: -30px 0;
+}
+.highslide-controls .highslide-play a:hover {
+	background-position: -30px -30px;
+}
+.highslide-controls .highslide-play a.disabled {
+	background-position: -30px -60px !important;
+}
+.highslide-controls .highslide-pause a {
+	background-position: -60px 0;
+}
+.highslide-controls .highslide-pause a:hover {
+	background-position: -60px -30px;
+}
+.highslide-controls .highslide-next a {
+	background-position: -90px 0;
+}
+.highslide-controls .highslide-next a:hover {
+	background-position: -90px -30px;
+}
+.highslide-controls .highslide-next a.disabled {
+	background-position: -90px -60px !important;
+}
+.highslide-controls .highslide-move a {
+	background-position: -120px 0;
+}
+.highslide-controls .highslide-move a:hover {
+	background-position: -120px -30px;
+}
+.highslide-controls .highslide-full-expand a {
+	background-position: -150px 0;
+}
+.highslide-controls .highslide-full-expand a:hover {
+	background-position: -150px -30px;
+}
+.highslide-controls .highslide-full-expand a.disabled {
+	background-position: -150px -60px !important;
+}
+.highslide-controls .highslide-close a {
+	background-position: -180px 0;
+}
+.highslide-controls .highslide-close a:hover {
+	background-position: -180px -30px;
+}
+.title-block {
+	font-size: 24px;
+	color: #000;
+	line-height: 20px;
+	margin: 0 0 5px 0;
+	padding: 10px 0 10px 0px;
+}
+.title-block a {
+}
+.title-block a:hover {
+}
+.shot-text2 img {
+	margin: 0 10px 5px 0;
+	border: 0;
+	max-width: 500px;
+}
+.shot-text input {
+	margin: 5px 20px 0 0;
+	background: #343434;
+	color: #fff;
+	font-size: 9px;
+}
+.shot-text2 input {
+	margin: 5px 20px 0 0;
+	background: #343434;
+	color: #fff;
+	font-size: 9px;
+}
+.mass_comments_action input {
+	margin: 5px 20px 0 0;
+	background: #454545;
+	color: #fff;
+	font-size: 9px;
+}
+.shot-text .editor_button img {
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0;
+}
+.shot-text2 .editor_button img {
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0;
+}
+.editor_button img {
+	padding: 0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+}
+.shot-text .editbclose img {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+.shot-text2 .editbclose img {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+.editor_button_brk img {
+	padding: 0 !important;
+	margin: 0 !important;
+	border: 0 !important;
+}
+/* Полная новость */
+.full-news {
+	margin: 8px;
+}
+.full-news-top {
+	/*background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-top.png) 0 top no-repeat;*/
+		background: #efefef;
+	border-top: 1px solid #9e9e9e;
+	border-left: 1px solid #9e9e9e;
+	border-right: 1px solid #9e9e9e;
+	width: 663px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.full.main-news-image {
+	margin: 10px;
+}
+.full-news h1 {
+	font: bold 20px Arial;
+	color: #000;
+	font-weight: normal;
+	padding: 10px 10px 5px 10px;
+	left: 180px;
+	overflow: auto;
+}
+.title2 {
+	font: bold 15px Arial;
+	padding: 0px 10px 10px 10px;
+	color: #000;
+	font-weight: normal;
+	left: 180px;
+	overflow: auto;
+}
+.soc-zakladi {
+	float: right;
+	position: relative;
+	/*
+		top: 112px;
+		left: 242px;
+		*/
+		height: 25px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/strelka.png) 248px 7px no-repeat;
+	font: bold 11px Arial;
+	color: #737373;
+	line-height: 25px;
+}
+.soc-zakladi span {
+	padding: 0 0 0 38px;
+}
+.full-news-content {
+	color: #2b2b2b;
+	line-height: 16px;
+	font-size: 12px;
+	padding: 0px 12px 0 17px;
+	background: #efefef;
+	border-left: 1px solid #9e9e9e;
+	border-right: 1px solid #9e9e9e;
+	width: 634px;
+}
+.full-news-content img {
+	overflow:auto;
+	margin: 0 10px 10px 0px;
+	border: 0;
+	max-width: 630px;
+}
+.full-news-content a {
+	color: #F60;
+	font-weight: bold;
+	text-decoration: none;
+}
+.full-news-content a:hover {
+	text-decoration: underline;
+}
+.full-news-content-bf {
+	color: #2b2b2b;
+	line-height: 16px;
+	font-size: 12px;
+	padding: 0px 12px 0 17px;
+	background: #efefef;
+	border-left: 1px solid #9e9e9e;
+	border-right: 1px solid #9e9e9e;
+	width: 634px;
+}
+.full-news-content-bf img {
+	overflow:auto;
+	margin: 0 0 0 0;
+	border: 0;
+	max-width: 300px;
+}
+.rel-title {
+	float: left;
+	padding: 5px 10px 5px 10px;
+	background: #419abc;
+	color: #fff;
+	font-weight: bold;
+	font-size: 12px;
+	margin: 0 0 10px 0;
+}
+.rel-news {
+	background: #FFF;
+	width: 653px;
+	margin-left: -17px;
+	padding: 10px 0px 10px 10px;
+	border-top: 1px solid #cbcbcb;
+	border-bottom: 1px solid #cbcbcb;
+}
+.related-news {
+	float: left;
+	width: 200px;
+	height: 65px;
+	margin: 0 10px 12px 0;
+}
+.rel-fon-img {
+	background: url(http://data2.rumedia.ws/templates/rum/images/rel-fon-img.png) 0 0 no-repeat;
+	width: 80px;
+	height: 64px;
+	float: left;
+}
+.rel-fon-img a {
+	width: 68px;
+	height: 52px;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	top: 6px;
+	left: 6px;
+}
+.rel-fon-img img {
+	width: 68px;
+	min-height: 52px;
+}
+.related-news h2 a {
+	text-decoration: none !important;
+	display: block;
+	/*line-height: 16px !important;*/
+	width: 110px;
+	height: 60px;
+	overflow: hidden;
+	float: left;
+	font: bold 12px Arial;
+	color: #6482a7;
+	padding: 1px 0 0 9px;
+}
+.related-news h2 a:hover {
+	text-decoration: underline !important;
+}
+.rel-news h4 {
+	font-weight: bold;
+	color: #000;
+	font-size: 14px;
+	padding: 0px 0 20px 0;
+}
+.full-fon-bottom {
+	background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-bottom.png) 0 bottom no-repeat;
+	width: 665px;
+	height: 54px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.full-fon-middle {
+	background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-middle.png) 0 bottom repeat-x;
+	width: 663px;
+	height: 57px;
+	position: relative;
+	top: 0px;
+	left: -17px;
+	margin-bottom:10px;
+}
+.right-info {
+	width: 240px;
+	position: absolute;
+	top: 5px;
+	left: 0px;
+}
+.registr-please {
+	color: #7791af;
+	padding: 10px;
+	margin: 5px;
+}
+.title_spoiler {
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
+.title_spoiler a {
+	background: url(http://data2.rumedia.ws/templates/rum/images/title_spoiler.jpg) left top repeat-x;
+	display: block;
+	line-height: 24px;
+	padding: 0 10px 0 30px;
+	text-decoration: none;
+	color: #3b3b3b;
+	font-weight: bold;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	height: 24px
+}
+.title_spoiler img {
+	position: absolute;
+	left: 5px;
+	top: 20px;
+}
+.text_spoiler {
+	background: #e5e5e5;
+	border: 1px #ececec solid;
+	padding: 10px;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	margin: -5px 0 0 0;
+	overflow: auto;
+}
+.text_spoiler a {
+}
+.text_spoiler a:hover {
+}
+/* Вид комментария */
+.koment-fon {
+	background: #efefef;
+	border-left: 1px solid #9e9e9e;
+	border-right: 1px solid #9e9e9e;
+	width: 634px;
+	padding: 10px 12px 0 17px;
+}
+.comment-block {
+	clear: both;
+	margin: 0 0 10px 0;
+	position: relative;
+	padding: 5px 12px 5px 70px;
+}
+.comment-block-left {
+	width: 95px;
+	height: 95px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	background: url(http://data2.rumedia.ws/templates/rum/images/fon-ava.png) 0 0 no-repeat;
+}
+.comment-images {
+	width: 74px;
+	height: 74px;
+	overflow: hidden;
+	position: relative;
+	left: 11px;
+	top: 10px;
+}
+.comment-images img {
+	max-width: 74px;
+	min-height: 74px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.author a {
+	display: block;
+	margin: 20px 0 0 0;
+	font: bold 12px Arial;
+	color: #000;
+	text-align: center;
+}
+.date-koment {
+	position: absolute;
+	top: 7px;
+	left: 215px;
+	width: 130px;
+	height: 15px;
+	font: 11px Arial;
+	color: #666;
+}
+.location-koment a {
+	position: absolute;
+	top: 15px;
+	left: 215px;
+	width: 370px;
+	height: 15px;
+	font: 11px Arial;
+	color: #000;
+}
+.location-koment a:hover{
+	text-decoration: underline;
+}
+.usericon-koment {
+	position: absolute;
+	top: 5px;
+	left: 95px;
+	width: 112px;
+	height: 18px;
+}
+.status-avtora {
+	position: absolute;
+	top: 7px;
+	left: 340px;
+	width: 150px;
+	height: 15px;
+	font: 11px Arial;
+	color: #666;
+}
+.id-koment {
+	position: absolute;
+	top: 7px;
+	right: 0px;
+	width: 100px;
+	height: 15px;
+	font: 11px Arial;
+	color: #666;
+	text-align:right;
+}
+.ip-koment {
+	position: absolute;
+	top: 15px;
+	right: 0px;
+	width: 100px;
+	height: 15px;
+	font: 11px Arial;
+	color: #666;
+	text-align:right;
+}
+.comment-block-right {
+	margin: 23px 0 0 18px;
+	position: relative;
+	padding: 0px 0 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/koment-repeat.jpg) 0 0 repeat-y;
+	width: 551px;
+}
+.comment-block-right2 {
+	background: url(http://data2.rumedia.ws/templates/rum/images/koment-top.jpg) 0 top no-repeat;
+	padding: 7px 0 0 0;
+}
+.comment-text {
+	background: url(http://data2.rumedia.ws/templates/rum/images/koment-bottom.jpg) 0 bottom no-repeat;
+	padding: 0 0 7px 19px;
+	color: #000;
+	line-height: 17px;
+	font-size: 13px;
+}
+.comment-text a {
+	color: #F26E00;
+}
+.comment-text a:hover {
+	color: #F26E00;
+	text-decoration: underline;
+}
+.comment-text-title {
+	padding: 0 0 5px 0;
+	margin: 0 0 5px 0;
+	color: #333;
+}
+.comment-text-title a {
+	color: #000;
+}
+.comment-text-title a:hover {
+	text-decoration: underline;
+}
+.comment-text-more {
+	padding: 3px 0 0 0;
+	font-size: 11px;
+	color: #ccc;
+}
+.comment-text-more a {
+	color: #a0a0a0;
+}
+.comment-text-more a:hover {
+	color: #000;
+}
+.comment-block .bbcodes, .mass_comments_action .bbcodes, .news-item-content .editor input, .news-item-content input {
+	background: #fff;
+	border: 1px #ccc solid;
+	color: #333;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	margin: 0;
+	cursor: pointer;
+}
+/* -------- */
+.quote {
+	background: #efead4;
+	padding: 8px;
+	color: #6f6f6f;
+	clear: both;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	margin: 0 0 5px 0;
+	font-size: 11px;
+}
+.quote a {
+	color: #000;
+}
+/* Добавление комментария */
+
+
+.hidden-comment {
+}
+.hidden-comment h3 {
+	cursor: pointer;
+	float: left;
+	height: 25px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	padding: 0 15px 0 15px;
+	line-height: 25px;
+	color: #fff;
+	font-weight: bold;
+	margin: 17px 0 0 10px;
+}
+.hidden-comment2 {
+	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left bottom repeat-x !important;
+}
+.hidden-comment-form {
+	display: none;
+}
+.add-coment-buttom {
+	width: 100px;
+	height: 30px;
+	margin-right: 3px;
+	color: #fff;
+	border: 1px #2b2b2b solid;
+}
+.add-comment {
+	clear: both;
+	padding: 10px 10px 10px 0;
+	border-radius: 0 0 3px 3px;
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+}
+.add-comment a {
+	color: #2b80c1;
+}
+.login-close {
+	background: url(http://data2.rumedia.ws/templates/rum/images/login-close.png);
+	width: 36px;
+	height: 35px;
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+.add-coment-buttom {
+	width: 100px;
+	height: 30px;
+	margin-right: 3px;
+	color: #fff;
+	border: 1px #2b2b2b solid;
+}
+.add-comment a {
+	color: #2b80c1;
+}
+.add-comment a:hover {
+}
+.add-comment-line {
+	clear: both;
+}
+.add-comment-line-left {
+	float: left;
+	width: 90px;
+	padding: 0 0 5px 0;
+	height: 27px;
+	line-height: 27px;
+}
+.add-comment-line-right {
+	float: left;
+	width: 500px;
+	padding: 0 0 5px 0;
+}
+.add-comment-line-right input {
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	background: #fff;
+	height: auto !important;
+	padding: 5px 10px 5px 10px;
+	border: 1px #e8e8e8 solid;
+}
+.s-block .add-comment-line-left {
+	width: 150px !important;
+}
+.s-block .add-comment-line-right {
+	width: 400px !important;
+}
+.s-block .add-comment-line {
+	padding: 0 0 10px 0;
+}
+.s-block .add-comment-line textarea {
+	border-radius:3px;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;
+	background: #fff;
+	height: auto !important;
+	padding: 5px 10px 5px 10px;
+	border: 1px #e8e8e8 solid;
+	height: 200px !important;
+}
+/* 
+*****************************
+Юзер инфа */
+.user-info-table {
+	width: 90%;
+	margin: 0 00px 0 20px;
+}
+.user-info-table td {
+	padding: 5px 5px 20px 5px;
+	text-align: left;
+}
+.user-info-table td small {
+	font-size: 14px;
+	color: #af86522;
+	font-weight: bold;
+}
+.user-info-table td a {
+	color: #ff863d;
+}
+.user-info-table td i {
+	color: #bfbfbf;
+}
+.buttom-add-news {
+	margin: 5px 20px 5px 0;
+	background: #777777;
+	color: #fff;
+	border: 1px #2b2b2b solid;
+}
+.user-info-table input {
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+/* Инфо */
+.error {
+	padding: 10px;
+	padding-bottom: 150px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/error.png) center bottom no-repeat;
+	text-align: center;
+}
+.error p {
+	font-size: 15px;
+	font-weight: bold;
+}
+.error a {
+	color: #7cad37;
+}
+/* Статистика */
+.lost-pass {
+	width: 400px;
+	background: #fef2e4;
+	margin-bottom: 20px;
+	border-top: 5px #9d7038 solid;
+	margin-top: 10px;
+}
+.lost-pass td {
+	background: #fef2e4;
+	padding: 5px;
+	color: #4b2e12;
+	text-align: left;
+}
+.lost-pass td a {
+	color: #c89539;
+}
+.ststs-title {
+	padding: 5px 5px 5px 20px;
+	color: #60360c;
+	text-align: left;
+	font-weight: bold;
+}
+/* Статические страницы */	
+.ststststs {
+	text-align: left;
+	margin: 0 30px 0 30px;
+}
+.ststststs-t {
+	height: 40px;
+	line-height: 35px;
+	color: #fffdcc;
+	margin: 0 30px 0 10px;
+}
+.ststststs-t h1 {
+	margin: 0;
+	padding: 0 0 0 50px;
+	font-size: 14px;
+}
+.ststststs-c {
+	padding: 20px;
+}
+.ststststs-c img {
+	padding: 0 10px 10px 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/shadow.gif) right bottom;
+	border: 0;
+	margin: 10px 10px 10px 0;
+}
+.ststststs-c input {
+	margin: 5px 20px 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+.ststststs-s {
+	padding: 5px;
+}
+.ststststs-s a {
+	color: #60360c;
+}
+.s-block {
+	margin: 10px;
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #9e9e9e;
+	border-radius: 5px;
+	web-kit-border-radius: 5px;
+	moz-border-radius: 5px;
+}
+.s-block-content {
+	padding: 10px;
+}
+#dle-content {
+}
+.s-block-content a {
+	color: #871012;
+}
+/* добавление новости */
+.add-news-title {
+	padding: 5px 5px 0 50px;
+	font-weight: bold;
+	text-align: left;
+	color: #2d7cff;
+}
+/* ПМ */
+.imp {
+	text-align: left;
+	margin: 0 30px 0 30px;
+}
+.imp input {
+	margin: 5px 20px 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+.pm-tititittile {
+	padding: 10px 10px 10px 5px;
+	font-weight: bold;
+}
+.new-PM {
+	padding: 3px;
+}
+.new-PM input {
+	width: 250px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+.new-PM span {
+	width: 150px;
+	margin-right: 20px;
+	display: block;
+}
+.pm-block {
+	height: 30px;
+	padding-left: 60px;
+	line-height: 30px;
+	font-weight: bold;
+}
+.pm-content {
+	padding: 10px 5px 5px 5px;
+}
+.pm-content a {
+	color: #666666;
+	font-weight: bold;
+}
+.pm-block-menu {
+	height: 50px;
+	margin-bottom: 20px;
+	line-height: 50px;
+	padding-left: 0px;
+	font-size: 12px;
+}
+.pm-block-menu a {
+	color: #ff863d;
+	font-weight: bold;
+}
+.a-mess {
+	border-top: 5px #fff solid;
+	padding: 5px;
+	color: #777777;
+}
+.a-mess a {
+	color: #4a4a4a;
+	font-weight: bold;
+}
+.theme-mess {
+	background: #c6c6c6;
+	padding: 5px;
+	border-top: 5px #fff solid;
+	color: #666666;
+	font-weight: bold;
+}
+/* Результаты поиска и форма поика на главной */
+.search-block {
+	position: absolute;
+	width: 175px;
+	height: 27px;
+	left: 819px;
+	top: 29px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/search-block.png) left top no-repeat;
+}
+#tt_social a {
+	width: 24px;
+	height: 24px;
+	margin: 0 2px 2px 0;
+	display: block;
+	float: left;
+}
+.ttfav {
+	float: left;
+}
+.ttfav-title {
+	padding: 5px 0 5px 3px;
+	font-weight: bold;
+	color: #bbbbbb;
+}
+.form-text {
+	color: #828282;
+	font-size: 11px;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	background: none;
+	position: absolute;
+	left: 10px;
+	top: 6px;
+	width: 125px;
+}
+.form-search {
+	position: absolute;
+	right: 5px;
+	top: 4px;
+	border: 0px;
+}
+.search-rez {
+	text-align: left;
+	margin: 0 30px 0 30px;
+}
+.search-title {
+	padding: 10px;
+	color: #fdffcd;
+	font-weight: bold;
+	border-left: 2px #ffddb5 solid;
+	border-right: 2px #ffddb5 solid;
+	margin: 10px;
+	background: #262626;
+}
+.search-rez input {
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+/* Навигация по страницам */
+.navigation {
+	padding: 7px 0 33px 10px;
+	clear: both;
+}
+.navigation a {
+	border: 1px solid #9e9e9e;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left top repeat-x;
+	height: 25px;
+	line-height: 25px;
+	float: left;
+	padding: 0 11px 0 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+	margin: 0 5px 0 0;
+	font-size: 12px;
+}
+.navigation a:hover {
+	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
+	color: #000;
+}
+.navigation span {
+	border: 1px solid #a19d76;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
+	height: 25px;
+	line-height: 25px;
+	float: left;
+	padding: 0 11px 0 11px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+	margin: 0 5px 0 0;
+	font-size: 12px;
+}
+.vote-pool {
+	margin: 20px 0 0 100px;
+	background: #dbf6ff;
+	width: 400px;
+	padding: 10px;
+}
+.vote-pool img {
+	border: 0;
+	padding: 0;
+}
+.vote-pool h5 {
+	color: red;
+	font-size: 13px;
+	margin: 0;
+}
+.vote-pool h6 {
+	margin: 0;
+	font-size: 12px;
+}
+.vote-pool input {
+	margin: 5px 20px 0 0;
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 1px #d0d0d0 solid;
+}
+.statss {
+	width: 100%;
+}
+.statss td {
+	padding: 5px;
+	font-size: 12px;
+	color: #757575;
+}
+.statss a {
+	color: #ff873e;
+}
+.statss-title {
+	font-size: 13px;
+	font-weight: bold;
+	color: #239aff;
+	border-bottom: 1px #8e8e8e dotted;
+	margin-bottom: 10px;
+}
+.form-input-stand {
+	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	color: #2e2e2e;
+	border: 0;
+}
+.shot-title {
+	color: #000;
+	padding: 5px;
+}
+.shot-title h1 {
+	font-size: 18px;
+	padding-left: 10px;
+}
+.shot-title h1 i {
+}
+.img-top-link {
+	padding: 0 !important;
+	margin: 0 !important;
+	border: 0 !important;
+}
+.fix-bb {
+	margin-right: 2%;
+	background: url(http://data2.rumedia.ws/templates/rum/bbcodes/bg.gif);
+	height: 75px;
+	margin-left: -10px;
+	border: 1px solid #bbb;
+	border-bottom: 0;
+}
+.fix-bb div {
+	border: 0 !important;
+}
+ @-moz-document url-prefix() {
+}
+/* DLE 8.5 */
+
+/* Вид изображения: с прямыми краями и тенью */
+.wide-border {
+	background: white;
+}
+.wide-border .highslide-image {
+	border-width: 10px;
+}
+.wide-border .highslide-caption {
+	padding: 0 10px 10px 10px;
+}
+/* Вид изображения: только тень */
+.borderless .highslide-image {
+	border: none;
+}
+.borderless .highslide-caption {
+	border-bottom: 1px solid white;
+	border-top: 1px solid white;
+	background: white;
+}
+/* Вид изображения: только рамка без тени */
+.less .highslide-image {
+	border: 1px solid #000000;
+}
+.less .highslide-caption {
+	border: 1px solid #000000;
+	background: white;
+}
+/* DLE 9.0 */
+
+/* ==================== Информационное оконо загрузки AJAX */
+#loading-layer {
+	display:none;
+	font-family: Verdana;
+	font-size: 11px;
+	background:#000;
+	padding:10px;
+	text-align:center;
+	border:1px solid #000;
+	color: #FFF;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+/* ==================== Быстрый поиск на сайте */
+#searchsuggestions {
+	border-width:1px;
+	border-color:#919191;
+	border-style:solid;
+	width:300px;
+	background-color:#5c9ccc;
+	font-size:10px;
+	line-height:14px;
+}
+#searchsuggestions a {
+	padding:5px;
+	display:block;
+	background-color:#ffffff;
+	clear:left;
+	height:70px;
+	text-decoration:none;
+}
+#searchsuggestions a:hover {
+	background-color:#fdd08b;
+	color:#ffffff;
+}
+#searchsuggestions a span.searchheading {
+	background: #5c9ccc;
+	display:block;
+	font-weight:bold;
+	padding:5px;
+	color:#ffffff;
+}
+#searchsuggestions a:hover span.searchheading {
+	color:#ffffff;
+}
+#searchsuggestions a span {
+	color:#555555;
+}
+#searchsuggestions a:hover span {
+	color:#000000;
+}
+#searchsuggestions span.seperator {
+	float:right;
+	padding-right:15px;
+	margin-right:5px;
+}
+#searchsuggestions span.seperator a {
+	background-color:transparent;
+	display:block;
+	height:auto;
+	color:#ffffff;
+}
+#searchsuggestions span.notfound {
+	padding:5px;
+	background-color:#ffffff;
+	display:block;
+	height:auto;
+	color:#000000;
+}
+/* ==================== Диалоговые и всплывающие окна jQuery UI */
+.ui-helper-clearfix:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+.ui-helper-clearfix {
+	display: inline-block;
+}
+* html .ui-helper-clearfix {
+	height: 1%;
+}
+.ui-helper-clearfix {
+	display: block;
+}
+.ui-icon {
+	background-repeat: no-repeat;
+	display: block;
+	overflow: hidden;
+	text-indent: -99999px;
+}
+.ui-widget {
+	font-family: Tahoma, Lucida Sans, Arial, sans-serif;
+	font-size: 11px;
+}
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+	font-family: tahoma, Arial, sans-serif;
+	font-size: 11px;
+}
+.ui-widget-content {
+	background: #fcfdfd 50% bottom repeat-x;
+	border: 1px solid #a6c9e2;
+	color: #222222;
+	text-align: left;
+}
+.ui-widget-content a {
+	color: #222222;
+}
+.ui-widget-header {
+	background: #5c9ccc url(http://data2.rumedia.ws/templates/rum/images/ui-bg_gloss-wave.png) 50% 50% repeat-x;
+	border: 1px solid #4297d7;
+	color: #ffffff;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #ffffff;
+}
+.ui-state-default, .ui-widget-content .ui-state-default {
+	background: #dfeffc url(http://data2.rumedia.ws/templates/rum/images/ui-bg_glass_85.png) 50% 50% repeat-x;
+	border: 1px solid #c5dbec;
+	color: #2e6e9e;
+	font-weight: bold;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+	color: #2e6e9e;
+	text-decoration: none;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
+	background: #d0e5f5 url(http://data2.rumedia.ws/templates/rum/images/ui-bg_glass_75.png) 50% 50% repeat-x;
+	border: 1px solid #79b7e7;
+	color: #1d5987;
+	font-weight: bold;
+}
+.ui-state-hover a, .ui-state-hover a:hover {
+	color: #1d5987;
+	text-decoration: none;
+}
+.ui-state-active, .ui-widget-content .ui-state-active {
+	background: #f5f8f9 50% 50% repeat-x;
+	border: 1px solid #79b7e7;
+	color: #e17009;
+	font-weight: bold;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+	color: #e17009;
+	text-decoration: none;
+}
+.ui-widget :active {
+	outline: none;
+}
+.ui-state-error {
+	background: #fef1ec 50% 50% repeat-x;
+	border: 1px solid #cd0a0a;
+	color: #cd0a0a;
+}
+.ui-widget-header .ui-icon {
+	background-image: url(http://data2.rumedia.ws/templates/rum/images/ui-icons.png);
+}
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
+	background-image: url(http://data2.rumedia.ws/templates/rum/images/ui-icons_h.png);
+}
+.ui-icon-close {
+	background-position: -80px -128px;
+}
+.ui-icon-closethick {
+	background-position: -96px -128px;
+}
+.ui-button .ui-button-text {
+	display: block;
+	line-height: 1.4;
+}
+.ui-button-text-only .ui-button-text {
+	padding: .4em .8em;
+}
+input.ui-button {
+	padding: .4em 1em;
+}
+.ui-button-set {
+	margin-right: 7px;
+}
+.ui-button-set .ui-button {
+	margin-left: 0;
+	margin-right: -.3em;
+}
+button.ui-button::-moz-focus-inner {
+ border: 0;
+ padding: 0;
+}
+.ui-dialog {
+	overflow: hidden;
+	padding: .2em;
+	position: absolute;
+	width: 300px;
+	text-align: left;
+}
+.ui-dialog .ui-dialog-titlebar {
+	padding: .5em 1em .3em;
+	position: relative;
+}
+.ui-dialog .ui-dialog-title {
+	float: left;
+	margin: .1em 16px .2em 0;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+	height: 18px;
+	margin: -10px 0 0 0;
+	padding: 1px;
+	position: absolute;
+	right: .3em;
+	top: 50%;
+	width: 19px;
+}
+.ui-dialog .ui-dialog-titlebar-close span {
+	display: block;
+	margin: 1px;
+}
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus {
+	padding: 0;
+}
+.ui-dialog .ui-dialog-content {
+	background: none;
+	border: 0;
+	overflow: hidden;
+	padding: .5em 1em;
+	position: relative;
+	zoom: 1;
+	text-align: left;
+}
+.ui-dialog .ui-dialog-buttonpane {
+	background-image: none;
+	border-width: 1px 0 0 0;
+	margin: .5em 0 0 0;
+	padding: .3em 1em .5em .4em;
+	text-align: left;
+}
+.ui-dialog .ui-dialog-buttonpane button {
+	cursor: pointer;
+	float: right;
+	line-height: 1.4em;
+	margin: .5em .4em .5em 0;
+	overflow: visible;
+	padding: .2em .6em .3em .6em;
+	width: auto;
+}
+.ui-dialog .ui-resizable-se {
+	bottom: 3px;
+	height: 14px;
+	right: 3px;
+	width: 14px;
+}
+.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+.commentS-td2 #b_left, .commentS-td2 #b_center, .commentS-td2 #b_right, .commentS-td2 #b_spoiler {
+	display: none;
+}
+.nono #b_left, .nono #b_center, .nono #b_right, .nono #b_spoiler {
+	display: none;
+}
+#searchtable input {
+	max-width: 150px !important;
+}
+/* ДЛЕ 9.2 */
+.editor input[type="text"] {
+	padding: 2px;
+	background: #fff url("http://data2.rumedia.ws/templates/rum/images/fields.png") repeat-x;
+	border: 1px solid #bcc0c2;
+}
+/* ==================== Автозаполнение облака тегов */
+.ui-autocomplete {
+	position: absolute;
+	cursor: default;
+}
+* html .ui-autocomplete {
+	width:1px;
+} /* without this, the menu expands to 100% in IE6 */
+.ui-menu {
+	list-style:none;
+	padding: 2px;
+	margin: 0;
+	display:block;
+	float: left;
+	background: #fff 50% bottom repeat-x;
+	border: 1px solid #dedede;
+	color: #222;
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:.2em .4em;
+	line-height:1.5;
+	zoom:1;
+}
+.ui-menu .ui-menu-item a.ui-state-hover, .ui-menu .ui-menu-item a.ui-state-active {
+	font-weight: normal;
+	margin: -1px;
+	border: 1px solid #a7a7a7;
+	color: #4e4e4e;
+	font-weight: bold;
+}
+.full-news-custom-content p, .r-custom-text p {
+	margin: 0;
+	padding: 0;
+}
+/*  */
+
+
+.sp_search {
+	width:486px;
+	margin: 0 0 15px 0;
+	border: 2px #fff solid;
+}
+.sp_search_head {
+	height:37px;
+	padding:5px;
+	color:#888;
+	font:bold 17px Arial;
+	line-height:40px;
+	text-transform:uppercase;
+	background:#fff;
+	border-bottom: 1px #ccc solid;
+}
+.sp_search_head img {
+	float:left;
+	margin-right:7px;
+}
+.sp_search_table {
+	font:11px Tahoma;
+	color:#080808;
+	width:100%;
+	text-align:left;
+	background:#d5f3ff;
+}
+.sp_search_table .sp_s1 {
+	color:#1e81ba;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.sp_search_table .sp_s2 {
+	color:#1e81ba;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.sp_search_table .sp_s3 {
+	color:#1e81ba;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.sp_search_table .sp_s4 {
+	color:#1e81ba;
+	text-decoration:underline;
+	font-weight:bold;
+}
+.sp_search_table td.sp_name {
+	padding:6px 10px 8px 0;
+	vertical-align:top;
+	font:12px Tahoma;
+	color:#080808;
+}
+.sp_search_table a.sp_lnk {
+	font:12px Tahoma;
+	color:#080808;
+	text-decoration:underline;
+}
+.sp_search_table a.sp_lnk b {
+	font-weight:bold;
+}
+.sp_search_table a.sp_lnk:hover, .sp_search_table a.sp_lnk:hover span {
+	text-decoration:none;
+}
+.sp_search_table td.sp_count {
+	padding:6px 24px 8px 0;
+	vertical-align:top;
+	text-align:right;
+}
+.sp_search_table td.sp_count span.sp_count_sp {
+	color:#000;
+	font-weight:bold;
+}
+.sp_search_table td.sp_count span.sp_count_sp2 {
+	color:#1e81ba;
+	font-weight:bold;
+}
+.sp_search_table td.sp_name .sp_im_bl {
+	float:left;
+	margin:-4px 0 0 0;
+	width:44px;
+}
+.sp_search_table td.sp_name .sp_im_bl img {
+	display:block;
+	margin:0 auto;
+}
+/*---Подсветка кода в теге [code]---*/
+pre code {
+	display: block;
+	padding: 0.5em;
+	background: #f9fafa;
+	border: 1px solid #dce7e7;
+	overflow:auto;
+	white-space: pre;
+}
+pre .comment, pre .template_comment, pre .diff .header, pre .doctype, pre .lisp .string, pre .javadoc {
+	color: #93a1a1;
+	font-style: italic;
+}
+pre .keyword, pre .css .rule .keyword, pre .winutils, pre .javascript .title, pre .method, pre .addition, pre .css .tag, pre .lisp .title {
+	color: #859900;
+}
+pre .number, pre .command, pre .string, pre .tag .value, pre .phpdoc, pre .tex .formula, pre .regexp, pre .hexcolor {
+	color: #2aa198;
+}
+pre .title, pre .localvars, pre .function .title, pre .chunk, pre .decorator, pre .builtin, pre .built_in, pre .lisp .title, pre .identifier, pre .title .keymethods, pre .id {
+	color: #268bd2;
+}
+pre .tag .title, pre .rules .property, pre .django .tag .keyword {
+	font-weight: bold;
+}
+pre .attribute, pre .variable, pre .instancevar, pre .lisp .body, pre .smalltalk .number, pre .constant, pre .class .title, pre .parent, pre .haskell .label {
+	color: #b58900;
+}
+pre .preprocessor, pre .pi, pre .shebang, pre .symbol, pre .diff .change, pre .special, pre .keymethods, pre .attr_selector, pre .important, pre .subst, pre .cdata {
+	color: #cb4b16;
+}
+pre .deletion {
+	color: #dc322f;
+}
+pre .tex .formula {
+	background: #eee8d5;
+}
+/*---прогресс бар заполненности персональных сообщений---*/
+.pm_progress_bar {
+	border: 1px solid #d8d8d8;
+	padding: 1px;
+	margin: 0 5px;
+}
+.pm_progress_bar span {
+	background: #000000;
+	font-size: 0em;
+	text-indent: -2000em;
+	height: 10px;
+	display: block;
+	overflow: hidden;
+}
+.pm_status {
+	float:left;
+	border: 1px solid #d8d8d8;
+	padding: 0;
+	background-color: #fff;
+	width: 100%;
+	height: 150px;
+	margin-right: 10px;
+}
+.pm_status_content {
+	padding: 0 10px 0 10px;
+}
+.pm_status_head {
+	border-bottom: 1px solid #d8d8d8;
+	background: #fff url("http://data2.rumedia.ws/templates/rum/images/bbcodes.png") repeat-x 0 100%;
+	font: 12px Tahoma;
+	padding: 10px;
+	margin: 0;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: top;
+	color: #4e4e4e;
+}
+/* gotop */
+/* Search */	
+.btn {
+	display: inline-block;
+ *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+	padding: 4px 10px 4px;
+	margin-bottom: 0;
+	font-size: 13px;
+	line-height: 18px;
+	color: #333333;
+	text-align: center;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(top, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+ filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+	border: 1px solid #cccccc;
+	border-bottom-color: #b3b3b3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+ *margin-left: .3em;
+}
+.btn:hover, .btn:active, .btn.active, .btn.disabled, .btn[disabled] {
+	background-color: #e6e6e6;
+}
+.btn:active, .btn.active {
+	background-color: #cccccc \9;
+}
+.btn:first-child {
+ *margin-left: 0;
+}
+.btn:hover {
+	color: #333333;
+	text-decoration: none;
+	background-color: #e6e6e6;
+	background-position: 0 -15px;
+	-webkit-transition: background-position 0.1s linear;
+	-moz-transition: background-position 0.1s linear;
+	-ms-transition: background-position 0.1s linear;
+	-o-transition: background-position 0.1s linear;
+	transition: background-position 0.1s linear;
+}
+.btn:focus {
+	outline:0;
+}
+.btn.active, .btn:active {
+	background-image: none;
+	-webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+	background-color: #e6e6e6;
+	background-color: #d9d9d9 \9;
+	outline: 0;
+}
+.btn.disabled, .btn[disabled] {
+	cursor: default;
+	background-image: none;
+	background-color: #e6e6e6;
+	opacity: 0.65;
+	filter: alpha(opacity=65);
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+.btn-large {
+	padding: 9px 14px;
+	font-size: 15px;
+	line-height: normal;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.btn-large [class^="icon-"] {
+	margin-top: 1px;
+}
+.btn-small {
+	padding: 5px 9px;
+	font-size: 11px;
+	line-height: 16px;
+}
+.btn-small [class^="icon-"] {
+	margin-top: -1px;
+}
+.btn-mini {
+	padding: 2px 6px;
+	font-size: 11px;
+	line-height: 14px;
+}
+.btn-primary, .btn-primary:hover, .btn-warning, .btn-warning:hover, .btn-danger, .btn-danger:hover, .btn-success, .btn-success:hover, .fullans .btn, .fullans .btn:hover, .btn-info, .btn-info:hover, .btn-inverse, .btn-inverse:hover {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	color: #ffffff;
+}
+/* table-zebra*/
+#zebra {
+	font-family: Arial;
+	width:100%;
+	border-collapse:collapse;
+}
+#zebra td, #zebra th {
+	font-size:1em;
+	border:1px solid #9E9E9E;
+	padding:3px 7px 2px 7px;
+	vertical-align: top;
+}
+#zebra th {
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#5E5D5A;
+	color:#ffffff;
+}
+#zebra tr.row td {
+	color:#000000;
+	background-color:#bebebe;
+}
+/* table-zebra-no border*/
+#zebra-nborder {
+	font-family: Arial;
+	width:100%;
+	border-collapse:collapse;
+}
+#zebra-nborder td, #zebra-nborder th {
+	font-size:1em;
+	border: none;
+	padding:3px 7px 2px 7px;
+	vertical-align: middle;
+}
+#zebra-nborder th {
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#5E5D5A;
+	color:#ffffff;
+}
+#zebra-nborder tr.row td {
+	color:#000000;
+	background-color:#bebebe;
+}
+.short-edit-icon {
+	position: absolute;
+	right: 10px;
+}
+.full-edit-icon {
+	position: absolute;
+	top: 15px;
+	right: 0px;
+}
+.full-fav-icon {
+	position: absolute;
+	right: 0px;
+}
+.xfields textarea {
+	width:100%;
+	height:150px;
+	border: #9E9E9E 1px solid;
+	color: #000000;
+	font-family: Verdana;
+	word-spacing: 0.1em;
+	letter-spacing: 0;
+	line-height: 1.5em;
+	font-size: 11px;
+	margin-top: 0px;
+	margin-bottom: 2px;
+	margin-right: 0px;
+	padding: 0px;
+	resize: vertical;
+	background:#fff url(images/shadow.png) repeat-x;
+}
+/*Comments*/
+.comm_btn_style {
+	height: 20px;
+	padding: 1px 5px 0px 3px;
+}
+.comm_btn_style a {
+	color: #000;
+}
+
+
+.fn-lenta {
+	background: url(http://data2.rumedia.ws/templates/rum/movies_full/1lenta.jpg) repeat-x;
+	height: 31px;
+	width: 653px;
+	margin-left: -17px;
+	padding: 0px 0px 0px 10px;
+}
+.fn-about {
+	background: url(http://data2.rumedia.ws/templates/rum/movies_full/2about.jpg) repeat-x;
+	height: 74px;
+	width: 653px;
+	margin-left: -17px;
+	padding: 10px 0px 0px 10px;
+}
+.fn-poster {
+	overflow:hidden;
+	max-width: 653px;
+	margin-left: -17px;
+	padding: 10px 0px 0px 10px;
+}

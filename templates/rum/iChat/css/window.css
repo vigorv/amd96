@@ -1,0 +1,67 @@
+h1, h2, h3, h4, h5 { line-height: normal; }
+h1 { font-size: 1.25em; } h2 { font-size: 1.2em; } h3 { font-size: 1.15em; } h4 { font-size: 1.1em; } h5 { font-size: 1em; }
+
+a { color: #398dd8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+a img  { border: 0 none; }
+
+input, textarea, select, button, body { font: 12px/16px Arial, Helvetica, sans-serif; }
+input, textarea, select, button, a { outline: none; }
+
+p { margin-bottom: 0.4em; }
+hr { border: 0 none; border-top: 1px solid #dbe8ed; height: 1px; }
+ul { margin: 0 0 18px 2em; list-style: disc outside; }
+ol { margin: 0 0 18px 2.1em; list-style: decimal; }
+
+.reset, .reset li { list-style: none; padding: 0; margin: 0; }
+
+.clr { clear: both; }
+.thide, .htmenu span { overflow: hidden; display: block; height: 0; line-height: normal; }
+table.userstop, table.pm, table.tableform, table.calendar { border-collapse: collapse; border-spacing: 0; }
+.lcol, .rcol, form { display: inline; }
+.lcol { float: left; } .rcol { float: right; }
+.small { font-size: 0.9em; }
+
+.headlinks ul li a, .menubar ul a, .lmenu li a, #topmenu a, #popular ul li a, .navigation a, .argmore a, .addcombtn, .reply a { text-decoration: none !important; }
+.btn_reglog, .radial, .fbutton, .headlinks ul a, #loading-layer, .navigation a, #dropmenudiv { -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }
+
+.wrapper { max-width: 1120px; width: 92%; text-align: left; margin: 0 auto; }
+.wwide { width: 100%; }
+.wrapper, .wwide { min-width: 978px; }
+
+/*---forms---*/
+.baseform { background: #f5f6f7; }
+.tableform { width: 100%; }
+	.tableform td { }
+	.tableform td.label { width: 20%; vertical-align: top; padding-right: 0; font-weight: bold; }
+	.fieldsubmit, .tableform td { padding: 10px 15px; border-top: 1px solid #fff; }
+	.addnews { font-weight: bold; }
+	.impot { color: #96c; font-weight: normal; }
+	.checkbox { padding: 4px 0; line-height: 1em; }
+		.checkbox input { margin-top: -2px; vertical-align: middle; }
+
+.f_input { width: 300px; padding: 1px; }
+.f_textarea { width: 458px; }
+.fieldtr select, .textin, .f_textarea, .f_input, .xfields textarea, .xprofile textarea,
+.xfields input, .xprofile input, .xfields select, .xprofile select, .mass_comments_action select { padding: 2px; background: #fff url("../images/fields.png") repeat-x; border: 1px solid #bcc0c2; }
+.f_textarea, .editor_button select { padding: 0; }
+.textin { padding: 2px; }
+
+/*---Userinfo---*/
+.userinfo { padding-left: 125px; }
+.ui-dialog-content .userinfo { padding: 10px 0 10px 125px; }
+	.userinfo .lcol { margin-left: -125px; width: 110px; padding-right: 15px; }
+		.userinfo .lcol .avatar { margin-bottom: 10px; padding: 4px; background-color: #fff; border: 1px solid #c0d4de; }
+			.userinfo .lcol .avatar img { width: 100px; }
+		.userinfo .lcol ul { font-size: 0.9em; }
+
+	.userinfo .rcol { width: 100%; }
+		.userinfo .rcol ul { list-style: none; margin-left: 0; }
+		.userinfo .rcol ul li { margin-bottom: 0.2em; } 
+
+		.ussep { padding-top: 12px; background: url("../images/ussep.png") no-repeat; }
+.grey { color: #6c838e; }
+.blue { color: #388bd4; }
+
+/*---Информационное оконо загрузки AJAX---*/
+#loading-layer { display: none; font-size: 11px; background: #000; padding: 10px; text-align: center; color: #fff; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; }

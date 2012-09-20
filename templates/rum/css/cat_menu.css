@@ -1,0 +1,198 @@
+/* Menu CSS Document */
+
+/* Версия для мобильных устройств (развернутый список) */
+.cat_menu_mob, .cat_menu_mob ul {list-style:none; margin:0; padding:0 0 0 10px;}
+.cat_menu_mob a {color:#000; text-decoration:none;}
+.cat_menu_mob a:hover {color:#F00;}
+.cat_menu_mob img {display:none;}
+
+/* Обычное (раскладывающиеся) меню - НЕ МЕНЯТЬ! */
+.cat_menu, .cat_menu ul {list-style:none; margin:0; padding:0; width:auto;}
+
+/* в параметре "width" задайте ширину пунктов меню */
+/*.cat_menu li {display:inline; width:auto; padding:0; margin:0; float:left; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:14px; text-align:left; background:#4B74D4 url(/templates/rum/images/dlet_hder18.gif) right bottom repeat;}
+*/	
+
+/* Стиль для первого уровня меню */
+.cat_menu_li {
+	display: block;
+	float: left;
+	margin: 9px 9px 0 0;
+	background: url(../images/link-orange.png) 0 0 repeat-x;
+	height: 28px;
+	padding: 0 12px 0 14px;
+	border-radius: 2px;
+	/*
+	web-kit-border-radius: 2px;
+	moz-border-radius: 2px;
+	*/
+	font: bold 12px Arial;
+	color: #fff;
+	line-height: 28px;
+	text-transform: uppercase;
+}
+	.cat_menu_li:hover{
+		background: url(../images/link-orange.png) 0 bottom repeat-x;
+	}
+	
+	.green.cat_menu_li {
+		background: url(../images/link-green.png) 0 0 repeat-x;
+	}
+		.green.cat_menu_li:hover {
+			background: url(../images/link-green.png) 0 bottom repeat-x;
+		}
+	.akva.cat_menu_li {
+		background: url(../images/link-akva.png) 0 0 repeat-x;
+	}
+		.akva.cat_menu_li:hover {
+			background: url(../images/link-akva.png) 0 bottom repeat-x;
+		}
+	.fiolet.cat_menu_li {
+		background: url(../images/link-fiolet.png) 0 0 repeat-x;
+	}
+		.fiolet.cat_menu_li:hover {
+			background: url(../images/link-fiolet.png) 0 bottom repeat-x;
+		}
+	.oran.cat_menu_li {
+		background: url(../images/link-oran.png) 0 0 repeat-x;
+	}
+		.oran.cat_menu_li:hover {
+			background: url(../images/link-oran.png) 0 bottom repeat-x;
+		}
+	.blue.cat_menu_li {
+		background: url(../images/link-blue.png) 0 0 repeat-x;
+	}
+		.blue.cat_menu_li:hover {
+			background: url(../images/link-blue.png) 0 bottom repeat-x;
+		}
+	.pink.cat_menu_li {
+		background: url(../images/link-pink.png) 0 0 repeat-x;
+	}
+		.pink.cat_menu_li:hover {
+			background: url(../images/link-pink.png) 0 bottom repeat-x;
+		}
+	.salat.cat_menu_li {
+		background: url(../images/link-salat.png) 0 0 repeat-x;
+	}
+		.salat.cat_menu_li:hover {
+			background: url(../images/link-salat.png) 0 bottom repeat-x;
+		}
+	.ser.cat_menu_li {
+		background: url(../images/link-ser.png) 0 0 repeat-x;
+	}
+		.ser.cat_menu_li:hover {
+			background: url(../images/link-ser.png) 0 bottom repeat-x;
+		}
+		
+.cat_menu_li a {display:block; width:auto; margin:0; border:#87A2E2 0px solid; text-decoration:none; overflow:hidden; color:#FFF;}
+.cat_menu_li a:hover {color:#FFF;}
+/* //Стиль для первого уровня меню */
+
+/* в параметре "width" задайте ширину пунктов меню */
+.cat_menu_li_li {display:block; width:170px; padding:5px; margin:0; float:none; font-family:Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; line-height:normal; background:url(../images/link-orange.png) 0 0 repeat-x;}
+	
+	.cat_menu_li_li:hover{
+		background: url(../images/link-orange.png) 0 bottom repeat-x;
+	}
+	
+	.green.cat_menu_li_li {
+		background: url(../images/link-green.png) 0 0 repeat-x;
+	}
+		.green.cat_menu_li_li:hover {
+			background: url(../images/link-green.png) 0 bottom repeat-x;
+		}
+	.akva.cat_menu_li_li {
+		background: url(../images/link-akva.png) 0 0 repeat-x;
+	}
+		.akva.cat_menu_li_li:hover {
+			background: url(../images/link-akva.png) 0 bottom repeat-x;
+		}
+	.fiolet.cat_menu_li_li {
+		background: url(../images/link-fiolet.png) 0 0 repeat-x;
+	}
+		.fiolet.cat_menu_li_li:hover {
+			background: url(../images/link-fiolet.png) 0 bottom repeat-x;
+		}
+	.oran.cat_menu_li_li {
+		background: url(../images/link-oran.png) 0 0 repeat-x;
+	}
+		.oran.cat_menu_li_li:hover {
+			background: url(../images/link-oran.png) 0 bottom repeat-x;
+		}
+	.blue.cat_menu_li_li {
+		background: url(../images/link-blue.png) 0 0 repeat-x;
+	}
+		.blue.cat_menu_li_li:hover {
+			background: url(../images/link-blue.png) 0 bottom repeat-x;
+		}
+	.pink.cat_menu_li_li {
+		background: url(../images/link-pink.png) 0 0 repeat-x;
+	}
+		.pink.cat_menu_li_li:hover {
+			background: url(../images/link-pink.png) 0 bottom repeat-x;
+		}
+	.salat.cat_menu_li_li {
+		background: url(../images/link-salat.png) 0 0 repeat-x;
+	}
+		.salat.cat_menu_li_li:hover {
+			background: url(../images/link-salat.png) 0 bottom repeat-x;
+		}
+							.salat.cat_menu_li_li li{
+								display:block; 
+								width:170px; 
+								padding:5px; 
+								margin:0; 
+								float:none; 
+								font-family:Arial, Helvetica, sans-serif; 
+								font-size:12px; 
+								font-weight:normal; 
+								line-height:normal;
+								background: url(../images/link-salat.png) 0 0 repeat-x;
+							}
+								.salat.cat_menu_li_li li:hover {
+									background: url(../images/link-salat.png) 0 bottom repeat-x;
+								}
+	.ser.cat_menu_li_li {
+		background: url(../images/link-ser.png) 0 0 repeat-x;
+	}
+		.ser.cat_menu_li_li:hover {
+			background: url(../images/link-ser.png) 0 bottom repeat-x;
+		}
+
+
+/* Позиция и размеры иконки
+.cat_menu li img {margin:0 2px 1px 0; width:auto; height:16px; float:left;} */
+
+/* оснвоной вид пункта меню настраивается здесь: 
+.cat_menu li a {display:block; width:auto; padding:2px 20px 4px 10px; margin:0; border:#87A2E2 0px solid; text-decoration:none; overflow:hidden; color:#FFF;}
+.cat_menu li a:hover {color:#FC0;}
+*/
+/* отметка о наличии подкатегорий: */
+.cat_menu_li a.subcat {padding:0px 20px 0px 0px; background:transparent url(/templates/rum/images/cat_menu_s2.gif) right no-repeat;}
+.cat_menu_li li a.subcat {background:transparent url(/templates/rum/images/cat_menu_s1.gif) right no-repeat;}
+
+/* позиционирование блока с информацией о комментах и новостях: */
+.cat_menu li .post_info {display:block; float:right; font-size:10px; padding:0 0 2px 7px; color:#DEF;}
+.cat_menu li li .post_info {font-size:9px;}
+
+/* окраска при новых новостях: */
+.cat_menu .new, .cat_menu_stats .new {color:#FF0 !important;}
+
+/* окраска при новых комментариях: */
+.cat_menu .newc, .cat_menu_stats .newс {color:#6F6 !important;}
+
+/* Выпадение первого уровня меню строго вниз */
+.cat_menu_li:hover ul {display:block; margin:0; padding:5px 0 0 0; left:auto; top:auto; text-transform: none;}
+
+/* поддерживаемые уровни вложенности меню - добавьте еще, если не хватит!: */
+.cat_menu li:hover ul ul, 
+.cat_menu li:hover ul ul ul,
+.cat_menu li:hover ul ul ul ul, 
+.cat_menu li:hover ul ul ul ul ul {left:-9999em}
+.cat_menu li li:hover ul, 
+.cat_menu li li li:hover ul,
+.cat_menu li li li li:hover ul,
+.cat_menu li li li li li:hover ul{display:block; margin:-23px 0 0 170px; padding:0; left:auto; top:auto;}
+
+/* НЕ МЕНЯТЬ! - на них и работает выпадение меню: */
+.cat_menu li ul {position:absolute; z-index:789; display:none; left:-9999em;}

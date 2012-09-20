@@ -1,0 +1,145 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Центр управления
+RewriteRule ^control_center/index.php(.*)$ control_center/index.php$1 [L]
+RewriteRule ^control_center/(.*)$ control_center/index.php$1 [L]
+
+# Форум
+RewriteRule ^cat-([^/]*)(/?)+$ index.php?do=board&op=forum&name=$1 [L]
+RewriteRule ^cat-([^/]*)/page-([0-9]+)(/?)+$ index.php?do=board&op=forum&name=$1&page=$2 [L]
+
+# Форум со скрытыми темами
+RewriteRule ^cat-([^/]*)/hiden_t(/?)+$ index.php?do=board&op=forum&name=$1&hide=topics [L]
+RewriteRule ^cat-([^/]*)/hiden_t/page-([0-9]+)(/?)+$ index.php?do=board&op=forum&name=$1&page=$2&hide=topics [L]
+
+# Форум с темами, в которых скрыты сообщения
+RewriteRule ^cat-([^/]*)/hiden_p(/?)+$ index.php?do=board&op=forum&name=$1&hide=posts [L]
+RewriteRule ^cat-([^/]*)/hiden_p/page-([0-9]+)(/?)+$ index.php?do=board&op=forum&name=$1&page=$2&hide=posts [L]
+
+# Создание новой темы в форуме
+RewriteRule ^cat-([^/]*)/newtopic(/?)+$ index.php?do=board&op=newtopic&name=$1 [L]
+
+# Переход к последнему ответу в теме
+RewriteRule ^cat-([^/]*)/last/topic-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&go=last&name=$1 [L]
+RewriteRule ^cat-([^/]*)/last/topic-([0-9]+)-page-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&page=$3&go=last&name=$1 [L]
+
+# Тема с выводом полезных сообщений
+RewriteRule ^cat-([^/]*)/utility/topic-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&utility=1&name=$1 [L]
+RewriteRule ^cat-([^/]*)/utility/topic-([0-9]+)-page-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&page=$3&utility=1&name=$1 [L]
+
+# Вывод всех скрытых сообщений в теме
+RewriteRule ^cat-([^/]*)/hiden/topic-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&go=hide&name=$1 [L]
+RewriteRule ^cat-([^/]*)/hiden/topic-([0-9]+)-page-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&page=$3&go=hide&name=$1 [L]
+
+# Вывод отдельной темы
+RewriteRule ^cat-([^/]*)/topic-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&name=$1 [L]
+RewriteRule ^cat-([^/]*)/topic-([0-9]+)-page-([0-9]+)\.html$ index.php?do=board&op=topic&id=$2&page=$3&name=$1 [L]
+
+# Расширенный ответ в теме
+RewriteRule ^cat-([^/]*)/reply([0-9]+)?/topic-([0-9]+)\.html$ index.php?do=board&op=reply&id=$3&pid=$2&name=$1 [L]
+
+# Избранные темы
+RewriteRule ^favorite(/?)+$ index.php?do=users&op=favorite [L]
+RewriteRule ^favorite/page-([0-9]+)(/?)+$ index.php?do=users&op=favorite&page=$1 [L]
+
+# Темы, на которые подписан пользователь
+RewriteRule ^subscribe(/?)+$ index.php?do=users&op=subscribe [L]
+RewriteRule ^subscribe/page-([0-9]+)(/?)+$ index.php?do=users&op=subscribe&page=$1 [L]
+
+# Настройки форума
+RewriteRule ^options/([^/]*)(/?)+$ index.php?do=users&op=options&member_name=$1 [L]
+
+# Список всех пользователей форума
+RewriteRule ^users(/?)+$ index.php?do=users [L]
+RewriteRule ^users/page-([0-9]+)(/?)+$ index.php?do=users&page=$1 [L]
+
+# Все статусы пользователей
+RewriteRule ^all_status(/?)+$ index.php?do=users&op=all_status [L]
+RewriteRule ^all_status/page-([0-9]+)(/?)+$ index.php?do=users&op=all_status&page=$1 [L]
+
+# Список онлайн пользователей
+RewriteRule ^online(/?)+$ index.php?do=users&op=online [L]
+RewriteRule ^online/page-([0-9]+)(/?)+$ index.php?do=users&op=online&page=$1 [L]
+
+# Список онлайн пользователей рассортированных по именю или действию
+RewriteRule ^online/([name|action])+(/?)+$ index.php?do=users&op=online&order=$1 [L]
+RewriteRule ^online/([name|action])+/page-([0-9]+)(/?)+$ index.php?do=users&op=online&order=$1&page=$2 [L]
+
+# Список модераторов/администраторов форума
+RewriteRule ^moderators(/?)+$ index.php?do=users&op=moderators [L]
+
+# Страница поиска
+RewriteRule ^search(/?)+$ index.php?do=search [L]
+
+# Список последних тем
+RewriteRule ^last_topics(/?)+$ index.php?do=board&op=last_topics [L]
+RewriteRule ^last_topics/page-([0-9]+)(/?)+$ index.php?do=board&op=last_topics&page=$1 [L]
+
+# Список последних скрытых тем
+RewriteRule ^last_topics/hiden_t(/?)+$ index.php?do=board&op=last_topics&hide=topics [L]
+RewriteRule ^last_topics/hiden_t/page-([0-9]+)(/?)+$ index.php?do=board&op=last_topics&hide=topics&page=$1 [L]
+
+# Список последних тем со скрытыми сообщениями
+RewriteRule ^last_topics/hiden_p(/?)+$ index.php?do=board&op=last_topics&hide=posts [L]
+RewriteRule ^last_topics/hiden_p/page-([0-9]+)(/?)+$ index.php?do=board&op=last_topics&hide=posts&page=$1 [L]
+
+# Список активных тем
+RewriteRule ^topic_active(/?)+$ index.php?do=board&op=topic_active [L]
+RewriteRule ^topic_active/page-([0-9]+)(/?)+$ index.php?do=board&op=topic_active&page=$1 [L]
+
+# Список скрытых активных тем
+RewriteRule ^topic_active/hiden_t(/?)+$ index.php?do=board&op=topic_active&hide=topics [L]
+RewriteRule ^topic_active/hiden_t/page-([0-9]+)(/?)+$ index.php?do=board&op=topic_active&hide=topics&page=$1 [L]
+
+# Список активных тем со скрытыми сообщениями
+RewriteRule ^topic_active/hiden_p(/?)+$ index.php?do=board&op=topic_active&hide=posts [L]
+RewriteRule ^topic_active/hiden_p/page-([0-9]+)(/?)+$ index.php?do=board&op=topic_active&hide=posts&page=$1 [L]
+
+# Список последних ответов
+RewriteRule ^last_posts(/?)+$ index.php?do=board&op=last_posts [L]
+RewriteRule ^last_posts/page-([0-9]+)(/?)+$ index.php?do=board&op=last_posts&page=$1 [L]
+
+# Редактирование личного статуса
+RewriteRule ^edit_status/([^/]*)(/?)+$ index.php?do=users&op=edit_status&member_name=$1 [L]
+
+# Список всех ответов определённого пользователя
+RewriteRule ^all_posts/([^/]*)(/?)+$ index.php?do=users&op=posts&member_name=$1 [L]
+RewriteRule ^all_posts/([^/]*)/page-([0-9]+)(/?)+$ index.php?do=users&op=posts&member_name=$1&page=$2 [L]
+
+# Список всех тем определённого пользователя
+RewriteRule ^all_topics/([^/]*)(/?)+$ index.php?do=users&op=topics&member_name=$1 [L]
+RewriteRule ^all_topics/([^/]*)/page-([0-9]+)(/?)+$ index.php?do=users&op=topics&member_name=$1&page=$2 [L]
+
+# Список всех скрытых тем определённого пользователя
+RewriteRule ^all_topics/hiden_t/([^/]*)(/?)+$ index.php?do=users&op=topics&member_name=$1&hide=topics [L]
+RewriteRule ^all_topics/hiden_t/([^/]*)/page-([0-9]+)(/?)+$ index.php?do=users&op=topics&member_name=$1&hide=topics&page=$2 [L]
+
+# Список всех тем со скрытыми сообщениями определённого пользователя
+RewriteRule ^all_topics/hiden_p/([^/]*)(/?)+$ index.php?do=users&op=topics&member_name=$1&hide=posts [L]
+RewriteRule ^all_topics/hiden_p/([^/]*)/page-([0-9]+)(/?)+$ index.php?do=users&op=topics&member_name=$1&hide=posts&page=$2 [L]
+
+# Предупреждения пользователя
+RewriteRule ^warning/([^/]*)(/?)+$ index.php?do=users&op=warning&member_name=$1 [L]
+RewriteRule ^warning_add/([^/]*)(/?)+$ index.php?do=users&op=warning_add&member_name=$1 [L]
+
+# Ссылки на RSS
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^cat([0-9]+)/rss.xml$ components/modules/rss.php?forumid=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^topic([0-9]+)/rss.xml$ components/modules/rss.php?topicid=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^rss.xml$ components/modules/rss.php [L]
+
+# Объявления в форумах
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^notice/([0-9]+)\.html$ index.php?do=board&op=notice&id=$1 [L]
+
+# Статические страницы
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)\.html$ index.php?do=staticpage&name=$1 [L]
+
+# Обработка ошибок ЧПУ, если выше указанные правила не сработали - появится соответствующая ошибка и откроется главная страница форума
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^.]+)/?$ index.php?chpu_message=1 [L]

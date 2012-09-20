@@ -1,0 +1,15 @@
+backup
+uploads
+engine/cache
+engine/cache2
+forum/cache
+forum/logs
+forum/templates/Standart
+forum/uploads
+templates/Default
+templates/Gemini
+templates/Pisces
+templates/rumedia
+hawk
+*.tmp
+*.TMP
