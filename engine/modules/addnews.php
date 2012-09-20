@@ -365,7 +365,7 @@ if( ! $allow_addnews ) {
 				$added_time = time() + ($config['date_adjust'] * 60);
 				$thistime = date( "Y-m-d H:i:s", $added_time );
 				
-				$db->query( "INSERT INTO " . PREFIX . "_post (date, autor, short_story, full_story, xfields, title, title2, src_link, src_links, keywords, category, alt_name, allow_comm, approve, allow_main, fixed, allow_br, symbol, tags) values ('$thistime', '{$member_id['name']}', '$short_story', '$full_story', '$filecontents', '$title', '$title2', '', '$category_list', '$alt_name', '$allow_comm', '$approve', '$allow_main', '$news_fixed', '$allow_br', '$catalog_url', '" . $_POST['tags'] . "')" );
+				$db->query( "INSERT INTO " . PREFIX . "_post (date, autor, short_story, full_story, xfields, title, title2, src_link, src_links, keywords, category, alt_name, allow_comm, approve, allow_main, fixed, allow_br, symbol, tags) values ('$thistime', '{$member_id['name']}', '$short_story', '$full_story', '$filecontents', '$title', '$title2', '$src_link','$src_links', '', '$category_list', '$alt_name', '$allow_comm', '$approve', '$allow_main', '$news_fixed', '$allow_br', '$catalog_url', '" . $_POST['tags'] . "')" );
 				
 				$row['id'] = $db->insert_id();
 
@@ -434,7 +434,7 @@ if( ! $allow_addnews ) {
 					$row['template'] = str_replace( "{%username%}", $member_id['name'], $row['template'] );
 					$row['template'] = str_replace( "{%date%}", langdate( "j F Y H:i", $added_time ), $row['template'] );
 					$row['template'] = str_replace( "{%title%}", stripslashes( stripslashes( $title ) ), $row['template'] );
-					#$row['template'] = str_replace( "{%title2%}", stripslashes( stripslashes( $title2 ) ), $row['template'] );
+					$row['template'] = str_replace( "{%title2%}", stripslashes( stripslashes( $title2 ) ), $row['template'] );
 					
 					$category_list = explode( ",", $category_list );
 					$my_cat = array ();
@@ -549,7 +549,6 @@ if( ! $allow_addnews ) {
 			$tpl->set( '{short-story}', '' );
 			$tpl->set( '{full-story}', '' );
 			$tpl->set( '{tags}', '' );
-            $tpl->set('{title2}','' );
             $tpl->set('{src_link}','');
             $tpl->set('{src_links}','');
 		
