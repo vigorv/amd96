@@ -37,7 +37,7 @@ $(document).ready(function() {
 	// Построение списка закладок
 	for (i=0; i<LinksItem.length; i++)
 	{
-		var getLinks = $('<a href="'+LinksItem[i]+' style="background: url(http://flux.anka.ws/templates/rum/images/tt-fav.png) -'+sdvig+'px top  no-repeat;" target="_blank"></a>');
+		var getLinks = $('<a href="'+LinksItem[i]+' style="background: url(http://rumedia.ws/templates/rum/images/tt-fav.png) -'+sdvig+'px top  no-repeat;" target="_blank"></a>');
 		getLinks.appendTo("#tt_social");
 		var sdvig = sdvig + 26;
 		var sdvig2 = sdvig2 + 25;
