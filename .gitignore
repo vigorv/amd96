@@ -2,7 +2,8 @@ backup
 uploads
 engine/cache
 engine/cache2
-engine/data
+engine/data/config.php
+engine/data/dbconfig.php
 forum/cache
 forum/logs
 forum/templates/Standart

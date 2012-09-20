@@ -1,7 +1,7 @@
 <?PHP
 /*
 =====================================================
- DataLife Engine - by SoftNews Media Group 
+ DataLife Engine - by SoftNews Media Group
 -----------------------------------------------------
  http://dlekey.cn/
 -----------------------------------------------------
@@ -32,85 +32,85 @@ include_once ENGINE_DIR . '/classes/parse.class.php';
 $parse = new ParseFilter( Array (), Array (), 1, 1 );
 
 if( $action == "list" ) {
-	
+
 	$_SESSION['admin_referrer'] = $_SERVER['REQUEST_URI'];
 	$js_array[] = "engine/skins/calendar.js";
 
 	echoheader( "editnews", $lang['edit_head'] );
-	
+
 	$search_field = $db->safesql( trim( htmlspecialchars( stripslashes( urldecode( $_REQUEST['search_field'] ) ), ENT_QUOTES ) ) );
 	$search_author = $db->safesql( trim( htmlspecialchars( stripslashes( urldecode( $_REQUEST['search_author'] ) ), ENT_QUOTES ) ) );
 	$fromnewsdate = $db->safesql( trim( htmlspecialchars( stripslashes( $_REQUEST['fromnewsdate'] ), ENT_QUOTES ) ) );
 	$tonewsdate = $db->safesql( trim( htmlspecialchars( stripslashes( $_REQUEST['tonewsdate'] ), ENT_QUOTES ) ) );
-	
+
 	$start_from = intval( $_REQUEST['start_from'] );
 	$news_per_page = intval( $_REQUEST['news_per_page'] );
 	$gopage = intval( $_REQUEST['gopage'] );
-	
+
 	$_REQUEST['news_status'] = intval( $_REQUEST['news_status'] );
 	$news_status_sel = array ('0' => '', '1' => '', '2' => '' );
 	$news_status_sel[$_REQUEST['news_status']] = 'selected="selected"';
-	
+
 	if( ! $news_per_page or $news_per_page < 1 ) {
 		$news_per_page = 50;
 	}
 	if( $gopage ) $start_from = ($gopage - 1) * $news_per_page;
-	
+
 	if( $start_from < 0 ) $start_from = 0;
-	
+
 	$where = array ();
-	
+
 	if( ! $user_group[$member_id['user_group']]['allow_all_edit'] and $member_id['user_group'] != 1 ) {
-		
+
 		$where[] = "autor = '{$member_id['name']}'";
-	
+
 	}
-	
+
 	if( $search_field != "" ) {
-		
+
 		$where[] = "(short_story like '%$search_field%' OR title like '%$search_field%' OR full_story like '%$search_field%' OR xfields like '%$search_field%')";
-	
+
 	}
-	
+
 	if( $search_author != "" ) {
-		
+
 		$where[] = "autor like '$search_author%'";
-	
+
 	}
-	
+
 	if( $search_cat != "" ) {
-		
+
 		if ($search_cat == -1) $where[] = "category = '' OR category = '0'";
 		else $where[] = "category regexp '[[:<:]]($search_cat)[[:>:]]'";
-	
+
 	}
-	
+
 	if( $fromnewsdate != "" ) {
-		
+
 		$where[] = "date >= '$fromnewsdate'";
-	
+
 	}
-	
+
 	if( $tonewsdate != "" ) {
-		
+
 		$where[] = "date <= '$tonewsdate'";
-	
+
 	}
-	
+
 	if( $_REQUEST['news_status'] == 1 ) $where[] = "approve = '1'";
 	elseif( $_REQUEST['news_status'] == 2 ) $where[] = "approve = '0'";
-	
+
 	if( count( $where ) ) {
-		
+
 		$where = implode( " AND ", $where );
 		$where = " WHERE " . $where;
-	
+
 	} else {
 		$where = "";
 	}
-	
+
 	$order_by = array ();
-	
+
 	if( $_REQUEST['search_order_f'] == "asc" or $_REQUEST['search_order_f'] == "desc" ) $search_order_f = $_REQUEST['search_order_f'];
 	else $search_order_f = "";
 	if( $_REQUEST['search_order_m'] == "asc" or $_REQUEST['search_order_m'] == "desc" ) $search_order_m = $_REQUEST['search_order_m'];
@@ -119,7 +119,7 @@ if( $action == "list" ) {
 	else $search_order_d = "";
 	if( $_REQUEST['search_order_t'] == "asc" or $_REQUEST['search_order_t'] == "desc" ) $search_order_t = $_REQUEST['search_order_t'];
 	else $search_order_t = "";
-	
+
 	if( ! empty( $search_order_f ) ) {
 		$order_by[] = "fixed $search_order_f";
 	}
@@ -132,10 +132,10 @@ if( $action == "list" ) {
 	if( ! empty( $search_order_t ) ) {
 		$order_by[] = "title $search_order_t";
 	}
-	
+
 	$order_by = implode( ", ", $order_by );
 	if( ! $order_by ) $order_by = "fixed desc, approve asc, date desc";
-	
+
 	$search_order_fixed = array ('----' => '', 'asc' => '', 'desc' => '' );
 	if( isset( $_REQUEST['search_order_f'] ) ) {
 		$search_order_fixed[$search_order_f] = 'selected';
@@ -160,9 +160,9 @@ if( $action == "list" ) {
 	} else {
 		$search_order_title['----'] = 'selected';
 	}
-	
+
 	$db->query( "SELECT p.id, p.date, p.title, p.category, p.autor, p.alt_name, p.comm_num, p.approve, p.fixed, e.news_read, e.votes FROM " . PREFIX . "_post p LEFT JOIN " . PREFIX . "_post_extras e ON (p.id=e.news_id) " . $where . " ORDER BY " . $order_by . " LIMIT $start_from,$news_per_page" );
-	
+
 	// Prelist Entries
 
 	if( $start_from == "0" ) {
@@ -170,90 +170,90 @@ if( $action == "list" ) {
 	}
 	$i = $start_from;
 	$entries_showed = 0;
-	
+
 	$entries = "";
-	
+
 	while ( $row = $db->get_array() ) {
-		
+
 		$i ++;
-		
+
 		$itemdate = date( "d.m.Y", strtotime( $row['date'] ) );
-		
+
 		if( dle_strlen( $row['title'], $config['charset'] ) > 65 ) $title = dle_substr( $row['title'], 0, 65, $config['charset'] ) . " ...";
 		else $title = $row['title'];
 		if( dle_strlen( $row['title2'], $config['charset'] ) > 65 ) $title = dle_substr( $row['title2'], 0, 65, $config['charset'] ) . " ...";
 		else $title2 = $row['title2'];
-		
+
 		$title = htmlspecialchars( stripslashes( $title ), ENT_QUOTES );
 		$title = str_replace("&amp;","&", $title );
-		
+
 		$title2 = htmlspecialchars( stripslashes( $title2 ), ENT_QUOTES );
 		$title2 = str_replace("&amp;","&", $title2 );
-		
+
 		$entries .= "<tr>
         <td class=\"list\" style=\"padding:4px;\">
         $itemdate - ";
-		
+
 		if( $row['fixed'] ) $entries .= "<font color=\"red\">$lang[edit_fix] </font> ";
 
 		if( $row['votes'] ) $entries .= "<img src=\"engine/skins/images/poll.gif\" style=\"vertical-align: middle;border: none;\" />&nbsp;&nbsp;";
 
 		if( $config['allow_alt_url'] == "yes" ) {
-			
+
 			if( $config['seo_type'] == 1 OR $config['seo_type'] == 2 ) {
-				
+
 				if( intval( $row['category'] ) and $config['seo_type'] == 2 ) {
-					
+
 					$full_link = $config['http_home_url'] . get_url( intval( $row['category'] ) ) . "/" . $row['id'] . "-" . $row['alt_name'] . ".html";
-				
+
 				} else {
-					
+
 					$full_link = $config['http_home_url'] . $row['id'] . "-" . $row['alt_name'] . ".html";
-				
+
 				}
-			
+
 			} else {
-				
+
 				$full_link = $config['http_home_url'] . date( 'Y/m/d/', strtotime( $row['date'] ) ) . $row['alt_name'] . ".html";
 			}
-		
+
 		} else {
-			
+
 			$full_link = $config['http_home_url'] . "index.php?newsid=" . $row['id'];
-		
+
 		}
-		
+
 		if( $row['comm_num'] > 0 ) {
-			
+
 			$comm_link = "<a class=\"list\" onClick=\"return dropdownmenu(this, event, MenuBuild('" . $row['id'] . "', '{$full_link}'), '150px')\"href=\"{$full_link}\" target=\"_blank\">{$row['comm_num']}</a>";
-		
+
 		} else {
 			$comm_link = $row['comm_num'];
 		}
-		
+
 		$entries .= "<a title='$lang[edit_act]' class=\"list\" href=\"$PHP_SELF?mod=editnews&action=editnews&id=$row[0]\">$title</a>
         <td align=center><a title=\"{$lang['comm_view']}\" class=\"list\" href=\"{$full_link}\" target=\"_blank\">{$row['news_read']}</a></td><td align=center>" . $comm_link;
-		
+
 		$entries .= "</td><td style=\"text-align: center\">";
-		
+
 		if( $row['approve'] ) $erlaub = "$lang[edit_yes]";
 		else $erlaub = "<font color=\"red\">$lang[edit_no]</font>";
 		$entries .= $erlaub;
-		
+
 		$entries .= "<td align=\"center\">";
-		
+
 		if( ! $row['category'] ) $my_cat = "---";
 		else {
-			
+
 			$my_cat = array ();
 			$cat_list = explode( ',', $row['category'] );
-			
+
 			foreach ( $cat_list as $element ) {
 				if( $element ) $my_cat[] = $cat[$element];
 			}
 			$my_cat = implode( ',<br />', $my_cat );
 		}
-		
+
 		$entries .= "$my_cat<td class=\"list\"><a class=list href=\"?mod=editusers&action=list&search=yes&search_name=" . $row['autor'] . "\">" . $row['autor'] . "</a>
 
                <td align=center><input name=\"selected_news[]\" value=\"{$row['id']}\" type='checkbox'>
@@ -262,22 +262,22 @@ if( $action == "list" ) {
 			<tr><td background=\"engine/skins/images/mline.gif\" height=1 colspan=7></td></tr>
             ";
 		$entries_showed ++;
-		
+
 		if( $i >= $news_per_page + $start_from ) {
 			break;
 		}
 	}
-	
+
 
 	// End prelisting
 	$result_count = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_post" . $where );
-	
+
 	$all_count_news = $result_count['count'];
-	
+
 	///////////////////////////////////////////
 	// Options Bar
 	$category_list = CategoryNewsSelection( $search_cat, 0, false );
-	
+
 	echo <<<HTML
 <!-- calendar stylesheet -->
 <link rel="stylesheet" type="text/css" media="all" href="engine/skins/calendar-blue.css" title="win2k-cold-1" />
@@ -331,7 +331,7 @@ if( $action == "list" ) {
       inputField     :    "fromnewsdate",     // id of the input field
       ifFormat       :    "%Y-%m-%d",      // format of the input field
       button         :    "f_trigger_dnews",  // trigger for the calendar (button ID)
-      align          :    "Br",           // alignment 
+      align          :    "Br",           // alignment
 		  timeFormat     :    "24",
 		  showsTime      :    false,
       singleClick    :    true
@@ -343,7 +343,7 @@ if( $action == "list" ) {
       inputField     :    "tonewsdate",     // id of the input field
       ifFormat       :    "%Y-%m-%d",      // format of the input field
       button         :    "f_trigger_tnews",  // trigger for the calendar (button ID)
-      align          :    "Br",           // alignment 
+      align          :    "Br",           // alignment
 		  timeFormat     :    "24",
 		  showsTime      :    false,
       singleClick    :    true
@@ -424,7 +424,7 @@ if( $action == "list" ) {
 </form>
 HTML;
 	// End Options Bar
-	
+
 
 	echo <<<JSCRIPT
 <script language='JavaScript' type="text/javascript">
@@ -444,9 +444,9 @@ function ckeck_uncheck_all() {
 -->
 </script>
 JSCRIPT;
-	
+
 	if( $entries_showed == 0 ) {
-		
+
 		echo <<<HTML
 <div style="padding-top:5px;padding-bottom:2px;">
 <table width="100%">
@@ -481,9 +481,9 @@ JSCRIPT;
 </table>
 </div>
 HTML;
-	
+
 	} else {
-		
+
 		echo <<<HTML
 <script language="javascript" type="text/javascript">
 <!--
@@ -540,92 +540,92 @@ return menu;
 	{$entries}
 	<tr class="tfoot"><th colspan="7"><div class="hr_line"></div></td></th>
 HTML;
-		
+
 		// pagination
 
 		$npp_nav = "<div class=\"news_navigation\" style=\"margin-bottom:5px; margin-top:5px;\">";
-		
+
 		if( $start_from > 0 ) {
 			$previous = $start_from - $news_per_page;
 			$npp_nav .= "<a onClick=\"javascript:search_submit($previous); return(false);\" href=\"#\" title=\"{$lang['edit_prev']}\">&lt;&lt;</a> ";
 		}
-		
+
 		if( $all_count_news > $news_per_page ) {
-			
+
 			$enpages_count = @ceil( $all_count_news / $news_per_page );
 			$enpages_start_from = 0;
 			$enpages = "";
-			
+
 			if( $enpages_count <= 10 ) {
-				
+
 				for($j = 1; $j <= $enpages_count; $j ++) {
-					
+
 					if( $enpages_start_from != $start_from ) {
-						
+
 						$enpages .= "<a onClick=\"javascript:search_submit($enpages_start_from); return(false);\" href=\"#\">$j</a> ";
-					
+
 					} else {
-						
+
 						$enpages .= "<span>$j</span> ";
 					}
-					
+
 					$enpages_start_from += $news_per_page;
 				}
-				
+
 				$npp_nav .= $enpages;
-			
+
 			} else {
-				
+
 				$start = 1;
 				$end = 10;
-				
+
 				if( $start_from > 0 ) {
-					
+
 					if( ($start_from / $news_per_page) > 4 ) {
-						
+
 						$start = @ceil( $start_from / $news_per_page ) - 3;
 						$end = $start + 9;
-						
+
 						if( $end > $enpages_count ) {
 							$start = $enpages_count - 10;
 							$end = $enpages_count - 1;
 						}
-						
+
 						$enpages_start_from = ($start - 1) * $news_per_page;
-					
+
 					}
-				
+
 				}
-				
+
 				if( $start > 2 ) {
-					
+
 					$enpages .= "<a onClick=\"javascript:search_submit(0); return(false);\" href=\"#\">1</a> ... ";
-				
+
 				}
-				
+
 				for($j = $start; $j <= $end; $j ++) {
-					
+
 					if( $enpages_start_from != $start_from ) {
-						
+
 						$enpages .= "<a onClick=\"javascript:search_submit($enpages_start_from); return(false);\" href=\"#\">$j</a> ";
-					
+
 					} else {
-						
+
 						$enpages .= "<span>$j</span> ";
 					}
-					
+
 					$enpages_start_from += $news_per_page;
 				}
-				
+
 				$enpages_start_from = ($enpages_count - 1) * $news_per_page;
 				$enpages .= "... <a onClick=\"javascript:search_submit($enpages_start_from); return(false);\" href=\"#\">$enpages_count</a> ";
-				
+
 				$npp_nav .= $enpages;
-			
+
 			}
-		
+
 		}
-		
+
 		if( $all_count_news > $i ) {
 			$how_next = $all_count_news - $i;
 			if( $how_next > $news_per_page ) {
@@ -633,11 +633,11 @@ HTML;
 			}
 			$npp_nav .= "<a onClick=\"javascript:search_submit($i); return(false);\" href=\"#\" title=\"{$lang['edit_next']}\">&gt;&gt;</a>";
 		}
-		
+
 		$npp_nav .= "</div>";
-		
+
 		// pagination
-		
+
 
 		if( $entries_showed != 0 ) {
 			echo <<<HTML
@@ -670,19 +670,19 @@ HTML;
 <input class="btn btn-warning btn-mini" type="submit" value="{$lang['b_start']}">
 </div></th></tr>
 HTML;
-			
+
 			if( $all_count_news > $news_per_page ) {
-				
+
 				echo <<<HTML
 <tr class="tfoot"><th colspan="6">
 {$lang['edit_go_page']} <input class="edit bk" style="text-align: center" name="gopage" id="gopage" value="" type="text" size="3"> <input onClick="javascript:gopage_submit(document.getElementById('gopage').value); return(false);" class="btn btn-info btn-mini" type="button" value=" ok ">
 </th></tr>
 HTML;
-			
+
 			}
-		
+
 		}
-		
+
 		echo <<<HTML
 	</table>
 </td>
@@ -708,11 +708,11 @@ $(function(){
 });
 </script>
 HTML;
-	
+
 	}
-	
+
 	echofooter();
-} 
+}
 
 // ********************************************************************************
 // Показ новости и редактирование
@@ -720,40 +720,40 @@ HTML;
 elseif( $action == "editnews" ) {
 	$id = intval( $_GET['id'] );
 	$row = $db->super_query( "SELECT * FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id) WHERE id = '$id'" );
-	
+
 	$found = FALSE;
-	
+
 	if( $id == $row['id'] ) $found = TRUE;
 	if( ! $found ) {
 		msg( "error", $lang['cat_error'], $lang['edit_nonews'] );
 	}
-	
+
 	$cat_list = explode( ',', $row['category'] );
-	
+
 	$have_perm = 0;
-	
+
 	if( $user_group[$member_id['user_group']]['allow_edit'] and $row['autor'] == $member_id['name'] ) {
 		$have_perm = 1;
 	}
 
 	if( $user_group[$member_id['user_group']]['allow_all_edit'] ) {
 		$have_perm = 1;
-		
+
 		$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_add'] );
-		
+
 		foreach ( $cat_list as $selected ) {
 			if( $allow_list[0] != "all" and !in_array( $selected, $allow_list ) AND $row['approve']) $have_perm = 0;
 		}
 	}
-	
+
 	if( ($member_id['user_group'] == 1) ) {
 		$have_perm = 1;
 	}
-	
+
 	if( ! $have_perm ) {
 		msg( "error", $lang['addnews_denied'], $lang['edit_denied'], "$PHP_SELF?mod=editnews&action=list" );
 	}
-	
+
 	$row['title'] = $parse->decodeBBCodes( $row['title'], false );
 	$row['title'] = str_replace("&amp;","&", $row['title'] );
 	$row['title2'] = $parse->decodeBBCodes( $row['title2'], false );
@@ -762,7 +762,7 @@ elseif( $action == "editnews" ) {
 	$row['keywords'] = $parse->decodeBBCodes( $row['keywords'], false );
 	$row['expires'] = ($row['expires'] == "0000-00-00") ? "" : $row['expires'];
 	$row['metatitle'] = stripslashes( $row['metatitle'] );
-	
+
 	if( $row['allow_br'] != '1' or $config['allow_admin_wysiwyg'] == "yes" ) {
 		$row['short_story'] = $parse->decodeBBCodes( $row['short_story'], true, $config['allow_admin_wysiwyg'] );
 		$row['full_story'] = $parse->decodeBBCodes( $row['full_story'], true, $config['allow_admin_wysiwyg'] );
@@ -770,9 +770,9 @@ elseif( $action == "editnews" ) {
 		$row['short_story'] = $parse->decodeBBCodes( $row['short_story'], false );
 		$row['full_story'] = $parse->decodeBBCodes( $row['full_story'], false );
 	}
-	
+
 	$access = permload( $row['access'] );
-	
+
 	if( $row['votes'] ) {
 		$poll = $db->super_query( "SELECT * FROM " . PREFIX . "_poll where news_id = '{$row['id']}'" );
 		$poll['title'] = $parse->decodeBBCodes( $poll['title'], false );
@@ -793,44 +793,44 @@ elseif( $action == "editnews" ) {
 	echoheader( "editnews", $lang['edit_head'] );
 
 	if ( !$user_group[$member_id['user_group']]['allow_html'] ) $config['allow_admin_wysiwyg'] = "no";
-	
+
 	// Доп. поля
 	$xfieldsaction = "categoryfilter";
 	include (ENGINE_DIR . '/inc/xfields.php');
 	echo $categoryfilter;
-	
+
 
 	echo <<<HTML
 <script type="text/javascript">
 <!-- begin
 function popupedit( name ){
 
-		var rndval = new Date().getTime(); 
+		var rndval = new Date().getTime();
 
 		$('body').append('<div id="modal-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #666666; opacity: .40;filter:Alpha(Opacity=40); z-index: 999; display:none;"></div>');
 		$('#modal-overlay').css({'filter' : 'alpha(opacity=40)'}).fadeIn('slow');
-	
+
 		$("#dleuserpopup").remove();
 		$("body").append("<div id='dleuserpopup' title='{$lang['user_edhead']}' style='display:none'></div>");
-	
+
 		$('#dleuserpopup').dialog({
 			autoOpen: true,
 			width: 560,
 			height: 500,
 			dialogClass: "modalfixed",
 			buttons: {
-				"{$lang['user_can']}": function() { 
+				"{$lang['user_can']}": function() {
 					$(this).dialog("close");
-					$("#dleuserpopup").remove();							
+					$("#dleuserpopup").remove();
 				},
-				"{$lang['user_save']}": function() { 
-					document.getElementById('edituserframe').contentWindow.document.getElementById('saveuserform').submit();							
+				"{$lang['user_save']}": function() {
+					document.getElementById('edituserframe').contentWindow.document.getElementById('saveuserform').submit();
 				}
 			},
-			open: function(event, ui) { 
+			open: function(event, ui) {
 				$("#dleuserpopup").html("<iframe name='edituserframe' id='edituserframe' width='100%' height='400' src='{$PHP_SELF}?mod=editusers&action=edituser&user=" + name + "&rndval=" + rndval + "' frameborder='0' marginwidth='0' marginheight='0' allowtransparency='true'></iframe>");
 			},
-			beforeClose: function(event, ui) { 
+			beforeClose: function(event, ui) {
 				$("#dleuserpopup").html("");
 			},
 			close: function(event, ui) {
@@ -855,11 +855,11 @@ HTML;
 	echo "
     <script type=\"text/javascript\">
     function preview(){";
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
 		echo "submit_all_data();";
 	}
-	
+
 	echo "if(document.addnews.title.value == ''){ DLEalert('$lang[addnews_alert]', '$lang[p_info]'); }
     else{
         dd=window.open('','prv','height=400,width=750,left=0,top=0,resizable=1,scrollbars=1')
@@ -871,11 +871,11 @@ HTML;
     function sendNotice( id ){
 		var b = {};
 
-		b[dle_act_lang[3]] = function() { 
-			$(this).dialog('close');						
+		b[dle_act_lang[3]] = function() {
+			$(this).dialog('close');
 		};
 
-		b['{$lang['p_send']}'] = function() { 
+		b['{$lang['p_send']}'] = function() {
 			if ( $('#dle-promt-text').val().length < 1) {
 				$('#dle-promt-text').addClass('ui-state-error');
 			} else {
@@ -886,14 +886,14 @@ HTML;
 					function(data){
 						if (data == 'ok') { DLEalert('{$lang['p_send_ok']}', '{$lang['p_info']}'); }
 					});
-	
-			}				
+
+			}
 		};
 
 		$('#dlepopup').remove();
-					
+
 		$('body').append(\"<div id='dlepopup' title='{$lang['p_title']}' style='display:none'><br />{$lang['p_text']}<br /><br /><textarea name='dle-promt-text' id='dle-promt-text' class='ui-widget-content ui-corner-all' style='width:97%;height:100px; padding: .4em;'></textarea></div>\");
-					
+
 		$('#dlepopup').dialog({
 			autoOpen: true,
 			width: 500,
@@ -905,21 +905,21 @@ HTML;
     function confirmDelete(url, id){
 
 		var b = {};
-	
-		b[dle_act_lang[1]] = function() { 
-						$(this).dialog(\"close\");						
+
+		b[dle_act_lang[1]] = function() {
+						$(this).dialog(\"close\");
 				    };
 
-		b['{$lang['p_message']}'] = function() { 
+		b['{$lang['p_message']}'] = function() {
 						$(this).dialog(\"close\");
 
 						var bt = {};
-					
-						bt[dle_act_lang[3]] = function() { 
-										$(this).dialog('close');						
+
+						bt[dle_act_lang[3]] = function() {
+										$(this).dialog('close');
 								    };
-					
-						bt['{$lang['p_send']}'] = function() { 
+
+						bt['{$lang['p_send']}'] = function() {
 										if ( $('#dle-promt-text').val().length < 1) {
 											 $('#dle-promt-text').addClass('ui-state-error');
 										} else {
@@ -930,31 +930,31 @@ HTML;
 											  function(data){
 											    if (data == 'ok') { document.location=url; } else { DLEalert('{$lang['p_not_send']}', '{$lang['p_info']}'); }
 										  });
-	
-										}				
+
+										}
 									};
-					
+
 						$('#dlepopup').remove();
-					
+
 						$('body').append(\"<div id='dlepopup' title='{$lang['p_title']}' style='display:none'><br />{$lang['p_text']}<br /><br /><textarea name='dle-promt-text' id='dle-promt-text' class='ui-widget-content ui-corner-all' style='width:97%;height:100px; padding: .4em;'></textarea></div>\");
-					
+
 						$('#dlepopup').dialog({
 							autoOpen: true,
 							width: 500,
 							buttons: bt
 						});
-					
+
 				    };
-	
-		b[dle_act_lang[0]] = function() { 
+
+		b[dle_act_lang[0]] = function() {
 						$(this).dialog(\"close\");
-						document.location=url;					
+						document.location=url;
 					};
-	
+
 		$(\"#dlepopup\").remove();
-	
+
 		$(\"body\").append(\"<div id='dlepopup' title='{$lang['p_confirm']}' style='display:none'><br /><div id='dlepopupmessage'>{$lang['edit_cdel']}</div></div>\");
-	
+
 		$('#dlepopup').dialog({
 			autoOpen: true,
 			width: 500,
@@ -992,7 +992,7 @@ HTML;
 
 			if (key == 1) { $('#autodescr').val(data); }
 			else { $('#keywords').val(data); }
-	
+
 		});
 
 		return false;
@@ -1005,11 +1005,11 @@ HTML;
 		ShowLoading('');
 
 		$.post('engine/ajax/find_relates.php', { title: title, id: '{$row['id']}' }, function(data){
-	
+
 			HideLoading('');
-	
+
 			$('#related_news').html(data);
-	
+
 		});
 
 		return false;
@@ -1024,18 +1024,18 @@ HTML;
 		$('[uid=\"essential\"]:visible').each(function(indx) {
 
 			if($.trim($(this).find('[rel=\"essential\"]').val()).length < 1) {
-			
+
 				DLEalert('{$lang['addnews_xf_alert']}', '{$lang['p_info']}');
 
 				status = 'fail';
-			
+
 			}
 
 		});
 
 		if(document.addnews.title.value == ''){
 
-			DLEalert('{$lang['addnews_alert']}', '{$lang['p_info']}'); 
+			DLEalert('{$lang['addnews_alert']}', '{$lang['p_info']}');
 
 			status = 'fail';
 
@@ -1052,7 +1052,7 @@ HTML;
 		function extractLast( term ) {
 			return split( term ).pop();
 		}
- 
+
 		$( '#tags' ).autocomplete({
 			source: function( request, response ) {
 				$.getJSON( 'engine/ajax/find_tags.php', {
@@ -1081,21 +1081,21 @@ HTML;
 		$('.categoryselect').chosen({allow_single_deselect:true, no_results_text: '{$lang['addnews_cat_fault']}'});
 	});
     </SCRIPT>";
-	
+
 	echo "<form method=post name=\"addnews\" id=\"addnews\" onsubmit=\"if(checkxf()=='fail') return false;\" action=\"\">";
-	
+
 	$categories_list = CategoryNewsSelection( $cat_list, 0 );
 	if( $config['allow_multi_category'] ) $category_multiple = "class=\"categoryselect\" multiple";
 	else $category_multiple = "class=\"categoryselect\"";
-	
+
 	if( $member_id['user_group'] == 1 ) {
-		
+
 		$author_info = "<input type=\"text\" name=\"new_author\" size=\"20\"  class=\"edit bk\" style=\"vertical-align: middle;\" value=\"{$row['autor']}\"><input type=\"hidden\" name=\"old_author\" value=\"{$row['autor']}\" />";
-	
+
 	} else {
-		
+
 		$author_info = "<b>{$row['autor']}</b>";
-	
+
 	}
 
 
@@ -1105,7 +1105,7 @@ HTML;
 
 	}
 
-	
+
 	echo <<<HTML
 <link rel="stylesheet" type="text/css" media="all" href="engine/skins/calendar-blue.css" title="win2k-cold-1" />
 <link rel="stylesheet" type="text/css" href="engine/skins/chosen/chosen.css"/>
@@ -1149,7 +1149,7 @@ HTML;
         inputField     :    "f_date_c",     // id of the input field
         ifFormat       :    "%Y-%m-%d %H:%M",      // format of the input field
         button         :    "f_trigger_c",  // trigger for the calendar (button ID)
-        align          :    "Br",           // alignment 
+        align          :    "Br",           // alignment
 		timeFormat     :    "24",
 		showsTime      :    true,
         singleClick    :    true
@@ -1184,15 +1184,15 @@ HTML;
 <div class="hr_line"></div>
 <table width="100%">
 HTML;
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
-		
+
 		include (ENGINE_DIR . '/editor/shortnews.php');
-	
+
 	} else {
 		$bb_editor = true;
 		include (ENGINE_DIR . '/inc/include/inserttag.php');
-		
+
 		echo <<<HTML
     <tr>
         <td width="140" height="29" style="padding-left:5px;">{$lang['addnews_short']}<br /><input class=bbcodes style="width: 30px;" onclick="document.addnews.short_story.rows += 5;" type=button value=" + ">&nbsp;&nbsp;<input class=bbcodes style="width: 30px;" onclick="document.addnews.short_story.rows -= 5;" type=button value=" - "></td>
@@ -1201,13 +1201,13 @@ HTML;
 	</td></tr>
 HTML;
 	}
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
-		
+
 		include (ENGINE_DIR . '/editor/fullnews.php');
-	
+
 	} else {
-		
+
 		echo <<<HTML
     <tr>
     <td height="29" style="padding-left:5px;">{$lang['addnews_full']}<br /><span class="navigation">({$lang['addnews_alt']})</span><br /><input class=bbcodes style="width: 30px;" onclick="document.addnews.full_story.rows += 5;" type=button value=" + ">&nbsp;&nbsp;<input class=bbcodes style="width: 30px;" onclick="document.addnews.full_story.rows -= 5;" type=button value=" - "></td>
@@ -1224,7 +1224,7 @@ HTML;
 
 HTML;
 	}
-	
+
 	// Доп. поля
 	$xfieldsaction = "list";
 	$xfieldsid = $row['xfields'];
@@ -1233,24 +1233,24 @@ HTML;
 
 	if( $config['allow_admin_wysiwyg'] != "yes" ) $output = str_replace("<!--panel-->", $bb_panel, $output);
 	echo $output;
-	
+
 	if( $row['allow_comm'] ) $ifch = "checked";	else $ifch = "";
 	if( $row['allow_main'] ) $ifmain = "checked"; else $ifmain = "";
 	if( $row['approve'] ) $ifapp = "checked"; else $ifapp = "";
 	if( $row['fixed'] ) $iffix = "checked";	else $iffix = "";
 	if( $row['allow_rate'] ) $ifrat = "checked"; else $ifrat = "";
 	if( $row['disable_index'] ) $ifdis = "checked"; else $ifdis = "";
-	
+
 	if( $user_group[$member_id['user_group']]['allow_fixed'] and $config['allow_fixed'] ) $fix_input = "<input type=\"checkbox\" name=\"news_fixed\" value=\"1\" $iffix>&nbsp;$lang[addnews_fix]"; else $fix_input = "&nbsp;";
 	if( $user_group[$member_id['user_group']]['allow_main'] ) $main_input = "<input type=\"checkbox\" name=\"allow_main\" value=\"1\" {$ifmain}>&nbsp;{$lang['addnews_main']}"; else $main_input = "&nbsp;";
 	if($member_id['user_group'] < 3 ) $disable_index = "<input type=\"checkbox\" name=\"disable_index\" value=\"1\" {$ifdis}>&nbsp;{$lang['add_disable_index']}"; else $disable_index = "&nbsp;";
-	
+
 	if( $row['allow_br'] == '1' ) $fix_br_cheked = "checked";
 	else $fix_br_cheked = "";
-	
+
 	if( $config['allow_admin_wysiwyg'] != "yes" ) $fix_br = "<input type=\"checkbox\" name=\"allow_br\" value=\"1\" {$fix_br_cheked}>&nbsp;{$lang['allow_br']}";
 	else $fix_br = "";
-	
+
 	if( $row['editdate'] ) {
 		$row['editdate'] = date( "d.m.Y H:i:s", $row['editdate'] );
 		$lang['news_edit_date'] = $lang['news_edit_date'] . " " . $row['editor'] . " - " . $row['editdate'];
@@ -1297,7 +1297,7 @@ HTML;
 	</tr>
 </table></div>
 HTML;
-	
+
 	echo <<<HTML
 	<div class="dle_aTab" style="display:none;">
 <table width="100%">
@@ -1350,7 +1350,7 @@ HTML;
         inputField     :    "e_date_c",     // id of the input field
         ifFormat       :    "%Y-%m-%d",      // format of the input field
         button         :    "e_trigger_c",  // trigger for the calendar (button ID)
-        align          :    "Br",           // alignment 
+        align          :    "Br",           // alignment
         singleClick    :    true
     });
 </script></td>
@@ -1386,7 +1386,7 @@ HTML;
 
 <table width="100%">
 HTML;
-	
+
 	if( $member_id['user_group'] < 3 ) {
 		foreach ( $user_group as $group ) {
 			if( $group['id'] > 1 ) {
@@ -1404,17 +1404,17 @@ HTML;
 			}
 		}
 	} else {
-		
+
 		echo <<<HTML
     <tr>
         <td style="padding:4px;"><br />{$lang['tabs_not']}</br /><br /></td>
     </tr>
 HTML;
-	
+
 	}
 
 	if ($row['autor'] != $member_id['name']) $notice_btn = "<input onClick=\"sendNotice('{$id}')\" type=\"button\" class=\"btn btn-inverse\" value=\"{$lang['btn_notice']}\" >&nbsp;"; else $notice_btn = "";
-	
+
 	echo <<<HTML
     <tr>
         <td colspan="2"><div class="hr_line"></div></td>
@@ -1440,7 +1440,7 @@ jQuery(document).ready(function($){
     <input type="hidden" name="mod" value="editnews" />
 </div>
 HTML;
-	
+
 	echo <<<HTML
 </td>
         <td background="engine/skins/images/tl_rb.gif"><img src="engine/skins/images/tl_rb.gif" width="6" height="1" border="0"></td>
@@ -1453,16 +1453,16 @@ HTML;
 </table>
 </div></form>
 HTML;
-	
+
 	echofooter();
-} 
+}
 // ********************************************************************************
 // Сохранение или удаление новости
 // ********************************************************************************
 elseif( $action == "doeditnews" ) {
 
 	$id = intval( $_GET['id'] );
-	
+
 	$allow_comm = isset( $_POST['allow_comm'] ) ? intval( $_POST['allow_comm'] ) : 0;
 	$allow_main = isset( $_POST['allow_main'] ) ? intval( $_POST['allow_main'] ) : 0;
 	$approve = isset( $_POST['approve'] ) ? intval( $_POST['approve'] ) : 0;
@@ -1487,9 +1487,9 @@ elseif( $action == "doeditnews" ) {
 	}
 
 	$category_list = $db->safesql( implode( ',', $category_list ) );
-	
+
 	$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_add'] );
-	
+
 	foreach ( $category as $selected ) {
 		if( $allow_list[0] != "all" and ! in_array( $selected, $allow_list ) and $member_id['user_group'] != 1 ) $approve = 0;
 	}
@@ -1497,7 +1497,7 @@ elseif( $action == "doeditnews" ) {
 	if( !$user_group[$member_id['user_group']]['moderation'] ) $approve = 0;
 
 	$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_allow_addnews'] );
-	
+
 	foreach ( $category as $selected ) {
 		if( $allow_list[0] != "all" AND ! in_array( $selected, $allow_list ) AND $ifdelete != "yes") msg( "error", $lang['addnews_error'], $lang['news_err_41'], "javascript:history.go(-1)" );
 	}
@@ -1515,31 +1515,31 @@ elseif( $action == "doeditnews" ) {
 	}
 
 	if ( $config['allow_admin_wysiwyg'] == "yes" ) $parse->allow_code = false;
-	
+
 	$full_story = $parse->process( $_POST['full_story'] );
 	$short_story = $parse->process( $_POST['short_story'] );
     $alt_links = $parse->process($_POST['alt_links']);
     $src_link = $parse->process($_POST['src_link']);
 
 	if( $config['allow_admin_wysiwyg'] == "yes" or $allow_br != '1' ) {
-		
+
 		$full_story = $db->safesql( $parse->BB_Parse( $full_story ) );
 		$short_story = $db->safesql( $parse->BB_Parse( $short_story ) );
-	
+
 	} else {
-		
+
 		$full_story = $db->safesql( $parse->BB_Parse( $full_story, false ) );
 		$short_story = $db->safesql( $parse->BB_Parse( $short_story, false ) );
-	
+
 	}
-	
+
     $alt_links = $db->safesql($alt_links);
     $src_link = $db->safesql($src_link);
 
 	if( $parse->not_allowed_text ) {
 		msg( "error", $lang['addnews_error'], $lang['news_err_39'], "javascript:history.go(-1)" );
 	}
-	
+
 	if( trim( $title ) == "" and $ifdelete != "yes" ) msg( "error", $lang['cat_error'], $lang['addnews_alert'], "javascript:history.go(-1)" );
 
 	if( dle_strlen( $title, $config['charset'] ) > 255 ) {
@@ -1548,20 +1548,20 @@ elseif( $action == "doeditnews" ) {
 	if( dle_strlen( $title2, $config['charset'] ) > 255 ) {
 		msg( "error", $lang['cat_error'], $lang['addnews_ermax'], "javascript:history.go(-1)" );
 	}
-	
+
 	if( trim( $_POST['alt_name'] ) == "" or ! $_POST['alt_name'] ) $alt_name = totranslit( stripslashes( $title ) );
 	else $alt_name = totranslit( stripslashes( $_POST['alt_name'] ) );
-	
+
 	$title = $db->safesql( $title );
 	$title2 = $db->safesql( $title2 );
 	$metatags = create_metatags( $short_story . $full_story );
-	
+
 	$catalog_url = $db->safesql( dle_substr( htmlspecialchars( strip_tags( stripslashes( trim( $_POST['catalog_url'] ) ) ) ), 0, 3, $config['charset'] ) );
 
 	if ($config['create_catalog'] AND !$catalog_url) $catalog_url = $db->safesql( dle_substr( htmlspecialchars( strip_tags( stripslashes( trim( $title ) ) ) ), 0, 1, $config['charset'] ) );
 
 	$editreason = $db->safesql( htmlspecialchars( strip_tags( stripslashes( trim( $_POST['editreason'] ) ) ), ENT_QUOTES ) );
-	
+
 	if( @preg_match( "/[\||\'|\<|\>|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\+]/", $_POST['tags'] ) ) $_POST['tags'] = "";
 	else $_POST['tags'] = @$db->safesql( htmlspecialchars( strip_tags( stripslashes( trim( $_POST['tags'] ) ) ), ENT_QUOTES ) );
 
@@ -1582,51 +1582,51 @@ elseif( $action == "doeditnews" ) {
 		if ( count($tags_array) ) $_POST['tags'] = implode(", ", $tags_array); else $_POST['tags'] = "";
 
 	}
-	
+
 	// обработка опроса
 	if( trim( $_POST['vote_title'] != "" ) ) {
-		
+
 		$add_vote = 1;
 		$vote_title = trim( $db->safesql( $parse->process( $_POST['vote_title'] ) ) );
 		$frage = trim( $db->safesql( $parse->process( $_POST['frage'] ) ) );
 		$vote_body = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['vote_body'] ), false ) );
 		$allow_m_vote = intval( $_POST['allow_m_vote'] );
-	
+
 	} else
 		$add_vote = 0;
-		
+
 	// обработка доступа
 	if( $member_id['user_group'] < 3 and $ifdelete != "yes" ) {
-		
+
 		$group_regel = array ();
-		
+
 		foreach ( $_POST['group_extra'] as $key => $value ) {
 			if( $value ) $group_regel[] = intval( $key ) . ':' . intval( $value );
 		}
-		
+
 		if( count( $group_regel ) ) $group_regel = implode( "||", $group_regel );
 		else $group_regel = "";
-	
+
 	} else
 		$group_regel = '';
 
-	if ( ($_POST['expires'].$_POST['expires_action']) != $_POST['expires_alt'] ) {	
+	if ( ($_POST['expires'].$_POST['expires_action']) != $_POST['expires_alt'] ) {
 		if( trim( $_POST['expires'] ) != "" ) {
 			if( (($expires = strtotime( $_POST['expires'] )) === - 1) OR !$expires) {
 				msg( "error", $lang['addnews_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
-			} 
+			}
 		} else $expires = '';
 
 		$expires_change = true;
 
 	} else $expires_change = false;
-	
+
 	$no_permission = FALSE;
 	$okdeleted = FALSE;
 	$okchanges = FALSE;
-	
+
 	$db->query( "SELECT id, title, title2, autor, category, approve, tags, news_id FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id) WHERE id = '$id'" );
-	
+
 	while ( $row = $db->get_row() ) {
 		$item_db[0] = $row['id'];
 		$item_db[1] = $row['autor'];
@@ -1636,7 +1636,7 @@ elseif( $action == "doeditnews" ) {
 		$item_db[5] = explode( ',', $row['category'] );
 		$item_db[6] = $row['news_id'];
 	}
-	
+
 	$db->free();
 
 	if( $ifdelete != "yes" ) {
@@ -1650,22 +1650,22 @@ elseif( $action == "doeditnews" ) {
 		$xfieldsid = $item_db[0];
 		include (ENGINE_DIR . '/inc/xfields.php');
 	}
-	
+
 
 	if( $item_db[0] ) {
-		
+
 		$have_perm = 0;
-		
+
 		if( $user_group[$member_id['user_group']]['allow_all_edit'] ) $have_perm = 1;
-		
+
 		if( $user_group[$member_id['user_group']]['allow_edit'] and $item_db[1] == $member_id['name'] ) {
 			$have_perm = 1;
 		}
 
 		if( $ifdelete == "yes" ) {
-	
+
 			$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_add'] );
-			
+
 			foreach ( $item_db[5] as $selected ) {
 				if( $allow_list[0] != "all" AND !in_array($selected, $allow_list) ) $have_perm = 0;
 			}
@@ -1674,57 +1674,74 @@ elseif( $action == "doeditnews" ) {
 
 				$have_perm = 0;
 
-			}	
+			}
 		}
 
 		if( ($member_id['user_group'] == 1) ) {
 			$have_perm = 1;
 		}
-		
+
 		if( $have_perm ) {
-			
+
 			if( $ifdelete != "yes" ) {
 				$okchanges = TRUE;
-				
+
 				// Обработка даты и времени
 				$added_time = time() + ($config['date_adjust'] * 60);
 				$newdate = $_POST['newdate'];
-				
+
 				if( $_POST['allow_date'] != "yes" ) {
-					
+
 					if( $_POST['allow_now'] == "yes" ) $thistime = date( "Y-m-d H:i:s", $added_time );
 					elseif( (($newsdate = strtotime( $newdate )) === - 1) OR !$newsdate ) {
 						msg( "error", $lang['cat_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
 					} else {
-						
+
 						$thistime = date( "Y-m-d H:i:s", $newsdate );
-						
+
 						if( ! intval( $config['no_date'] ) and $newsdate > $added_time ) {
 							$thistime = date( "Y-m-d H:i:s", $added_time );
 						}
-					
+
 					}
-					
+
 					$db->query( "UPDATE " . PREFIX . "_post SET title='$title', title2='$title2', date='$thistime', short_story='$short_story', full_story='$full_story', xfields='$filecontents', descr='{$metatags['description']}', keywords='{$metatags['keywords']}', category='$category_list', alt_name='$alt_name', allow_comm='$allow_comm', approve='$approve', allow_main='$allow_main', fixed='$news_fixed', allow_br='$allow_br', symbol='$catalog_url', tags='{$_POST['tags']}', metatitle='{$metatags['title']}', src_link='{$src_link}', src_links='{$alt_links}' WHERE id='$item_db[0]'" );
-				
+
 				} else {
-					
+
 					$db->query( "UPDATE " . PREFIX . "_post SET title='$title', title2='$title2', short_story='$short_story', full_story='$full_story', xfields='$filecontents', descr='{$metatags['description']}', keywords='{$metatags['keywords']}', category='$category_list', alt_name='$alt_name', allow_comm='$allow_comm', approve='$approve', allow_main='$allow_main', fixed='$news_fixed', allow_br='$allow_br', symbol='$catalog_url', tags='{$_POST['tags']}', metatitle='{$metatags['title']}', src_link='{$src_link}', src_links='{$alt_links}' WHERE id='$item_db[0]'" );
 				}
 
+				/////////LINKS ATTACH
+				if (isset($_POST['xfield']['direct_links'])) {
+                    $direct_links=$_POST['xfield']['direct_links'];
+                    preg_match_all('/\/catalog\/viewv\/([0-9]+)/', $direct_links, $matches, PREG_SET_ORDER);
+                    $data = array();
+                    foreach ($matches as $it) {
+                        $data['ids'][] = $it[1];
+                    }
+
+                    $data['gid'] = $item_db[0];
+                    $fdata = base64_encode(serialize($data));
+                    $key = md5($config['service_key'] . $fdata . $config['service_uri']);
+                    $url = $config['service_uri2'] . '?fdata=' . $fdata . '&key=' . $key;
+                    file_get_contents($url);
+
+                }
+				/////////////////////
 				if ($item_db[6]) $db->query( "UPDATE " . PREFIX . "_post_extras SET allow_rate='$allow_rating', votes='$add_vote', disable_index='$disable_index', access='$group_regel', editdate='$added_time', editor='{$member_id['name']}', reason='$editreason', view_edit='$view_edit' WHERE news_id='$item_db[0]'" );
 				else $db->query( "INSERT INTO " . PREFIX . "_post_extras (news_id, allow_rate, votes, disable_index, access, editdate, editor, reason, view_edit) VALUES('{$item_db[0]}', '{$allow_rating}', '{$add_vote}', '{$disable_index}', '{$group_regel}', '{$added_time}', '{$member_id['name']}', '{$editreason}', '{$view_edit}')" );
 
 				$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '25', '{$title}')" );
 
-				
+
 				if( $add_vote ) {
-					
+
 					$count = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_poll WHERE news_id = '$item_db[0]'" );
-					
+
 					if( $count['count'] ) $db->query( "UPDATE  " . PREFIX . "_poll set title='$vote_title', frage='$frage', body='$vote_body', multiple='$allow_m_vote' WHERE news_id = '$item_db[0]'" );
 					else $db->query( "INSERT INTO " . PREFIX . "_poll (news_id, title, frage, body, votes, multiple, answer) VALUES('$item_db[0]', '$vote_title', '$frage', '$vote_body', 0, '$allow_m_vote', '')" );
-				
+
 				} else {
 					$db->query( "DELETE FROM " . PREFIX . "_poll WHERE news_id='$item_db[0]'" );
 					$db->query( "DELETE FROM " . PREFIX . "_poll_log WHERE news_id='$item_db[0]'" );
@@ -1736,60 +1753,60 @@ elseif( $action == "doeditnews" ) {
 						$db->query( "DELETE FROM " . PREFIX . "_post_log WHERE news_id='$item_db[0]'" );
 						$db->query( "INSERT INTO " . PREFIX . "_post_log (news_id, expires, action) VALUES('$item_db[0]', '$expires', '$expires_action')" );
 					} else {
-	
+
 						$db->query( "DELETE FROM " . PREFIX . "_post_log WHERE news_id='$item_db[0]'" );
-	
+
 					}
 				}
-				
+
 				// Смена автора публикации
 				if( $member_id['user_group'] == 1 AND $_POST['new_author'] != $_POST['old_author'] ) {
-					
+
 					$_POST['new_author'] = $db->safesql( $_POST['new_author'] );
-					
+
 					$row = $db->super_query( "SELECT user_id  FROM " . USERPREFIX . "_users WHERE name = '{$_POST['new_author']}'" );
-					
+
 					if( $row['user_id'] ) {
-						
+
 						$db->query( "UPDATE " . PREFIX . "_post SET autor='{$_POST['new_author']}' WHERE id='$item_db[0]'" );
 						$db->query( "UPDATE " . PREFIX . "_post_extras SET user_id='{$row['user_id']}' WHERE news_id='$item_db[0]'" );
 						$db->query( "UPDATE " . PREFIX . "_images SET author='{$_POST['new_author']}' WHERE news_id='$item_db[0]'" );
 						$db->query( "UPDATE " . PREFIX . "_files SET author='{$_POST['new_author']}' WHERE news_id='$item_db[0]'" );
-						
+
 						$db->query( "UPDATE " . USERPREFIX . "_users SET news_num=news_num+1 where user_id='{$row['user_id']}'" );
 						$db->query( "UPDATE " . USERPREFIX . "_users SET news_num=news_num-1 where name='$item_db[1]'" );
-					
+
 					} else {
-						
+
 						msg( "error", $lang['addnews_error'], $lang['edit_no_author'], "javascript:history.go(-1)" );
-					
+
 					}
-				
+
 				}
-				
+
 				// Облако тегов
 				if( $_POST['tags'] != $item_db[2] or $approve != $item_db[3] ) {
 					$db->query( "DELETE FROM " . PREFIX . "_tags WHERE news_id = '$item_db[0]'" );
-					
+
 					if( $_POST['tags'] != "" and $approve ) {
-						
+
 						$tags = array ();
-						
+
 						$_POST['tags'] = explode( ",", $_POST['tags'] );
-						
+
 						foreach ( $_POST['tags'] as $value ) {
-							
+
 							$tags[] = "('" . $item_db[0] . "', '" . trim( $value ) . "')";
 						}
-						
+
 						$tags = implode( ", ", $tags );
 						$db->query( "INSERT INTO " . PREFIX . "_tags (news_id, tag) VALUES " . $tags );
-					
+
 					}
 				}
-			
+
 			} else {
-				
+
 				$db->query( "DELETE FROM " . PREFIX . "_post WHERE id='$item_db[0]'" );
 				$db->query( "DELETE FROM " . PREFIX . "_post_extras WHERE news_id='$item_db[0]'" );
 				$db->query( "DELETE FROM " . PREFIX . "_comments WHERE post_id='$item_db[0]'" );
@@ -1800,61 +1817,61 @@ elseif( $action == "doeditnews" ) {
 				$db->query( "DELETE FROM " . PREFIX . "_logs WHERE news_id = '$item_db[0]'" );
 
 				$db->query( "UPDATE " . USERPREFIX . "_users set news_num=news_num-1 where name='$item_db[1]'" );
-				
+
 				$okdeleted = TRUE;
 
 				$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '26', '{$item_db[4]}')" );
 
-				
+
 				$row = $db->super_query( "SELECT images  FROM " . PREFIX . "_images where news_id = '$item_db[0]'" );
-				
+
 				$listimages = explode( "|||", $row['images'] );
-				
+
 				if( $row['images'] != "" ) foreach ( $listimages as $dataimages ) {
 					$url_image = explode( "/", $dataimages );
-					
+
 					if( count( $url_image ) == 2 ) {
-						
+
 						$folder_prefix = $url_image[0] . "/";
 						$dataimages = $url_image[1];
-					
+
 					} else {
-						
+
 						$folder_prefix = "";
 						$dataimages = $url_image[0];
-					
+
 					}
-					
+
 					@unlink( ROOT_DIR . "/uploads/posts/" . $folder_prefix . $dataimages );
 					@unlink( ROOT_DIR . "/uploads/posts/" . $folder_prefix . "thumbs/" . $dataimages );
 				}
-				
+
 				$db->query( "DELETE FROM " . PREFIX . "_images WHERE news_id = '$item_db[0]'" );
-				
+
 				$db->query( "SELECT id, onserver FROM " . PREFIX . "_files WHERE news_id = '$item_db[0]'" );
-				
+
 				while ( $row = $db->get_row() ) {
-					
+
 					@unlink( ROOT_DIR . "/uploads/files/" . $row['onserver'] );
-				
+
 				}
-				
+
 				$db->query( "DELETE FROM " . PREFIX . "_files WHERE news_id = '$item_db[0]'" );
-			
+
 			}
 		} else
 			$no_permission = TRUE;
-	
+
 	}
 
 	clear_cache( array('news_', 'full_'.$item_db[0], 'comm_'.$item_db[0], 'tagscloud_', 'archives_', 'calendar_', 'rss') );
 
 	if( ! $_SESSION['admin_referrer'] ) {
-		
+
 		$_SESSION['admin_referrer'] = "?mod=editnews&amp;action=list";
-	
+
 	}
-	
+
 	if( $no_permission ) {
 		msg( "error", $lang['addnews_error'], $lang['edit_denied'], $_SESSION['admin_referrer'] );
 	} elseif( $okdeleted ) {
