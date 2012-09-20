@@ -13,3 +13,4 @@ templates/rumedia
 hawk
 *.tmp
 *.TMP
+*.htaccess
