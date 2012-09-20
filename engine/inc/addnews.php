@@ -34,21 +34,21 @@ if( $action == "addnews" ) {
 
 	echoheader( "addnews", $lang['addnews'] );
 
-	if ( !$user_group[$member_id['user_group']]['allow_html'] ) $config['allow_admin_wysiwyg'] = "no";	
-	
+	if ( !$user_group[$member_id['user_group']]['allow_html'] ) $config['allow_admin_wysiwyg'] = "no";
+
 	$xfieldsaction = "categoryfilter";
 	include (ENGINE_DIR . '/inc/xfields.php');
 	echo $categoryfilter;
-	
+
 
 	echo "
     <script type=\"text/javascript\">
     function preview(){";
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
 		echo "submit_all_data();";
 	}
-	
+
 	echo "if(document.addnews.title.value == ''){ DLEalert('$lang[addnews_alert]', '$lang[p_info]'); }
     else{
         dd=window.open('','prv','height=400,width=750,resizable=1,scrollbars=1')
@@ -73,12 +73,12 @@ if( $action == "addnews" ) {
 		ShowLoading('');
 
 		$.post(\"engine/ajax/keywords.php\", { short_txt: short_txt, full_txt: full_txt, key: key }, function(data){
-	
+
 			HideLoading('');
-	
+
 			if (key == 1) { $('#autodescr').val(data); }
 			else { $('#keywords').val(data); }
-	
+
 		});
 
 		return false;
@@ -91,11 +91,11 @@ if( $action == "addnews" ) {
 		ShowLoading('');
 
 		$.post('engine/ajax/find_relates.php', { title: title }, function(data){
-	
+
 			HideLoading('');
-	
+
 			$('#related_news').html(data);
-	
+
 		});
 
 		return false;
@@ -110,18 +110,18 @@ if( $action == "addnews" ) {
 		$('[uid=\"essential\"]:visible').each(function(indx) {
 
 			if($.trim($(this).find('[rel=\"essential\"]').val()).length < 1) {
-			
+
 				DLEalert('{$lang['addnews_xf_alert']}', '{$lang['p_info']}');
 
 				status = 'fail';
-			
+
 			}
 
 		});
 
 		if(document.addnews.title.value == ''){
 
-			DLEalert('{$lang['addnews_alert']}', '{$lang['p_info']}'); 
+			DLEalert('{$lang['addnews_alert']}', '{$lang['p_info']}');
 
 			status = 'fail';
 
@@ -139,7 +139,7 @@ if( $action == "addnews" ) {
 		function extractLast( term ) {
 			return split( term ).pop();
 		}
- 
+
 		$( '#tags' ).autocomplete({
 			source: function( request, response ) {
 				$.getJSON( 'engine/ajax/find_tags.php', {
@@ -168,14 +168,14 @@ if( $action == "addnews" ) {
 		$('.categoryselect').chosen({allow_single_deselect:true, no_results_text: '{$lang['addnews_cat_fault']}'});
 	});
     </script>";
-	
+
 	echo "<form method=post name=\"addnews\" id=\"addnews\" onsubmit=\"if(checkxf()=='fail') return false;\" action=\"$PHP_SELF\">";
-	
+
 	$categories_list = CategoryNewsSelection( 0, 0 );
-	
+
 	if( $config['allow_multi_category'] ) $category_multiple = "class=\"categoryselect\" multiple";
 	else $category_multiple = "class=\"categoryselect\"";
-	
+
 	echo <<<HTML
 <link rel="stylesheet" type="text/css" href="engine/skins/calendar-blue.css" title="win2k-cold-1" />
 <link rel="stylesheet" type="text/css" href="engine/skins/chosen/chosen.css"/>
@@ -250,16 +250,16 @@ if( $action == "addnews" ) {
 
 <table width="100%">
 HTML;
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
-		
+
 		include (ENGINE_DIR . '/editor/shortnews.php');
-	
+
 	} else {
 
 		$bb_editor = true;
 		include (ENGINE_DIR . '/inc/include/inserttag.php');
-		
+
 		echo <<<HTML
     <tr>
         <td height="29" width="140" style="padding-left:5px;">{$lang['addnews_short']}<br /><input class=bbcodes style="width: 30px;" onclick="document.addnews.short_story.rows += 5;" type=button value=" + ">&nbsp;&nbsp;<input class=bbcodes style="width: 30px;" onclick="document.addnews.short_story.rows -= 5;" type=button value=" - "></td>
@@ -267,13 +267,13 @@ HTML;
 	</td></tr>
 HTML;
 	}
-	
+
 	if( $config['allow_admin_wysiwyg'] == "yes" ) {
-		
+
 		include (ENGINE_DIR . '/editor/fullnews.php');
-	
+
 	} else {
-		
+
 		echo <<<HTML
     <tr>
     <td height="29" style="padding-left:5px;">{$lang['addnews_full']}<br /><span class="navigation">({$lang['addnews_alt']})</span><br /><input class=bbcodes style="width: 30px;" onclick="document.addnews.full_story.rows += 5;" type=button value=" + ">&nbsp;&nbsp;<input class=bbcodes style="width: 30px;" onclick="document.addnews.full_story.rows -= 5;" type=button value=" - "></td>
@@ -281,7 +281,7 @@ HTML;
 	</td></tr>
 HTML;
 	}
-	
+
 	// XFields Call
 	$xfieldsaction = "list";
 	$xfieldsadd = true;
@@ -291,14 +291,14 @@ HTML;
 	if( $config['allow_admin_wysiwyg'] != "yes" ) $output = str_replace("<!--panel-->", $bb_panel, $output);
 
 	echo $output;
-	
+
 	if( $user_group[$member_id['user_group']]['allow_fixed'] and $config['allow_fixed'] ) $fix_input = "<input type=\"checkbox\" name=\"news_fixed\" value=\"1\">&nbsp;$lang[addnews_fix]"; else $fix_input = "&nbsp;";
 	if( $user_group[$member_id['user_group']]['allow_main'] ) $main_input = "<input type=\"checkbox\" name=\"allow_main\" value=\"1\" checked>&nbsp;{$lang['addnews_main']}"; else $main_input = "&nbsp;";
 	if($member_id['user_group'] < 3 ) $disable_index = "<input type=\"checkbox\" name=\"disable_index\" value=\"1\">&nbsp;{$lang['add_disable_index']}"; else $disable_index = "&nbsp;";
 
 	if( $config['allow_admin_wysiwyg'] != "yes" ) $fix_br = "<input type=\"checkbox\" name=\"allow_br\" value=\"1\" checked>&nbsp;{$lang['allow_br']}";
 	else $fix_br = "";
-	
+
 	echo <<<HTML
     <tr>
         <td colspan="2"><div class="hr_line"></div></td>
@@ -327,7 +327,7 @@ HTML;
 </table>
 	</div>
 HTML;
-	
+
 	echo <<<HTML
 	<div class="dle_aTab" style="display:none;">
 <table width="100%">
@@ -415,7 +415,7 @@ HTML;
 
 <table width="100%">
 HTML;
-	
+
 	if( $member_id['user_group'] < 3 ) {
 		foreach ( $user_group as $group ) {
 			if( $group['id'] > 1 ) {
@@ -433,15 +433,15 @@ HTML;
 			}
 		}
 	} else {
-		
+
 		echo <<<HTML
     <tr>
         <td style="padding:4px;"><br />{$lang['tabs_not']}</br /><br /></td>
     </tr>
 HTML;
-	
+
 	}
-	
+
 	echo <<<HTML
     <tr>
         <td colspan="2"><div class="hr_line"></div></td>
@@ -452,7 +452,7 @@ HTML;
 
 </div>
 HTML;
-	
+
 	echo <<<HTML
 <div style="padding-left:150px;padding-top:5px;padding-bottom:5px;">
 	<input type="submit" class="btn btn-success" value="{$lang['btn_send']}" style="width:100px;">&nbsp;
@@ -477,18 +477,18 @@ jQuery(document).ready(function($){
 });
 	</script>
 HTML;
-	
+
 	echofooter();
 
 } // ********************************************************************************
 // Do add News
 // ********************************************************************************
 elseif( $action == "doaddnews" ) {
-	
+
 	include_once ENGINE_DIR . '/classes/parse.class.php';
-	
+
 	$parse = new ParseFilter( Array (), Array (), 1, 1 );
-	
+
 	$allow_comm = isset( $_POST['allow_comm'] ) ? intval( $_POST['allow_comm'] ) : 0;
 	$allow_main = isset( $_POST['allow_main'] ) ? intval( $_POST['allow_main'] ) : 0;
 	$approve = isset( $_POST['approve'] ) ? intval( $_POST['approve'] ) : 0;
@@ -512,9 +512,9 @@ elseif( $action == "doaddnews" ) {
 	}
 
 	$category_list = $db->safesql( implode( ',', $category_list ) );
-	
+
 	$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_add'] );
-	
+
 	foreach ( $category as $selected ) {
 		if( $allow_list[0] != "all" and ! in_array( $selected, $allow_list ) and $member_id['user_group'] != "1" ) $approve = 0;
 	}
@@ -522,7 +522,7 @@ elseif( $action == "doaddnews" ) {
 	if( !$user_group[$member_id['user_group']]['moderation'] ) $approve = 0;
 
 	$allow_list = explode( ',', $user_group[$member_id['user_group']]['cat_allow_addnews'] );
-	
+
 	foreach ( $category as $selected ) {
 		if( $allow_list[0] != "all" and ! in_array( $selected, $allow_list ) ) msg( "error", $lang['addnews_error'], $lang['news_err_41'], "javascript:history.go(-1)" );
 	}
@@ -538,17 +538,17 @@ elseif( $action == "doaddnews" ) {
 	}
 
 	if ( $config['allow_admin_wysiwyg'] == "yes" ) $parse->allow_code = false;
-	
+
 	$full_story = $parse->process( $_POST['full_story'] );
 	$short_story = $parse->process( $_POST['short_story'] );
 
 	if( $config['allow_admin_wysiwyg'] == "yes" OR $allow_br != '1' ) {
-		
+
 		$full_story = $db->safesql( $parse->BB_Parse( $full_story ) );
 		$short_story = $db->safesql( $parse->BB_Parse( $short_story ) );
-	
+
 	} else {
-		
+
 		$full_story = $db->safesql( $parse->BB_Parse( $full_story, false ) );
 		$short_story = $db->safesql( $parse->BB_Parse( $short_story, false ) );
 	}
@@ -556,21 +556,21 @@ elseif( $action == "doaddnews" ) {
 	if( $parse->not_allowed_text ) {
 		msg( "error", $lang['addnews_error'], $lang['news_err_39'], "javascript:history.go(-1)" );
 	}
-	
+
 	$alt_name = $_POST['alt_name'];
-	
+
 	if( trim( $alt_name ) == "" or ! $alt_name ) $alt_name = totranslit( stripslashes( $title ), true, false );
 	else $alt_name = totranslit( stripslashes( $alt_name ), true, false );
-	
+
 	$title = $db->safesql( $title );
 	$title2 = $db->safesql( $title2 );
-	
+
 	$metatags = create_metatags( $short_story );
-	
+
 	$catalog_url = $db->safesql( dle_substr( htmlspecialchars( strip_tags( stripslashes( trim( $_POST['catalog_url'] ) ) ) ), 0, 3, $config['charset'] ) );
 
 	if ($config['create_catalog'] AND !$catalog_url) $catalog_url = $db->safesql( dle_substr( htmlspecialchars( strip_tags( stripslashes( trim( $title ) ) ) ), 0, 1, $config['charset'] ) );
-	
+
 	if( @preg_match( "/[\||\'|\<|\>|\"|\!|\?|\$|\@|\/|\\\|\&\~\*\+]/", $_POST['tags'] ) ) $_POST['tags'] = "";
 	else $_POST['tags'] = @$db->safesql( htmlspecialchars( strip_tags( stripslashes( trim( $_POST['tags'] ) ) ), ENT_QUOTES ) );
 
@@ -591,62 +591,62 @@ elseif( $action == "doaddnews" ) {
 		if ( count($tags_array) ) $_POST['tags'] = implode(", ", $tags_array); else $_POST['tags'] = "";
 
 	}
-	
-	
+
+
 	// обработка опроса
 	if( trim( $_POST['vote_title'] != "" ) ) {
-		
+
 		$add_vote = 1;
 		$vote_title = trim( $db->safesql( $parse->process( $_POST['vote_title'] ) ) );
 		$frage = trim( $db->safesql( $parse->process( $_POST['frage'] ) ) );
 		$vote_body = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['vote_body'] ), false ) );
 		$allow_m_vote = intval( $_POST['allow_m_vote'] );
-	
+
 	} else
 		$add_vote = 0;
-		
+
 	// обработка доступа
 	if( $member_id['user_group'] < 3 ) {
-		
+
 		$group_regel = array ();
-		
+
 		foreach ( $_POST['group_extra'] as $key => $value ) {
 			if( $value ) $group_regel[] = intval( $key ) . ':' . intval( $value );
 		}
-		
+
 		if( count( $group_regel ) ) $group_regel = implode( "||", $group_regel );
 		else $group_regel = "";
-	
+
 	} else
 		$group_regel = '';
-	
+
 	if( trim( $_POST['expires'] ) != "" ) {
 		$expires = $_POST['expires'];
 		if( (($expires = strtotime( $expires )) === - 1) OR !$expires ) {
 			msg( "error", $lang['addnews_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
-		} 
+		}
 	} else $expires = '';
 
-		
+
 	// Обработка даты и времени
 	$added_time = time() + ($config['date_adjust'] * 60);
 	$newdate = $_POST['newdate'];
-	
+
 	if( $_POST['allow_date'] != "yes" ) {
-		
+
 		if( (($newsdate = strtotime( $newdate )) === - 1) OR !$newsdate ) {
 			msg( "error", $lang['addnews_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
 		} else {
 			$thistime = date( "Y-m-d H:i:s", $newsdate );
 		}
-		
+
 		if( ! intval( $config['no_date'] ) and $newsdate > $added_time ) {
 			$thistime = date( "Y-m-d H:i:s", $added_time );
 		}
-	
+
 	} else
 		$thistime = date( "Y-m-d H:i:s", $added_time );
-		////////////////////////////	
+		////////////////////////////
 
 	if( trim( $title ) == "") {
 		msg( "error", $lang['addnews_error'], $lang['addnews_alert'], "javascript:history.go(-1)" );
@@ -663,18 +663,33 @@ elseif( $action == "doaddnews" ) {
 		$parse->ParseFilter();
 		$parse->safe_mode = true;
 	}
-	
+
 	$xfieldsid = $added_time;
 	$xfieldsaction = "init";
 	include (ENGINE_DIR . '/inc/xfields.php');
 
-	
+
 	$db->query( "INSERT INTO " . PREFIX . "_post (date, autor, short_story, full_story, xfields, title, title2, descr, keywords, category, alt_name, allow_comm, approve, allow_main, fixed, allow_br, symbol, tags, metatitle) values ('$thistime', '{$member_id['name']}', '$short_story', '$full_story', '$filecontents', '$title', '$title2', '{$metatags['description']}', '{$metatags['keywords']}', '$category_list', '$alt_name', '$allow_comm', '$approve', '$allow_main', '$news_fixed', '$allow_br', '$catalog_url', '{$_POST['tags']}', '{$metatags['title']}')" );
-	
+
 	$row = $db->insert_id();
 
+    if (isset($_POST['xfield']['direct_links'])) {
+        $direct_links=$_POST['xfield']['direct_links'];
+        preg_match_all('/\/catalog\/viewv\/([0-9]+)/', $direct_links, $matches, PREG_SET_ORDER);
+        $data = array();
+        foreach ($matches as $it) {
+            $data['ids'][] = $it[1];
+        }
+        $data['gid'] = $row;
+        $fdata = base64_encode(serialize($data));
+        $key = md5($config['service_key'] . $fdata . $config['service_uri']);
+        $url = $config['service_uri2'] . '?fdata=' . $fdata . '&key=' . $key;
+        file_get_contents($url);
+    }
+
+
 	$db->query( "INSERT INTO " . PREFIX . "_post_extras (news_id, allow_rate, votes, disable_index, access, user_id) VALUES('{$row}', '{$allow_rating}', '{$add_vote}', '{$disable_index}', '{$group_regel}', '{$member_id['user_id']}')" );
-	
+
 	if( $add_vote ) {
 		$db->query( "INSERT INTO " . PREFIX . "_poll (news_id, title, frage, body, votes, multiple, answer) VALUES('{$row}', '$vote_title', '$frage', '$vote_body', 0, '$allow_m_vote', '')" );
 	}
@@ -683,31 +698,31 @@ elseif( $action == "doaddnews" ) {
 		$expires_action = intval($_POST['expires_action']);
 		$db->query( "INSERT INTO " . PREFIX . "_post_log (news_id, expires, action) VALUES('{$row}', '$expires', '$expires_action')" );
 	}
-	
+
 	if( $_POST['tags'] != "" and $approve ) {
-		
+
 		$tags = array ();
-		
+
 		$_POST['tags'] = explode( ",", $_POST['tags'] );
-		
+
 		foreach ( $_POST['tags'] as $value ) {
-			
+
 			$tags[] = "('" . $row . "', '" . trim( $value ) . "')";
 		}
-		
+
 		$tags = implode( ", ", $tags );
 		$db->query( "INSERT INTO " . PREFIX . "_tags (news_id, tag) VALUES " . $tags );
-	
+
 	}
-	
+
 	$db->query( "UPDATE " . PREFIX . "_images set news_id='{$row}' where author = '{$member_id['name']}' AND news_id = '0'" );
 	$db->query( "UPDATE " . PREFIX . "_files set news_id='{$row}' where author = '{$member_id['name']}' AND news_id = '0'" );
 	$db->query( "UPDATE " . USERPREFIX . "_users set news_num=news_num+1 where user_id='{$member_id['user_id']}'" );
 
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '1', '{$title}')" );
-	
+
 	clear_cache( array('news_', 'related_', 'tagscloud_', 'archives_', 'calendar_', 'topnews_', 'rss') );
-	
+
 	msg( "info", $lang['addnews_ok'], $lang['addnews_ok_1'] . " \"" . stripslashes( stripslashes( $title ) ) . "\" " . $lang['addnews_ok_2'] );
 }
 ?>
