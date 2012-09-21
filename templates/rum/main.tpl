@@ -21,11 +21,6 @@
 <!--right menu-->
 <link rel="stylesheet" href="http://rumedia.ws/templates/rum/css/jquery-ui-1.8.23.custom.css" type="text/css" />
 <!--/right menu-->
-[group=1]
-<!--showstat css-->
-<link rel="stylesheet" href="http://rumedia.ws/templates/rum/css/showstat.css" type="text/css" />
-<!--/showstat css-->
-[/group]
 <script type="text/javascript">
 $(document).ready(function() {
 $(function() { $('#category_menu').accordion({ autoHeight:false, active:false, collapsible:true, navigation:true }).show(); });
@@ -66,6 +61,12 @@ $(function(){
  
 });
 </script>
+{include file="engine/modules/_admin.php"}
+[group=1]
+<!--showstat css-->
+<link rel="stylesheet" href="http://rumedia.ws/templates/rum/css/showstat.css" type="text/css" />
+<!--/showstat css-->
+[/group]
 </head>
 <body>
 {AJAX}
@@ -254,23 +255,18 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;"> <a href="/" style="p
 					</div>
 				</div>
 			</div>
+			[not-group=5]
+			<!-- Chat block --- have own template as reklama -->
+			{include file="engine/modules/iChat/run.php"}
+			<!-- /// Chat block -->
+			[/not-group]
 			[group=1]
 			<div class="topnews-repeat">
 				<div class="topnews-top">
 					<div class="topnews-bottom">
 						<div class="topnews-block">
-							<div class="topnews-block-title reklama">Chat (adm only)</div>
-							<div class="topnews-block-content" style="width: 282px;">{include file="engine/modules/iChat/run.php"}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="topnews-repeat">
-				<div class="topnews-top">
-					<div class="topnews-bottom">
-						<div class="topnews-block">
 							<div class="topnews-block-title reklama">Online Stat (adm only)</div>
-							<div class="topnews-block-content" style="padding: 10px;">{online_block}</div>
+							<div class="topnews-block-content" style="margin-top: -5px;">{online_block}</div>
 						</div>
 					</div>
 				</div>

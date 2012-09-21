@@ -16,20 +16,12 @@
 		<br />
 		<br />
 		<div style="clear: both;"></div>
-		[xfgiven_games_original_name]
+		[xfgiven_games_year]
 		<table id="zebra">
 			<tbody>
 				<tr>
-					<td width="30%"><strong>Оригинальное название</strong>:</td>
-					<td>[xfvalue_games_original_name]</td>
-				</tr>
-				<tr>
 					<td><strong>Год выхода</strong>:</td>
 					<td>[xfvalue_games_year]</td>
-				</tr>
-				<tr>
-					<td><strong>Страна</strong>:</td>
-					<td>[xfvalue_games_country]</td>
 				</tr>
 				<tr>
 					<td><strong>Платформа</strong>:</td>
@@ -40,12 +32,18 @@
 					<td>[xfvalue_games_file_type]</td>
 				</tr>
 				<tr>
+					<td><strong>Другая информация</strong>:</td>
+					<td>[xfvalue_games_other]</td>
+				</tr>
+				[xfgiven_games_sys_req]
+				<tr>
 					<td><strong>Системные требования</strong>:</td>
 					<td>[xfvalue_games_sys_req]</td>
 				</tr>
+				[/xfgiven_games_sys_req]
 			</tbody>
 		</table>
-		[/xfgiven_games_original_name] <br />
+		[/xfgiven_games_year] <br />
 		<div style="clear: both;height: 20px;"></div>
 		<div>
 			Ссылки:<br/>

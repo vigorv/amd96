@@ -1,9 +1,6 @@
 <?php
 
 /*====================================================
- Author: RooTM
-------------------------------------------------------
- Web-site: http://weboss.net/
 =====================================================*/
 
 @session_start();
@@ -187,6 +184,6 @@ echo $content;
 clear_cache( 'iChat_' );
 }
 
-echo "<div id='ECPU' title='{$chat_lang['admin_title']} &nbsp;|||&nbsp; Copyright &copy; <a href=\"http://weboss.net/\" target=\"_blank\" style=\"text-decoration: none; font-size: 9px;\">WEBoss.Net</a>' style='display:none'>{$content}</div>";
+echo "<div id='ECPU' title='Chat Admin Options' style='display:none'>{$content}</div>";
 
 ?>

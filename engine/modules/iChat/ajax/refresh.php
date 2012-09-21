@@ -1,9 +1,6 @@
 <?php
 
 /*====================================================
- Author: RooTM
-------------------------------------------------------
- Web-site: http://weboss.net/
 =====================================================*/
 
 @session_start();
@@ -93,9 +90,8 @@ include ENGINE_DIR . '/modules/iChat/build.php';
 if($_SESSION['hash_messages_'.$_POST['place']] == md5($Messages)) die('no need refresh');
          else $_SESSION['hash_messages_'.$_POST['place']] = md5($Messages);
 */
-if($_SESSION['hash_messages_'.$_POST['place']] <> md5($Messages)) $_SESSION['hash_messages_'.$_POST['place']] = md5($Messages);
-echo $Messages;
 
+if($_SESSION['hash_messages_'.$_POST['place']] <> md5($Messages)) $_SESSION['hash_messages_'.$_POST['place']] = md5($Messages);
 echo $Messages;
 
 ?>
