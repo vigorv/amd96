@@ -12,8 +12,6 @@
 @ini_set ( 'html_errors', false );
 @ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_NOTICE );
 
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "XMLHttpRequest") die('Only for AJAX requests!');
-
 define( 'DATALIFEENGINE', true );
 define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -25 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
@@ -31,6 +29,8 @@ if( $config['http_home_url'] == "" ) {
 
 }
 
+require_once ENGINE_DIR . '/classes/mysql.php';
+require_once ENGINE_DIR . '/data/dbconfig.php';
 require_once ENGINE_DIR . '/modules/functions.php';
 
 $_COOKIE['dle_skin'] = trim(totranslit( $_COOKIE['dle_skin'], false, false ));
@@ -55,16 +55,12 @@ if( $config["lang_" . $config['skin']] ) {
 
 $config['charset'] = ($lang['charset'] != '') ? $lang['charset'] : $config['charset'];
 
-$member_id['user_group'] = (isset($_SESSION['user_group'])) ? $_SESSION['user_group'] : 5;
+require_once ENGINE_DIR . '/modules/sitelogin.php';
 
 //################# Определение групп пользователей
 $user_group = get_vars( "usergroup" );
 
 if( ! $user_group ) {
-
-require_once ENGINE_DIR . '/classes/mysql.php';
-require_once ENGINE_DIR . '/data/dbconfig.php';
-
 	$user_group = array ();
 	
 	$db->query( "SELECT * FROM " . USERPREFIX . "_usergroups ORDER BY id ASC" );
@@ -82,16 +78,20 @@ require_once ENGINE_DIR . '/data/dbconfig.php';
 	$db->free();
 }
 
+if( ! $is_logged ) $member_id['user_group'] = 5;
+
+@header( "Content-type: text/html; charset=" . $config['charset'] );
+
 $config['allow_cache'] = "yes";
+
+$_POST['page'] = ( $_POST['page'] >= 1 ) ? $_POST['page'] : 1;
+
+$Messages = dle_cache( "iChat_history_".$_POST['page'], $config['skin'] );
 
 $_POST['place'] = "history";
 
 include ENGINE_DIR . '/modules/iChat/build.php';
 
-$_SESSION['page'] = $_POST['page'];
-
-@header( "Content-type: text/html; charset=" . $config['charset'] );
-
-echo "<div id='history' title='{$chat_lang['history']}' style='display:none;overflow:auto;'><div id='history_c' class='iChat'>{$compiled_messages}</div></div>";
+echo "<div id='history' title='{$chat_lang['history']}' style='display:none;overflow:auto;'><div id='history_c'>{$Messages}</div></div>";
 
 ?>

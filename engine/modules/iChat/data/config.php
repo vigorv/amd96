@@ -16,23 +16,21 @@ $chat_cfg = array (
 
 'max_word' => "33",
 
-'max_smilies' => "7",
+'cron_clean' => "15",
 
-'path_smiles' => "engine/data/emoticons",
+'smiles' => "wink,winked,smile,am,belay,feel,fellow,laughing,lol,love,no,recourse,request,sad,tongue,wassat,crying,what,bully,angry",
 
-'guest_refresh' => "60",
+'stop_bbcode' => "[left],[/left],[center],[/center],[right],[/right],[url=,[/url],[img=,[/img],[spoiler],[/spoiler],[code],[/code]",
 
 'groups_color' => "group_1:#FF0000,group_2:#CC33CC,group_3:#009900,group_4:#3333FF,group_5:#666666",
 
 'allow_guest' => "no",
 
-'sum_msg_history' => "30",
+'sum_msg_history' => "25",
 
 'no_access' => "spamer,flooder",
 
-'version' => "7.0",
-
-'smiles' => "wink,winked,smile,am,belay,feel,fellow,laughing,lol,love,no,recourse,request,sad,tongue,wassat,crying,what,bully,angry",
+'version' => "6.0",
 
 );
 

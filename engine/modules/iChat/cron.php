@@ -37,37 +37,34 @@ cron.php в любое другое название с расширением PHP
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 $allow_cron = 0;
-$chat_cfg['cron_clean'] = 500;
 
 if( $allow_cron ) {
 
-define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -20 ) );
-define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
-	
-$iChat_db = sqlite_open(ENGINE_DIR . '/modules/iChat/data/iChat.db');
+define( 'DATALIFEENGINE', true );
+define( 'ROOT_DIR', '../../..' );
+define( 'ENGINE_DIR', '../..' );
 
-$query = sqlite_query($iChat_db, "SELECT id FROM iChat ORDER BY date DESC" );
+include ENGINE_DIR . '/data/config.php';
+include ENGINE_DIR . '/modules/iChat/data/config.php';
+
+require_once ENGINE_DIR . '/classes/mysql.php';
+require_once ENGINE_DIR . '/data/dbconfig.php';
+require_once ENGINE_DIR . '/modules/functions.php';
+	
+$db->query( "SELECT id FROM " . PREFIX . "_iChat ORDER BY date DESC" );
 		
-   while($row = sqlite_fetch_array($query)) $ids[] = $row['id']; 
+   while($row = $db->get_row()) $ids[] = $row['id']; 
 
 $i = 1;
 
 foreach ($ids as $id){
-if( $i > $chat_cfg['cron_clean'] ) sqlite_query($iChat_db, "DELETE FROM iChat where id='{$id}'"); 
+if( $i > $chat_cfg['cron_clean'] ) $db->query("DELETE FROM " .PREFIX.  "_iChat where id='{$id}'"); 
 $i++;
 }
 	
-	//-------------------------------------------------
-	//	Очищаем кэш
-	//-------------------------------------------------
-
-$fdir = opendir( ENGINE_DIR . '/modules/iChat/data/cache' );
-	
-while ( $file = readdir( $fdir ) ) {
-if( $file != '.' and $file != '..' and $file != '.htaccess' ) @unlink( ENGINE_DIR . '/modules/iChat/data/cache/' . $file );	
-}
+clear_cache( 'iChat_' );
  
-die ("Done");
+echo "Done";
 
 }
 

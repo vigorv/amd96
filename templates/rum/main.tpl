@@ -82,7 +82,8 @@ $(function(){
 				<a href="/index.php?do=feedback"><img src="{THEME}/icons/contact.png" alt="banner" /></a>
 				<a href="/index.php?do=stats"><img src="{THEME}/icons/stat.png" alt="banner" /></a>
 				<a href="/forum/"><img src="{THEME}/icons/forum3.png" alt="banner" /></a>
-				<a href="#"><img src="{THEME}/icons/chat.png" alt="banner" /></a>
+				[not-group=1]<a href="#"><img src="{THEME}/icons/chat.png" alt="banner" /></a>[/not-group]
+				[group=1]<a href="#" title="Р§Р°С‚ РІ РЅРѕРІРѕРј РѕРєРЅРµ" onclick="window.open('/engine/modules/iChat/window.php', '_iChat', 'toolbar=0,location=0,status=0, left=0, top=0, menubar=0,scrollbars=yes,resizable=0,width=620,height=570');"><img src="{THEME}/icons/chat.png" alt="banner" /></a>[/group]
 			</div>
 			[group=5]
 			<div class="login-enter">Войти на сайт</div>
@@ -254,6 +255,16 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;"> <a href="/" style="p
 				</div>
 			</div>
 			[group=1]
+			<div class="topnews-repeat">
+				<div class="topnews-top">
+					<div class="topnews-bottom">
+						<div class="topnews-block">
+							<div class="topnews-block-title reklama">Chat (adm only)</div>
+							<div class="topnews-block-content" style="width: 282px;">{include file="engine/modules/iChat/run.php"}</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="topnews-repeat">
 				<div class="topnews-top">
 					<div class="topnews-bottom">

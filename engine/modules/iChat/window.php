@@ -91,6 +91,7 @@ HTML;
 echo "\n".build_js(array(), $config)."\n";
 
 echo <<<HTML
+<link media="screen" href="{$config['http_home_url']}templates/{$config['skin']}/iChat/css/window.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div id="loading-layer" style="display:none"><div id="loading-layer-text">{$lang['ajax_info']}</div></div>
@@ -125,7 +126,7 @@ HTML;
 
 $_POST['place'] = "window";
 
-include ENGINE_DIR . '/modules/iChat/show.php';
+include ENGINE_DIR . '/modules/iChat/run.php';
 
 echo <<<HTML
 </body>

@@ -12,8 +12,6 @@
 @ini_set ( 'html_errors', false );
 @ini_set ( 'error_reporting', E_ALL ^ E_WARNING ^ E_NOTICE );
 
-if ($_SERVER['HTTP_X_REQUESTED_WITH'] != "XMLHttpRequest") die('Only for AJAX requests!');
-
 define( 'DATALIFEENGINE', true );
 define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -25 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
@@ -82,36 +80,40 @@ if( ! $user_group ) {
 
 if( ! $is_logged ) die( "error" );
 
-if( !$user_group[$member_id['user_group']]['del_allc'] ) die ("error");
+if( !$user_group[$member_id['user_group']]['del_allc'] ) { die ("error"); }
 
 $id = trim($_POST['id']);
 
 if(is_numeric($id)) {  
-$iChat_db = sqlite_open(ENGINE_DIR . '/modules/iChat/data/iChat.db');
-sqlite_query($iChat_db, "DELETE FROM iChat WHERE id = '$id'");
-
-	//-------------------------------------------------
-	//	Очищаем кэш
-	//-------------------------------------------------
-
-$fdir = opendir( ENGINE_DIR . '/modules/iChat/data/cache' );
-	
-while ( $file = readdir( $fdir ) ) {
-if( $file != '.' and $file != '..' and $file != '.htaccess' ) @unlink( ENGINE_DIR . '/modules/iChat/data/cache/' . $file );	
-}
-
+$db->query( "DELETE FROM " . USERPREFIX . "_iChat WHERE id = '$id'" );
+clear_cache( 'iChat_' );
 }
 
 $config['allow_cache'] = "yes";
 
-$_POST['page'] = ( $_SESSION['page'] >= 1 ) ? $_SESSION['page'] : 1;
+switch ( $_POST['place'] ) {
+	
+	case "site" :
+		$Messages = dle_cache( "iChat", $config['skin'] );
+		break;
+
+	case "window" :
+		$Messages = dle_cache( "iChat_window", $config['skin'] );
+		break;
+	
+	case "history" :
+           $_POST['page'] = ( $_SESSION['page'] >= 1 ) ? $_SESSION['page'] : 1;
+		$Messages = dle_cache( "iChat_history_".$_POST['page'], $config['skin'] );
+		break;
+
+}
 
 include ENGINE_DIR . '/modules/iChat/build.php';
 
 @header( "Content-type: text/html; charset=" . $config['charset'] );
 
-if($_POST['place'] != "history") $_SESSION['hash_messages_'.$_POST['place']] = md5($compiled_messages);
+if($_POST['place'] != "history") $_SESSION['hash_messages_'.$_POST['place']] = md5($Messages);
 
-echo $compiled_messages;
+echo $Messages;
 
 ?>

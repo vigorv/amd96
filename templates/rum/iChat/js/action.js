@@ -1,5 +1,5 @@
 /*
- * jQuery UI Effects Bounce 1.8.16
+ * jQuery UI Effects Bounce 1.8.9
  *
  * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -15,7 +15,7 @@
 b.callback&&b.callback.apply(this,arguments)})}else{j={};k={};j[f]=(d=="pos"?"-=":"+=")+c;k[f]=(d=="pos"?"+=":"-=")+c;a.animate(j,i/2,b.options.easing).animate(k,i/2,b.options.easing,function(){e.effects.restore(a,l);e.effects.removeWrapper(a);b.callback&&b.callback.apply(this,arguments)})}a.queue("fx",function(){a.dequeue()});a.dequeue()})}})(jQuery);
 
 /*
- * jQuery UI Effects Explode 1.8.16
+ * jQuery UI Effects Explode 1.8.9
  *
  * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
  * Dual licensed under the MIT or GPL Version 2 licenses.
@@ -39,7 +39,7 @@ e*(i/c)+(a.options.mode=="show"?0:(e-Math.floor(c/2))*(i/c)),opacity:a.options.m
 function iChatAdd(place)
 {
 
-if($.trim(document.iChat_form.message.value) == ''){ 
+if(document.iChat_form.message.value == ''){ 
 
 DLEalert(iChat_lang[3], iChat_lang[2]); 
 
@@ -47,7 +47,7 @@ return false;
 
 };
 
-if($.trim(document.iChat_form.message.value).length > iChat_cfg[0]){ 
+if(document.iChat_form.message.value.length > iChat_cfg[0]){ 
 
 DLEalert(iChat_lang[4], iChat_lang[2]); 
 
@@ -55,14 +55,8 @@ return false;
 
 };
 
-if (document.getElementById('name') && document.getElementById('mail')) {
 	var name = document.getElementById('name').value;
 	var mail = document.getElementById('mail').value;
-}else{
-	var name = '';
-	var mail = '';
-}
-
 	var message = document.getElementById('message').value;
 
 	iShowLoading('');
@@ -158,9 +152,9 @@ reFreshiChat();
 function iChatRefresh(place)
 {
 	
-	$.post(dle_root + "engine/modules/iChat/ajax/refresh.php", { place: place }, function(data){
+	$.post(dle_root + "engine/modules/iChat/ajax/refresh.php", { action: "refresh", place: place }, function(data){
 
-if($.trim(data) != 'no need refresh'){
+if(data != 'no need refresh'){
 
 		$("#iChat-messages").html(data);
 
@@ -172,16 +166,17 @@ if($.trim(data) != 'no need refresh'){
 	return false;
 };
 
-function iChatRules()
+function iChatPopUpRules( r )
 {
-
-			var b = {};
+	var b = {};
 
 	b[iChat_lang[5]] = function() { 
 					$(this).dialog("close");							
 			    };
 
-if (document.getElementById('rules')) {
+	$("#rules").remove();
+
+	$("body").append(r);
 
 	$('#rules').dialog({
 		autoOpen: true,
@@ -190,31 +185,39 @@ if (document.getElementById('rules')) {
 		buttons: b,
 		width: 400
 	});
+	
+	return false;
+};
 
-return false;
-
-}
+function iChatRules()
+{
 	iShowLoading('');
 
 	$.get(dle_root + "engine/modules/iChat/ajax/rules.php", { action: "rules" }, function(data){
 
 		iHideLoading('');
 
-	$("#rules").remove();
+		iChatPopUpRules( data );
 
-	$("body").append(data);
+	});
 
-	$('#rules').dialog({
+	
+	return false;
+};
+
+function iChatPopUpHistory( r )
+{
+	$("#history").remove();
+
+	$("body").append(r);
+
+	$('#history').dialog({
 		autoOpen: true,
-		show: 'bounce',
-		hide: 'explode',
-		buttons: b,
-		width: 400
+		show: 'blind',
+		hide: 'blind',
+		width: 300,
+           height:410
 	});
-
-
-	});
-
 	
 	return false;
 };
@@ -227,18 +230,7 @@ function iChatHistory(page)
 
 		iHideLoading('');
 
-			$("#history").remove();
-
-	$("body").append(data);
-
-	$('#history').dialog({
-		autoOpen: true,
-		show: 'blind',
-		hide: 'blind',
-		width: 300,
-           height:410
-	});
-
+		iChatPopUpHistory( data );
 
 	});
 
@@ -246,16 +238,9 @@ function iChatHistory(page)
 	return false;
 };
 
-function iChatAdmin()
+function iChatPopUpAdmin( r )
 {
-
-	iShowLoading('');
-
-	$.get(dle_root + "engine/modules/iChat/ajax/admin.php", { action: "show" }, function(data){
-
-		iHideLoading('');
-
-			var b = {};
+	var b = {};
 
 	     b[iChat_lang[8]] = function() { 
 					CheckUpdates(); return false;						
@@ -273,7 +258,7 @@ function iChatAdmin()
 
 	$("#ECPU").remove();
 
-	$("body").append(data);
+	$("body").append(r);
 
 	$('#ECPU').dialog({
 		autoOpen: true,
@@ -282,7 +267,20 @@ function iChatAdmin()
 		buttons: b,
 		width: 500
 	});
+	
+	return false;
+};
 
+function iChatAdmin()
+{
+
+	iShowLoading('');
+
+	$.get(dle_root + "engine/modules/iChat/ajax/admin.php", { action: "show" }, function(data){
+
+		iHideLoading('');
+
+		iChatPopUpAdmin( data );
 
 	});
 
@@ -410,13 +408,6 @@ function iChat_reply(name)
 		}
 		else { 
 			input.value += "[b]"+name+"[/b],"+"\n";
-		}
-		document.getElementById(iChatselField).focus();
-
-		if ( is_ie )
-		{
-			document.getElementById(iChatselField).focus();
-			ie_range_cache = document.selection.createRange();
 		}
 };
 
@@ -552,31 +543,9 @@ function iChat_ins_emo( buttonElement )
 			ie_range_cache = document.selection.createRange();
 		}
 
-if (document.getElementById('iChat_emo')) {
-
-		var w = '300';
-		var h = 'auto';
-
-		if ( $('#iChat_emos').width() >= 450 )  {$('#iChat_emos').width(450); w = '505';}
-		if ( $('#iChat_emos').height() >= 300 ) { $('#iChat_emos').height(300); h = '340';}
-
-		$('#iChat_emo').dialog({
-				autoOpen: true,
-				show: 'slide',
-				hide: 'explode',
-				width: w,
-				height: h
-			});
-
-return false;
-
-}
-
-	$.get(dle_root + "engine/modules/iChat/ajax/smilies.php", {  }, function(data){
-
 		$("#iChat_emo").remove();
 
-		$("body").append("<div id='iChat_emo' title='" + bb_t_emo + "' style='display:none'>"+ data +"</div>");
+		$("body").append("<div id='iChat_emo' title='" + bb_t_emo + "' style='display:none'>"+ document.getElementById('iChat_emos').innerHTML +"</div>");
 
 		var w = '300';
 		var h = 'auto';
@@ -592,10 +561,6 @@ return false;
 				height: h
 			});
 
-		if ( $('#iChat_emos').width() >= 450 )  {$('#iChat_emos').width(450); w = '505';}
-		if ( $('#iChat_emos').height() >= 300 ) { $('#iChat_emos').height(300); h = '340';}
-
-});
 
 };
 
@@ -681,6 +646,18 @@ function iChat_transsymbtocyr(pretxt,txt)
 		if (lat_lr1[ii]==txt) return pretxt+rus_lr1[ii];
 	}
 	return doubletxt;
+};
+
+function iChat_insert_font(value, tag)
+{
+    if (value == 0)
+    {
+    	return;
+	} 
+
+	iChatdoInsert("[" +tag+ "=" +value+ "]", "[/" +tag+ "]", true );
+    iChatfombj.bbfont.selectedIndex  = 0;
+    iChatfombj.bbsize.selectedIndex  = 0;
 };
 
 function iChat_get_sel(obj)
