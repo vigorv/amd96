@@ -14,7 +14,7 @@ $chat_cfg = array (
 
 'stop_flood' => "30",
 
-'max_word' => "33",
+'max_word' => "20",
 
 'cron_clean' => "15",
 

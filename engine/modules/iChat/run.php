@@ -25,9 +25,7 @@ $_SESSION['hash_messages_'.$_POST['place']] = md5($Messages);
 
 echo "\n\n<!-- This module chat Keeper -->\n\n";
 
-echo '<form  method="post" name="iChat_form" id="iChat_form" action="/">   
-
-<link rel="stylesheet" type="text/css" href="'.$config['http_home_url'].'templates/'.$config['skin'].'/iChat/css/style.css" />';
+echo '<form  method="post" name="iChat_form" id="iChat_form" action="/">';
 
 echo "\n<script type=\"text/javascript\" src=\"{$config['http_home_url']}templates/{$config['skin']}/iChat/js/action.js\"></script>\n";
 

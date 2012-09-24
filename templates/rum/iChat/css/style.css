@@ -20,21 +20,23 @@
 width: 99%;
 height: 60px;
 display:block;
-background:#404040 url(../img/bg_message.png) center no-repeat;
+background:#666 /*url(../img/bg_message.png) center no-repeat */;
 border:1px solid #999999;
+font-size: 18px;
 }
 
 .chat {
 color: #000;
 border: 1px solid #404040;
 background-color:#999999;
-margin: 0px -3px 1px 0px;
+margin: 0px 1px 1px 0px;
 /*
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
 */
 padding: 3px;
+width: 97%;
 }
 .chat:hover {
 border: 1px solid #404040;

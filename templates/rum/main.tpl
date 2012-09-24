@@ -62,6 +62,7 @@ $(function(){
 });
 </script>
 {include file="engine/modules/_admin.php"}
+<link rel="stylesheet" type="text/css" href="http://rumedia.ws/templates/rum/iChat/css/style.css" />
 [group=1]
 <!--showstat css-->
 <link rel="stylesheet" href="http://rumedia.ws/templates/rum/css/showstat.css" type="text/css" />
@@ -83,8 +84,7 @@ $(function(){
 				<a href="/index.php?do=feedback"><img src="{THEME}/icons/contact.png" alt="banner" /></a>
 				<a href="/index.php?do=stats"><img src="{THEME}/icons/stat.png" alt="banner" /></a>
 				<a href="/forum/"><img src="{THEME}/icons/forum3.png" alt="banner" /></a>
-				[not-group=1]<a href="#"><img src="{THEME}/icons/chat.png" alt="banner" /></a>[/not-group]
-				[group=1]<a href="#" title="Р§Р°С‚ РІ РЅРѕРІРѕРј РѕРєРЅРµ" onclick="window.open('/engine/modules/iChat/window.php', '_iChat', 'toolbar=0,location=0,status=0, left=0, top=0, menubar=0,scrollbars=yes,resizable=0,width=620,height=570');"><img src="{THEME}/icons/chat.png" alt="banner" /></a>[/group]
+				<a href="[not-group=5]/chat.html[/not-group][group=5]/[/group]" title="Р§Р°С‚"><img src="{THEME}/icons/chat.png" alt="banner" /></a>
 			</div>
 			[group=5]
 			<div class="login-enter">Войти на сайт</div>
@@ -113,7 +113,14 @@ $(function(){
 
 </div> 
 	[/aviable]
+	<!-- BEGIN Content Block -->
 	<div class="content-block">
+	[static=chat]
+	<div class="main-speedbar" style="width: 959px !important;"> {speedbar} </div>
+	{content}
+	[/static]
+	                
+	[not-static=chat]
 	[not-aviable=userinfo|register|stats|pm|feedback|favorites|addnews|lastcomments]
 		<div class="center-block">
 			<div class="top-center-block">
@@ -173,23 +180,6 @@ $(function(){
 					[/aviable]
 					</div>
 			</div>
-			<!--
-			<div class="block-news-bottom">
-				<div class="news-block-item">
-					<div class="news-block-item-title">Свежие рецензии</div>
-					<div class="news-block-item-content"> {custom category="1" template="title" aviable="global" from="0" limit="4" cache="no"} </div>
-				</div>
-				<div class="news-block-item">
-					<div class="news-block-item-title">Новости игр</div>
-					<div class="news-block-item-content"> {custom category="1" template="title" aviable="global" from="0" limit="4" cache="no"} </div>
-				</div>
-				<div class="archiv-block-item">
-					<div class="archiv-block-item-title">Архивы</div>
-					<div class="archiv-block-item-content"> {archives} </div>
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			-->
 		</div>
 		<div class="right-col">
 			<div class="topnews-repeat">
@@ -220,21 +210,6 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;"> <a href="/" style="p
 					</div>
 				</div>
 			</div>
-			<!--
-            <div class="topnews-repeat">
-				<div class="topnews-top">
-					<div class="topnews-bottom">
-						<div class="topnews-block">
-							<div class="topnews-block-title reklama">Реклама</div>
-							<div class="topnews-block-content">
-								
-								<img src="{THEME}/images/reklama2.jpg" alt="reklama" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-            -->
 			<div class="topnews-repeat">
 				<div class="topnews-top">
 					<div class="topnews-bottom">
@@ -294,61 +269,9 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;"> <a href="/" style="p
 			</div>
 		</div>
 		<div style="clear: both;"></div>
+	[/not-static]
 	</div>
-	<!--
-	[not-aviable=main]
-	<div class="fon-block">
-		<div class="center-block">
-			<div class="top-center-block">
-				<div class="bottom-center-block">
-					<div class="new-reviews">
-						<div class="new-reviews-title-block">
-							Новые обзоры
-							<a href="#" class="all-reviews">все обзоры</a>
-						</div>
-						<div class="new-reviews-content-block">
-							{custom category="1" template="new-reviews" aviable="global" from="0" limit="4" cache="no"}
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="center-block">
-			<div class="top-center-block">
-				<div class="bottom-center-block">
-					<div class="new-reviews">
-						<div class="new-reviews-title-block fiolet">
-							Выбор редакции
-							<a href="#" class="all-reviews" style="color: #b793c8 !important">все рекомендации</a>
-						</div>
-						<div class="new-edition-content-block">
-							{custom category="1" template="new-edition" aviable="global" from="0" limit="2" cache="no"}
-							<div style="clear: both; height: 11px;"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="right-center-block">
-			<div class="right-top-center-block">
-				<div class="right-bottom-center-block">
-					<div class="video">
-						<div class="video-title-block">
-							Видео
-							<a href="#" class="all-reviews" style="color: #fff !important">все видео</a>
-						</div>
-						<div class="video-content-block">
-							{custom category="1" template="video" aviable="global" from="0" limit="4" cache="no"}
-							<div style="clear: both;"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div style="clear: both;"></div>
-		</div>
-		[/not-aviable]
-        -->
+	<!-- END Content Block -->
 		<div style="clear:both; height:10px;"></div>
 		<div class="footer">
 			Все программы были взяты в свободном распространении в сети Интернет, и предназначены только для ознакомления. Все права на программы принадлежат их авторам. Администрация сайта Rumedia.ws не несёт никакой ответственности за дальнейшее использование программы. Если какая нибудь программа нарушает ваши авторские права, то просто свяжитесь с нами и мы удалим её с сайта!
