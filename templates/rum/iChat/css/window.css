@@ -32,13 +32,13 @@ table.userstop, table.pm, table.tableform, table.calendar { border-collapse: col
 /*---forms---*/
 .baseform { background: #f5f6f7; }
 .tableform { width: 100%; }
-	.tableform td { }
-	.tableform td.label { width: 20%; vertical-align: top; padding-right: 0; font-weight: bold; }
-	.fieldsubmit, .tableform td { padding: 10px 15px; border-top: 1px solid #fff; }
-	.addnews { font-weight: bold; }
-	.impot { color: #96c; font-weight: normal; }
-	.checkbox { padding: 4px 0; line-height: 1em; }
-		.checkbox input { margin-top: -2px; vertical-align: middle; }
+  .tableform td { }
+  .tableform td.label { width: 20%; vertical-align: top; padding-right: 0; font-weight: bold; }
+  .fieldsubmit, .tableform td { padding: 10px 15px; border-top: 1px solid #fff; }
+  .addnews { font-weight: bold; }
+  .impot { color: #96c; font-weight: normal; }
+  .checkbox { padding: 4px 0; line-height: 1em; }
+    .checkbox input { margin-top: -2px; vertical-align: middle; }
 
 .f_input { width: 300px; padding: 1px; }
 .f_textarea { width: 458px; }
@@ -50,16 +50,16 @@ table.userstop, table.pm, table.tableform, table.calendar { border-collapse: col
 /*---Userinfo---*/
 .userinfo { padding-left: 125px; }
 .ui-dialog-content .userinfo { padding: 10px 0 10px 125px; }
-	.userinfo .lcol { margin-left: -125px; width: 110px; padding-right: 15px; }
-		.userinfo .lcol .avatar { margin-bottom: 10px; padding: 4px; background-color: #fff; border: 1px solid #c0d4de; }
-			.userinfo .lcol .avatar img { width: 100px; }
-		.userinfo .lcol ul { font-size: 0.9em; }
+  .userinfo .lcol { margin-left: -125px; width: 110px; padding-right: 15px; }
+    .userinfo .lcol .avatar { margin-bottom: 10px; padding: 4px; background-color: #fff; border: 1px solid #c0d4de; }
+      .userinfo .lcol .avatar img { width: 100px; }
+    .userinfo .lcol ul { font-size: 0.9em; }
 
-	.userinfo .rcol { width: 100%; }
-		.userinfo .rcol ul { list-style: none; margin-left: 0; }
-		.userinfo .rcol ul li { margin-bottom: 0.2em; } 
+  .userinfo .rcol { width: 100%; }
+    .userinfo .rcol ul { list-style: none; margin-left: 0; }
+    .userinfo .rcol ul li { margin-bottom: 0.2em; } 
 
-		.ussep { padding-top: 12px; background: url("../images/ussep.png") no-repeat; }
+    .ussep { padding-top: 12px; background: url("../images/ussep.png") no-repeat; }
 .grey { color: #6c838e; }
 .blue { color: #388bd4; }
 
@@ -70,19 +70,19 @@ table.userstop, table.pm, table.tableform, table.calendar { border-collapse: col
  /* различие bbcodes и bbcodes_poll исключительно в длине кнопки */
 /* класс bbcodes используем в списке персональных сообщений (pm.tpl)  и по умолчанию в модуле редактора сообщений*/
 .bbcodes, .bbcodes_poll {
-	background: #fff url("../img/bbcodes.png") repeat-x 0 100%;
-	text-shadow: 0 1px 0 #fff;
-	border: 1px solid #b3b3b3;
-	color: #383838;
-	padding: 2px 9px 5px 9px;
-	margin-bottom: 2px !important;
-	height: 24px;
-	font-weight: bold;
-	cursor: pointer;
-	-webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;
-	-moz-box-shadow: 0 1px 4px -3px black;
-	-webkit-box-shadow: 0 1px 4px -3px black;
-	box-shadow: 0 1px 4px -3px black;
+  background: #fff url("../img/bbcodes.png") repeat-x 0 100%;
+  text-shadow: 0 1px 0 #fff;
+  border: 1px solid #b3b3b3;
+  color: #383838;
+  padding: 2px 9px 5px 9px;
+  margin-bottom: 2px !important;
+  height: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;
+  -moz-box-shadow: 0 1px 4px -3px black;
+  -webkit-box-shadow: 0 1px 4px -3px black;
+  box-shadow: 0 1px 4px -3px black;
 }
 .bbcodes:hover, .bbcodes_poll:hover { background-position: 0 10px; }
 .bbcodes_poll { width: 100px; }
@@ -96,37 +96,37 @@ table.userstop, table.pm, table.tableform, table.calendar { border-collapse: col
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button, .ui-widget { font-size: 11px; }
 .ui-widget-content { background: #fff 50% bottom repeat-x; border: 1px solid #dedede; color: #222; }
 .ui-widget-header {
-	background: #cccccc url(../img/ui/ui-bg_gloss-wave.png) 50% 50% repeat-x;
-	color: #000;
-	font-weight: bold;
+  background: #cccccc url(../img/ui/ui-bg_gloss-wave.png) 50% 50% repeat-x;
+  color: #000;
+  font-weight: bold;
 }
 .ui-widget-header a { color: #fff; }
 .ui-state-default, .ui-widget-content .ui-state-default {
-	background: #eaeaea url(../img/ui/ui-bg_glass_85.png) 50% 50% repeat-x;
-	border: 1px solid #cfcfcf;
-	color: #868686;
-	font-weight: bold;
+  background: #eaeaea url(../img/ui/ui-bg_glass_85.png) 50% 50% repeat-x;
+  border: 1px solid #cfcfcf;
+  color: #868686;
+  font-weight: bold;
 }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #2e6e9e; text-decoration: none; }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
-	background: #eaeaea url(../img/ui/ui-bg_glass_75.png) 50% 50% repeat-x;
-	border: 1px solid #a7a7a7;
-	color: #4e4e4e;
-	font-weight: bold;
+  background: #eaeaea url(../img/ui/ui-bg_glass_75.png) 50% 50% repeat-x;
+  border: 1px solid #a7a7a7;
+  color: #4e4e4e;
+  font-weight: bold;
 }
 .ui-state-hover a, .ui-state-hover a:hover { color: #1d5987; text-decoration: none; }
 .ui-state-active, .ui-widget-content .ui-state-active {
-	background: #d0e5f5 50% 50% repeat-x;
-	border: 1px solid #a7a7a7;
-	color: #e17009;
-	font-weight: bold;
+  background: #d0e5f5 50% 50% repeat-x;
+  border: 1px solid #a7a7a7;
+  color: #e17009;
+  font-weight: bold;
 }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #e17009; text-decoration: none; }
 
 .ui-state-error {
-	background: #fef1ec 50% 50% repeat-x;
-	border: 1px solid #dedede;
-	color: #cd0a0a;
+  background: #fef1ec 50% 50% repeat-x;
+  border: 1px solid #dedede;
+  color: #cd0a0a;
 }
 .ui-widget-header .ui-icon { background-image: url(../img/ui/ui-icons.png); }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon { background-image: url(../img/ui/ui-icons_h.png); }
@@ -139,10 +139,10 @@ input.ui-button { padding: .4em 1em; }
 .ui-button-set .ui-button { margin-left: 0; margin-right: -.3em; }
 button.ui-button::-moz-focus-inner { border: 0; padding: 0; }
 .ui-dialog {
-	overflow: hidden;
-	padding: .2em;
-	position: absolute;
-	width: 300px;
+  overflow: hidden;
+  padding: .2em;
+  position: absolute;
+  width: 300px;
     -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
@@ -150,39 +150,39 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; }
 .ui-dialog .ui-dialog-titlebar { padding: .5em 1em .3em; position: relative; }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .2em 0; }
 .ui-dialog .ui-dialog-titlebar-close {
-	height: 18px;
-	margin: -10px 0 0 0;
-	padding: 1px;
-	position: absolute;
-	right: .3em;
-	top: 50%;
-	width: 19px;
+  height: 18px;
+  margin: -10px 0 0 0;
+  padding: 1px;
+  position: absolute;
+  right: .3em;
+  top: 50%;
+  width: 19px;
 }
 .ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
 .ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 0; }
 .ui-dialog .ui-dialog-content {
-	background: none;
-	border: 0;
-	overflow: hidden;
-	padding: .5em 1em;
-	position: relative;
-	zoom: 1;
+  background: none;
+  border: 0;
+  overflow: hidden;
+  padding: .5em 1em;
+  position: relative;
+  zoom: 1;
 }
 .ui-dialog .ui-dialog-buttonpane {
-	background-image: none;
-	border-width: 1px 0 0 0;
-	margin: .5em 0 0 0;
-	padding: .3em 1em .5em .4em;
-	text-align: left;
+  background-image: none;
+  border-width: 1px 0 0 0;
+  margin: .5em 0 0 0;
+  padding: .3em 1em .5em .4em;
+  text-align: left;
 }
 .ui-dialog .ui-dialog-buttonpane button {
-	cursor: pointer;
-	float: right;
-	line-height: 1.4em;
-	margin: .5em .4em .5em 0;
-	overflow: visible;
-	padding: .2em .6em .3em .6em;
-	width: auto;
+  cursor: pointer;
+  float: right;
+  line-height: 1.4em;
+  margin: .5em .4em .5em 0;
+  overflow: visible;
+  padding: .2em .6em .3em .6em;
+  width: auto;
 }
 .ui-dialog .ui-resizable-se { bottom: 3px; height: 14px; right: 3px; width: 14px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }

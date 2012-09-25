@@ -31,6 +31,9 @@ b.callback&&b.callback.apply(this,arguments)})}else{j={};k={};j[f]=(d=="pos"?"-=
 e*(i/c)+(a.options.mode=="show"?0:(e-Math.floor(c/2))*(i/c)),opacity:a.options.mode=="show"?1:0},a.duration||500);setTimeout(function(){a.options.mode=="show"?b.css({visibility:"visible"}):b.css({visibility:"visible"}).hide();a.callback&&a.callback.apply(b[0]);b.dequeue();j("div.ui-effects-explode").remove()},a.duration||500)})}})(jQuery);
 
 /*====================================================
+ Author: RooTM
+------------------------------------------------------
+ Web-site: http://weboss.net/
 =====================================================*/
 
 function iChatAdd(place)
@@ -146,7 +149,6 @@ reFreshiChat();
 
 };
 
-
 function iChatRefresh(place)
 {
 	
@@ -163,16 +165,6 @@ if(data != 'no need refresh'){
 
 	return false;
 };
-/*
-function iChatRefresh(place){
-    $.post(dle_root + "engine/modules/iChat/ajax/refresh.php", { action: "refresh", place: place }, function(data){
-        if($.trim(data) != 'no need refresh'){
-	    $("#iChat-messages").html(data);
-	};
-});
-return false;
- };
- */
 
 function iChatPopUpRules( r )
 {

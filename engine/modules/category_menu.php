@@ -65,7 +65,7 @@ if(!$catmenu) {
 		#****** —сылка на главную категорию и подкатегории ******#
 		$catmenu .= "<div class=\"listCategory\"><a href=\"/{$cat_all[$v]['alt_name']}/\"><b>{$cat_end} {$cat_all[$v]['name']}</b></a> ({$news_all})</div>".implode("",$category)."</div>";
 	}
-
+	$catmenu = str_replace ("&","&amp;",$catmenu);
 	create_cache("catmenu", $catmenu, 1, true);
 	unset($cat_all);
 	unset($cat_news_arr);

@@ -77,21 +77,21 @@ function LB_topic_link ($id = 0, $fid = 0, $last = false, $hide = false)
         if ($cache_lb_config['general_rewrite_url']['conf_value'])
             $link = LB_forum_link($fid)."last/topic-".$id.".html";
         else
-            $link = $redirect_url."?do=board&op=topic&id=".$id."&go=last";
+            $link = $redirect_url."?do=board&amp;op=topic&amp;id=".$id."&amp;go=last";
     }
     elseif ($hide)
     {
         if ($cache_lb_config['general_rewrite_url']['conf_value'])
             $link = LB_forum_link($fid)."hiden/topic-".$id.".html";
         else
-            $link = $redirect_url."?do=board&op=topic&id=".$id."&go=hide";
+            $link = $redirect_url."?do=board&amp;op=topic&amp;id=".$id."&amp;go=hide";
     }
     else
     {
         if ($cache_lb_config['general_rewrite_url']['conf_value'])
             $link = LB_forum_link($fid)."topic-".$id.".html";
         else
-            $link = $redirect_url."?do=board&op=topic&id=".$id;
+            $link = $redirect_url."?do=board&amp;op=topic&amp;id=".$id;
     }
         
     return $link;
@@ -140,7 +140,7 @@ function LB_forum_link ($id = 0)
     if ($cache_lb_config['general_rewrite_url']['conf_value'])
         $link = $logicboard_conf['url']."cat-".$cache_forums[$id]['alt_name']."/";
     else
-        $link = $logicboard_conf['url']."?do=board&op=forum&id=".$id;
+        $link = $logicboard_conf['url']."?do=board&amp;op=forum&amp;id=".$id;
 
     return $link;
 }

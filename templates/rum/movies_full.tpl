@@ -9,6 +9,13 @@
 	<div class="full-fav-icon">
 	{favorites}
 	</div>
+	[group=1]
+	<div class="full-cloud-icon">
+	    <a href="http://safelib.com/api/cloudButton?partner_id=6&partner_item_id={news-id}">
+		<img width="20px" height="13px" src="http://safelib.com/api/statusimage?partner_id=6&partner_item_id={news-id}" />
+	    </a>
+	</div>
+	[/group]
 	[/not-group]
 		<h1>{title}</h1>
 		<div class="title2">{title2}</div>
@@ -109,7 +116,7 @@
 		[related-news]
 		<div class="rel-news">
 			<h4>
-			Похожие новости:
+			Также рекомендуем:
 			</h4>
 			<div style="clear: both;"></div>
 			{related-news}

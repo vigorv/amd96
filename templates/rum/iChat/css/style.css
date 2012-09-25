@@ -1,14 +1,26 @@
 .iChat_input { width: 99px; padding: 1px; }
 
-.iChat_bbeditor { }
+.chat-b-c {width:282px;height:550px;margin-left:1px; overflow:auto;
+background:#e6e6e6 url("../img/body_cont-top.png") no-repeat;}
+
+.body-cont .chat-m-t {top: -1px;}
+.body-cont .chat-m-b {bottom: -1px;}
+.body-cont {position: relative; background: url("../img/cen-body.png") repeat-y;}
+
+.chat-m-t { background: url("../img/top-body.png") no-repeat; height: 6px;
+position: absolute; left: 0; width: 283px; overflow: hidden; font: 1px/1px sans-serif; }
+.chat-m-b { background: url("../img/bot-body.png") no-repeat; height: 6px;
+position: absolute; left: 0; width: 283px; overflow: hidden; font: 1px/1px sans-serif; }
+
+.iChat_bbeditor {background: #fff url("../img/bbcode/bg.png") repeat; }
 .iChat_bbeditor span, .iChat_bbeditor span img, .iChat_bbeditor .bbspacer, .iChat_bbeditor .bbselect { float: left; }
 .iChat_bbeditor .bbselect { height: 21px; padding: 4px 3px 0 3px; }
 .iChat_bbeditor .bbselect select { font-size: 11px; }
-.iChat_bbeditor span { cursor: pointer;}
+.iChat_bbeditor span { cursor: pointer; background: url("../img/bbcode/buttons.png") no-repeat; }
 .iChat_bbeditor span:hover { background-position: -23px 0; }
 
-.iChat_editor { width: 100% !important; background-color: #999; border: 1px solid #404040; }
-.iChat_editor .iChat_bbeditor { border-width: 0 0 0px 0; }
+.iChat_editor { width: 283px !important;}
+.iChat_editor .iChat_bbeditor { width: 215px; border:1px solid #d4dfe8;}
 
 /*
 .ui-corner-all { 
@@ -16,44 +28,98 @@
 }
 */
 
-#message	{
-width: 99%;
+.chat_title {width: 283px; height: 28px; background: url('../img/chat_pod-bb.png')no-repeat;}
+.chat_title span, .chat_title img { width: 23px; padding:0;}
+
+ .bbc1 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-1px 0; padding:0; margin:0; margin-left:1px; z-index:4; border:0px; cursor:pointer;}
+ .bbc1:hover {background-position:-1px -28px;}
+ .bbc1:active {background-position:-1px -56px;}
+
+ .bbc2 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-25px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc2:hover {background-position:-25px -28px;}
+ .bbc2:active {background-position:-25px -56px;}
+
+ .bbc3 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-49px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc3:hover {background-position:-49px -28px;}
+ .bbc3:active {background-position:-49px -56px;}
+
+ .bbc4 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-73px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc4:hover {background-position:-73px -28px;}
+ .bbc4:active {background-position:-73px -56px;}
+
+ .bbc5 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-97px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc5:hover {background-position:-97px -28px;}
+ .bbc5:active {background-position:-97px -56px;}
+
+ .bbc6 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-121px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc6:hover {background-position:-121px -28px;}
+ .bbc6:active {background-position:-121px -56px;}
+
+ .bbc7 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-145px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc7:hover {background-position:-145px -28px;}
+ .bbc7:active {background-position:-145px -56px;}
+
+ .bbc8 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-169px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc8:hover {background-position:-169px -28px;}
+ .bbc8:active {background-position:-169px -56px;}
+
+ .bbc9 {width:23px; height:28px; background:url('../img/bbcode/all-bbcods.png') no-repeat; background-position:-193px 0; padding:0; margin:0; margin-left:-2px; z-index:4; border:0px; cursor:pointer;}
+ .bbc9:hover {background-position:-193px -28px;}
+ .bbc9:active {background-position:-193px -56px;}
+
+.chat-mas-c {width: 278px; background: url('../img/chat_mass-cont.png') repeat-y; padding:0 2px;}
+.chat-mas-b {width: 283px; height:12px; font-size: 9px; color:#fff; background: url('../img/chat_mass-bott.png') no-repeat; padding:0 2px;}
+
+#message  {
+width: 274px;
 height: 60px;
+padding:3px;
 display:block;
-background:#666 /*url(../img/bg_message.png) center no-repeat */;
-border:1px solid #999999;
-font-size: 18px;
+background: #E6E6E6; /*url('../img/chat_mass-top.png')no-repeat;*/
+border:0px solid #c2c2c2;
+resize: none;
 }
 
 .chat {
-color: #000;
-border: 1px solid #404040;
-background-color:#999999;
-margin: 0px 1px 1px 0px;
-/*
+border: 1px solid #bbb;
+
+margin-left: 5px;
+margin-right: 5px;
+margin-bottom: 1px;
+margin-top: 2px;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
-*/
 padding: 3px;
-width: 97%;
 }
 .chat:hover {
-border: 1px solid #404040;
+border: 1px solid #cccccc;
 }
 
-.quote {
-background: #cccccc;
-border-radius: 3px;
-clear: both;
-color: #2a2a2a;
-font-size: 11px;
-margin: 0px 0px 5px;
-padding: 2px;
-}
+.hr1 {background:url('../img/hr.png') repeat-x;height:2px;border:0px}
 
-.hr1 {background:url('../img/hr.png') repeat-x;height:1px;border:0px}
-
-.edit_buttons {opacity: 0.2;cursor:pointer;}
+.edit_buttons {opacity: 0.2;cursor: pointer;width: 14px;}
 .edit_buttons:hover {opacity: 1;}
 
+.three_but-one {width:63px; height:28px; background:url('../img/chat_but.png') no-repeat; background-position:0 0; padding:0; margin:0; z-index:4; border:0px; cursor:pointer;}
+.three_but-one:hover {background-position:0 -28px;}
+.three_but-one:active {background-position:0 -56px;}
+
+.three_but-two {width:91px; height:28px; background:url('../img/chat_but.png') no-repeat; background-position:-63px 0; padding:0; margin:0; z-index:4; border:0px; cursor:pointer;}
+.three_but-two:hover {background-position:-63px -28px;}
+.three_but-two:active {background-position:-63px -56px;}
+
+.three_but-thr {width:63px; height:28px; background:url('../img/chat_but.png') no-repeat; background-position:-154px 0; padding:0; margin:0; z-index:4; border:0px; cursor:pointer;}
+.three_but-thr:hover {background-position:-154px -28px;}
+.three_but-thr:active {background-position:-154px -56px;}
+
+.chat-but-opti{width:118px; height:25px; float: right; background:url('../img/but_opti.png') no-repeat; background-position:0 0; padding:0; margin:0; margin-right:7px; z-index:4; border:0px; cursor:pointer;}
+.chat-but-opti:hover {background-position:0 -25px;}
+.chat-but-opti:active {background-position:0 -50px;}
+
+.line-predpanel {background:url('../img/panel-offline.png') no-repeat 0 0; width:217px; height:11px;}
+
+.panel-off { position: relative; background:url('../img/panel-offline.png') no-repeat 0 -11px; width:217px; height:29px; padding:0 0 0 6px;}
+.panel-off td {padding: 0;}
+.panel-off td input {border: 0;height: 20px; width: 92px; float: left; margin: 1px 0 0 4px; background: url('../img/panel-offline.png') no-repeat -111px -15px;}
+.panel-off td input:hover {background-position:-12px -15px;} 

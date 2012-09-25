@@ -380,8 +380,9 @@ function CatMenu( $current = 0, $all_info = array(), $new_days = 0, $com_days = 
 	if ( $current == 0 ) {
 		// завершаем дерево категорий
 		$build = str_replace ("</li></ul></li></li>","</li></ul></li>",$build);
-		$build = str_replace ("</li></li></li>","</li>",$build);
-		$build = str_replace ("</li></ul></li></li></ul></li>","</li></ul></li>",$build);
+		$build = str_replace ("</a></li></ul></li></ul></li>","</a></li></ul></li>",$build);
+		//$build = str_replace ("</a></li></ul></li></ul></ul>","</a></li></ul></li></ul>",$build);
+		//$build = str_replace ("</li></ul></li></li></ul></li>","</li></ul></li>",$build);
 		return $build;
 	}
 	
