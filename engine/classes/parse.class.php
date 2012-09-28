@@ -436,6 +436,11 @@ class ParseFilter {
 		$txt = preg_replace( "#<!--dle_flash_begin:(.+?)-->(.+?)<!--dle_flash_end-->#ies", "\$this->decode_flash('\\1')", $txt );
 		$txt = preg_replace( "#<!--dle_spoiler-->(.+?)<!--spoiler_text-->#is", '[spoiler]', $txt );
 		$txt = preg_replace( "#<!--dle_spoiler (.+?) -->(.+?)<!--spoiler_text-->#is", '[spoiler=\\1]', $txt );
+
+		/* Clear */
+		$txt = preg_replace( "#<div style=\"clear: both;\"></div>#is", '', $txt );
+#		$txt = preg_replace( "#<div style=\"clear: both;\"></div><!--dle_spoiler (.+?) -->(.+?)<!--spoiler_text-->#is", '[spoiler=\\1]', $txt );
+		
 		$txt = str_replace( "<!--spoiler_text_end--></div><!--/dle_spoiler-->", '[/spoiler]', $txt );
 		$txt = str_replace( "<!--dle_list--><ul><li>", "[list]\n[*]", $txt );
 		$txt = str_replace( "</li></ul><!--dle_list_end-->", '[/list]', $txt );

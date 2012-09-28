@@ -4,7 +4,7 @@
 
 $chat_cfg = array (
 
-'sum_msg' => "10",
+'sum_msg' => "20",
 
 'max_text' => "300",
 
@@ -26,7 +26,7 @@ $chat_cfg = array (
 
 'allow_guest' => "no",
 
-'sum_msg_history' => "25",
+'sum_msg_history' => "50",
 
 'no_access' => "spamer,flooder",
 

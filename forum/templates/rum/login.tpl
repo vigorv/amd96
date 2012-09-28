@@ -18,7 +18,7 @@
 			<label class="ul_field">
 				<input type="password" placeholder="пароль" name="password" id="ul_pass" />				
 			</label>	
-				<input class="btn" style="height: 20px; margin: 5px 0px 0px 10px;;" type="submit" name="autoriz" value="войти" title="войти" />
+				<input class="btn" style="height: 20px; margin: 5px 0px 0px 10px; line-height: 9px;" type="submit" name="autoriz" value="войти" title="войти" />
 			<label class="ul_che">
 				<input type="checkbox" name="remember" value="1" checked /> «апомнить
 			</label>

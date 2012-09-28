@@ -19,6 +19,10 @@ if (! defined ( 'DATALIFEENGINE' )) {
 }
 
 @include (ENGINE_DIR . '/data/config.php');
+
+////TOPS Conf
+@include (ENGINE_DIR . '/data/config_tops.php');
+
 /////LOGS
 @include (ENGINE_DIR . '/data/logs_jurnal_config.php');
 //////

@@ -135,7 +135,7 @@ $(function(){
 	<div class="hideWrap"> 
 		<a class="hideBtn" href="javascript://" title="Показать\скрыть афишу"></a> 
 		<div class="slider hideCont">
-			{include file="engine/modules/block.pro.2.php?&block_id=top0slider&template=top0slider&day=1000&cache_live=86400&post_id=31279,31487,31444,31415,20878"}
+			{include file="engine/modules/block.pro.2.php?&block_id=top0slider&template=top0slider&day=1000&cache_live=86400&post_id={top0slider}"}
 			<div style="clear: both;"></div>
 		</div>
 	</div> 
@@ -155,7 +155,7 @@ $(function(){
 			<div class="bottom-center-block">
 				<div class="new-reviews">
 					<div class="new-reviews-title-block"> Лучшие фильмы <a href="/movies" class="all-reviews">все фильмы</a> </div>
-					<div class="new-reviews-content-block">{include file="engine/modules/block.pro.2.php?&block_id=top1kino&template=top1kino&day=1000&cache_live=86400&post_id=31253,30360,30814,31385"}
+					<div class="new-reviews-content-block">{include file="engine/modules/block.pro.2.php?&block_id=top1kino&template=top1kino&day=1000&cache_live=86400&post_id={top1kino}"}
 						<div style="clear: both;"></div>
 					</div>
 				</div>
@@ -168,7 +168,7 @@ $(function(){
 			<div class="bottom-center-block">
 				<div class="new-reviews">
 					<div class="new-reviews-title-block salat"> Лучшие игры <a href="/games" class="all-reviews">все игры</a> </div>
-					<div class="new-edition-content-block"> {include file="engine/modules/block.pro.2.php?&block_id=top2games&template=top2games&day=1000&cache_live=86400&post_id=31437,31403,30938,31444"}
+					<div class="new-edition-content-block"> {include file="engine/modules/block.pro.2.php?&block_id=top2games&template=top2games&day=1000&cache_live=86400&post_id={top2games}"}
 						<div style="clear: both;"></div>
 					</div>
 				</div>

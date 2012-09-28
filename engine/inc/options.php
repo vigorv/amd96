@@ -34,6 +34,14 @@ if( $action == "options" or $action == '' ) {
 	$options['config'] = array (
 								
 								array (
+											'name' => "ТОПы", 
+											'url' => "$PHP_SELF?mod=tops", 
+											'descr' => "Редактирование ТОПов", 
+											'image' => "tops.png", 
+											'access' => "admin" 
+								), 
+								
+								array (
 											'name' => $lang['opt_all'], 
 											'url' => "$PHP_SELF?mod=options&action=syscon", 
 											'descr' => $lang['opt_allc'], 

@@ -68,6 +68,9 @@ $tpl->set ( '{topnews}', $tpl->result['topnews'] );
 $tpl->set ( '{login}', $tpl->result['login_panel'] );
 $tpl->set ( '{info}',  $tpl->result['info'] );
 $tpl->set ( '{speedbar}', $tpl->result['speedbar'] );
+$tpl->set ( '{top0slider}', $config_tops['top0slider'] );
+$tpl->set ( '{top1kino}', $config_tops['top1kino'] );
+$tpl->set ( '{top2games}', $config_tops['top2games'] );
 
 if ($config['allow_skin_change'] == "yes") $tpl->set ( '{changeskin}', ChangeSkin ( ROOT_DIR . '/templates', $config['skin'] ) );
 
