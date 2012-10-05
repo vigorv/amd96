@@ -5,11 +5,11 @@
 	<div class="s-block-content" style="min-height: 0px;">	
 	<table class="user-info-table">
 		<tr>
-			<td width="120">
+			<td width="120" valign="top">
 				<img src="{foto}" border="0" />
 			</td>
 			<td>
-				<br /><br />Пользователь: <small>{usertitle}</small>
+				Пользователь: <small>{usertitle}</small>
 				<br /><br />Полное имя: <small>{fullname}</small>
 				<br /><br />Дата регистрации: <small>{registration}</small>
 				<br /><br />Последнее посещение: <small>{lastdate}</small>
@@ -30,47 +30,43 @@
 	</table>
 	[not-logged]
 	<div id="options" style="display:none;">
-	<div class="shot-title"><h1><i>Редактирование информации</i></h1></div>
+	<div class="shot-title"><h1>Редактирование информации</h1></div>
 	<table class="user-info-table">
 		<tr>
 			<td width="120" height="25">Ваш E-Mail:</td>
-			<td><input type="text" name="email" value="{editmail}" /></td>
-		</tr>
-		<tr>
-			<td>&nbsp;</td>
-			<td>{hidemail}</td>
+			<td><input type="text" name="email" value="{editmail}" style="width: 100%;" /><br />{hidemail}</td>
 		</tr>
 		<tr>
 			<td height="25">Ваше Имя:</td>
-			<td><input type="text" name="fullname" value="{fullname}" /></td>
+			<td><input type="text" name="fullname" value="{fullname}" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25"><nobr>Место жительства:  </nobr></td>
-			<td><input type="text" name="land" value="{land}" /></td>
+			<td><input type="text" name="land" value="{land}" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25">Номер ICQ:</td>
-			<td><input type="text" name="icq" value="{icq}" /></td>
+			<td><input type="text" name="icq" value="{icq}" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25">Старый пароль:</td>
-			<td><input type="password" name="altpass" /></td>
+			<td><input type="password" name="altpass" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25">Новый пароль:</td>
-			<td><input type="password" name="password1" /></td>
+			<td><input type="password" name="password1" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25">Повторите:</td>
-			<td><input type="password" name="password2" /></td>
+			<td><input type="password" name="password2" style="width: 100%;" /></td>
 		</tr>
 		<tr>
 			<td height="25" valign="top">Блокировка по IP:</td>
-			<td><textarea name="allowed_ip" style="width:320px; height:70px" class="f_textarea" />{allowed-ip}</textarea><br />Ваш текущий IP: <strong>{ip}</strong><br /><br /><font style="color:red;font-size:10px;">* Внимание! Будьте бдительны при изменении данной настройки. Доступ к Вашему аккаунту будет доступен только с того IP-адреса или подсети, который Вы укажете. Вы можете указать несколько IP адресов, по одному адресу на каждую строчку.<br />Пример: 192.48.25.71 или 129.42.*.*</font></td>
+			<td><textarea name="allowed_ip" style="width:100%; height:50px" class="f_textarea" />{allowed-ip}</textarea><br />Ваш текущий IP: <strong>{ip}</strong><br /><br /><font style="color:red;font-size:10px;">* Внимание! Будьте бдительны при изменении данной настройки. Доступ к Вашему аккаунту будет доступен только с того IP-адреса или подсети, который Вы укажете. Вы можете указать несколько IP адресов, по одному адресу на каждую строчку.<br />Пример: 192.48.25.71 или 129.42.*.*</font></td>
 		</tr>
 		<tr>
 			<td height="25">Аватар:</td>
-			<td><input type="file" name="image" style="width:304px; height:18px" /></td>
+			<td><input type="file" name="image" style="width:100%; height:18px" /></td>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -78,11 +74,11 @@
 		</tr>
 		<tr>
 			<td height="25">О себе:</td>
-			<td><textarea name="info" style="width:320px; height:70px" />{editinfo}</textarea></td>
+			<td><textarea name="info" style="width:100%; height:70px" />{editinfo}</textarea></td>
 		</tr>
 		<tr>
 			<td height="25">Подпись:</td>
-			<td><textarea name="signature" style="width:320px; height:70px" />{editsignature}</textarea></td>
+			<td><textarea name="signature" style="width:100%; height:70px" />{editsignature}</textarea></td>
 		</tr>
 	{xfields}
 		<tr>

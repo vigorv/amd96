@@ -28,7 +28,7 @@ $chat_cfg = array (
 
 'sum_msg_history' => "50",
 
-'no_access' => "spamer,flooder",
+'no_access' => "spamer,flooder,cepega",
 
 'version' => "6.0",
 

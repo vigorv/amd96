@@ -282,7 +282,7 @@ $config = array (
 
 'rss_mtype' => "0",
 
-'rss_number' => "10",
+'rss_number' => "50",
 
 'rss_format' => "1",
 

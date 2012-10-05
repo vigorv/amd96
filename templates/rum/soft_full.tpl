@@ -72,33 +72,28 @@
 			</div>
 		</div>
 
-		<div style="clear: both;height: 10px;"></div>
+		<div style="clear: both;"></div>
 		[related-news]
 		<div class="rel-news">
 			<h4>
-			Похожие новости:
+			Также рекомендуем:
 			</h4>
 			<div style="clear: both;"></div>
 			{related-news}
 			<div style="clear: both;"></div>
 		</div>
 		[/related-news] </div>
-	<div class="koment-fon"> [not-comments]<strong>Комментариев пока еще нет.</strong><br />
-		<br />
+	<div class="koment-fon">
+		[not-comments]
+			<strong>Комментариев пока еще нет.</strong>
 		[/not-comments]
-		[comments]<strong>Комментарии к новости:</strong><br />
-		<br />
+		[comments]
+			<strong>Комментарии к новости:</strong>
 		[/comments]
+		{addcomments}<br /><br />
 		{comments}
-		<div class="hidden-comment-form"> {addcomments} </div>
 	</div>
 	<div class="full-fon-bottom">
-		<div class="hidden-comment">
-			<h3>Оставить комментарий!</h3>
-		</div>
-		<div class="right-info">
-			<div class="reit"> [rating]{rating}[/rating] </div>
-		</div>
 	</div>
 </div>
 {clk_script}
