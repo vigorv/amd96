@@ -34,9 +34,8 @@
     $infoSQL = $db->query("SELECT id  FROM `rm_post` WHERE `category` in (82, 14, 91, 90, 88, 87, 86, 62, 85, 84, 83, 61, 25, 24, 22, 21, 20, 19, 77, 18, 17, 16, 15, 13, 11, 23, 6)");
     $result = array();
     $ids = array();
-    $info = $db->get_array($infoSQL);
-    foreach ($info as $data) {
-           $ids[] = $data['id'];
+    while ($info= $db->get_row($infoSQL)){
+           $ids[] = $info['id'];
     }
     $result['ids']=implode(',',$ids);
     print serialize($result);
