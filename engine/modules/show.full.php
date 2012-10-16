@@ -137,6 +137,12 @@ if( $row['id'] and $perm ) {
         $row['full_story'] = $row['short_story'];
     }
 
+
+///lolQuotes
+    $row['full_story'] = str_replace( "\\\"", "&#34;", $row['full_story'] );
+#    $row['full_story'] = str_replace( "\\\\\\\"", "&#34;", $row['full_story'] );
+//End lolQuotes
+
     if( ! $news_page ) {
         $news_page = 1;
     }
@@ -337,7 +343,13 @@ if( $row['id'] and $perm ) {
 
     $metatags['title'] = stripslashes( $row['title'] );
     $metatags['title2'] = stripslashes( $row['title2'] );
-    $comments_num = $row['comm_num'];
+
+    #######ZONES^
+    if ($zone)
+	$comments_num = $row['comm_num'];
+    else
+        $comments_num = $row['comm_num'] = 0;
+    ################   
 
     $news_find = array(
         '{comments-num}' => $comments_num,

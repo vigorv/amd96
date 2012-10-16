@@ -11,7 +11,7 @@
 			[admin-link]<a href="{admin-link}" class="admin-link" target="_blank">Админцентр</a>[/admin-link]
 			<!--<a href="{addnews-link}" class="add-link">Опубликовать</a>-->
 			<a href="{profile-link}" class="profile-link">Профиль</a>
-			<a href="{pm-link}" class="pm-link">Сообщения ({new-pm} | {all-pm})</a>								 
+			<a href="{pm-link}" class="pm-link">Сообщения ({new-pm} | {all-pm})</a>		
 			<a href="{logout-link}" class="lu-link">Выход</a>
 			<div style="clear: both;"></div>
 		</div>

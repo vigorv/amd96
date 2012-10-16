@@ -10,7 +10,7 @@ $chat_cfg = array (
 
 'format_date' => "j F Y",
 
-'refresh' => "15",
+'refresh' => "10",
 
 'stop_flood' => "30",
 

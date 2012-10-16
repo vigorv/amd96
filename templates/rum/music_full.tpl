@@ -1,3 +1,4 @@
+{poll}
 <div class="full-news">
 	<div class="full-news-top">
 	[group=1,2,3]

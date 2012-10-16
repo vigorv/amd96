@@ -1,3 +1,4 @@
+{poll}
 <div class="full-news">
 	<div class="full-news-top"> [group=1,2,3]
 		<div class="full-edit-icon"> [edit]<img src="{THEME}/images/edit.png" width="16" alt="" border="0" />[/edit] </div>

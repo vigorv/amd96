@@ -1,3 +1,4 @@
+{poll}
 <div class="main-news">
 <div class="main-news-all">
     [edit]
