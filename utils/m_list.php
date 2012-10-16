@@ -38,7 +38,7 @@
            $ids[] = $info['id'];
     }
     $result['ids']=implode(',',$ids);
-    print serialize($result);
+    echo serialize($result);
     $db->free($infoSQL);
 
 
