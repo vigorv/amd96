@@ -102,6 +102,21 @@ if( $_POST['action'] == "doadd" ) {
 	if( $banner_tag == "" or $banner_descr == "" ) msg( "error", $lang['addnews_error'], $lang['addnews_erstory'], "javascript:history.go(-1)" );
 	
 	$db->query( "INSERT INTO " . PREFIX . "_banners (banner_tag, descr, code, approve, short_place, bstick, main, category, grouplevel, start, end, fpage) values ('$banner_tag', '$banner_descr', '$banner_code', '$approve', '$short_place', '$bstick', '$main', '$category', '$grouplevel', '$start_date', '$end_date', '$fpage')" );
+///LOGS
+if ($lj_conf['logs_banners'] == 1)
+{
+	$ban_log = $db->super_query("SELECT * FROM " . PREFIX . "_banners WHERE banner_tag='$banner_tag' AND descr='$banner_descr'");
+	$title_ban = htmlspecialchars( stripslashes( $ban_log['descr'] ) );
+	$id_ban = $ban_log['id'];
+	$body_ban = $db->safesql( trim(  $ban_log['code'] ) );
+
+	$description = "<font color=green>Добавлен</font> рекламный блок <b>".$title_ban."</b>";
+	$description .= "<br>- Название баннера: ".$ban_log['banner_tag'];
+	$description .= "<br>- Содержание блока:<br>".$body_ban;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_banners_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_banner` = '{$id_ban}', `title` = '{$title_ban}', `description` = '{$description}'");
+}
+////LOGS	
 	@unlink( ENGINE_DIR . '/cache/system/banners.php' );
 
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '4', '{$banner_tag}')" );
@@ -176,7 +191,91 @@ if( $_POST['action'] == "doedit" ) {
 	} else $end_date = "";
 	
 	if( $banner_tag == "" or $banner_descr == "" ) msg( "error", $lang['addnews_error'], $lang['addnews_erstory'], "javascript:history.go(-1)" );
-	
+///LOGS
+if ($lj_conf['logs_banners'] == 1)
+{
+	$ban_log = $db->super_query("SELECT * FROM " . PREFIX . "_banners WHERE id='$id'");
+	$title_ban = htmlspecialchars( stripslashes( $ban_log['descr'] ) );
+	$ban_log['code'] = $db->safesql( trim(  $ban_log['code'] ) );
+	$description = "<font color=orange>Изменён</font> рекламный блок <b>".$title_ban."</b>";
+
+	if ($title_ban != $banner_descr)
+		$description .= "<br>- Описание баннера: ".$title_ban." -> ".$banner_descr;
+
+	if ($banner_tag != $ban_log['banner_tag'])
+		$description .= "<br>- Название баннера: ".$ban_log['banner_tag']." -> ".$banner_tag;
+	if ($ban_log['approve'] == 0 AND $approve == 1)
+		$description .= "<br>- Статус баннера: Включен";
+	elseif ($ban_log['approve'] == 1 AND $approve == 0)
+		$description .= "<br>- Статус баннера: Отключен";
+	if ($ban_log['main'] == 0 AND $main == 1)
+		$description .= "<br>- Вывод баннера: Только на главной";
+	elseif ($ban_log['main'] == 1 AND $main == 0)
+		$description .= "<br>- Вывод баннера: На всех страницах";
+
+	if ($ban_log['bstick'] == 0 AND $bstick == 1)
+		$description .= "<br>- Закрепления положения: Включено";
+	elseif ($ban_log['bstick'] == 1 AND $bstick == 0)
+		$description .= "<br>- Закрепления положения: Отключено";
+	if ($short_place == 0)
+		$short_place_log = "Отключен";
+	elseif ($short_place == 1)
+		$short_place_log = "Верх";
+	elseif ($short_place == 2)
+		$short_place_log = "Центр";
+	elseif ($short_place == 3)
+		$short_place_log = "Низ";
+	elseif ($short_place == 4)
+		$short_place_log = "Верх и низ";
+	elseif ($short_place == 5)
+		$short_place_log = "Центр и низ";
+	elseif ($short_place == 6)
+		$short_place_log = "Центр и верх";
+	elseif ($short_place == 7)
+		$short_place_log = "Центр, верх и верх";
+
+	if ($ban_log['short_place'] == 0)
+		$short_place_ban_log = "Отключен";
+	elseif ($ban_log['short_place'] == 1)
+		$short_place_ban_log = "Верх";
+	elseif ($ban_log['short_place'] == 2)
+		$short_place_ban_log = "Центр";
+	elseif ($ban_log['short_place'] == 3)
+		$short_place_ban_log = "Низ";
+	elseif ($ban_log['short_place'] == 4)
+		$short_place_ban_log = "Верх и низ";
+	elseif ($ban_log['short_place'] == 5)
+		$short_place_ban_log = "Центр и низ";
+	elseif ($ban_log['short_place'] == 6)
+		$short_place_ban_log = "Центр и верх";
+	elseif ($ban_log['short_place'] == 7)
+		$short_place_ban_log = "Центр, верх и верх";
+
+	if ($ban_log['short_place'] == 0 AND $short_place != 0)
+		$description .= "<br>- Расположение в коротких новостях: Включено - ".$short_place_log;
+	elseif ($ban_log['short_place'] != 0 AND $short_place != 0 AND $short_place != $ban_log['short_place'])
+		$description .= "<br>- Расположение в коротких новостях: ".$short_place_ban_log." -> ".$short_place_log;
+	elseif ($ban_log['short_place'] != 0 AND $short_place == 0)
+		$description .= "<br>- Расположение в коротких новостях: Отключено";
+	if ($ban_log['grouplevel'] == 0 AND $grouplevel != 0)
+		$description .= "<br>- Просмотр для групп ID: ".$grouplevel;
+	elseif ($ban_log['grouplevel'] != 0 AND $grouplevel != 0 AND $grouplevel != $ban_log['grouplevel'])
+		$description .= "<br>- Просмотр для групп ID: ".$ban_log['grouplevel']." -> ".$grouplevel;
+	elseif ($ban_log['grouplevel'] != 0 AND $grouplevel == 0)
+		$description .= "<br>- Просмотр для групп ID: Все";
+
+	if ($ban_log['code'] == "" AND $banner_code != "")
+		$description .= "<br>- Содержание блока добавлено:<br>".$banner_code;
+	elseif ($ban_log['code'] != "" AND $banner_code != "" AND $banner_code != $ban_log['code'])
+		$description .= "<br>- Содержание блока изменено:<br><b>Было:</b>".$ban_log['code']."<br><b>Стало:</b>".$banner_code;
+	elseif ($ban_log['code'] != "" AND $banner_code == "")
+		$description .= "<br>- Содержание блока удалено:<br>".$ban_log['code'];
+
+	$id_ban = $id;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_banners_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_banner` = '{$id_ban}', `title` = '{$title_ban}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_banners SET banner_tag='$banner_tag', descr='$banner_descr', code='$banner_code', approve='$approve', short_place='$short_place', bstick='$bstick', main='$main', category='$category', grouplevel='$grouplevel', start='$start_date', end='$end_date', fpage='$fpage' WHERE id='$id'" );
 	@unlink( ENGINE_DIR . '/cache/system/banners.php' );
 	clear_cache();
@@ -194,7 +293,17 @@ if( $_GET['action'] == "off" ) {
 	}
 
 	if (!$id) msg( "error", "ID not valid", "ID not valid" );
-	
+///LOGS
+if ($lj_conf['logs_banners'] == 1)
+{
+	$ban_log = $db->super_query("SELECT * FROM " . PREFIX . "_banners WHERE id='$id'");
+	$title_ban = htmlspecialchars( stripslashes( $ban_log['descr'] ) );
+	$body_ban = $db->safesql( trim(  $ban_log['code'] ) );
+	$description = "<font color=gray>Приостановлен показ</font> рекламного блока <b>".$title_ban."</b>";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_banners_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_banner` = '{$id}', `title` = '{$title_ban}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_banners set approve='0' WHERE id='$id'" );
 	@unlink( ENGINE_DIR . '/cache/system/banners.php' );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '6', '{$id}')" );
@@ -209,7 +318,17 @@ if( $_GET['action'] == "on" ) {
 	
 	}
 	if (!$id) msg( "error", "ID not valid", "ID not valid" );
-	
+///LOGS
+if ($lj_conf['logs_banners'] == 1)
+{
+	$ban_log = $db->super_query("SELECT * FROM " . PREFIX . "_banners WHERE id='$id'");
+	$title_ban = htmlspecialchars( stripslashes( $ban_log['descr'] ) );
+	$body_ban = $db->safesql( trim(  $ban_log['code'] ) );
+	$description = "<font color=black>Включён показ</font> рекламного блока <b>".$title_ban."</b>";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_banners_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_banner` = '{$id}', `title` = '{$title_ban}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_banners set approve='1' WHERE id='$id'" );
 	@unlink( ENGINE_DIR . '/cache/system/banners.php' );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '7', '{$id}')" );
@@ -225,7 +344,19 @@ if( $_GET['action'] == "delete" ) {
 	
 	}
 	if (!$id) msg( "error", "ID not valid", "ID not valid" );
-	
+///LOGS
+if ($lj_conf['logs_banners'] == 1)
+{
+	$ban_log = $db->super_query("SELECT * FROM " . PREFIX . "_banners WHERE id='$id'");
+	$title_ban = htmlspecialchars( stripslashes( $ban_log['descr'] ) );
+	$body_ban = $db->safesql( trim(  $ban_log['code'] ) );
+	$description = "<font color=red>Удалён</font> рекламный блок <b>".$title_ban."</b>";
+	$description .= "<br>- Название баннера: ".$ban_log['banner_tag'];
+	$description .= "<br>- Содержание блока:<br>".$body_ban;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_banners_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_banner` = '{$id}', `title` = '{$title_ban}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "DELETE FROM " . PREFIX . "_banners WHERE id='$id'" );
 	@unlink( ENGINE_DIR . '/cache/system/banners.php' );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '8', '{$id}')" );

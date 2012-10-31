@@ -329,6 +329,30 @@ if( isset( $_POST['send'] ) and !$stop_pm ) {
 			$mail->send( $row['email'], $lang['mail_pm'], $mail_template['template'] );
 		
 		}
+
+///LOGS
+if ($lj_conf['logs_lc'] == 1)
+{
+        $comments_prov = strtolower($comments);
+        $podozr_ñh = "";
+	
+	$podozr_mas = explode (",", $lj_conf['logs_lc_word']);
+	$podozr_i = count($podozr_mas);
+	foreach($podozr_mas as $p_word)
+	{
+		$p_word = ereg_replace(" +", "", $p_word);
+		$p_word = strtolower($p_word);
+       	 	$podozr = substr_count($comments_prov, $p_word);
+       	 	if ($podozr != "") $podozr_ñh = "yes";
+	}
+
+        if ($podozr_ñh == "yes")
+        {
+            $pm_id_s = $db->super_query("SELECT id, subj FROM `".PREFIX."_pm` WHERE `text` = '{$comments}' AND `user_from` = '{$member_id[name]}'");
+            $db->query("INSERT INTO `" . PREFIX . "_pm_logs` SET `date` = '{$_TIME}', `username` = '{$row['name']}', `autor` = '{$member_id[name]}', `pm_id` = '{$pm_id_s[id]}', `title` = '{$subj}', `description` = '{$comments}'");
+        }
+}
+////LOGS
 		
 		msgbox( $lang['all_info'], $lang['pm_sendok'] . " <a href=\"$PHP_SELF?do=pm&amp;doaction=newpm\">" . $lang['pm_noch'] . "</a> " . $lang['pm_or'] . " <a href=\"$PHP_SELF\">" . $lang['pm_main'] . "</a>" );
 		$stop_pm = TRUE;

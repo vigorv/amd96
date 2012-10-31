@@ -339,6 +339,7 @@ unset($options_dop[$sub_options][$i]);
 }
 }
 $subs = 0;
+/*
 foreach($options_dop as $sub_options)
 {
 if (!count($sub_options)) continue;
@@ -384,6 +385,7 @@ echo "</tr></table>
 </table>
 </div>";
 }
+*/
 $db->query( "SHOW TABLE STATUS FROM `".DBNAME ."`");
 $mysql_logs = 0;
 while ( $r = $db->get_row() )
@@ -517,7 +519,6 @@ $status_logs['logs_lostpass'] = "<font color=red>Отключен</font>";
 function show_stats() {
 global $stats,$status_logs;
 echo "<table width=\"100%\">
-<tr><td align=left width=400 style=\"padding:2px;\">Версия модуля:</td><td align=left>5.0 (Платная)</td><td align=center>&nbsp;</td></tr>
 <tr><td background=\"engine/skins/images/mline.gif\" height=1 colspan=3></td></tr>
 <tr><td align=left width=400 style=\"padding:2px;\">Общий размер базы логов:</td><td align=left>{$stats['mysql_logs']}</td><td align=center>&nbsp;</td></tr>
 <tr><td background=\"engine/skins/images/mline.gif\" height=1 colspan=3></td></tr>

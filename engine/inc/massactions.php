@@ -155,7 +155,43 @@ if( $_POST['doaction'] == "mass_update" and $field ) {
 		if (in_array($field, array("news_read", "allow_rate", "rating", "vote_num", "disable_index" ) )) {
 			$db->query( "UPDATE " . PREFIX . "_post_extras SET {$field}='{$value}' WHERE news_id='{$id}'" );
 		} else	$db->query( "UPDATE " . PREFIX . "_post SET {$field}='{$value}' WHERE id='{$id}'" );
-		
+///LOGS
+if ($lj_conf['logs_news'])
+{
+	$log_bd = $db->super_query( "SELECT * FROM " . PREFIX . "_post where id = '{$id}'" );
+	$description = "Новость <b>".$db->safesql($log_bd['title'])."</b> была отредактирована.";
+
+if ($action == "mass_approve")
+	$description .= "<br>- Изменено: новость <font color=black>опубликовали</font>.";
+elseif ($action == "mass_not_approve")
+	$description .= "<br>- Изменено: новость <font color=gray>скрыли</font>.";
+elseif ($action == "mass_date")
+	$description .= "<br>- Изменено: <font color=orange>новая дата</font> публикации.";
+elseif ($action == "mass_fixed")
+	$description .= "<br>- Изменено: <font color=green>зафикирована</font> новость.";
+elseif ($action == "mass_not_fixed")
+	$description .= "<br>- Изменено: <font color=black>снята фиксация</font> новости.";
+elseif ($action == "mass_comments")
+	$description .= "<br>- Изменено: <font color=green>разрешены</font> комментарии.";
+elseif ($action == "mass_not_comments")
+	$description .= "<br>- Изменено: <font color=red>запрещены</font> комментарии.";
+elseif ($action == "mass_rating")
+	$description .= "<br>- Изменено: <font color=green>разрешен</font> рейтинг.";
+elseif ($action == "mass_not_rating")
+	$description .= "<br>- Изменено: <font color=red>запрещены</font> рейтинг.";
+elseif ($action == "mass_main")
+	$description .= "<br>- Изменено: <font color=green>разрешена</font> публикация на главной.";
+elseif ($action == "mass_not_main")
+	$description .= "<br>- Изменено: <font color=orange>запрещена</font> публикация на главной.";
+elseif ($action == "mass_clear_count")
+	$description .= "<br>- Изменено: <font color=red>очищено</font> количество просмотров.";
+elseif ($action == "mass_clear_rating")
+	$description .= "<br>- Изменено: <font color=red>очищен</font> рейтинг.";
+
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '{$id}', `autor` = '{$log_bd[autor]}'");
+}
+////LOGS		
 		if( $field == "approve" ) {
 			
 			if( $value ) {
@@ -341,6 +377,15 @@ elseif( $action == "do_mass_delete" ) {
 	foreach ( $selected_news as $id ) {
 		
 		$id = intval( $id );
+///LOGS
+if ($lj_conf['logs_news'])
+{
+	$log_bd = $db->super_query( "SELECT * FROM " . PREFIX . "_post where id = '$id'" );
+	$description = "Новость <b>".$db->safesql($log_bd['title'])."</b> была <font color=red>удалена</font>.";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '{$id}', `autor` = '{$log_bd[autor]}'");
+}
+////LOGS		
 		$row = $db->super_query( "SELECT title, autor FROM " . PREFIX . "_post where id = '$id'" );
 
 		$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '26', '".$db->safesql($row['title'])."')" );
@@ -645,7 +690,16 @@ elseif( $action == "do_mass_move_to_cat" ) {
 	foreach ( $selected_news as $id ) {
 		$moved_articles ++;
 		$id = intval( $id );
-		
+///LOGS
+if ($lj_conf['logs_news'])
+{
+	$log_bd = $db->super_query( "SELECT * FROM " . PREFIX . "_post where id = '$id'" );
+	$description = "Новость <b>".$db->safesql($log_bd['title'])."</b> была отредактирована.";
+	$description .= "<br>- Изменено: <font color=orange>смена категории</font>: было - ".$log_bd['category'].", стало - ".$move_to_category;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '{$id}', `autor` = '{$log_bd[autor]}'");
+}
+////LOGS		
 		$db->query( "UPDATE " . PREFIX . "_post set category='$move_to_category' WHERE id='$id'" );
 	}
 
@@ -713,7 +767,19 @@ elseif( $action == "do_mass_edit_symbol" ) {
 	foreach ( $selected_news as $id ) {
 		$edit_articles ++;
 		$id = intval( $id );
-		
+///LOGS
+if ($lj_conf['logs_news'])
+{
+	$log_bd = $db->super_query( "SELECT * FROM " . PREFIX . "_post where id = '$id'" );
+	$description = "Новость <b>".$db->safesql($log_bd['title'])."</b> была отредактирована.";
+	if ($log_bd['symbol'])
+		$description .= "<br>- Изменено: <font color=orange>изменён</font> символьный код: было - ".$log_bd['symbol'].", стало - ".$catalog_url;
+	else
+		$description .= "<br>- Изменено: <font color=green>добавлен</font> символьный код: ".$catalog_url;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '{$id}', `autor` = '{$log_bd[autor]}'");
+}
+////LOGS		
 		$db->query( "UPDATE " . PREFIX . "_post SET symbol='$catalog_url' WHERE id='$id'" );
 	}
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '46', '')" );

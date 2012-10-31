@@ -37,8 +37,14 @@ if( $action == "dboption" and count( $_REQUEST['ta'] ) ) {
 	$tables = substr( $tables, 1 );
 	if( $_REQUEST['whattodo'] == "optimize" ) {
 		$query = "OPTIMIZE TABLE  ";
+///LOGS
+$log_bd = "<br>- Произведена <font color=green>оптимизация</font>";
+////LOGS		
 	} else {
 		$query = "REPAIR TABLE ";
+///LOGS
+$log_bd = "<br>- Произведен <font color=orange>ремонт</font>";
+////LOGS		
 	}
 	$query .= $tables;
 
@@ -46,8 +52,26 @@ if( $action == "dboption" and count( $_REQUEST['ta'] ) ) {
 
 	
 	if( $db->query( $query ) ) {
+///LOGS
+if ($lj_conf['logs_aol'] == 1)
+{
+	$log_bd .= " - <font color=green>Удачно</font>";
+	$description = "Выполена следующие действия с базой данных:".$log_bd;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_optim_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `user_id` = '{$member_id[user_id]}', `description` = '{$description}'");
+}
+////LOGS	
 		msg( "info", $lang['db_ok'], $lang['db_ok_1'] . "<br /><br /><a href=$PHP_SELF?mod=dboption>" . $lang['db_prev'] . "</a>" );
 	} else {
+///LOGS
+if ($lj_conf['logs_aol'] == 1)
+{
+	$log_bd .= " - <font color=red>Ошибка</font>";
+	$description = "Выполена следующие действия с базой данных:".$log_bd;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_optim_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `user_id` = '{$member_id[user_id]}', `description` = '{$description}'");
+}
+////LOGS	
 		msg( "error", $lang['db_err'], $lang['db_err_1'] . "<br /><br /><a href=$PHP_SELF?mod=dboption>" . $lang['db_prev'] . "</a>" );
 	}
 

@@ -27,7 +27,10 @@ define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -12 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
 
 include ENGINE_DIR.'/data/config.php';
-
+///LOGS
+include (ENGINE_DIR . '/data/logs_jurnal_config.php');
+$description = "";
+////LOGS
 if ($config['http_home_url'] == "") {
 
 	$config['http_home_url'] = explode("engine/ajax/clean.php", $_SERVER['PHP_SELF']);
@@ -76,6 +79,9 @@ if ($_REQUEST['step'] == 10) {
 	$db->query("TRUNCATE TABLE " . USERPREFIX . "_lostdb");
 	$db->query("TRUNCATE TABLE " . PREFIX . "_flood");
 	$db->query("TRUNCATE TABLE " . PREFIX . "_poll_log");
+///LOGS
+$description = "Выполена <font color=orange>очистка</font> логов скрипта";
+////LOGS	
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '18', '')" );
 
 
@@ -85,6 +91,9 @@ if ($_REQUEST['step'] == 8) {
 	$_REQUEST['step'] = 9;
 	$db->query("TRUNCATE TABLE " . USERPREFIX . "_pm");
 	$db->query("UPDATE " . USERPREFIX . "_users set pm_all='0', pm_unread='0'");
+///LOGS
+$description = "<font color=red>Удалены</font> все персональные сообщения (ЛС)";
+////LOGS	
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '17', '')" );
 
 }
@@ -107,11 +116,15 @@ if ($_REQUEST['step'] == 4) {
 		$_REQUEST['date'] = $db->safesql( $_REQUEST['date'] );
 
 		$sql = $db->query("SELECT COUNT(*) as count, post_id FROM " . PREFIX . "_comments WHERE date < '{$_REQUEST['date']}' GROUP BY post_id");
-
+///LOGS
+$log_comm_id = "";
+////LOGS
 		while($row = $db->get_row($sql)){
 
 		$db->query("UPDATE " . PREFIX . "_post SET comm_num=comm_num-{$row['count']} WHERE id='{$row['post_id']}'");
-
+///LOGS
+$log_comm_id = implode(",", $row['post_id']);
+////LOGS
 		}
 
 		$db->free ($sql);
@@ -121,6 +134,9 @@ if ($_REQUEST['step'] == 4) {
 		$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '16', '{$_REQUEST['date']}')" );
 
 	   clear_cache();
+///LOGS
+$description = "<font color=red>Удалены</font> следующие комментарии: ".$log_comm_id."<br>Дата очистки: ".$_REQUEST['date'];
+////LOGS	   
 	}
 }
 
@@ -133,7 +149,9 @@ if ($_REQUEST['step'] == 2) {
 		$_REQUEST['date'] = $db->safesql( $_REQUEST['date'] );
 
 		$sql = $db->query("SELECT id FROM " . PREFIX . "_post WHERE date < '{$_REQUEST['date']}'");
-
+///LOGS
+$log_news_id = "";
+////LOGS
 		while($row = $db->get_row($sql)){
 
 			$db->query("DELETE FROM " . PREFIX . "_comments WHERE post_id='{$row['id']}'");
@@ -142,6 +160,9 @@ if ($_REQUEST['step'] == 2) {
 			$db->query("DELETE FROM " . PREFIX . "_poll_log WHERE news_id = '{$row['id']}'");
 			$db->query("DELETE FROM " . PREFIX . "_tags WHERE news_id = '{$row['id']}'" );
 			$db->query("DELETE FROM " . PREFIX . "_post_log WHERE news_id = '{$row['id']}'" );
+///LOGS
+$log_news_id = implode(",", $row['id']);
+////LOGS			
 			$db->query("DELETE FROM " . PREFIX . "_post_extras WHERE news_id = '{$row['id']}'" );
 
 			$getfiles = $db->query("SELECT onserver FROM " . PREFIX . "_files WHERE news_id = '{$row['id']}'");
@@ -192,6 +213,9 @@ if ($_REQUEST['step'] == 2) {
 
 	   $db->free ($sql);
 	   clear_cache();
+///LOGS
+$description = "<font color=red>Удалены</font> следующие новости, а так же коментарии к ним: ".$log_news_id."<br>Дата очистки: ".$_REQUEST['date'];
+////LOGS	   
 	}
 }
 
@@ -213,7 +237,9 @@ $db->query("SHOW TABLE STATUS FROM `".DBNAME."`");
 $lang['clean_finish'] = str_replace ('{db-alt}', '<font color="red">'.formatsize($_REQUEST['size']).'</font>', $lang['clean_finish']);
 $lang['clean_finish'] = str_replace ('{db-new}', '<font color="red">'.formatsize($mysql_size).'</font>', $lang['clean_finish']);
 $lang['clean_finish'] = str_replace ('{db-compare}', '<font color="red">'.formatsize($_REQUEST['size'] - $mysql_size).'</font>', $lang['clean_finish']);
-
+///LOGS
+$description = "<br>В результате оптимизации было достигнут следующие результаты: до - ".formatsize($_REQUEST['size']).", после - ".formatsize($mysql_size).". Итого было удалено данных на ".formatsize($_REQUEST['size'] - $mysql_size);
+////LOGS
 $buffer = <<<HTML
 <br />{$lang['clean_finish']}
 <br /><br />
@@ -284,6 +310,11 @@ $buffer = <<<HTML
 		<input id = "next_button" onclick="start_clean('2', '{$_REQUEST['size']}'); return false;" class="btn btn-success" style="width:100px;" type="button" value="{$lang['edit_next']}">&nbsp;
 		<input id = "skip_button" onclick="start_clean('3', '{$_REQUEST['size']}'); return false;" class="btn btn-warning" style="width:150px;" type="button" value="{$lang['clean_skip']}">
 HTML;
+}
+if ($lj_conf['logs_aol'] == 1 AND $description)
+{
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_optim_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `user_id` = '{$member_id[user_id]}', `description` = '{$description}'");
 }
 
 @header("Content-type: text/html; charset=".$config['charset']);

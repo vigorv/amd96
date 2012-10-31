@@ -1685,13 +1685,44 @@ elseif( $action == "doeditnews" ) {
 
 			if( $ifdelete != "yes" ) {
 				$okchanges = TRUE;
-
+///LOGS
+$post_log = $db->super_query( "SELECT * FROM " . PREFIX . "_post WHERE id = '$item_db[0]'" );
+$description = "Новость <b>".$title."</b> была отредактирована.";
+////LOGS
 				// Обработка даты и времени
 				$added_time = time() + ($config['date_adjust'] * 60);
+///LOGS
+if ($title != $post_log['title'])
+	$description .= "<br>- Изменено: <font color=orange>отредактирован</font> заголовок новости: было - ".$post_log['title'].", стало - ".$title;
+if ($full_story != $post_log['full_story'])
+	$description .= "<br>- Изменено: <font color=orange>отредактировано</font> полное описание.";
+if ($short_story != $post_log['short_story'])
+	$description .= "<br>- Изменено: <font color=orange>отредактировано</font> краткое описание.";
+if ($approve !=  $post_log['approve'] AND $approve == 0)
+	$description .= "<br>- Изменено: новость <font color=gray>скрыли</font>.";
+elseif ($approve !=  $post_log['approve'] AND $approve == 1)
+	$description .= "<br>- Изменено: новость <font color=black>опубликовали</font>.";
+if ($allow_comm == 1 AND $allow_comm != $post_log['allow_comm'])
+	$description .= "<br>- Изменено: <font color=green>разрешены</font> комментарии.";
+if ($allow_comm == 0 AND $allow_comm != $post_log['allow_comm'])
+	$description .= "<br>- Изменено: <font color=red>запрещены</font> комментарии.";
+if ($allow_main == 1 AND $allow_main != $post_log['allow_main'])
+	$description .= "<br>- Изменено: <font color=orange>запрещена</font> публикация на главной.";
+if ($allow_main == 0 AND $allow_main != $post_log['allow_main'])
+	$description .= "<br>- Изменено: <font color=green>разрешена</font> публикация на главной.";
+if ($news_fixed == 1 AND $news_fixed != $post_log['news_fixed'])
+	$description .= "<br>- Изменено: <font color=green>зафикирована</font> новость.";
+if ($news_fixed == 0 AND $news_fixed != $post_log['news_fixed'])
+	$description .= "<br>- Изменено: <font color=black>снята фиксация</font> новости.";
+if ($category_list != $post_log['category'])
+	$description .= "<br>- Изменено: <font color=orange>смена категории</font>: было - ".$post_log['category'].", стало - ".$category_list;
+////LOGS
 				$newdate = $_POST['newdate'];
 
 				if( $_POST['allow_date'] != "yes" ) {
-
+///LOGS
+$description .= "<br>- Изменено: <font color=orange>новая дата</font> публикации.";
+////LOGS
 					if( $_POST['allow_now'] == "yes" ) $thistime = date( "Y-m-d H:i:s", $added_time );
 					elseif( (($newsdate = strtotime( $newdate )) === - 1) OR !$newsdate ) {
 						msg( "error", $lang['cat_error'], $lang['addnews_erdate'], "javascript:history.go(-1)" );
@@ -1736,7 +1767,9 @@ elseif( $action == "doeditnews" ) {
 
 
 				if( $add_vote ) {
-
+///LOGS
+$description .= "<br>- Изменено: <font color=green>добавлено</font> голосование ".$vote_title;
+////LOGS
 					$count = $db->super_query( "SELECT COUNT(*) as count FROM " . PREFIX . "_poll WHERE news_id = '$item_db[0]'" );
 
 					if( $count['count'] ) $db->query( "UPDATE  " . PREFIX . "_poll set title='$vote_title', frage='$frage', body='$vote_body', multiple='$allow_m_vote' WHERE news_id = '$item_db[0]'" );
@@ -1744,6 +1777,10 @@ elseif( $action == "doeditnews" ) {
 
 				} else {
 					$db->query( "DELETE FROM " . PREFIX . "_poll WHERE news_id='$item_db[0]'" );
+///LOGS
+if ($post_log['votes'] == 1)
+$description .= "<br>- Изменено: <font color=red>удалено</font> голосование ".$vote_title;
+////LOGS					
 					$db->query( "DELETE FROM " . PREFIX . "_poll_log WHERE news_id='$item_db[0]'" );
 				}
 
@@ -1767,7 +1804,9 @@ elseif( $action == "doeditnews" ) {
 					$row = $db->super_query( "SELECT user_id  FROM " . USERPREFIX . "_users WHERE name = '{$_POST['new_author']}'" );
 
 					if( $row['user_id'] ) {
-
+///LOGS
+$description .= "<br>- Изменено: новый автор публикации ".$_POST['new_author'];
+////LOGS
 						$db->query( "UPDATE " . PREFIX . "_post SET autor='{$_POST['new_author']}' WHERE id='$item_db[0]'" );
 						$db->query( "UPDATE " . PREFIX . "_post_extras SET user_id='{$row['user_id']}' WHERE news_id='$item_db[0]'" );
 						$db->query( "UPDATE " . PREFIX . "_images SET author='{$_POST['new_author']}' WHERE news_id='$item_db[0]'" );
@@ -1819,7 +1858,9 @@ elseif( $action == "doeditnews" ) {
 				$db->query( "UPDATE " . USERPREFIX . "_users set news_num=news_num-1 where name='$item_db[1]'" );
 
 				$okdeleted = TRUE;
-
+///LOGS
+$description = "Новость <b>".$post_log['title']."</b> была <font color=red>удалена</font>.";
+////LOGS
 				$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '26', '{$item_db[4]}')" );
 
 
@@ -1861,6 +1902,13 @@ elseif( $action == "doeditnews" ) {
 			}
 		} else
 			$no_permission = TRUE;
+///LOGS
+if ($lj_conf['logs_news'])
+{
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '$item_db[0]', `autor` = '{$item_db[1]}'");
+}
+////LOGS			
 
 	}
 

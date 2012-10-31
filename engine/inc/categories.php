@@ -174,7 +174,15 @@ if( $action == "add" ) {
 	}
 	
 	$db->query( "INSERT INTO " . PREFIX . "_category (parentid, name, alt_name, icon, skin, descr, keywords, news_sort, news_msort, news_number, short_tpl, full_tpl, metatitle) values ('$category', '$cat_name', '$alt_cat_name', '$cat_icon', '$skin_name', '$description', '$keywords', '$news_sort', '$news_msort', '$news_number', '$short_tpl', '$full_tpl', '$meta_title')" );
-
+///LOGS
+if ($lj_conf['logs_category'] == 1)
+{
+	$cat_log = $db->super_query("SELECT * FROM " . PREFIX . "_category WHERE name='$cat_name' AND parentid='$category'");
+	$description = "<font color=green>Добавлена</font> новая категория: ".$cat_name." (ID: ".$cat_log[id].")";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_category_logs` SET `date` = '{$date}', `username`='{$member_id[name]}', `cat_id` = '{$cat_log[id]}', `description` = '{$description}'");
+}
+////LOGS
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '12', '{$cat_name}')" );
 
 	
@@ -222,7 +230,15 @@ elseif( $action == "remove" ) {
 				$category_list = $db->safesql( htmlspecialchars( strip_tags( stripslashes( implode( ',', $_REQUEST['new_category']))), ENT_QUOTES ) );
 				
 				$db->query( "UPDATE " . PREFIX . "_post set category='$category_list' WHERE category regexp '[[:<:]]($catid)[[:>:]]'" );
-				
+///LOGS
+if ($lj_conf['logs_category'] == 1)
+{
+	$cat_log = $db->super_query("SELECT * FROM " . PREFIX . "_category WHERE id='$catid'");
+	$description = "<font color=red>Удалена</font> категория: ".$cat_log['name']. "(ID: ".$catid.")";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_category_logs` SET `date` = '{$date}', `username`='{$member_id[name]}', `cat_id` = '{$catid}', `description` = '{$description}'");
+}
+////LOGS				
 				$db->query( "DELETE FROM " . PREFIX . "_category WHERE id='$catid'" );
 				
 				DeleteSubcategories( $catid );
@@ -441,7 +457,137 @@ elseif( $action == "doedit" ) {
 	if( in_array( $parentid, get_sub_cats( $catid ) ) ) {
 		msg( "error", $lang['cat_error'], $lang['cat_noparentid'], "$PHP_SELF?mod=categories" );
 	}
-	
+///LOGS
+if ($lj_conf['logs_category'] == 1)
+{
+	$cat_log = $db->super_query("SELECT * FROM " . PREFIX . "_category WHERE id='$catid'");
+	$description_log = "<font color=orange>Изменена</font> категория: ".$cat_name." (ID: ".$catid.")";
+
+	if ($cat_log['name'] != $cat_name)
+		$description_log .= "<br>- Изменено название: ".$cat_log['name']." -> ".$cat_name;
+
+	if ($cat_log['alt_name'] != $alt_cat_name)
+		$description_log .= "<br>- Изменено альтернативное имя: ".$cat_log['alt_name']." -> ".$alt_cat_name;
+
+	$cat_log_keywords = $db->safesql($cat_log['keywords']);
+
+	if ($cat_log_keywords != $keywords AND $cat_log_keywords != "" AND $keywords != "")
+		$description_log .= "<br>- Изменены ключевые слова: ".$cat_log_keywords." -> ".$keywords;
+	elseif ($keywords != "" AND $cat_log_keywords == "")
+		$description_log .= "<br>- Добавлены ключевые слова: ".$keywords;
+	elseif ($keywords == "" AND $cat_log_keywords != "")
+		$description_log .= "<br>- Удаленв ключевые слова: ".$cat_log_keywords;
+
+	$cat_log_descr = $db->safesql($cat_log['descr']);
+
+	if ($cat_log_descr != $description AND $cat_log_descr != "" AND $description != "")
+		$description_log .= "<br>- Изменено писание: ".$cat_log_descr." -> ".$description;
+	elseif ($description != "" AND $cat_log_descr == "")
+		$description_log .= "<br>- Добавлено описание: ".$description;
+	elseif ($description == "" AND $cat_log_descr != "")
+		$description_log .= "<br>- Удалено описание: ".$cat_log_descr;
+
+	$cat_log_meta_title = $db->safesql($cat_log['meta_title']);
+
+	if ($cat_log_meta_title != $meta_title AND $cat_log_meta_title != "" AND $meta_title != "")
+		$description_log .= "<br>- Изменен метатег заголовка: ".$cat_log_meta_title." -> ".$meta_title;
+	elseif ($meta_title != "" AND $cat_log_meta_title == "")
+		$description_log .= "<br>- Добавлен метатег заголовка: ".$meta_title;
+	elseif ($meta_title == "" AND $cat_log_meta_title != "")
+		$description_log .= "<br>- Удален метатег заголовка: ".$cat_log_meta_title;
+
+	if ($cat_log['parentid'] != $parentid)
+		$description_log .= "<br>- Изменена основная категория: ".$cat_log['parentid']." -> ".$parentid;
+
+	if ($cat_log['news_number'] != $news_number)
+		$description_log .= "<br>- Изменено кол-во новостей на страницу: ".$cat_log['news_number']." -> ".$news_number;
+
+	$cat_log_icon = $db->safesql($cat_log['icon']);
+
+	if ($cat_log_icon != $cat_icon AND $cat_log_icon != "" AND $cat_icon != "")
+		$description_log .= "<br>- Изменена иконка: ".$cat_log_icon." -> ".$cat_icon;
+	elseif ($cat_icon != "" AND $cat_log_icon == "")
+		$description_log .= "<br>- Добавлена иконка: ".$cat_icon;
+	elseif ($cat_icon == "" AND $cat_log_icon != "")
+		$description_log .= "<br>- Удалена иконка: ".$cat_log_icon;
+
+	$cat_log_skin = $db->safesql($cat_log['skin']);
+
+	if ($cat_log_skin != $skin_name AND $cat_log_skin != "" AND $skin_name != "")
+		$description_log .= "<br>- Изменен шаблон вывода: ".$cat_log_skin." -> ".$skin_name;
+	elseif ($skin_name != "" AND $cat_log_skin == "")
+		$description_log .= "<br>- Изменен шаблон вывода: ".$skin_name;
+	elseif ($skin_name == "" AND $cat_log_skin != "")
+		$description_log .= "<br>- Изменен шаблон вывода: Шаблон по умолчанию";
+
+	if ($news_sort == "date")
+		$news_sort_log = "По дате публикации";
+	elseif ($news_sort == "rating")
+		$news_sort_log = "По рейтингу";
+	elseif ($news_sort == "news_read")
+		$news_sort_log = "По просмотрам";
+	elseif ($news_sort == "title")
+		$news_sort_log = "По алфавиту";
+	elseif ($news_sort == "")
+		$news_sort_log = "Глобальные настройки";
+
+	if ($cat_log['news_sort'] == "date")
+		$news_sort_OLDlog = "По дате публикации";
+	elseif ($cat_log['news_sort'] == "rating")
+		$news_sort_OLDlog = "По рейтингу";
+	elseif ($cat_log['news_sort'] == "news_read")
+		$news_sort_OLDlog = "По просмотрам";
+	elseif ($cat_log['news_sort'] == "title")
+		$news_sort_OLDlog = "По алфавиту";
+	elseif ($cat_log['news_sort'] == "")
+		$news_sort_OLDlog = "Глобальные настройки";
+
+	if ($cat_log['news_sort'] != $news_sort AND $cat_log['news_sort'] != "" AND $news_sort != "")
+		$description_log .= "<br>- Изменен критерий сортировки: ".$news_sort_OLDlog." -> ".$news_sort_log;
+	elseif ($news_sort != "" AND $cat_log['news_sort'] == "")
+		$description_log .= "<br>- Изменен критерий сортировки: ".$news_sort_log;
+	elseif ($news_sort == "" AND $cat_log['news_sort'] != "")
+		$description_log .= "<br>- Изменен критерий сортировки: Глобальные настройки";
+
+	if ($news_msort == "DESC")
+		$news_msort_log = "По убыванию";
+	elseif ($news_msort == "ASC")
+		$news_msort_log = "По возрастанию";
+	elseif ($news_msort == "")
+		$news_msort_log = "Глобальные настройки";
+
+	if ($cat_log['news_msort'] == "DESC")
+		$news_msort_OLDlog = "По убыванию";
+	elseif ($cat_log['news_msort'] == "ASC")
+		$news_msort_OLDlog = "По возрастанию";
+	elseif ($cat_log['news_msort'] == "")
+		$news_msort_OLDlog = "Глобальные настройки";
+
+	if ($cat_log['news_msort'] != $news_msort AND $cat_log['news_msort'] != "" AND $news_msort != "")
+		$description_log .= "<br>- Изменен порядок сортировки: ".$news_msort_OLDlog." -> ".$news_msort_log;
+	elseif ($news_msort != "" AND $cat_log['news_msort'] == "")
+		$description_log .= "<br>- Изменен порядок сортировки: ".$news_msort_log;
+	elseif ($news_msort == "" AND $cat_log['news_msort'] != "")
+		$description_log .= "<br>- Изменен порядок сортировки: Глобальные настройки";
+
+	if ($cat_log['short_tpl'] != $short_tpl AND $cat_log['short_tpl'] != "" AND $short_tpl != "")
+		$description_log .= "<br>- Изменен шаблон короткой новости: ".$cat_log['short_tpl']." -> ".$short_tpl;
+	elseif ($short_tpl != "" AND $cat_log['short_tpl'] == "")
+		$description_log .= "<br>- Добавлен шаблон короткой новости: ".$short_tpl;
+	elseif ($news_msort == "" AND $cat_log['short_tpl'] != "")
+		$description_log .= "<br>- Удалён шаблон короткой новости.";
+
+	if ($cat_log['full_tpl'] != $full_tpl AND $cat_log['full_tpl'] != "" AND $full_tpl != "")
+		$description_log .= "<br>- Изменен шаблон короткой новости: ".$cat_log['full_tpl']." -> ".$full_tpl;
+	elseif ($full_tpl != "" AND $cat_log['full_tpl'] == "")
+		$description_log .= "<br>- Добавлен шаблон короткой новости: ".$full_tpl;
+	elseif ($full_tpl == "" AND $cat_log['full_tpl'] != "")
+		$description_log .= "<br>- Удалён шаблон короткой новости.";
+
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_category_logs` SET `date` = '{$date}', `username`='{$member_id[name]}', `cat_id` = '{$cat_log[id]}', `description` = '{$description_log}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_category set parentid='$parentid', name='$cat_name', alt_name='$alt_cat_name', icon='$cat_icon', skin='$skin_name', descr='$description', keywords='$keywords', news_sort='$news_sort', news_msort='$news_msort', news_number='$news_number', short_tpl='$short_tpl', full_tpl='$full_tpl', metatitle='$meta_title' WHERE id='$catid'" );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '14', '{$cat_name}')" );
 	

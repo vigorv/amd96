@@ -1,4 +1,4 @@
-[not-static=chat]<div class="s-block">[/not-stati]
+[not-static=chat]<div class="s-block">[/not-static]
 	<h1>{description}</h1>
 	[not-static=chat]
 	<div class="news-item-content">

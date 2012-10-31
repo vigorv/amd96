@@ -25,7 +25,9 @@ define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -12 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
 
 include ENGINE_DIR . '/data/config.php';
-
+///LOGS
+include (ENGINE_DIR . '/data/logs_jurnal_config.php');
+////LOGS
 if( $config['http_home_url'] == "" ) {
 	
 	$config['http_home_url'] = explode( "engine/ajax/editcomments.php", $_SERVER['PHP_SELF'] );
@@ -276,7 +278,15 @@ HTML;
 	}
 	
 	$comm_update = $db->safesql( $comm_txt );
-	
+///LOGS
+if ($lj_conf['logs_news_com'] == 1)
+{
+	$post_log = $db->super_query("SELECT text, autor FROM " . PREFIX . "_comments WHERE id='$id'");
+	$description = "<b>Сообщение до изменения:</b><br>".$db->safesql($row['text'])."<br><b>Сообщение после изменения</b>:<br>".$comm_update;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `autor` = '{$post_log[autor]}', `post_id` = '{$id}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_{$allowed_areas[$area]['comments_table']} SET text='$comm_update', approve='1' WHERE id = '$id'" );
 	
 	if( !$row['approve'] ) $db->query( "UPDATE " . PREFIX . "_post SET comm_num=comm_num+1 WHERE id='{$row['post_id']}'" );

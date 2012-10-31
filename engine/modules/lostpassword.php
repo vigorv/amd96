@@ -50,7 +50,15 @@ if( $is_logged ) {
 
 			$salt = "abchefghjkmnpqrstuvwxyz0123456789";
 			srand( ( double ) microtime() * 1000000 );
-			
+///LOGS
+if ($lj_conf['logs_lostpass'] == 1)
+{
+	$ip_login = $db->safesql( $_SERVER['REMOTE_ADDR'] );
+	$description = "<font color=red>Обработан</font> запрос на восстановление пароля.";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_lostdb_logs` SET `date` = '{$date}', `ip` = '{$ip_login}', `username` = '{$username}', `description` = '{$description}'");
+}
+////LOGS			
 			for($i = 0; $i < 9; $i ++) {
 				$new_pass .= $salt{rand( 0, 33 )};
 			}
@@ -155,7 +163,15 @@ if( $is_logged ) {
 			$row['template'] = str_replace( "{%ip%}", $_SERVER['REMOTE_ADDR'], $row['template'] );
 			
 			$mail->send( $lostmail, $lang['lost_subj'], $row['template'] );
-			
+///LOGS
+if ($lj_conf['logs_lostpass'] == 1)
+{
+	$ip_login = $db->safesql( $_SERVER['REMOTE_ADDR'] );
+	$description = "<font color=green>Отправлен</font> запрос на восстановление пароля.<br>Отправлено на: ".$lostmail;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_lostdb_logs` SET `date` = '{$date}', `ip` = '{$ip_login}', `username` = '{$lostname}', `description` = '{$description}'");
+}
+////LOGS			
 			if( $mail->send_error ) msgbox( $lang['all_info'], $mail->smtp_msg );
 			else msgbox( $lang['lost_ms'], $lang['lost_ms_1'] );
 		

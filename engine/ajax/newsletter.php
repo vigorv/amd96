@@ -25,7 +25,9 @@ define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -12 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
 
 include ENGINE_DIR.'/data/config.php';
-
+///LOGS
+include (ENGINE_DIR . '/data/logs_jurnal_config.php');
+////LOGS
 if ($config['http_home_url'] == "") {
 
 	$config['http_home_url'] = explode("engine/ajax/newsletter.php", $_SERVER['PHP_SELF']);
@@ -92,7 +94,9 @@ $step = 0;
 
 $title = convert_unicode($_POST['title'], $config['charset']);
 $message = convert_unicode($_POST['message'], $config['charset']);
-
+///LOGS
+$message_log = convert_unicode($_POST['message'], $config['charset']);
+////LOGS
 $find = array ('/data:/i', '/about:/i', '/vbscript:/i', '/onclick/i', '/onload/i', '/onunload/i', '/onabort/i', '/onerror/i', '/onblur/i', '/onchange/i', '/onfocus/i', '/onreset/i', '/onsubmit/i', '/ondblclick/i', '/onkeydown/i', '/onkeypress/i', '/onkeyup/i', '/onmousedown/i', '/onmouseup/i', '/onmouseover/i', '/onmouseout/i', '/onselect/i', '/javascript/i', '/javascript/i' );
 $replace = array ("d&#097;ta:", "&#097;bout:", "vbscript<b></b>:", "&#111;nclick", "&#111;nload", "&#111;nunload", "&#111;nabort", "&#111;nerror", "&#111;nblur", "&#111;nchange", "&#111;nfocus", "&#111;nreset", "&#111;nsubmit", "&#111;ndblclick", "&#111;nkeydown", "&#111;nkeypress", "&#111;nkeyup", "&#111;nmousedown", "&#111;nmouseup", "&#111;nmouseover", "&#111;nmouseout", "&#111;nselect", "j&#097;vascript" );
 
@@ -249,6 +253,14 @@ die ("error");
 
 $count = $startfrom + $step;
 $buffer = "{\"status\": \"ok\",\"count\": {$count}}";
+///LOGS
+if ($buffer <= $limit AND $lj_conf['logs_adl'] == 1)
+{
+	$description = "<b>Заголовок:</b> ".$title."<br>Тип рассылки: ".$type."; Группе: ".$empfanger."<br>Начало с: ".$startfrom."; Всего: ".$step."; За один проход: ".$limit.";<br><b>Содержание:</b> ".$db->safesql($message_log);
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_delivery_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `user_id` = '{$member_id[user_id]}', `description` = '{$description}'");
+}
+////LOGS
 
 @header("Content-type: text/html; charset=".$config['charset']);
 echo $buffer;

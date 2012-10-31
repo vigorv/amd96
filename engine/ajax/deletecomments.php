@@ -102,6 +102,12 @@ if ($row['id'])	{
 	}
 
 	if( $have_perm ) {
+///LOGS
+	$post_log = $db->super_query("SELECT text, autor FROM " . PREFIX . "_comments WHERE id='$id'");
+	$description = "Сообщение <b><font color=red>удалено</font></b> со страницы новости (<b>Не через админку</b>).<br><b>Текст сообщения:</b><br>".$db->safesql($post_log['text']);
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `autor` = '{$post_log[autor]}', `post_id` = '{$id}', `back_link` = '0', `description` = '{$description}'");
+////LOGS	
 		$db->query( "DELETE FROM " . PREFIX . "_{$allowed_areas[$area]['comments_table']} WHERE id = '$id'" );
 		
 		// обновление количества комментариев у юзера 

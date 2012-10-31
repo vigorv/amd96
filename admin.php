@@ -44,9 +44,9 @@ $check_referer = true;
 
 require_once (ENGINE_DIR . '/inc/include/init.php');
 
-////LOGSJ
+////LOGS
 include_once (ENGINE_DIR.'/data/logs_jurnal_config.php');
-///////LOGSJ
+///////LOGS
 
 if ($is_loged_in == FALSE) {
 
@@ -81,10 +81,10 @@ if ($is_loged_in == FALSE) {
 /////LOGS
 if ($result != "" AND $lj_conf['logs_aal'] == 1)
 {
-    $description = "РџРѕРїС‹С‚РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕРґ РЅРёРєРѕРј: <b>".$username."</b><br>РСЃРїРѕР»СЊР·РѕРІР°Р»СЃСЏ РїР°СЂРѕР»СЊ: ".$password;
-    $ip_guest = $db->safesql( $_SERVER['REMOTE_ADDR'] );
-    $date = date ("Y-m-d H:i:s");
-    $db->query("INSERT INTO `" . PREFIX . "_admin_authoriz_logs` SET `date` = '{$date}', `ip` = '{$ip_guest}', `description` = '{$description}'");
+	$description = "Попытка авторизации под ником: <b>".$username."</b><br>Использовался пароль: ".$password;
+	$ip_guest = $db->safesql( $_SERVER['REMOTE_ADDR'] );
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_authoriz_logs` SET `date` = '{$date}', `ip` = '{$ip_guest}', `description` = '{$description}'");
 }
 /////LOGS
 	

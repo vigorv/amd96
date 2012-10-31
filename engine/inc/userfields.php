@@ -35,7 +35,9 @@ if (!isset($xf_inited)) $xf_inited = "";
 if ($xf_inited !== true) { // Prevent "Cannot redeclare" error
 
 function profilesave($data) {
-	global $lang, $dle_login_hash;
+///LOGS	global $lang, $dle_login_hash;
+global $lang, $dle_login_hash, $db, $member_id, $lj_conf;
+////LOGS
 
 	if ($_REQUEST['user_hash'] == "" OR $_REQUEST['user_hash'] != $dle_login_hash) {
 
@@ -44,6 +46,49 @@ function profilesave($data) {
 	}
 
     $data = array_values($data);
+///LOGS
+if( $_REQUEST['xfieldssubaction'] == "delete2" )
+{
+	$data2 = $data[$_REQUEST['xfieldsindex']];
+    	unset($data[$_REQUEST['xfieldsindex']]);
+}
+else
+	$data2 = $_REQUEST['editedxfield'];
+
+if ($lj_conf['logs_app'] == 1)
+{
+	if($data2[2] == "")
+		$data2[2] = "Все";
+	if($data2[5] == 1)
+		$data2[5] = "Да";
+	else
+		$data2[5] = "Нет";
+	if($data2[2] == 1)
+		$data2[2] = "Да";
+	else
+		$data2[2] = "Нет";
+	if($data2[4] == 1)
+		$data2[4] = "Да";
+	else
+		$data2[4] = "Нет";
+
+	if( $_REQUEST['xfieldssubaction'] == "delete2" )
+		$d = "<font color=red>Удалено</font>";
+	else
+		$d = "<font color=green>Добавлено</font>/<font color=orange>Изменено</font>";
+
+$description = $d." поле <b>{$data2[0]}</b>.<br />
+Параметры поля:<br />
+- Описание: {$data2[1]}<br />
+- Тип поля: {$data2[3]}<br />
+- Добавить на страницу регистрации? {$data2[2]}<br />
+- Поле может быть изменено пользователем? {$data2[4]}<br />
+- Сделать это поле личным? {$data2[5]}<br />";
+
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_users_xfields_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}'");
+}
+////LOGS	
 	$filecontents = "";
 
     foreach ($data as $index => $value) {
@@ -138,7 +183,7 @@ switch ($xfieldsaction) {
         }
 		$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '71', '{$xfields[$xfieldsindex][0]}')" );
 
-        unset($xfields[$xfieldsindex]);
+///LOGS        unset($xfields[$xfieldsindex]);
         @profilesave($xfields);
         break;
       case "moveup":

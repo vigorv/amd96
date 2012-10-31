@@ -25,7 +25,9 @@ define( 'ROOT_DIR', substr( dirname(  __FILE__ ), 0, -12 ) );
 define( 'ENGINE_DIR', ROOT_DIR . '/engine' );
 
 include ENGINE_DIR . '/data/config.php';
-
+///LOGS
+include (ENGINE_DIR . '/data/logs_jurnal_config.php');
+////LOGS
 if( $config['http_home_url'] == "" ) {
 	
 	$config['http_home_url'] = explode( "engine/ajax/editnews.php", $_SERVER['PHP_SELF'] );
@@ -415,7 +417,17 @@ HTML;
 	if ($user_group[$member_id['user_group']]['allow_admin']) $db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '25', '{$_POST['title']}')" );
 
 	if ( $config['allow_alt_url'] == "yes" AND !$config['seo_type'] ) $cprefix = "full_"; else $cprefix = "full_".$id;	
-
+///LOGS
+if ($lj_conf['logs_news'] == 1)
+{
+	if( ! $is_full )
+		$description = "Новость <b>".$db->safesql($_POST['title'])."</b> была отредактирована.<br>Изменено: краткое описание.";
+	else
+		$description = "Новость <b>".$db->safesql($_POST['title'])."</b> была отредактирована.<br>Изменено: полное описание.";
+	$date = date ("Y-m-d H:i:s");	
+	$db->query("INSERT INTO `" . PREFIX . "_post_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `description` = '{$description}', `post_id` = '$id', `autor` = '{$row[autor]}'");
+}
+////LOGS
 	clear_cache( array( 'news_', 'rss', $cprefix ) );
 	
 	$buffer = "ok";

@@ -790,6 +790,15 @@ elseif( $action == "adduser" ) {
 	if ( $member_id['user_group'] != 1 AND $reglevel < 2 ) $reglevel = 4;
 	
 	$db->query( "INSERT INTO " . USERPREFIX . "_users (name, password, email, user_group, reg_date, lastdate, info, signature, favorites, xfields) values ('$regusername', '$regpassword', '$regemail', '$reglevel', '$add_time', '$add_time','','','','')" );
+///LOGS
+if ($lj_conf['logs_aul'] == 1)
+{
+	$row_gr = $db->super_query( "SELECT gr.group_name, us.user_id, us.name FROM " . USERPREFIX . "_usergroups AS gr, " . USERPREFIX . "_users AS us WHERE gr.id = '$reglevel' AND us.name = '$regusername' AND us.email = '$regemail'" );
+	$description = "<font color=green>Добавлен</font> новый пользователь: <a href=\"/index.php?subaction=userinfo&user=".urlencode($regusername)."\">".$regusername."</a>. Группа (ID): ".$row_gr['group_name']." (".$reglevel.")";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_users_logs` SET `date` = '{$date}', `username` = '{$row_gr[name]}', `user_id` = '{$row_gr[user_id]}', `autor` = '{$member_id[name]}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '63', '{$regusername}')" );
 	
 	msg( "info", $lang['user_addok'], "$lang[user_ok] <b>$regusername</b> $lang[user_ok_1] <b>{$user_group[$reglevel]['group_name']}</b>", "$PHP_SELF?mod=editusers&action=list" );
@@ -1221,7 +1230,31 @@ elseif( $action == "doedituser" ) {
 		$filecontents = '';
 	
 	$sql_update = "UPDATE " . USERPREFIX . "_users set user_group='$editlevel', banned='$banned', icq='$editicq', land='$editland', info='$editinfo', signature='$editsignature', email='$editmail', fullname='$editfullname', time_limit='$time_limit', xfields='$filecontents'";
-	
+///LOGS
+if ($lj_conf['logs_aul'] == 1)
+{
+	$row_gr = $db->super_query( "SELECT gr.group_name, us.user_id, us.name, us.banned FROM " . USERPREFIX . "_usergroups AS gr, " . USERPREFIX . "_users AS us WHERE gr.id = '$editlevel' AND us.user_id = '$id'" );
+	$log_dan = "";
+	if ($row['user_group'] != $editlevel)
+		$log_dan .= "<br>- Изменена группа c ID ".$row['user_group']." на ID ".$editlevel;
+	if ($editlogin != $row_gr['name'] AND $editlogin != "")
+	{
+		$log_dan = "<br>- Изменен ник с ".$row_gr['name']." на ".$editlogin;
+		$editlogin_log = $editlogin;
+	}
+	elseif ($editlogin == $row_gr['name'] OR $editlogin == "")
+		$editlogin_log = $row_gr['name'];
+	if ($banned == "yes" AND $row_gr['banned'] != "yes")
+		$log_dan .= "<br>- Пользователь был <font color=red>забанен</font>";
+	if ($banned != "yes" AND $row_gr['banned'] == "yes")
+		$log_dan .= "<br>- Пользователь был <font color=green>разбанен</font>";
+	if ($_POST['del_comments'])
+		$log_dan .= "<br>- Были <font color=red>удалены</font> все комментарии пользователя.";
+	$description = "<font color=orange>Отредактирован</font> профиль пользователя: <a href=\"/index.php?subaction=userinfo&user=".urlencode($editlogin_log)."\">".$editlogin_log."</a>. Группа (ID): ".$row_gr['group_name']." (".$editlevel.")".$log_dan;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_users_logs` SET `date` = '{$date}', `username` = '{$row_gr[name]}', `user_id` = '{$row_gr[user_id]}', `autor` = '{$member_id[name]}', `description` = '{$description}'");
+}
+////LOGS	
 	if( trim( $editlogin ) != "" ) {
 		
 		$row = $db->super_query( "SELECT user_id FROM " . USERPREFIX . "_users WHERE name='$editlogin'" );
@@ -1348,7 +1381,14 @@ elseif( $action == "dodeleteuser" ) {
 
 	
 	$db->query( "DELETE FROM " . USERPREFIX . "_pm WHERE user_from = '{$row['name']}' AND folder = 'outbox'" );
-	
+///LOGS
+if ($lj_conf['logs_aul'] == 1)
+{
+	$description = "<font color=red>Удалён</font> пользователь: ".$row['name']." (ID группы: ".$row['user_group'].")";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_admin_users_logs` SET `date` = '{$date}', `username` = '{$row['name']}', `user_id` = '{$row[user_id]}', `autor` = '{$member_id[name]}', `description` = '{$description}'");
+}
+////LOGS	
 	@unlink( ROOT_DIR . "/uploads/fotos/" . $row['foto'] );
 	
 	$db->query( "delete FROM " . USERPREFIX . "_users WHERE user_id='$id'" );

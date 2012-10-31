@@ -148,7 +148,14 @@ if( $subaction == "donew" ) {
 	else open_dir( ROOT_DIR . "/templates/" . $base_template, ROOT_DIR . "/templates/" . $template_name );
 
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '67', '{$template_name}')" );
-	
+///LOGS
+if ($result AND $lj_conf['logs_templates'] == 1)
+{
+	$description = "<font color=green>Создан новый</font> шаблон <b>".$template_name."</b>, созданный на основе <b>".$base_template."</b>";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_templates_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `templates` = '{$template_name}', `description` = '{$description}'");
+}
+////LOGS	
 	msg( "info", $lang['opt_info'], $lang['opt_info_1'], "$PHP_SELF?mod=templates&user_hash={$dle_login_hash}" );
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -182,7 +189,14 @@ if( $subaction == "dodelete" ) {
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '68', '{$do_template}')" );
 	
 	listdir( ROOT_DIR . "/templates/" . $do_template );
-	
+///LOGS
+if ($lj_conf['logs_templates'] == 1)
+{
+	$description = "<font color=red>Удалён шаблон</font>: <b>".$do_template."</b>";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_templates_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `templates` = '{$do_template}', `description` = '{$description}'");
+}
+////LOGS	
 	msg( "info", $lang['opt_info_3'], $lang['opt_info_4'], "$PHP_SELF?mod=templates&user_hash={$dle_login_hash}" );
 }
 

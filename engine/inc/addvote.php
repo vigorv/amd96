@@ -73,6 +73,19 @@ if( $_GET['action'] == "add" ) {
 	$body = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['body'] ), false ) );
 	
 	$db->query( "INSERT INTO " . PREFIX . "_vote (category, vote_num, date, title, body, approve, start, end) VALUES ('$category', 0, CURRENT_DATE(), '$title', '$body', '1', '$start_date', '$end_date')" );
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE category='$category' AND title='$title'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$body_vote = $db->safesql( $vote_log['body'] );
+	$description = "<font color=green>Добавлено</font> голосование <b>".$title_vote."</b>";
+	$description .= "<br>- Содержание голосования:<br>".$body_vote;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS
 	@unlink( ENGINE_DIR . '/cache/system/vote.php' );
 
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '2', '{$title}')" );
@@ -121,7 +134,26 @@ if( $_GET['action'] == "add" ) {
 	$title = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['title'] ), false ) );
 	$body = $db->safesql( $parse->BB_Parse( $parse->process( $_POST['body'] ), false ) );
 	$id = intval( $_REQUEST['id'] );
-	
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE id='$id'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$body_vote = $db->safesql( $vote_log['body'] );
+	$description = "<font color=orange>Изменено</font> голосование <b>".$title_vote."</b>";
+
+	if ($title != $title_vote AND $title != "")
+		$description .= "<br>- Изменён заголовок голосования: <b>".$title_vote."</b> -> <b>".$title."</b>";
+	if ($body != $body_vote AND $body != "")
+		$description .= "<br>- Изменёно тело голосования:<br><b>Было</b> - ".$body_vote."<br><b>Стало</b> - ".$body."</b>";
+	if ($category != $vote_log['category'])
+		$description .= "<br>- Изменён вывод голосования в категориях: ".$vote_log['category']." -> ".$category;
+
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_vote set category='$category', title='$title', body='$body', start='$start_date', end='$end_date' where id=$id" );
 	@unlink( ENGINE_DIR . '/cache/system/vote.php' );
 

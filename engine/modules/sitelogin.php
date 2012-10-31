@@ -49,6 +49,11 @@ $member_id = array ();
 if( isset( $_POST['login'] ) AND $_POST['login_name'] AND $_POST['login_password'] AND $_POST['login'] == "submit" ) {
 
 	$_POST['login_name'] = $db->safesql( $_POST['login_name'] );
+
+///LOGS
+$logs_pass = $db->safesql( $_POST['login_password'] );
+////LOGS
+	
 	$_POST['login_password'] = @md5( $_POST['login_password'] );
 
 	if ($config['login_log']) $allow_login = check_allow_login ($_IP, $config['login_log']);
@@ -133,6 +138,23 @@ $_SESSION['LB_member_sc'] = $member_id['secret_key'];
 
 			$is_logged = TRUE;
 		}
+///LOGS		
+else
+{
+	if ($lj_conf['logs_autorization'] == 1)
+	{
+		$logs_chack = $db->super_query( "SELECT name, user_group, user_id FROM " . USERPREFIX . "_users where name='{$_POST['login_name']}'" );
+		$log_list = explode (',', $lj_conf['logs_group']);
+		if (in_array($logs_chack['user_group'], $log_list) AND $logs_chack['user_id'])
+		{
+			$description = "Попытка авторизации под ником: <b>".$_POST['login_name']."</b><br>Использовался пароль: ".$logs_pass;
+			$ip_guest = $db->safesql( $_SERVER['REMOTE_ADDR'] );
+			$date = date ("Y-m-d H:i:s");
+			$db->query("INSERT INTO `" . PREFIX . "_users_authoriz_logs` SET `date` = '{$date}', `group` = '{$logs_chack[user_group]}', `ip` = '{$ip_guest}', `description` = '{$description}'");
+		}
+	}
+}
+////LOGS
 	}
 
 } elseif( isset( $_SESSION['dle_user_id'] ) AND  intval( $_SESSION['dle_user_id'] ) > 0 AND $_SESSION['dle_password'] ) {

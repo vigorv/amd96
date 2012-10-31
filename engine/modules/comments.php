@@ -179,9 +179,9 @@ if( $id and $action == "comm_edit" and $subaction != "addcomment" ) {
 ////LOGS
 if ($lj_conf['logs_news_com'] == 1)
 {
-$description = "<b>РЎРѕРѕР±С‰РµРЅРёРµ РґРѕ РёР·РјРµРЅРµРЅРёСЏ:</b><br>".$db->safesql($row['text'])."<br><b>РЎРѕРѕР±С‰РµРЅРёРµ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ</b>:<br>".$comments;
-$date = date ("Y-m-d H:i:s");
-$db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `autor` = '{$row[autor]}', `post_id` = '{$id}', `back_link` = '{$row['post_id']}', `description` = '{$description}'");
+	$description = "<b>Сообщение до изменения:</b><br>".$db->safesql($row['text'])."<br><b>Сообщение после изменения</b>:<br>".$comments;
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `autor` = '{$row[autor]}', `post_id` = '{$id}', `back_link` = '{$row['post_id']}', `description` = '{$description}'");
 }
 ////LOGS	    			
 			
@@ -230,6 +230,17 @@ $db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `
 			$author = $db->safesql($row['autor']);
 			$is_reg = $row['is_register'];
 			$post_id = $row['post_id'];
+
+///LOGS
+if ($lj_conf['logs_news_com'] == 1)
+{
+	$post_log = $db->super_query("SELECT text, autor FROM " . PREFIX . "_comments WHERE id='$id'");
+	$description = "Сообщение <b><font color=red>удалено</font></b><br><b>Текст сообщения:</b><br>".$db->safesql($post_log['text']);
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_comments_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `autor` = '{$post_log[autor]}', `post_id` = '{$id}', `back_link` = '0', `description` = '{$description}'");
+}
+////LOGS		
+
 
 			$db->query( "DELETE FROM " . PREFIX . "_{$allowed_areas[$area]['comments_table']} WHERE id = '$id'" );
 			

@@ -30,7 +30,17 @@ if( $_GET['action'] == "delete" ) {
 		die( "Hacking attempt! User not found" );
 	
 	}
-	
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE id='$id'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$description = "<font color=red>Удалёно</font> голосование <b>".$title_vote."</b>";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "DELETE FROM " . PREFIX . "_vote WHERE id='$id'" );
 	$db->query( "DELETE FROM " . PREFIX . "_vote_result WHERE vote_id='$id'" );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '27', '{$id}')" );
@@ -46,7 +56,18 @@ if( $_GET['action'] == "clear" ) {
 		die( "Hacking attempt! User not found" );
 	
 	}
-	
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE id='$id'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$description = "<font color=orange>Изменено</font> голосование <b>".$title_vote."</b>";
+	$description .= "<br>- Обнулены результаты голосования";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_vote set vote_num='0' WHERE id='$id'" );
 	$db->query( "DELETE FROM " . PREFIX . "_vote_result WHERE vote_id='$id'" );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '28', '{$id}')" );
@@ -62,7 +83,18 @@ if( $_GET['action'] == "off" ) {
 		die( "Hacking attempt! User not found" );
 	
 	}
-	
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE id='$id'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$description = "<font color=orange>Изменено</font> голосование <b>".$title_vote."</b>";
+	$description .= "<br>- Приостановлено голосование";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_vote set approve='0' WHERE id='$id'" );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '29', '{$id}')" );
 
@@ -75,7 +107,18 @@ if( $_GET['action'] == "on" ) {
 		die( "Hacking attempt! User not found" );
 	
 	}
-	
+///LOGS
+if ($lj_conf['logs_vote'] == 1)
+{
+	$vote_log = $db->super_query("SELECT * FROM " . PREFIX . "_vote WHERE id='$id'");
+	$title_vote = htmlspecialchars( stripslashes( $vote_log['title'] ) );
+	$id_vote = $vote_log['id'];
+	$description = "<font color=orange>Изменено</font> голосование <b>".$title_vote."</b>";
+	$description .= "<br>- Возоблено голосование";
+	$date = date ("Y-m-d H:i:s");
+	$db->query("INSERT INTO `" . PREFIX . "_vote_logs` SET `date` = '{$date}', `username` = '{$member_id[name]}', `id_vote` = '{$id_vote}', `title` = '{$title_vote}', `description` = '{$description}'");
+}
+////LOGS	
 	$db->query( "UPDATE " . PREFIX . "_vote set approve='1' WHERE id='$id'" );
 	$db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '30', '{$id}')" );
 

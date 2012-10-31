@@ -751,11 +751,25 @@ else {
 
 }
 
+///BEGIN Old SEO
+/*
 if (intval($_GET['cstart']) > 1 ){
 
 	$page_extra = ' &raquo; '.$lang['news_site'].' '.intval($_GET['cstart']);
 
 } else $page_extra = '';
+*/
+///END Old SEO
+
+///Begin New SEO
+if (intval($_GET['cstart']) > 1 ){
+    $page_extra = ' &raquo; '.$lang['news_site'].' '.intval($_GET['cstart']);
+    $meta_ext_page = ' Стр. ' .intval($_GET['cstart']);
+} else {
+    $page_extra = '';
+    $meta_ext_page = '';
+}
+///END New SEO
 
 if ($nam_e) {
 
@@ -785,9 +799,9 @@ if (! $rss_url) {
 $metatags = <<<HTML
 <meta http-equiv="Content-Type" content="text/html; charset={$config['charset']}" />
 <title>{$metatags['title']}</title>
-<meta name="description" content="{$metatags['description']}" />
+<meta name="description" content="{$metatags['description']}{$meta_ext_page}" />
 <meta name="keywords" content="{$metatags['keywords']}" />{$disable_index}
-<meta name="generator" content="DataLife Engine (http://dle-news.ru)" />
+<meta name="generator" content="RuMEdia.ws" />
 <link rel="search" type="application/opensearchdescription+xml" href="{$config['http_home_url']}engine/opensearch.php" title="{$config['home_title']}" />
 HTML;
 

@@ -1,6 +1,6 @@
 <?PHP
 $lj_conf['logs_lc']            = "1";
-$lj_conf['logs_lc_word']       = "";
+$lj_conf['logs_lc_word']       = "pthc,childporn,подгузник";
 $lj_conf['logs_autorization']  = "1";
 $lj_conf['logs_news']          = "1";
 $lj_conf['logs_news_com']      = "1";
@@ -16,5 +16,5 @@ $lj_conf['logs_banners']       = "1";
 $lj_conf['logs_app']           = "1";
 $lj_conf['logs_lostpass']      = "1";
 $lj_conf['number']             = "25";
-$lj_conf['logs_group']         = "";
+$lj_conf['logs_group']         = "1,2,3,10";
 ?>

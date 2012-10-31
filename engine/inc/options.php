@@ -41,6 +41,15 @@ if( $action == "options" or $action == '' ) {
 											'access' => "admin" 
 								), 
 								
+								///LOGS
+								array(
+											'name' => "Журнал логов",
+											'url' => "$PHP_SELF?mod=admin_logs_jurnal&action=list",
+											'descr' => "Вывод логов всех действий команды сайта",
+											'image' => 'spset.png',
+											'access' => "2",
+								),
+								////LOGS
 								array (
 											'name' => $lang['opt_all'], 
 											'url' => "$PHP_SELF?mod=options&action=syscon", 
