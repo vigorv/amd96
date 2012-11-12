@@ -6,8 +6,8 @@
     </div>
     [/edit]
     
-    <div class="main-news-image">[full-link]<span class="main-news-img-fon"><img src="{image-1}" alt="{title}" /></span>[/full-link] </div>
-    <div class="right-col-main-news">
+    <div class="main-news-image"><a href="[xfvalue_poster4full]" onclick="return hs.expand(this)"><span class="main-news-img-fon"><img src="{image-1}" alt="{title}" /></span></a></div>
+	<div class="right-col-main-news">
       <h1>[full-link][group=1]id# {news-id}&nbsp;[/group]{title}[/full-link]</h1>
       {title2}
       <div class="main-news-content"> {short-story}
