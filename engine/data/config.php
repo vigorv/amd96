@@ -6,7 +6,7 @@ $config = array (
 
 'home_title' => "RuMedia - твой медиа портал",
 
-'http_home_url' => "http://rumedia.ws/",
+'http_home_url' => "http://flux.rumedia.ws/",
 
 'charset' => "windows-1251",
 
@@ -148,7 +148,7 @@ $config = array (
 
 'js_min' => "0",
 
-'full_search' => "0",
+'full_search' => "1",
 
 'fast_search' => "0",
 

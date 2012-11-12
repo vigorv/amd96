@@ -3,6 +3,8 @@ uploads
 download
 engine/cache
 engine/cache2
+engine/data/config.php
+engine/data/dbconfig.php
 forum/cache
 forum/logs
 forum/templates/Standart
