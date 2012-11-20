@@ -716,7 +716,7 @@ HTML;
                 $sphinx_search = true;
 
             if ($sphinx_search) {
-                //require_once ("sphinx/sphinxapi.php");
+                require_once ("sphinx/sphinxapi.php");
                 // Ñîçäàåì îáúåêò êëèåíòà äëÿ Sphinx API
                 $sphinx = new SphinxClient();
 
