@@ -750,7 +750,7 @@ HTML;
                     $from_num = $search_start + 1;
                     $id_list = implode(',', $ids);
                     //  echo $id_list;
-                    $sql = "SELECT SQL_NO_CACHE id, autor, dle_post.date AS newsdate, dle_post.date AS date, short_story AS story, dle_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, flag, editdate, editor, reason, view_edit, tags, '' AS output_comms FROM dle_post WHERE dle_post.approve=1
+                    $sql = "SELECT SQL_NO_CACHE id, autor, " . PREFIX . "_post.date AS newsdate, " . PREFIX . "_post.date AS date, short_story AS story, " . PREFIX . "_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, flag, editdate, editor, reason, view_edit, tags, '' AS output_comms FROM " . PREFIX . "_post WHERE " . PREFIX . "_post.approve=1
                AND `id` IN ($id_list) ORDER BY date  DESC Limit $search_start,$limit";
                     //echo $sql;
                     $sql_result = $db->query($sql);
