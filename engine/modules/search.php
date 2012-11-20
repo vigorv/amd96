@@ -760,16 +760,14 @@ HTML;
                     //echo $sql_find ;
                     $found_result = $db->num_rows($sql_result);
                     //echo $found_result;
-                } else
-                    die("URL Not correct");
+                } //else  die("URL Not correct");
             } else {
                 if ($sql_count) {
                     $result_count = $db->super_query($sql_count, true);
                     $count_result = $result_count[0]['count'] + $result_count[1]['count'];
                     if ($count_result > ($config['search_number'] * 5))
                         $count_result = ($config['search_number'] * 5);
-                } else
-                    die("URL Not correct");
+                } //else die("URL Not correct");
 
                 $min_search = (@ceil($count_result / $config['search_number']) - 1) * $config['search_number'];
 
