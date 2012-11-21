@@ -566,15 +566,16 @@ HTML;
             if (!$_REQUEST['full_search'])
                 $sphinx_search = true;
 
-            if ($sphinx_search) {
+            if (($sphinx_search) && (isset($_REQUEST['story']))) {
                 require_once ("sphinx/sphinxapi.php");
-
                 $sphinx = new SphinxClient();
                 $sphinx->SetServer('localhost', 3312);
                 $sphinx->SetMatchMode(SPH_MATCH_ALL);
                 $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
+
+                $spinx_story = FILTER_VAR($_REQUEST['story'],FILTER_SANITIZE_STRING);
                 $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
-                $result = $sphinx->Query($story, 'rumedia_post');
+                $result = $sphinx->Query($sphinx_story, 'rumedia_post');
                 $limit = $config['search_number'];
                 if ($result && isset($result['matches'])) {
                     $ids = array_keys($result['matches']);
