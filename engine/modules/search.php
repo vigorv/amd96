@@ -41,7 +41,7 @@ if( ! $user_group[$member_id['user_group']]['allow_search'] ) {
     $sql_find = "";
 
     // Ìèíèìàëüíîå êîëè÷åñòâî ñèìâîëîâ â ñëîâå ïîèñêà
-    $config['search_length_min'] = 4;
+  //  $config['search_length_min'] = 2;
 
     $tpl->load_template( 'search.tpl' );
 
