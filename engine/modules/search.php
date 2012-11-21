@@ -54,7 +54,7 @@ if( ! $user_group[$member_id['user_group']]['allow_search'] ) {
 
     if( isset( $_REQUEST['story'] ) ) {
         $story = dle_substr( strip_data( rawurldecode( $_REQUEST['story'] ) ), 0, 90, $config['charset'] );
-        $sphinx_story = FILTER_VAR($_REQUEST['story'],FILTER_SANITIZE_STRING);
+        $sphinx_story = $story;
     } else {
         $story = "";
         $sphinx_story ='';
