@@ -587,7 +587,6 @@ HTML;
                     $ids = array_keys($result['matches']);
                     $count_result = count($ids);
                     $min_search = (@ceil($count_result / $config['search_number']) - 1) * $config['search_number'];
-
                     if ($min_search < 0)
                         $min_search = 0;
                     if ($search_start > $min_search) {
@@ -596,13 +595,13 @@ HTML;
                     $from_num = $search_start + 1;
                     $id_list = implode(',', $ids);
 
-                    $sql = "SELECT SQL_CALC_FOUND_ROWS id, autor, " . PREFIX . "_post.date AS newsdate, " . PREFIX . "_post.date AS date, short_story AS story, " . PREFIX . "_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, editdate, editor, reason, view_edit, tags, '' AS output_comms FROM rm_post
-                     LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id)
-                     WHERE rm_post.approve=1 AND `id` IN ($id_list)  ORDER BY date  DESC Limit $search_start,$limit";
+                    $sql = "SELECT SQL_CALC_FOUND_ROWS id, autor, " . PREFIX . "_post.date AS newsdate, " . PREFIX . "_post.date AS date, short_story AS story, " . PREFIX . "_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, editdate, editor, reason, view_edit, tags, '' AS output_comms
+                     FROM " . PREFIX . "_post LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id)
+                     WHERE " . PREFIX . "_post.approve=1 AND `id` IN ($id_list)  ORDER BY date  DESC Limit $search_start,$limit";
                     $sql_result = $db->query($sql);
                     $found_result = $db->num_rows($sql_result);
                 }
-            }  else{
+            } else {
 
             // Ïîèñê ïî ñòàòüÿì
             if( in_array( $titleonly, array (0, 3 ) ) ) {
@@ -678,15 +677,10 @@ HTML;
             $from_num = $search_start + 1;
 
             if ($config['full_search']) {
-
                 if( $sortby != "" ) $order_by = "ORDER BY " . $order_by; else $order_by = "";
-
                 $sql_request = "$sql_find $order_by LIMIT $search_start,{$config['search_number']}";
-
             } else {
-
                 $sql_request = "$sql_find ORDER BY $order_by LIMIT $search_start,{$config['search_number']}";
-
             }
 
 
