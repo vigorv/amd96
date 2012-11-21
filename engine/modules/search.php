@@ -52,7 +52,14 @@ if( ! $user_group[$member_id['user_group']]['allow_search'] ) {
     $this_date = date( "Y-m-d H:i:s", $_TIME );
     if( $config['no_date'] AND !$config['news_future'] ) $this_date = " AND " . PREFIX . "_post.date < '" . $this_date . "'"; else $this_date = "";
 
-    if( isset( $_REQUEST['story'] ) ) $story = dle_substr( strip_data( rawurldecode( $_REQUEST['story'] ) ), 0, 90, $config['charset'] ); else $story = "";
+    if( isset( $_REQUEST['story'] ) ) {
+        $story = dle_substr( strip_data( rawurldecode( $_REQUEST['story'] ) ), 0, 90, $config['charset'] );
+        $sphinx_story = FILTER_VAR($_REQUEST['story'],FILTER_SANITIZE_STRING);
+    } else {
+        $story = "";
+        $sphinx_story ='';
+    }
+
     if( isset( $_REQUEST['search_start'] ) ) $search_start = intval( $_REQUEST['search_start'] ); else $search_start = 0;
     if( isset( $_REQUEST['titleonly'] ) ) $titleonly = intval( $_REQUEST['titleonly'] ); else $titleonly = 0;
     if( isset( $_REQUEST['searchuser'] ) ) $searchuser = dle_substr( strip_data( $_REQUEST['searchuser'] ), 0, 40, $config['charset'] ); else $searchuser = "";
@@ -566,14 +573,13 @@ HTML;
             if (!$_REQUEST['full_search'])
                 $sphinx_search = true;
 
-            if (($sphinx_search) && (isset($_REQUEST['story']))) {
+            if ($sphinx_search) {
                 require_once ("sphinx/sphinxapi.php");
                 $sphinx = new SphinxClient();
                 $sphinx->SetServer('localhost', 3312);
                 $sphinx->SetMatchMode(SPH_MATCH_ALL);
                 $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
 
-                $spinx_story = FILTER_VAR($_REQUEST['story'],FILTER_SANITIZE_STRING);
                 $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
                 $result = $sphinx->Query($sphinx_story, 'rumedia_post');
                 $limit = $config['search_number'];
