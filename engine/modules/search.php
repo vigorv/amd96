@@ -562,6 +562,41 @@ HTML;
                 }
             }
 
+
+            if (!$_REQUEST['full_search'])
+                $sphinx_search = true;
+
+            if ($sphinx_search) {
+                require_once ("sphinx/sphinxapi.php");
+
+                $sphinx = new SphinxClient();
+                $sphinx->SetServer('localhost', 3312);
+                $sphinx->SetMatchMode(SPH_MATCH_ALL);
+                $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
+                $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
+                $result = $sphinx->Query($story, 'rumedia_post');
+                $limit = $config['search_number'];
+                if ($result && isset($result['matches'])) {
+                    $ids = array_keys($result['matches']);
+                    $count_result = count($ids);
+                    $min_search = (@ceil($count_result / $config['search_number']) - 1) * $config['search_number'];
+
+                    if ($min_search < 0)
+                        $min_search = 0;
+                    if ($search_start > $min_search) {
+                        $search_start = $min_search;
+                    }
+                    $from_num = $search_start + 1;
+                    $id_list = implode(',', $ids);
+
+                    $sql = "SELECT SQL_CALC_FOUND_ROWS id, autor, " . PREFIX . "_post.date AS newsdate, " . PREFIX . "_post.date AS date, short_story AS story, " . PREFIX . "_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, editdate, editor, reason, view_edit, tags, '' AS output_comms FROM rm_post
+                     LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id)
+                     WHERE rm_post.approve=1 AND `id` IN ($id_list)  ORDER BY date  DESC Limit $search_start,$limit";
+                    $sql_result = $db->query($sql);
+                    $found_result = $db->num_rows($sql_result);
+                }
+            }  else{
+
             // Ïîèñê ïî ñòàòüÿì
             if( in_array( $titleonly, array (0, 3 ) ) ) {
                 $where_posts = "WHERE " . PREFIX . "_post.approve=1" . $this_date;
@@ -649,39 +684,7 @@ HTML;
 
 
 
-            if (!$_REQUEST['full_search'])
-                $sphinx_search = true;
 
-            if ($sphinx_search) {
-                require_once ("sphinx/sphinxapi.php");
-
-                $sphinx = new SphinxClient();
-                $sphinx->SetServer('localhost', 3312);
-                $sphinx->SetMatchMode(SPH_MATCH_ALL);
-                $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
-                $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
-                $result = $sphinx->Query($story, 'rumedia_post');
-                $limit = $config['search_number'];
-                if ($result && isset($result['matches'])) {
-                    $ids = array_keys($result['matches']);
-                    $count_result = count($ids);
-                    $min_search = (@ceil($count_result / $config['search_number']) - 1) * $config['search_number'];
-
-                    if ($min_search < 0)
-                        $min_search = 0;
-                    if ($search_start > $min_search) {
-                        $search_start = $min_search;
-                    }
-                    $from_num = $search_start + 1;
-                    $id_list = implode(',', $ids);
-
-                    $sql = "SELECT SQL_CALC_FOUND_ROWS id, autor, " . PREFIX . "_post.date AS newsdate, " . PREFIX . "_post.date AS date, short_story AS story, " . PREFIX . "_post.xfields AS xfields, title, descr, keywords, category, alt_name, comm_num AS comm_in_news, allow_comm, rating, news_read, editdate, editor, reason, view_edit, tags, '' AS output_comms FROM rm_post
-                     LEFT JOIN " . PREFIX . "_post_extras ON (" . PREFIX . "_post.id=" . PREFIX . "_post_extras.news_id)
-                     WHERE rm_post.approve=1 AND `id` IN ($id_list)  ORDER BY date  DESC Limit $search_start,$limit";
-                    $sql_result = $db->query($sql);
-                    $found_result = $db->num_rows($sql_result);
-                }
-            }  else{
                 $sql_result = $db->query( $sql_request );
                 $found_result = $db->num_rows( $sql_result );
             }
