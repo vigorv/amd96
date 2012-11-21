@@ -581,7 +581,7 @@ HTML;
                 $sphinx->SetMatchMode(SPH_MATCH_ALL);
                 $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
 
-                $sphinx->SetLimits($search_start,40,40);
+                $sphinx->SetLimits(0,40,40);
 
                 $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
                 $result = $sphinx->Query($sphinx_story, 'rumedia_post');
