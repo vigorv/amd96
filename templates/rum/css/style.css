@@ -1,5 +1,5 @@
 /* 
-Главные стили. Внешний вид шаблона.
+пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 */
 
 body {
@@ -99,7 +99,7 @@ img {
 		*/
 		.logo {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/logo5.png) 0 0 no-repeat;
+	background: url(http://data2.rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
 	height: 75px;
 	width: 217px;
 	position: absolute;
@@ -163,7 +163,7 @@ img {
 			}	
 			*/
 			.header_icons a:hover {
-	top: 2px;  /* Имитация эффекта нажатия кнопки *//*background: #f5f5f5;
+	top: 2px;  /* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ *//*background: #f5f5f5;
 				-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
 				-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);
 				box-shadow: 0 1px 1px rgba(0, 0, 0, .05) inset, 0 0 1px 0px rgba(0, 0, 0, .2), 0 1px 2px rgba(0, 0, 0, .3);*/
@@ -192,7 +192,7 @@ img {
 				box-shadow: 0 1px 1px rgba(0,0,0,.05) inset;		*/
 			}
 .header_icons a:active::before {
-	top: -11px; /* Не двигаться! */
+	top: -11px; /* пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ! */
 }
 .login-enter {
 	display: block;
@@ -285,7 +285,7 @@ img {
 .ser:hover.top-menu-link {
 	background: url(http://data2.rumedia.ws/templates/rum/images/link-ser.png) 0 bottom repeat-x;
 }
-/*НАЧАЛО скрыть слайдер */
+/*пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .hideWrap {
 	background-color: #141414;
 	text-align:left;
@@ -321,7 +321,7 @@ img {
 	padding:1px 14px 2px;
 	color:#FFFFFF;
 	} 
-/*КОНЕЦ скрыть слайдер */
+/*пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 
 .slider {
 	width: 1000px;
@@ -1205,7 +1205,7 @@ img {
 	o-border-radius: 3px;
 }
 
-/* Юзер-панель */
+/* пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ */
 
 .left-block {
 	padding: 25px 0 0 37px;
@@ -1298,7 +1298,7 @@ img {
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
-/* ==================== Календарь */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .calend {
 }
 .weekday-active-v {
@@ -1340,7 +1340,7 @@ img {
 .day-current a {
 	color: #000;
 }
-/* ==================== Облако тегов */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 .tags-block {
 	padding: 5px;
 	color: #424242;
@@ -1370,7 +1370,7 @@ img {
 	color: #ff8b02!important;
 	text-decoration: none;
 }
-/* Опрос */
+/* пїЅпїЅпїЅпїЅпїЅ */
 .vote-buttom {
 	width: 87px;
 	padding: 5px;
@@ -1385,7 +1385,7 @@ img {
 	-moz-border-radius:3px;
 	cursor: pointer;
 }
-/* ==================== Рейтинг статьи */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ */
 
 .rating {
 	color: #757575;
@@ -1466,7 +1466,7 @@ img {
 	text-indent: -9000px;
 	z-index: 1;
 }
-/* ==================== BB коды */
+/* ==================== BB пїЅпїЅпїЅпїЅ */
  
 .bbcodes {
 	background-color: #ffffff;
@@ -1480,7 +1480,7 @@ img {
 	background-repeat: repeat-x;
 	font-weight: bold;
 }
-/* класс bbcodes_poll используем в poll.tpl, vote.tpl, addnews.tpl */
+/* пїЅпїЅпїЅпїЅпїЅ bbcodes_poll пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ poll.tpl, vote.tpl, addnews.tpl */
 
 .bbcodes_poll {
 	background-color: #ffffff;
@@ -1528,7 +1528,7 @@ img {
 	margin: 0;
 	padding: 0;
 }
-/* ==================== Выпадающее меню */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 
 #dropmenudiv {
 	border: 1px solid #ffffff;
@@ -1556,7 +1556,7 @@ img {
 	background-color:#fdd08b;
 	color:#000000;
 }
-/* ==================== Уведомление о получении новых PM */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ PM */
 
 #newpm {
 	position: absolute;
@@ -1588,12 +1588,12 @@ img {
 	color: #4b73d4;
 	text-decoration: underline;
 }
-/* ==================== Ссылка на скачивание прикрепленного файла */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 
 .attachment {
 	color: #f37c64;
 }
-/* ==================== показ оригинальной картинки загруженной на сайт из уменьшенной копии (jpg) */
+/* ==================== пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ (jpg) */
 .highslide-wrapper, .highslide-outline {
 	background: #FFFFFF;
 	z-index: 100000;
@@ -1821,7 +1821,7 @@ a.highslide-full-expand {
 	margin: 0 !important;
 	border: 0 !important;
 }
-/* Полная новость */
+/* пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .full-news {
 	margin: 8px;
 }
@@ -2039,7 +2039,7 @@ a.highslide-full-expand {
 }
 .text_spoiler a:hover {
 }
-/* Вид комментария */
+/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .koment-fon {
 	background: #efefef;
 	border-left: 1px solid #9e9e9e;
@@ -2213,7 +2213,7 @@ a.highslide-full-expand {
 .quote a {
 	color: #000;
 }
-/* Добавление комментария */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 
 
 .hidden-comment {
@@ -2321,7 +2321,7 @@ a.highslide-full-expand {
 }
 /* 
 *****************************
-Юзер инфа */
+пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 .user-info-table {
 	width: 90%;
 	margin: 0 00px 0 20px;
@@ -2352,7 +2352,7 @@ a.highslide-full-expand {
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
-/* Инфо */
+/* пїЅпїЅпїЅпїЅ */
 .error {
 	padding: 10px;
 	padding-bottom: 150px;
@@ -2366,7 +2366,7 @@ a.highslide-full-expand {
 .error a {
 	color: #7cad37;
 }
-/* Статистика */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .lost-pass {
 	width: 400px;
 	background: #fef2e4;
@@ -2389,7 +2389,7 @@ a.highslide-full-expand {
 	text-align: left;
 	font-weight: bold;
 }
-/* Статические страницы */	
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */	
 .ststststs {
 	text-align: left;
 	margin: 0 30px 0 30px;
@@ -2443,14 +2443,14 @@ a.highslide-full-expand {
 .s-block-content a {
 	color: #871012;
 }
-/* добавление новости */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .add-news-title {
 	padding: 5px 5px 0 50px;
 	font-weight: bold;
 	text-align: left;
 	color: #2d7cff;
 }
-/* ПМ */
+/* пїЅпїЅ */
 .imp {
 	text-align: left;
 	margin: 0 30px 0 30px;
@@ -2519,7 +2519,7 @@ a.highslide-full-expand {
 	color: #666666;
 	font-weight: bold;
 }
-/* Результаты поиска и форма поика на главной */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .search-block {
 	position: absolute;
 	width: 175px;
@@ -2579,7 +2579,7 @@ a.highslide-full-expand {
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
-/* Навигация по страницам */
+/* пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
 .navigation {
 	padding: 7px 0 33px 10px;
 	clear: both;
@@ -2698,7 +2698,7 @@ a.highslide-full-expand {
 }
 /* DLE 8.5 */
 
-/* Вид изображения: с прямыми краями и тенью */
+/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ */
 .wide-border {
 	background: white;
 }
@@ -2708,7 +2708,7 @@ a.highslide-full-expand {
 .wide-border .highslide-caption {
 	padding: 0 10px 10px 10px;
 }
-/* Вид изображения: только тень */
+/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 .borderless .highslide-image {
 	border: none;
 }
@@ -2717,7 +2717,7 @@ a.highslide-full-expand {
 	border-top: 1px solid white;
 	background: white;
 }
-/* Вид изображения: только рамка без тени */
+/* пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
 .less .highslide-image {
 	border: 1px solid #000000;
 }
@@ -2727,7 +2727,7 @@ a.highslide-full-expand {
 }
 /* DLE 9.0 */
 
-/* ==================== Информационное оконо загрузки AJAX */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AJAX */
 #loading-layer {
 	display:none;
 	font-family: Verdana;
@@ -2741,7 +2741,7 @@ a.highslide-full-expand {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 }
-/* ==================== Быстрый поиск на сайте */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 #searchsuggestions {
 	border-width:1px;
 	border-color:#919191;
@@ -2797,7 +2797,7 @@ a.highslide-full-expand {
 	height:auto;
 	color:#000000;
 }
-/* ==================== Диалоговые и всплывающие окна jQuery UI */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ jQuery UI */
 .ui-helper-clearfix:after {
 	clear: both;
 	content: ".";
@@ -2991,13 +2991,13 @@ button.ui-button::-moz-focus-inner {
 #searchtable input {
 	max-width: 150px !important;
 }
-/* ДЛЕ 9.2 */
+/* пїЅпїЅпїЅ 9.2 */
 .editor input[type="text"] {
 	padding: 2px;
 	background: #fff url("http://data2.rumedia.ws/templates/rum/images/fields.png") repeat-x;
 	border: 1px solid #bcc0c2;
 }
-/* ==================== Автозаполнение облака тегов */
+/* ==================== пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ */
 .ui-autocomplete {
 	position: absolute;
 	cursor: default;
@@ -3132,7 +3132,7 @@ button.ui-button::-moz-focus-inner {
 	display:block;
 	margin:0 auto;
 }
-/*---Подсветка кода в теге [code]---*/
+/*---пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ [code]---*/
 pre code {
 	display: block;
 	padding: 0.5em;
@@ -3169,7 +3169,7 @@ pre .deletion {
 pre .tex .formula {
 	background: #eee8d5;
 }
-/*---прогресс бар заполненности персональных сообщений---*/
+/*---пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ---*/
 .pm_progress_bar {
 	border: 1px solid #d8d8d8;
 	padding: 1px;
