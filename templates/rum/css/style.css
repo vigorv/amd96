@@ -5,7 +5,7 @@
 body {
 	padding: 0;
 	margin: 0;
-	background: #000 url(http://data2.rumedia.ws/templates/rum/images/fon2.jpg) center top no-repeat;
+	background: #000 url(http://rumedia.ws/templates/rum/images/fon2.jpg) center top no-repeat;
 	text-align: center;
 	font: 12px Arial;
 	color: #373737;
@@ -23,7 +23,7 @@ img {
 }
 .login-panel {
 	display: none;
-	background: url(http://data2.rumedia.ws/templates/rum/images/login-panel.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/login-panel.png) 0 0 no-repeat;
 	position: fixed;
 	width: 230px;
 	height: 203px;
@@ -38,7 +38,7 @@ img {
 	height: 203px;
 }
 .close {
-	background: url(http://data2.rumedia.ws/templates/rum/images/close.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/close.jpg) 0 0 no-repeat;
 	width: 19px;
 	height: 19px;
 	position: absolute;
@@ -47,7 +47,7 @@ img {
 	cursor: pointer;
 }
 .shadow-fon {
-	background: url(http://data2.rumedia.ws/templates/rum/images/shadow-fon.png) 0 0 repeat;
+	background: url(http://rumedia.ws/templates/rum/images/shadow-fon.png) 0 0 repeat;
 	display: none;
 	position: fixed;
 	top: 0px;
@@ -64,14 +64,14 @@ img {
 }
 .head-block {
 	position: relative;
-	background: url(http://data2.rumedia.ws/templates/rum/images/top-menu-fon.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/top-menu-fon.png) 0 0 repeat-x;
 	height: 87px;
 	margin: 48px 0 0 0;
 }
 /*
 		.logo{
 			display: block;
-			background: url(http://data2.rumedia.ws/templates/rum/images/logo.png) 0 0 no-repeat;
+			background: url(http://rumedia.ws/templates/rum/images/logo.png) 0 0 no-repeat;
 			height: 60px;
 			width: 191px;
 			position: absolute;
@@ -80,7 +80,7 @@ img {
 		}
 		.logo{
 			display: block;
-			background: url(http://data2.rumedia.ws/templates/rum/images/logo2.png) 0 0 no-repeat;
+			background: url(http://rumedia.ws/templates/rum/images/logo2.png) 0 0 no-repeat;
 			height: 112px;
 			width: 256px;
 			position: absolute;
@@ -89,7 +89,7 @@ img {
 		}
 		.logo{
 			display: block;
-			background: url(http://data2.rumedia.ws/templates/rum/images/logo4.png) 0 0 no-repeat; 
+			background: url(http://rumedia.ws/templates/rum/images/logo4.png) 0 0 no-repeat; 
 			height: 109px;
 			width: 261px;
 			position: absolute;
@@ -100,7 +100,7 @@ img {
 /*
 		.logo {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
 	height: 75px;
 	width: 217px;
 	position: absolute;
@@ -110,7 +110,7 @@ img {
 */
 .logo {
     display: block;
-    background: url(http://data2.rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
+    background: url(http://rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
     height: 85px;
     width: 247px;
     position: absolute;
@@ -207,7 +207,7 @@ img {
 }
 .login-enter {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/enter-fon.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/enter-fon.png) 0 0 repeat-x;
 	height: 25px;
 	width: 112px;
 	position: absolute;
@@ -220,11 +220,11 @@ img {
 	cursor: pointer;
 }
 .login-enter:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/enter-fon.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/enter-fon.png) 0 bottom repeat-x;
 	color: #fff;
 }
 .top-menu-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/top-menu-fon1.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/top-menu-fon1.png) 0 0 repeat-x;
 	height: 46px;
 	padding: 0 0 0 14px;
 	line-height: 46px;
@@ -234,7 +234,7 @@ img {
 	display: block;
 	float: left;
 	margin: 9px 9px 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-orange.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-orange.png) 0 0 repeat-x;
 	height: 28px;
 	padding: 0 12px 0 14px;
 	border-radius: 2px;
@@ -246,55 +246,55 @@ img {
 	text-transform: uppercase;
 }
 .top-menu-link:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-orange.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-orange.png) 0 bottom repeat-x;
 }
 .green.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-green.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-green.png) 0 0 repeat-x;
 }
 .green:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-green.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-green.png) 0 bottom repeat-x;
 }
 .akva.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-akva.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-akva.png) 0 0 repeat-x;
 }
 .akva:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-akva.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-akva.png) 0 bottom repeat-x;
 }
 .fiolet.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-fiolet.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-fiolet.png) 0 0 repeat-x;
 }
 .fiolet:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-fiolet.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-fiolet.png) 0 bottom repeat-x;
 }
 .oran.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-oran.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-oran.png) 0 0 repeat-x;
 }
 .oran:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-oran.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-oran.png) 0 bottom repeat-x;
 }
 .blue.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-blue.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-blue.png) 0 0 repeat-x;
 }
 .blue:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-blue.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-blue.png) 0 bottom repeat-x;
 }
 .pink.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-pink.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-pink.png) 0 0 repeat-x;
 }
 .pink:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-pink.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-pink.png) 0 bottom repeat-x;
 }
 .salat.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-salat.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-salat.png) 0 0 repeat-x;
 }
 .salat:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-salat.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-salat.png) 0 bottom repeat-x;
 }
 .ser.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-ser.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-ser.png) 0 0 repeat-x;
 }
 .ser:hover.top-menu-link {
-	background: url(http://data2.rumedia.ws/templates/rum/images/link-ser.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/link-ser.png) 0 bottom repeat-x;
 }
 /*������ ������ ������� */
 .hideWrap {
@@ -309,7 +309,7 @@ img {
 	height: 15px;
 	overflow: hidden;
 	margin-left: 842px;
-	background:transparent url('http://data2.rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
+	background:transparent url('http://rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
 	font: 11px/15px Arial;
 	cursor:pointer;
 	outline:none;
@@ -325,7 +325,7 @@ img {
 	overflow: hidden;
 	margin-left: 847px;
 	margin-top: -5px;
-	background:transparent url('http://data2.rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
+	background:transparent url('http://rumedia.ws/templates/rum/images/slider-show.png') no-repeat left center;
 	font: 11px/15px Arial;
 	cursor:pointer;
 	outline:none;
@@ -360,7 +360,7 @@ img {
 	min-height: 468px;
 }
 .dark2 {
-	background: url(http://data2.rumedia.ws/templates/rum/images/dark2.png);
+	background: url(http://rumedia.ws/templates/rum/images/dark2.png);
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -373,7 +373,7 @@ img {
 	right: 15px;
 	bottom: 168px;
 	width: 466px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/dark2.png);
+	background: url(http://rumedia.ws/templates/rum/images/dark2.png);
 	padding: 10px;
 }
 .slider-title h2 {
@@ -396,12 +396,12 @@ img {
 }
 .slider-title-more a {
 	float: right;
-	background: url(http://data2.rumedia.ws/templates/rum/images/slider-title-more.png) left top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/slider-title-more.png) left top no-repeat;
 	width: 118px;
 	height: 25px;
 }
 .slider-title-more a:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/slider-title-more.png) left bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/slider-title-more.png) left bottom no-repeat;
 }
 .slider-item-small {
 	float: left;
@@ -409,12 +409,12 @@ img {
 	height: 119px;
 	position: relative;
 	float: left;
-	background: url(http://data2.rumedia.ws/templates/rum/images/slider-item-small.png) left bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/slider-item-small.png) left bottom no-repeat;
 	margin: 335px 0 0 17px;
 	z-index: 99999;
 }
 .active-slider .slider-item-small, .slider-item-hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/slider-item-small.png) left top no-repeat !important;
+	background: url(http://rumedia.ws/templates/rum/images/slider-item-small.png) left top no-repeat !important;
 }
 .slider-item-small-image {
 	width: 168px;
@@ -438,7 +438,7 @@ img {
 	padding: 7px 6px 10px 8px;
 }
 .center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/repeat-center-block.jpg) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/repeat-center-block.jpg) 0 0 repeat-y;
 	float: left;
 	width: 339px;
 	margin: 0 0 0 4px;
@@ -447,18 +447,18 @@ img {
 	margin: 0;
 }
 .top-center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/top-center-block.jpg) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/top-center-block.jpg) 0 top no-repeat;
 	padding: 9px 0 0 0;
 }
 .bottom-center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/bottom-center-block.jpg) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/bottom-center-block.jpg) 0 bottom no-repeat;
 	padding: 0 0 9px 0;
 }
 .new-reviews {
 	margin: 0px 9px 8px 10px;
 }
 .new-reviews-title-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title-blue.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title-blue.png) 0 0 repeat-x;
 	width: 296px;
 	height: 35px;
 	font: bold 12px Arial;
@@ -483,21 +483,21 @@ img {
 	text-decoration: none;
 }
 .fiolet.new-reviews-title-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title-fiolet.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title-fiolet.png) 0 0 repeat-x;
 }
 .salat.new-reviews-title-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title-salat.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title-salat.png) 0 0 repeat-x;
 }
 .new-reviews-content-block {
 }
 .new-reviews-news {
-	background: url(http://data2.rumedia.ws/templates/rum/images/fon-new-reviews.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/fon-new-reviews.png) 0 0 no-repeat;
 	width: 319px;
 	height: 64px;
 	margin: 7px 0 0 0;
 }
 .new-reviews-news-image {
-	background: url(http://data2.rumedia.ws/templates/rum/images/fon-new-reviews-img.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/fon-new-reviews-img.jpg) 0 0 no-repeat;
 	width: 68px;
 	height: 47px;
 	position: relative;
@@ -537,7 +537,7 @@ img {
 .new-edition-news {
 	margin: 16px 0 0px 0;
 	padding: 0 0 2px 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
 }
 .new-edition-news:first-child {
 	margin: 22px 0 0 0;
@@ -587,24 +587,24 @@ img {
 	overflow: hidden;
 }
 .right-center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/right-repeat-center-block.jpg) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/right-repeat-center-block.jpg) 0 0 repeat-y;
 	float: left;
 	width: 300px;
 	margin: 0 0 0 4px;
 }
 .right-top-center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/right-top-center-block.jpg) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/right-top-center-block.jpg) 0 top no-repeat;
 	padding: 9px 0 0 0;
 }
 .right-bottom-center-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/right-bottom-center-block.jpg) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/right-bottom-center-block.jpg) 0 bottom no-repeat;
 	padding: 0 0 9px 0;
 }
 .video {
 	margin: 0 0 8px 10px
 }
 .video-title-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
 	width: 253px;
 	height: 35px;
 	font: bold 12px Arial;
@@ -621,7 +621,7 @@ img {
 	margin: 12px 0 11px 0;
 }
 .video-news {
-	background: url(http://data2.rumedia.ws/templates/rum/images/fon-video.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/fon-video.png) 0 0 no-repeat;
 	width: 135px;
 	height: 126px;
 	margin: 0 8px 8px 0;
@@ -662,7 +662,7 @@ img {
 	margin: 0 0 8px 10px
 }
 .tizer-title-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title-green.png) 0 0 repeat-x;
 	width: 253px;
 	height: 35px;
 	font: bold 12px Arial;
@@ -679,7 +679,7 @@ img {
 	margin: 12px 0 11px 0;
 }
 .tizer-news {
-	background: url(http://data2.rumedia.ws/templates/rum/images/fon-tizer.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/fon-tizer.png) 0 0 no-repeat;
 	width: 135px;
 	height: 260px;
 	margin: 0 8px 8px 0;
@@ -733,14 +733,14 @@ img {
 	margin: 8px 0 0 0;
 }
 .shortstory-block {
-	background: url(http://data2.rumedia.ws/templates/rum/images/short-repeat.jpg) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/short-repeat.jpg) 0 0 repeat-y;
 }
 .shortstory-block-top {
-	background: url(http://data2.rumedia.ws/templates/rum/images/short-top.jpg) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/short-top.jpg) 0 top no-repeat;
 	padding: 6px 0 5px 0;
 }
 .main-news {
-	background: url(http://data2.rumedia.ws/templates/rum/images/short-story.png) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/short-story.png) 0 0 repeat-y;
 	width: 672px;
 	height: 275px;
 	margin: 5px 0 0 5px;
@@ -878,7 +878,7 @@ img {
 }
 .main-news-more2 a {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/more.png) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/more.png) 0 top no-repeat;
 	position: absolute;
 	top: 9px;
 	left: 5px;
@@ -891,7 +891,7 @@ img {
 	text-transform: uppercase;
 }
 .main-news-more2 a:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/more.png) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/more.png) 0 bottom no-repeat;
 }
 .views-com {
 	font: 11px Arial;
@@ -905,7 +905,7 @@ img {
 	color: #323232;
 }
 .date {
-	background: url(http://data2.rumedia.ws/templates/rum/images/date-fon.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/date-fon.jpg) 0 0 no-repeat;
 	width: 100px;
 	height: 27px;
 	position: absolute;
@@ -917,7 +917,7 @@ img {
 	padding: 0 0 0 30px;
 }
 .reit {
-	background: url(http://data2.rumedia.ws/templates/rum/images/reit-fon.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/reit-fon.jpg) 0 0 no-repeat;
 	width: 100px;
 	height: 27px;
 	position: absolute;
@@ -928,7 +928,7 @@ img {
 	padding: 7px 0 0 10px;
 }
 .categs {
-	background: url(http://data2.rumedia.ws/templates/rum/images/categs-fon.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/categs-fon.jpg) 0 0 no-repeat;
 	width: 365px;
 	height: 26px;
 	overflow: hidden;
@@ -1005,7 +1005,7 @@ img {
 	color: #fff;
 	height: 24px;
 	line-height: 24px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
 	padding: 0 0 12px 0;
 	margin: 0 0 14px 0;
 }
@@ -1014,7 +1014,7 @@ img {
 }
 .news-bottom-link a {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/point.jpg) 0 -49px no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/point.jpg) 0 -49px no-repeat;
 	font: 11px Arial;
 	color: #5d7087;
 	padding: 0 0 0 15px;
@@ -1022,7 +1022,7 @@ img {
 }
 .news-bottom-link a:hover {
 	color: #adb7c3;
-	background: url(http://data2.rumedia.ws/templates/rum/images/point.jpg) 0 4px no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/point.jpg) 0 4px no-repeat;
 }
 .archiv-block-item {
 	width: 162px;
@@ -1034,7 +1034,7 @@ img {
 	color: #fff;
 	height: 24px;
 	line-height: 24px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/line-edition.png) 0 bottom repeat-x;
 	padding: 0 0 12px 0;
 	margin: 0 0 14px 0;
 }
@@ -1057,16 +1057,16 @@ img {
 	margin: 8px 0 0 7px;
 }
 .topnews-repeat {
-	background: url(http://data2.rumedia.ws/templates/rum/images/pop-repeat.jpg) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/pop-repeat.jpg) 0 0 repeat-y;
 	margin: 0 0 9px 0;
 	color: #ccc;
 }
 .topnews-top {
-	background: url(http://data2.rumedia.ws/templates/rum/images/pop-top.jpg) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/pop-top.jpg) 0 top no-repeat;
 	padding: 5px 0 0 0;
 }
 .topnews-bottom {
-	background: url(http://data2.rumedia.ws/templates/rum/images/pop-bottom.jpg) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/pop-bottom.jpg) 0 bottom no-repeat;
 	padding: 0 0 5px 0;
 }
 .topnews-block {
@@ -1077,7 +1077,7 @@ img {
 	height: 27px;
 	margin: 7px 0 0 0px;
 	padding: 8px 0 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/topnews-title.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/topnews-title.png) 0 0 repeat-x;
 	border-radius: 5px;
 	web-kit-border-radius: 5px;
 	moz-border-radius: 5px;
@@ -1086,7 +1086,7 @@ img {
 	text-transform: uppercase;
 }
 .reklama.topnews-block-title {
-	background: url(http://data2.rumedia.ws/templates/rum/images/reklama-title.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/reklama-title.png) 0 0 repeat-x;
 	line-height: 35px;
 	height: 35px;
 	padding: 0 0 0 16px;
@@ -1094,7 +1094,7 @@ img {
 	margin: 7px 0 9px 0;
 }
 .pop-title {
-	background: url(http://data2.rumedia.ws/templates/rum/images/pop-title.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/pop-title.png) 0 0 repeat-x;
 	display: inline;
 	height: 22px;
 	border-radius: 5px;
@@ -1131,7 +1131,7 @@ img {
 }
 .images-top-fon {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/topnews-img-fon.jpg) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/topnews-img-fon.jpg) 0 0 no-repeat;
 	width: 33px;
 	height: 34px;
 	float: left;
@@ -1189,7 +1189,7 @@ img {
 }
 /*
 .footer {
-	background: url(http://data2.rumedia.ws/templates/rum/images/footer-fon.png) 0 0 repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/footer-fon.png) 0 0 repeat-x;
 	margin: 10px 0 20px 0;
 	height: 40px;
 	font: 11px Arial;
@@ -1238,7 +1238,7 @@ img {
 }
 .login-line {
 	position: relative;
-	background: url(http://data2.rumedia.ws/templates/rum/images/login-line.png) left top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/login-line.png) left top no-repeat;
 	width: 161px;
 	height: 28px;
 	margin: 0 4px 13px 0;
@@ -1266,7 +1266,7 @@ img {
 }
 .l-link a {
 	display: block;
-	background: url(http://data2.rumedia.ws/templates/rum/images/login-link-fon.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/login-link-fon.png) 0 0 no-repeat;
 	width: 123px;
 	height: 20px;
 	font: bold 12px Arial;
@@ -1277,7 +1277,7 @@ img {
 	margin: 0 0 5px 0;
 }
 .l-link a:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/login-link-fon.png) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/login-link-fon.png) 0 bottom no-repeat;
 }
 .enter {
 	position: absolute;
@@ -1304,7 +1304,7 @@ img {
 	text-decoration: underline;
 }
 .s-block-content input {
-	background: #fff url(http://data2.rumedia.ws/templates/rum/images/form-text.gif) left top repeat-x;
+	background: #fff url(http://rumedia.ws/templates/rum/images/form-text.gif) left top repeat-x;
 	margin: 5px 20px 0 0;
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
@@ -1387,7 +1387,7 @@ img {
 	padding: 5px;
 	color: #000;
 	border: 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
 	margin: 3px;
 	font-size: 11px;
 	font-weight: bold;
@@ -1412,7 +1412,7 @@ img {
 	width: 85px;
 	height: 16px;
 	position: relative;
-	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-image: url(http://rumedia.ws/templates/rum/dleimages/rating.png);
 	background-position: top left;
 	background-repeat: repeat-x;
 }
@@ -1433,7 +1433,7 @@ img {
 	padding: 0px;
 }
 .unit-rating li a:hover {
-	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-image: url(http://rumedia.ws/templates/rum/dleimages/rating.png);
 	background-position: left center;
 	z-index: 2;
 	left: 0px;
@@ -1469,7 +1469,7 @@ img {
 	width: 85px;
 }
 .unit-rating li.current-rating {
-	background-image: url(http://data2.rumedia.ws/templates/rum/dleimages/rating.png);
+	background-image: url(http://rumedia.ws/templates/rum/dleimages/rating.png);
 	background-position: left bottom;
 	position: absolute;
 	height: 16px;
@@ -1487,7 +1487,7 @@ img {
 	font-family: tahoma;	/* ! */
 	/*  width: 120px;  */
 	height: 20px;
-	background-image: url(http://data2.rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
+	background-image: url(http://rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
 	background-repeat: repeat-x;
 	font-weight: bold;
 }
@@ -1501,7 +1501,7 @@ img {
 	font-family: tahoma;	/* ! */
 	width: 120px;
 	height: 20px;
-	background-image: url(http://data2.rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
+	background-image: url(http://rumedia.ws/templates/rum/images/dlet_bttn_bbcodes.gif);
 	background-repeat: repeat-x;
 	font-weight: bold;
 }
@@ -1645,7 +1645,7 @@ img {
 	z-index: 100000;
 }
 a.highslide-full-expand {
-	background: url(http://data2.rumedia.ws/templates/rum/dleimages/fullexpand.gif) no-repeat;
+	background: url(http://rumedia.ws/templates/rum/dleimages/fullexpand.gif) no-repeat;
 	display: block;
 	margin: 0 10px 10px 0;
 	width: 34px;
@@ -1660,7 +1660,7 @@ a.highslide-full-expand {
 	float: right;
 	height: 12px;
 	width: 11px;
-	background: url(http://data2.rumedia.ws/templates/rum/dleimages/resize.gif);
+	background: url(http://rumedia.ws/templates/rum/dleimages/resize.gif);
 	z-index: 100000;
 }
 .highslide-resize {
@@ -1680,7 +1680,7 @@ a.highslide-full-expand {
 .highslide-controls {
 	width: 195px;
 	height: 40px;
-	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) 0 -90px no-repeat;
+	background: url(http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) 0 -90px no-repeat;
 	margin-right: 15px;
 	margin-bottom: 10px;
 	margin-top: 10px;
@@ -1692,14 +1692,14 @@ a.highslide-full-expand {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) right -90px no-repeat;
+	background: url(http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif) right -90px no-repeat;
 }
 .highslide-controls li {
 	float: left;
 	padding: 5px 0;
 }
 .highslide-controls a {
-	background: url(http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/http://data2.rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif);
+	background: url(http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/http://rumedia.ws/templates/rum/engine/classes/highslide/graphics/controlbar-black-border.gif);
 	display: block;
 	float: left;
 	height: 30px;
@@ -1837,7 +1837,7 @@ a.highslide-full-expand {
 	margin: 8px;
 }
 .full-news-top {
-	/*background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-top.png) 0 top no-repeat;*/
+	/*background: url(http://rumedia.ws/templates/rum/images/full-fon-top.png) 0 top no-repeat;*/
 		background: #efefef;
 	border-top: 1px solid #9e9e9e;
 	border-left: 1px solid #9e9e9e;
@@ -1874,7 +1874,7 @@ a.highslide-full-expand {
 		left: 242px;
 		*/
 		height: 25px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/strelka.png) 248px 7px no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/strelka.png) 248px 7px no-repeat;
 	font: bold 11px Arial;
 	color: #737373;
 	line-height: 25px;
@@ -1946,7 +1946,7 @@ a.highslide-full-expand {
 	margin: 0 10px 12px 0;
 }
 .rel-fon-img {
-	background: url(http://data2.rumedia.ws/templates/rum/images/rel-fon-img.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/rel-fon-img.png) 0 0 no-repeat;
 	width: 80px;
 	height: 64px;
 	float: left;
@@ -1986,7 +1986,7 @@ a.highslide-full-expand {
 	padding: 0px 0 20px 0;
 }
 .full-fon-bottom {
-	background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-bottom.png) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/full-fon-bottom.png) 0 bottom no-repeat;
 	width: 665px;
 	height: 54px;
 	position: relative;
@@ -1994,7 +1994,7 @@ a.highslide-full-expand {
 	left: 0px;
 }
 .full-fon-middle {
-	background: url(http://data2.rumedia.ws/templates/rum/images/full-fon-middle.png) 0 bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/full-fon-middle.png) 0 bottom repeat-x;
 	width: 663px;
 	height: 57px;
 	position: relative;
@@ -2019,7 +2019,7 @@ a.highslide-full-expand {
 	margin: 0;
 }
 .title_spoiler a {
-	background: url(http://data2.rumedia.ws/templates/rum/images/title_spoiler.jpg) left top repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/title_spoiler.jpg) left top repeat-x;
 	display: block;
 	line-height: 24px;
 	padding: 0 10px 0 30px;
@@ -2071,7 +2071,7 @@ a.highslide-full-expand {
 	top: 0px;
 	left: 0px;
 	z-index: 100;
-	background: url(http://data2.rumedia.ws/templates/rum/images/fon-ava.png) 0 0 no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/fon-ava.png) 0 0 no-repeat;
 }
 .comment-images {
 	width: 74px;
@@ -2156,15 +2156,15 @@ a.highslide-full-expand {
 	margin: 23px 0 0 18px;
 	position: relative;
 	padding: 0px 0 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/koment-repeat.jpg) 0 0 repeat-y;
+	background: url(http://rumedia.ws/templates/rum/images/koment-repeat.jpg) 0 0 repeat-y;
 	width: 551px;
 }
 .comment-block-right2 {
-	background: url(http://data2.rumedia.ws/templates/rum/images/koment-top.jpg) 0 top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/koment-top.jpg) 0 top no-repeat;
 	padding: 7px 0 0 0;
 }
 .comment-text {
-	background: url(http://data2.rumedia.ws/templates/rum/images/koment-bottom.jpg) 0 bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/koment-bottom.jpg) 0 bottom no-repeat;
 	padding: 0 0 7px 19px;
 	color: #000;
 	line-height: 17px;
@@ -2233,7 +2233,7 @@ a.highslide-full-expand {
 	cursor: pointer;
 	float: left;
 	height: 25px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/hidden-comment.jpg) left top repeat-x;
 	border-radius:3px;
 	-webkit-border-radius:3px;
 	-moz-border-radius:3px;
@@ -2244,7 +2244,7 @@ a.highslide-full-expand {
 	margin: 17px 0 0 10px;
 }
 .hidden-comment2 {
-	background: url(http://data2.rumedia.ws/templates/rum/images/hidden-comment.jpg) left bottom repeat-x !important;
+	background: url(http://rumedia.ws/templates/rum/images/hidden-comment.jpg) left bottom repeat-x !important;
 }
 .hidden-comment-form {
 	display: none;
@@ -2267,7 +2267,7 @@ a.highslide-full-expand {
 	color: #2b80c1;
 }
 .login-close {
-	background: url(http://data2.rumedia.ws/templates/rum/images/login-close.png);
+	background: url(http://rumedia.ws/templates/rum/images/login-close.png);
 	width: 36px;
 	height: 35px;
 	cursor: pointer;
@@ -2359,7 +2359,7 @@ a.highslide-full-expand {
 	border: 1px #2b2b2b solid;
 }
 .user-info-table input {
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2367,7 +2367,7 @@ a.highslide-full-expand {
 .error {
 	padding: 10px;
 	padding-bottom: 150px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/error.png) center bottom no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/error.png) center bottom no-repeat;
 	text-align: center;
 }
 .error p {
@@ -2421,13 +2421,13 @@ a.highslide-full-expand {
 }
 .ststststs-c img {
 	padding: 0 10px 10px 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/shadow.gif) right bottom;
+	background: url(http://rumedia.ws/templates/rum/images/shadow.gif) right bottom;
 	border: 0;
 	margin: 10px 10px 10px 0;
 }
 .ststststs-c input {
 	margin: 5px 20px 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2468,7 +2468,7 @@ a.highslide-full-expand {
 }
 .imp input {
 	margin: 5px 20px 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2481,7 +2481,7 @@ a.highslide-full-expand {
 }
 .new-PM input {
 	width: 250px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2537,7 +2537,7 @@ a.highslide-full-expand {
 	height: 27px;
 	left: 819px;
 	top: 29px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/search-block.png) left top no-repeat;
+	background: url(http://rumedia.ws/templates/rum/images/search-block.png) left top no-repeat;
 }
 #tt_social a {
 	width: 24px;
@@ -2586,7 +2586,7 @@ a.highslide-full-expand {
 	background: #262626;
 }
 .search-rez input {
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2600,7 +2600,7 @@ a.highslide-full-expand {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left top repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/navigation.jpg) left top repeat-x;
 	height: 25px;
 	line-height: 25px;
 	float: left;
@@ -2612,7 +2612,7 @@ a.highslide-full-expand {
 	font-size: 12px;
 }
 .navigation a:hover {
-	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
 	color: #000;
 }
 .navigation span {
@@ -2620,7 +2620,7 @@ a.highslide-full-expand {
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-	background: url(http://data2.rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
+	background: url(http://rumedia.ws/templates/rum/images/navigation.jpg) left bottom repeat-x;
 	height: 25px;
 	line-height: 25px;
 	float: left;
@@ -2652,7 +2652,7 @@ a.highslide-full-expand {
 }
 .vote-pool input {
 	margin: 5px 20px 0 0;
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 1px #d0d0d0 solid;
 }
@@ -2675,7 +2675,7 @@ a.highslide-full-expand {
 	margin-bottom: 10px;
 }
 .form-input-stand {
-	background: url(http://data2.rumedia.ws/templates/rum/images/form-text.gif);
+	background: url(http://rumedia.ws/templates/rum/images/form-text.gif);
 	color: #2e2e2e;
 	border: 0;
 }
@@ -2696,7 +2696,7 @@ a.highslide-full-expand {
 }
 .fix-bb {
 	margin-right: 2%;
-	background: url(http://data2.rumedia.ws/templates/rum/bbcodes/bg.gif);
+	background: url(http://rumedia.ws/templates/rum/bbcodes/bg.gif);
 	height: 75px;
 	margin-left: -10px;
 	border: 1px solid #bbb;
@@ -2849,7 +2849,7 @@ a.highslide-full-expand {
 	color: #222222;
 }
 .ui-widget-header {
-	background: #5c9ccc url(http://data2.rumedia.ws/templates/rum/images/ui-bg_gloss-wave.png) 50% 50% repeat-x;
+	background: #5c9ccc url(http://rumedia.ws/templates/rum/images/ui-bg_gloss-wave.png) 50% 50% repeat-x;
 	border: 1px solid #4297d7;
 	color: #ffffff;
 	font-weight: bold;
@@ -2858,7 +2858,7 @@ a.highslide-full-expand {
 	color: #ffffff;
 }
 .ui-state-default, .ui-widget-content .ui-state-default {
-	background: #dfeffc url(http://data2.rumedia.ws/templates/rum/images/ui-bg_glass_85.png) 50% 50% repeat-x;
+	background: #dfeffc url(http://rumedia.ws/templates/rum/images/ui-bg_glass_85.png) 50% 50% repeat-x;
 	border: 1px solid #c5dbec;
 	color: #2e6e9e;
 	font-weight: bold;
@@ -2868,7 +2868,7 @@ a.highslide-full-expand {
 	text-decoration: none;
 }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus {
-	background: #d0e5f5 url(http://data2.rumedia.ws/templates/rum/images/ui-bg_glass_75.png) 50% 50% repeat-x;
+	background: #d0e5f5 url(http://rumedia.ws/templates/rum/images/ui-bg_glass_75.png) 50% 50% repeat-x;
 	border: 1px solid #79b7e7;
 	color: #1d5987;
 	font-weight: bold;
@@ -2896,10 +2896,10 @@ a.highslide-full-expand {
 	color: #cd0a0a;
 }
 .ui-widget-header .ui-icon {
-	background-image: url(http://data2.rumedia.ws/templates/rum/images/ui-icons.png);
+	background-image: url(http://rumedia.ws/templates/rum/images/ui-icons.png);
 }
 .ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
-	background-image: url(http://data2.rumedia.ws/templates/rum/images/ui-icons_h.png);
+	background-image: url(http://rumedia.ws/templates/rum/images/ui-icons_h.png);
 }
 .ui-icon-close {
 	background-position: -80px -128px;
@@ -3005,7 +3005,7 @@ button.ui-button::-moz-focus-inner {
 /* ��� 9.2 */
 .editor input[type="text"] {
 	padding: 2px;
-	background: #fff url("http://data2.rumedia.ws/templates/rum/images/fields.png") repeat-x;
+	background: #fff url("http://rumedia.ws/templates/rum/images/fields.png") repeat-x;
 	border: 1px solid #bcc0c2;
 }
 /* ==================== �������������� ������ ����� */
@@ -3208,7 +3208,7 @@ pre .tex .formula {
 }
 .pm_status_head {
 	border-bottom: 1px solid #d8d8d8;
-	background: #fff url("http://data2.rumedia.ws/templates/rum/images/bbcodes.png") repeat-x 0 100%;
+	background: #fff url("http://rumedia.ws/templates/rum/images/bbcodes.png") repeat-x 0 100%;
 	font: 12px Tahoma;
 	padding: 10px;
 	margin: 0;
@@ -3419,14 +3419,14 @@ pre .tex .formula {
 
 
 .fn-lenta {
-	background: url(http://data2.rumedia.ws/templates/rum/movies_full/1lenta.jpg) repeat-x;
+	background: url(http://rumedia.ws/templates/rum/movies_full/1lenta.jpg) repeat-x;
 	height: 31px;
 	width: 653px;
 	margin-left: -17px;
 	padding: 0px 0px 0px 10px;
 }
 .fn-about {
-	background: url(http://data2.rumedia.ws/templates/rum/movies_full/2about.jpg) repeat-x;
+	background: url(http://rumedia.ws/templates/rum/movies_full/2about.jpg) repeat-x;
 	height: 74px;
 	width: 653px;
 	margin-left: -17px;
