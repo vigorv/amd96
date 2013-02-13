@@ -32,7 +32,7 @@ function netMatch($CIDR, $IP)
 
 if (isset($_REQUEST['item_id'])) {
     $item_id = (int)$_REQUEST['item_id'];
-    $infoSQL = $db->query("SELECT id,short_story,title,title2,xfields,reason FROM rm_post rp LEFT JOIN rm_post_extras rpe on  rpe.news_id = rp.id where id = $item_id LIMIT 1");
+    $infoSQL = $db->query("SELECT rp.id,short_story,title,title2,full_story,xfields,reason,(SELECT GROUP_CONCAT(rc.name) FROM `rm_category` rc WHERE FIND_IN_SET(id,rp.category)) as 'category' FROM rm_post rp LEFT JOIN rm_post_extras rpe on  rpe.news_id = rp.id  where rp.id = $item_id LIMIT 1");
     if ($info = $db->get_row($infoSQL)) {
         $xfieldsdata = xfieldsdataload($info['xfields']);
         $data = array();
@@ -40,6 +40,8 @@ if (isset($_REQUEST['item_id'])) {
         preg_match("/uploads\/posts\/[0-9\-]+\/[0-9a-zA-Z\_\-\.]+/", $info['short_story'], $images);
         $data['image'] = $images[0];
         $data['reason'] = $info['reason'];
+        $data['description'] = $info['full_story'];
+        $data['category'] = $info['category'];
         if (isset($xfieldsdata['m_original_name'])) {
             $movie['original_title'] = $xfieldsdata['m_original_name'];
             $movie['year'] = $xfieldsdata['m_year'];
@@ -47,6 +49,7 @@ if (isset($_REQUEST['item_id'])) {
             $movie['director'] = $xfieldsdata['m_director'];
             $movie['actors'] = $xfieldsdata['m_actors'];
             $movie['original_title']= $info['title2'];
+            $movie['m_other'] =$xfieldsdata['m_other'];
             $data['movie'] = $movie;
         }
         foreach ($data as &$value)
