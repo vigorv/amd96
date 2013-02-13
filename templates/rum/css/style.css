@@ -110,11 +110,11 @@ img {
 */
 .logo {
     display: block;
-    background: url(http://rumedia.ws/templates/rum/images/logo5_NY.png) 0 0 no-repeat;
-    height: 85px;
-    width: 247px;
+    background: url(http://rumedia.ws/templates/rum/images/logo5.png) 0 0 no-repeat;
+    height: 75px;
+    width: 217px;
     position: absolute;
-    top: -1px;
+    top: 6px;
     left: 7px;
 }
 .banner {
