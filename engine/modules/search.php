@@ -52,7 +52,10 @@ if( ! $user_group[$member_id['user_group']]['allow_search'] ) {
     $this_date = date( "Y-m-d H:i:s", $_TIME );
     if( $config['no_date'] AND !$config['news_future'] ) $this_date = " AND " . PREFIX . "_post.date < '" . $this_date . "'"; else $this_date = "";
 
+
+
     if( isset( $_REQUEST['story'] ) ) {
+        if (isset($_REQUEST['nsk54'])) $_REQUEST['story'] = iconv('utf8', 'windows-1251', $_REQUEST['story']);
         $story = dle_substr( strip_data( rawurldecode( $_REQUEST['story'] ) ), 0, 90, $config['charset'] );
         $sphinx_story = $story;
     } else {
