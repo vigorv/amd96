@@ -1,16 +1,4 @@
 <?
-//exit(0);
-if(0){
-?>
-По данному факту автоматически созданна заявка о неодуступности файла.
-Это могло случиться по двум причинам:
-1. Сервер работает от многих раздающих серверов. и на одном из них информация еще не обновилась. попробуйте снова получить ссылку на файл.
-2. Вы пытаетесь получить ссылку не с сайта. что привело к нежелательным для Вас последствиям.
-3. На сервере действительно есть проблема. о ней мы уже стали извещенны сразу как только Вы открыли данную страницу
-
-<?
-}
-//exit(0);
 //echo "<pre>";
 //print_r($_SERVER);
 $url='';
@@ -27,18 +15,11 @@ $server=$_GET['server'];
 //echo "<br>";
 
 $b_info=$_SERVER['HTTP_USER_AGENT'];//запоминаем browser info
-//echo "<br>";
 $user_ip=(empty($_SERVER['HTTP_X_REAL_IP'])? $_SERVER['REMOTE_ADDR'] : $_SERVER['HTTP_X_REAL_IP']);// Запоминаем IP
+
 //страница откуда пришел юзер если он это сделал нажав с сайта нерабочую ссылку
-//echo "<br>";
 $event= empty($_SERVER['HTTP_REFERER'])? '' : $_SERVER['HTTP_REFERER'];//ссылка на новость
-//echo "<br>";
-//тут может лежать переменная дле_юзер.
-// там строка вот такого вида
-//__utmz=79127314.1263395199.132.9.utmcsr=nsk54.com|utmccn=(referral)|utmcmd=referral|utmcct=/forum/showthread.php; PHPSESSID=nkngo93vi55dq2b01tr4inf7t4; dle_user_id=5988; dle_password=432932953ac1cbb924026a0bf575783c; dle_hash=a114b7676297565069ab68e0ed136042; csd=2; dle_newpm=0; __utma=79127314.1203228157.1259734846.1263810105.1263814657.156; __utmc=79127314; __utmb=79127314.8.10.1263814657
-//echo $_SERVER['HTTP_COOKIE'];
 $cookies=explode(';',(empty($_SERVER['HTTP_COOKIE'])? '' : $_SERVER['HTTP_COOKIE']));
-//print_r($cookies);
 foreach($cookies as $cookie)
 {
 if(strpos($cookie,'user_id')){list($name,$user_id1)=explode('=',$cookie);}
@@ -50,19 +31,19 @@ echo to_base('http://'.$server.''.$url,$user_ip,$user_id,$event,$b_info);
 
 function to_base($link,$user_ip,$user_id,$event,$info)
 {
+    include $_SERVER['DOCUMENT_ROOT']."/engine/data/dbconfig.php";
+    $db1=mysql_connect(DBHOST2, DBUSER2,DBPASS2) or    die("Could not connect: " . mysql_error());
+    mysql_select_db(DBNAME2,$db1);
+    mysql_query("SET NAMES ".COLLATE2,$db1);
 
-    mysql_connect("localhost", "wsmedia", "6ND8vkHlNvwxUGPxfQIRz012");
-    mysql_select_db("wsmedia2");
-    mysql_query('SET NAMES cp1251');
-    
-    $link		= mysql_real_escape_string($link);
+    $link = mysql_real_escape_string($link);
     $event		= mysql_real_escape_string($event);
     $info		= mysql_real_escape_string($info);
+    //echo $link."<br>";
+
     $user_id	= intval($user_id);
 
-    mysql_connect("localhost", "wsmedia", "6ND8vkHlNvwxUGPxfQIRz012");
-    mysql_select_db("wsmedia2");
-    mysql_query('SET NAMES cp1251');
+
     
     $sql= "select id from `error404` where link='{$link}';";
     $result=mysql_query($sql);
@@ -78,7 +59,7 @@ function to_base($link,$user_ip,$user_id,$event,$info)
 
     }
 
-    //return $sql;
+    return $sql;
 }
 //
 //echo ['HTTP_COOKIE']

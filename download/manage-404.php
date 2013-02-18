@@ -2,9 +2,13 @@
     $page=0;
     $limit=50;
     $page=$_REQUEST['page'];
-    mysql_connect("localhost", "wsmedia", "6ND8vkHlNvwxUGPxfQIRz012");
-    mysql_select_db("wsmedia2");
-    mysql_query('SET NAMES cp1251');
+    include $_SERVER['DOCUMENT_ROOT']."/engine/data/dbconfig.php";
+    $db1=mysql_connect(DBHOST2, DBUSER2,DBPASS2) or    die("Could not connect: " . mysql_error());
+    mysql_select_db(DBNAME2,$db1);
+    mysql_query("SET NAMES ".COLLATE2,$db1);
+    #mysql_connect("localhost", "wsmedia", "6ND8vkHlNvwxUGPxfQIRz012");
+    #mysql_select_db("wsmedia2");
+    #mysql_query('SET NAMES cp1251');
     $sql= "select count(*) from `error404`";
     $result=mysql_query($sql);
         $count=mysql_result($result,0);
