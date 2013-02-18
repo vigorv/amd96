@@ -587,6 +587,7 @@ HTML;
                 $sphinx->SetLimits(0,40,40);
 
                 $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
+                $sphinx_story=mb_strtolower($sphinx_story);
                 $result = $sphinx->Query($sphinx_story, 'rumedia_post');
 
                 if ($result && isset($result['matches'])) {
