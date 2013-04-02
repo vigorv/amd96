@@ -1051,7 +1051,7 @@ include_once ENGINE_DIR . '/modules/block.pro.2.php';
 
             preg_match_all("/catalog\/viewv\/(?P<id>[0-9]+)[\"\\ =a-z_A-Z0-9\.à-ÿÀ-ÿ\>]+\<\/a\>/", $dlinks_data,$data,PREG_SET_ORDER);
             foreach ($data as &$matches){
-                    $dlinks_data = str_replace($matches[0],$matches[0].'<a href="http://fastlink.ws/catalog/file/'.$matches[1].'/1"><img src="http://fastlink.ws/images/fastlink.png"></a>',$dlinks_data);
+                    $dlinks_data = str_replace($matches[0],$matches[0].'<a href="http://fastlink.ws/catalog/file/'.$matches[1].'/1"> <img style="margin:0 1px" src="http://fastlink.ws/images/fastlink.png"/></a>',$dlinks_data);
             }
             $srcStr   = str_replace(PHP_EOL,'<br />',$dlinks_data );
             } else {
