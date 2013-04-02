@@ -1,0 +1,4 @@
+http://api.my.yahoo.com/ping
+http://blogsearch.google.com/pingRPC2nd
+http://blogsearch.google.us/pingRPC2
+http://ping.blogs.yandex.ru/RPC2
