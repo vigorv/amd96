@@ -598,7 +598,7 @@ else
 /*Block.Pro - relatednews*/
 $block_id = 'related_'.$row['id']; //Не трогать!
 $relatedpro = "1"; //Не трогать!
-$template = "relatednews"; // Имя шаблона (можно менять)
+$template = "relatednews"; // �?мя шаблона (можно менять)
 $show_cat = "this";
 $news_num = "9"; 
 include_once ENGINE_DIR . '/modules/block.pro.2.php';		
@@ -1048,6 +1048,11 @@ include_once ENGINE_DIR . '/modules/block.pro.2.php';
             $dlinks_data  = str_replace('<br>',PHP_EOL,$dlinks_data );
             $dlinks_data  = preg_replace("/(^|[\n ])([\w]*?)((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)/is", "$1$2<a href=\"$3\" >$3</a>", $dlinks_data );
             $dlinks_data = preg_replace("/(^|[\n ])([\w]*?)((www|ftp)\.[^ \,\"\t\n\r<]*)/is", "$1$2<a href=\"http://$3\" >$3</a>", $dlinks_data );
+
+            preg_match_all("/catalog\/viewv\/(?P<id>[0-9]+)[\"\\ =a-z_A-Z0-9\.�-��-�\>]+\<\/a\>/", $dlinks_data,$data,PREG_SET_ORDER);
+            foreach ($data as &$matches){
+                    $dlinks_data = str_replace($matches[0],$matches[0].'<a href="http://fastlink.ws/catalog/file/'.$matches[1].'/1"><img src="http://fastlink.ws/images/fastlink.jpg"></a>',$dlinks_data);
+            }
             $srcStr   = str_replace(PHP_EOL,'<br />',$dlinks_data );
             } else {
                 if (isset($xdata['m_direct_links'])){
