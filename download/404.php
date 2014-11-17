@@ -45,10 +45,11 @@ function to_base($link,$user_ip,$user_id,$event,$info)
 
 
     
-    $sql= "select id from `error404` where link='{$link}';";
-    $result=mysql_query($sql);
+    //$sql= "select id from `error404` where link='{$link}';";
+    //$result=mysql_query($sql);
     //echo mysql_num_rows($result);
-    if(mysql_num_rows($result)==0)
+    //if(mysql_num_rows($result)==0)
+    if(1)
     {
     $sql= "insert into `error404` (user_ip,user_id,link,event,info) values ('{$user_ip}',{$user_id},'{$link}','{$event}','".mysql_escape_string($info)."');";
     $result = mysql_query($sql);

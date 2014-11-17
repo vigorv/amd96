@@ -13,8 +13,18 @@
     $result=mysql_query($sql);
         $count=mysql_result($result,0);
         if (floor($count/$limit)<$page)$page=floor($count/$limit);
+$where="`link` not like '%.psb'";
+$where.=" and `link` not like '%.mpl'";
+$where.=" and `link` not like '%.smi'";
+$where.=" and `link` not like '%.ssa'";
+$where.=" and `link` not like '%.txt'";
+$where.=" and `link` not like '%.sub'";
+$where.=" and `link` not like '%.ass'";
+$where.=" and `link` not like '%.srt'";
+$where.=" and `link` not like '%.mpl'";
         
-        $sql= "select * from `error404` order by id desc limit ".$page*$limit.",".$limit.";";
+        $sql= "select * from `error404` where ".$where." order by id desc limit ".$page*$limit.",".$limit.";";
+        echo $sql."\n";
         $result=mysql_query($sql);
         if($page>0) echo "<a href=?page=".($page-1)."> < </a>";
         echo ($page+1);

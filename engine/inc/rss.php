@@ -1329,7 +1329,8 @@ storyes($skey, $result);
 									}else{
 										if ($config['version_id'] >='7.2'){$te =", '".$db->safesql($tegs)."'";$tes = ', tags';}
 										if ($config['version_id'] >'8.0'){$fgrs = ", '$meta_title', '$catalog_url'";$fgs = ', metatitle, symbol';}
-										$db->query ( 'INSERT INTO '.PREFIX ."_post (autor, category, date, title, alt_name, short_story, full_story, xfields, allow_main, approve, allow_comm, allow_rate, allow_br, rating, vote_num, news_read, fixed, descr, keywords $tes $fgs) VALUES ('$author', '$category', '$added_time', '$title', '$alt_name', '$short_story', '$full_story', '$xfields', '$allow_main', '$approve', '$allow_comm', '$allow_rate', '1', '$rating', '$vote_num', '$news_read', '0', '$descr', '$keywords' $te $fgrs)");
+										$db->query ( 'INSERT INTO '.PREFIX ."_post (autor, category, date, title, alt_name, short_story, full_story, xfields, allow_main, approve, allow_comm, allow_br, fixed, descr, keywords $tes $fgs) VALUES 
+										('$author', '$category', '$added_time', '$title', '$alt_name', '$short_story', '$full_story', '$xfields', '$allow_main', '$approve', '$allow_comm', '1', '0', '$descr', '$keywords' $te $fgrs)");
 										$news_id = $db->insert_id();
 										if( $approve == '1'and $dop_sort[4] == 1 and @file_exists($rss_plugins.'ping/pingsite.txt')) {
 											include ( $rss_plugins.'ping/grabberping.php');

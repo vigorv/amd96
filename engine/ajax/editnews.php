@@ -414,6 +414,24 @@ HTML;
 	$db->query( "UPDATE " . PREFIX . "_post SET title='{$_POST['title']}', short_story='$news_txt', full_story='$full_txt', xfields='$filecontents', approve='$approve', allow_br='$allow_br' WHERE id = '$id'" );
 	$db->query( "UPDATE " . PREFIX . "_post_extras SET editdate='$added_time', editor='{$member_id['name']}', reason='$editreason', view_edit='$view_edit' WHERE news_id = '$id'" );
 
+/////////LINKS ATTACH
+       if (isset($_POST['xfield']['direct_links'])) {
+       $save_id=$_POST['id'];
+       $direct_links=$_POST['xfield']['direct_links'];
+     //  file_put_contents('/1.txt',var_export($direct_links,1));
+       preg_match_all('/\/catalog\/viewv\/([0-9]+)/', $direct_links, $matches, PREG_SET_ORDER);
+       $data = array();
+       foreach ($matches as $it) {
+        $data['ids'][] = $it[1];
+        }
+       $data['gid'] = $save_id;
+       $fdata = base64_encode(serialize($data));
+       $key = md5($config['service_key'] . $fdata . $config['service_uri']);
+       $url = $config['service_uri2'] . '?fdata=' . $fdata . '&key=' . $key;
+       file_get_contents($url);
+	}
+ /////////////////////
+
 	if ($user_group[$member_id['user_group']]['allow_admin']) $db->query( "INSERT INTO " . USERPREFIX . "_admin_logs (name, date, ip, action, extras) values ('".$db->safesql($member_id['name'])."', '{$_TIME}', '{$_IP}', '25', '{$_POST['title']}')" );
 
 	if ( $config['allow_alt_url'] == "yes" AND !$config['seo_type'] ) $cprefix = "full_"; else $cprefix = "full_".$id;	

@@ -37,8 +37,15 @@ if (isset($_REQUEST['item_id'])) {
         $xfieldsdata = xfieldsdataload($info['xfields']);
         $data = array();
         $data['title'] = $info['title'];
-        preg_match("/uploads\/posts\/[0-9\-]+\/[0-9a-zA-Z\_\-\.]+/", $info['short_story'], $images);
-        $data['image'] = $images[0];
+        if (isset($xfieldsdata['poster4full'])&&trim($xfieldsdata['poster4full'])!='')
+        {
+            preg_match("/uploads\/posts\/[0-9\-]+\/[0-9a-zA-Z\_\-\.]+/", $xfieldsdata['poster4full'], $images);
+            $data['image'] = $images[0];
+        }
+        else{
+            preg_match("/uploads\/posts\/[0-9\-]+\/[0-9a-zA-Z\_\-\.]+/", $info['short_story'], $images);
+            $data['image'] = $images[0];
+        }
         $data['reason'] = $info['reason'];
         $data['description'] = $info['full_story'];
         $data['category'] = $info['category'];
@@ -52,13 +59,16 @@ if (isset($_REQUEST['item_id'])) {
             $movie['m_other'] =$xfieldsdata['m_other'];
             $data['movie'] = $movie;
         }
+
         foreach ($data as &$value)
             if (is_array($value)) {
                 foreach ($value as &$value_dim2)
                     $value_dim2 = iconv('windows-1251', 'utf-8', $value_dim2);
             } else
                 $value = iconv('windows-1251', 'utf-8', $value);
+        if(isset($_REQUEST['test']))print_r($data);
         echo serialize($data);
+
     } else {
         echo serialize(array('error' => 1));
     }

@@ -20,7 +20,7 @@ clear_cache();
 exit();
 }
 
-$row = $db->super_query ("SELECT id, date, title, category, alt_name, flag FROM ".PREFIX ."_post WHERE id= '$news_id'");
+$row = $db->super_query ("SELECT id, date, title, category, alt_name FROM ".PREFIX ."_post WHERE id= '$news_id'");
 $pgg = array();
 $row['date'] = strtotime( $row['date'] );
 if( $config['allow_alt_url'] == "yes" ) {

@@ -152,7 +152,7 @@ reFreshiChat();
 function iChatRefresh(place)
 {
 	
-	$.post(dle_root + "engine/modules/iChat/ajax/refresh.php", { action: "refresh", place: place }, function(data){
+	$.post("http://www2.rumedia.ws/engine/modules/iChat/ajax/refresh.php", { action: "refresh", place: place }, function(data){
 
 if(data != 'no need refresh'){
 

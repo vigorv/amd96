@@ -67,8 +67,8 @@ var dle_act_lang   = ["{$lang['p_yes']}", "{$lang['p_no']}", "{$lang['p_enter']}
 	<div class="adm-head-whoami">{$lang['skin_name']}<br /> <strong style="color: #F00;">{user}</strong><br />({group})</div>
 		<a href="/" class="adm-head-logo"></a>
 	<div class="adm-head-md">
-	<a href="http://rumedia.ws/download/trend/dates.php/" class="adm-btn">dates.php</a>
-	<a href="http://rumedia.ws/download/trend/m.php/" class="adm-btn">m.php</a>
+	<a href="http://rumedia.ws/download/trend/dates.php" class="adm-btn">dates.php</a>
+	<a href="http://rumedia.ws/download/trend/m.php" class="adm-btn">m.php</a>
 	</div>
 	<div style="clear:both;"></div>
 </div>

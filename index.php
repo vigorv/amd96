@@ -371,6 +371,9 @@ if ($replace_url) $tpl->result['main'] = str_replace ( $replace_url[0]."/", $rep
 $tpl->result['main'] = str_replace ('#<img src=\"/uploads\/posts\/(.*?)#i','$1', $tpl->result['main'] );
 
 #$tpl->result['main'] = preg_replace('<img src="/uploads/posts/(.*?)', '<img src="http://data2.rumedia.ws/uploads/posts/$1', $tpl->result['main']);
+$tpl->result['main'] = str_replace("http://rating.kinopoisk.ru/", 'http://rumedia.ws/img/rating.kinopoisk.ru/', $tpl->result['main']);
+$tpl->result['main'] = str_replace("http://imdb.snick.ru/ratefor/", 'http://rumedia.ws/img/imdb.snick.ru/ratefor/', $tpl->result['main']);
+//if($_SERVER['REMOTE_ADDR']=='5.128.106.6')file_put_contents('/1.txt',$tpl->result['main']);
 
 #echo $tpl->result['main'];
 eval (' ?' . '>' . $tpl->result['main'] . '<' . '?php ');

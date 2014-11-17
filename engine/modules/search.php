@@ -588,8 +588,13 @@ HTML;
 
                 $sphinx->SetFieldWeights(array('title' => 20, 'title2' => 15, 'short_story' => 10, 'full_story' => 10));
                 $sphinx_story=mb_strtolower($sphinx_story);
-                $result = $sphinx->Query($sphinx_story, 'rumedia_post');
-
+                $result = $sphinx->Query($sphinx_story, 'rumedia_post, delta');
+/*                
+                if(!$result || !isset($result['matches'])){
+                    $sphinx->SetMatchMode(SPH_MATCH_ANY);
+	            $result = $sphinx->Query($sphinx_story, 'rumedia_post, delta');
+                }            
+*/
                 if ($result && isset($result['matches'])) {
                     $ids = array_keys($result['matches']);
                     $count_result = count($ids);
@@ -1318,6 +1323,6 @@ $today = date('Y-m-d');
 $story = trim($story);
 
 if ($story != '' or $story != 'Ïîèñê...') {
-    $result = $db->query("INSERT INTO users_search (user_id, ip, time, title) VALUES ('" . $member_id['user_id'] . "', '" . $_SERVER['REMOTE_ADDR'] . "', '" . $today . "', '" . $story . "')");
+//    $result = $db->query("INSERT INTO users_search (user_id, ip, time, title) VALUES ('" . $member_id['user_id'] . "', '" . $_SERVER['REMOTE_ADDR'] . "', '" . $today . "', '" . $story . "')");
 }
 ?>

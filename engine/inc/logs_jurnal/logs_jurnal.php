@@ -258,11 +258,17 @@ $where[] = "(date <= '{$to_date}')";
 $where = implode(" AND ",$where);
 if ($where)
 $where = "WHERE ".$where;
+
+//print_r($_REQUEST);
+$files_per_page = $_REQUEST['files_per_page'];
+
 if(!intval($files_per_page))
 $files_per_page = $lj_conf['number'];
-if (!isset($start_from))
-$start_from = 0;
+
+if (isset($_REQUEST['start_from']))
+{$start_from=$_REQUEST['start_from'];}else $start_from = 0;
 $sql = "SELECT * FROM `".PREFIX ."_".$base_name ."` {$where} ORDER BY `date` DESC LIMIT {$start_from},{$files_per_page}";
+echo $sql;
 $result = $db->query($sql);
 $entries_showed = 0;
 if($action == "logs_aul"OR $action == "logs_news")

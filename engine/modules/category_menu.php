@@ -41,6 +41,7 @@ if(!$catmenu) {
 		elseif($cat_name_end == "а" || $cat_name_end == "ь") $cat_end = "Вся";
 		else $cat_end = "Все";
 
+
 		#****** Формирование подкатегорий ******#
 		$category = array();
 		#$news_new = $news_all = 0;
@@ -54,16 +55,18 @@ if(!$catmenu) {
 
 			if(!$cat_all[$z]['news_num']) $cat_all[$z]['news_num']=0;
 			if($cat_all[$z]['news_new']) $cat_all[$z]['news_new']=" / <b style=\"color:red;\">+".$cat_all[$z]['news_new']."</b>";
-
-			$category[] = "<div class=\"listCategory\"><a href=\"/{$cat_all[$v]['alt_name']}/{$cat_all[$z]['alt_name']}/\">{$cat_all[$z]['name']}</a> ({$cat_all[$z]['news_num']}{$cat_all[$z]['news_new']})</div>";
+			if($cat_call[$z]['id']!=88)$category[] = "<div class=\"listCategory\"><a href=\"/{$cat_all[$v]['alt_name']}/{$cat_all[$z]['alt_name']}/\">{$cat_all[$z]['name']}</a> ({$cat_all[$z]['news_num']}{$cat_all[$z]['news_new']})</div>";
 		}
 
 		$news_new = ($news_new > 0) ? " <font color=\"#ddd\">(+".$news_new.")</font>" : "";
 
+		if($cat_call[$v]['id']!=88)
+	    {
 		#****** Формирование заголовка ******#
 		$catmenu .= "<h3><a href=\"#\" style=\"padding-top: 5px; padding-bottom: 5px;\">{$cat_all[$v]['name']}{$news_new}</a></h3><div style=\"padding:5px 10px;\">";
 		#****** Ссылка на главную категорию и подкатегории ******#
 		$catmenu .= "<div class=\"listCategory\"><a href=\"/{$cat_all[$v]['alt_name']}/\"><b>{$cat_end} {$cat_all[$v]['name']}</b></a> ({$news_all})</div>".implode("",$category)."</div>";
+	    }
 	}
 	$catmenu = str_replace ("&","&amp;",$catmenu);
 	create_cache("catmenu", $catmenu, 1, true);

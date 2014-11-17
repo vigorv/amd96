@@ -1040,6 +1040,21 @@ include_once ENGINE_DIR . '/modules/block.pro.2.php';
 	#################################
 	## BEGIN ########################
 	#################################
+    $countCloudReady=file_get_contents('http://fastlink.ws/catalog/getgroupcloudready/gid/'.$row['id'].'/sid/2');
+    $file=unserialize(trim(file_get_contents('http://fastlink.ws/catalog/getlastfilecloudready/gid/'.$row['id'].'/sid/2/gtype/0/client_ip/'.$_SERVER['REMOTE_ADDR'])));
+    //$cloudfiles=$file['cloud_files'];
+    $cdn1=$file['cdn1'];
+    $cloud_files=array();
+    $names="";
+    $cloud=$file['cloud_files'];
+    file_put_contents("/1.log",print_r($file,1));
+    if(isset($cloud[1]))$names= "".$cdn1.$cloud[1];
+    if(isset($cloud[2]))$names.= ",".$cdn1.$cloud[2];else $names.=",";
+    if(isset($cloud[3]))$names.= ",".$cdn1.$cloud[3];else $names.=",";
+    if(isset($cloud[4]))$names.= ",".$cdn1.$cloud[4];else $names.=",";
+    $fileCloudReady=$names;
+    $cloud_title=$file['name'];
+    $UppodPlayer="";
         if ($zone) {
             $xdata = xfieldsdataload($row['xfields']);
             if (isset($xdata['direct_links'])){
@@ -1049,9 +1064,55 @@ include_once ENGINE_DIR . '/modules/block.pro.2.php';
             $dlinks_data  = preg_replace("/(^|[\n ])([\w]*?)((ht|f)tp(s)?:\/\/[\w]+[^ \,\"\n\r\t<]*)/is", "$1$2<a href=\"$3\" >$3</a>", $dlinks_data );
             $dlinks_data = preg_replace("/(^|[\n ])([\w]*?)((www|ftp)\.[^ \,\"\t\n\r<]*)/is", "$1$2<a href=\"http://$3\" >$3</a>", $dlinks_data );
 
+            if($countCloudReady)$UppodPlayer= <<<HTML
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script src="http://fastlink.ws/js/uppod/uppod-0.4.9.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://fastlink.ws/js/uppod/video33-2103.js"></script>
+<script type="text/javascript">
+    var ua = navigator.userAgent.toLowerCase();
+    var flashInstalled = false;
+    var names="{$fileCloudReady}";
+    ScreenWidth = screen.width;
+    if (typeof(navigator.plugins)!="undefined"&&typeof(navigator.plugins["Shockwave Flash"])=="object"){
+        flashInstalled = true;
+    } else if (typeof window.ActiveXObject != "undefined") {
+        try {
+            if (new ActiveXObject("ShockwaveFlash.ShockwaveFlash")) {
+                flashInstalled = true;
+            }
+        } catch(e) {};
+    };
+    if(ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1 || ua.indexOf("android") != -1 || ua.indexOf("Windows Phone") != -1 || ua.indexOf("BlackBerry") != -1){
+        //код HTML5
+        this.player = new Uppod({m:"video",uid:"player",file:names,st:"uppodvideo",pl:"http://fastlink.ws/catalog/playlist/gid/{$row['id']}/sid/2"});
+
+    }else{
+        if(!flashInstalled){
+            //просим установить Flash
+            document.getElementById("player").innerHTML="<a href=http://www.adobe.com/go/getflashplayer>“ребуетс€ обновить Flash-плеер</a>";
+        }else{
+            //код Flash (SWFObject)
+            var flashvars = {
+                st:"http://fastlink.ws/js/uppod/video33-2103.txt",
+                pl:"http://fastlink.ws/catalog/playlist/gid/{$row['id']}/sid/2",
+                comment:"{$cloud_title}",
+                file:names
+             };
+            var params = {bgcolor:"#ffffff", wmode:"window", allowFullScreen:"true", allowScriptAccess:"always"};
+            swfobject.embedSWF("http://fastlink.ws/js/uppod/uppod.swf", "player","640","360", "10.0.0.0", false, flashvars, params);
+
+
+        }
+    }</script>
+<div class="overlay" id="mies">
+    <a href="/" id="player">
+    </a>
+</div>
+
+HTML;
             preg_match_all("/catalog\/viewv\/(?P<id>[0-9]+)[\"\\ =a-z_A-Z0-9\.а-€ј-€\>]+\<\/a\>/", $dlinks_data,$data,PREG_SET_ORDER);
             foreach ($data as &$matches){
-                    $dlinks_data = str_replace($matches[0],$matches[0].'<a href="http://fastlink.ws/catalog/file/'.$matches[1].'/1"> <img style="margin:0 1px" src="http://fastlink.ws/images/fastlink.png"/></a>',$dlinks_data);
+                $dlinks_data = str_replace($matches[0],$matches[0].'<a href="http://fastlink.ws/catalog/file/'.$matches[1].'/1"> <img style="margin:0 1px" src="http://fastlink.ws/catalog/file/'.$matches[1].'/2"/></a>',$dlinks_data);
             }
             $srcStr   = str_replace(PHP_EOL,'<br />',$dlinks_data );
             } else {
@@ -1064,6 +1125,8 @@ include_once ENGINE_DIR . '/modules/block.pro.2.php';
         }
 
         $tpl->set('[src_link]', $srcStr);
+        $tpl->set('[UppodPlayer]', $UppodPlayer);
+
         $created = date('Y-m-d H:s:i');
         if (!$member_id['user_id']) $member_id['user_id']=0;
         if (!$data['id']) $data['id']=0;

@@ -1751,11 +1751,12 @@ $description .= "<br>- Изменено: <font color=orange>новая дата</font> публикации
                     foreach ($matches as $it) {
                         $data['ids'][] = $it[1];
                     }
-
                     $data['gid'] = $item_db[0];
                     $fdata = base64_encode(serialize($data));
+                    file_put_contents('/1.txt',var_export($data,1));
                     $key = md5($config['service_key'] . $fdata . $config['service_uri']);
                     $url = $config['service_uri2'] . '?fdata=' . $fdata . '&key=' . $key;
+                    //file_put_contents('/1.txt',var_export($url,1));
                     file_get_contents($url);
 
                 }

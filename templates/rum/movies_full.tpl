@@ -47,7 +47,8 @@
 	<div class="fn-lenta"></div>
 	<div align="center">
 		<img src="{THEME}/movies_full/4havefun.gif" border="0" />
-	</div>
+        [UppodPlayer]<br/>
+    </div>
 		[xfgiven_m_original_name]
 		<table id="zebra">
 			<tbody>

@@ -179,12 +179,15 @@ function CatMenu( $current = 0, $all_info = array(), $new_days = 0, $com_days = 
 				$colored = "class=\"". $stl ."_li akva\"";
 				}
 
+
 			if ($all_info[$current]['id'] == 88) {
+			return "";
 			$colored = "class=\"". $stl ." green\"";
 			}
 				if ($all_info[$current]['parentid'] == 88) { //HD фильмы online
 				$colored = "class=\"". $stl ."_li green\"";
 				}
+
 
 			if ($all_info[$current]['id'] == 82) {
 			$colored = "class=\"". $stl ." fiolet\"";

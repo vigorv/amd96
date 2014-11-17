@@ -19,6 +19,7 @@
 @ini_set ( 'display_errors', true );
 @ini_set ( 'html_errors', false );
 @ini_set ( 'error_reporting', E_ERROR );
+set_time_limit(120);
 
 define ( 'LogicBoard', true );
 define ( 'LogicBoard_ADMIN', false );
